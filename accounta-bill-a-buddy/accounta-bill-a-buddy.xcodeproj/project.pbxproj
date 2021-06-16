@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37A1BE12267AAE260044FA88 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A1BE11267AAE260044FA88 /* Storyboard.storyboard */; };
 		37DFDDE1267A58CA0055AF6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DFDDE0267A58CA0055AF6C /* AppDelegate.swift */; };
 		37DFDDE3267A58CA0055AF6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DFDDE2267A58CA0055AF6C /* SceneDelegate.swift */; };
 		37DFDDE8267A58CA0055AF6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37DFDDE6267A58CA0055AF6C /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		34C0B45614B92C455E86C369 /* Pods-accounta-bill-a-buddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-accounta-bill-a-buddy.release.xcconfig"; path = "Target Support Files/Pods-accounta-bill-a-buddy/Pods-accounta-bill-a-buddy.release.xcconfig"; sourceTree = "<group>"; };
+		37A1BE11267AAE260044FA88 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		37DFDDDD267A58CA0055AF6C /* accounta-bill-a-buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "accounta-bill-a-buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37DFDDE0267A58CA0055AF6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37DFDDE2267A58CA0055AF6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37A1BE10267AAE120044FA88 /* cindystoryboard */ = {
+			isa = PBXGroup;
+			children = (
+				37A1BE11267AAE260044FA88 /* Storyboard.storyboard */,
+			);
+			path = cindystoryboard;
+			sourceTree = "<group>";
+		};
 		37DFDDD4267A58CA0055AF6C = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +149,7 @@
 		37DFDDFA267A59820055AF6C /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				37A1BE10267AAE120044FA88 /* cindystoryboard */,
 				37DFDDE6267A58CA0055AF6C /* Main.storyboard */,
 				37DFDDEB267A58CC0055AF6C /* LaunchScreen.storyboard */,
 			);
@@ -241,6 +252,7 @@
 				9B188EF7267A71E40020DA62 /* GoogleService-Info.plist in Resources */,
 				37DFDDEA267A58CC0055AF6C /* Assets.xcassets in Resources */,
 				37DFDDE8267A58CA0055AF6C /* Main.storyboard in Resources */,
+				37A1BE12267AAE260044FA88 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
