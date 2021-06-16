@@ -1,0 +1,6 @@
+framework module Pods_accounta_bill_a_buddy {
+  umbrella header "Pods-accounta-bill-a-buddy-umbrella.h"
+
+  export *
+  module * { export * }
+}
