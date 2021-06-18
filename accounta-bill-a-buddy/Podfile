@@ -7,5 +7,7 @@ target 'accounta-bill-a-buddy' do
 
   # Pods for accounta-bill-a-buddy
   pod 'Firebase/Firestore'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
 
 end
