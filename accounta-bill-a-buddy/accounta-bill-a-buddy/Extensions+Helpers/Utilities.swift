@@ -14,4 +14,9 @@ class Utilities {
         return passwordTest.evaluate(with: password)
     }
     
+    static func isUsernameValid(_ username: String) -> Bool {
+        let usernameTest = NSPredicate(format: "SELF MATCHES %@", "^[0-9a-zA-Z\\_]{2,12}$")
+        return usernameTest.evaluate(with: username)
+    }
+    
 }//End of class
