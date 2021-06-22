@@ -3,16 +3,12 @@
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-<<<<<<< Updated upstream
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-=======
->>>>>>> Stashed changes
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Friends-->
-<<<<<<< Updated upstream
         <scene sceneID="Utj-8N-UyU">
             <objects>
                 <viewController storyboardIdentifier="FriendsVC" id="SvU-hh-38X" customClass="UsersViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
@@ -104,128 +100,15 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="brF-47-1ct" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0yk-s3-B1w">
-=======
-        <scene sceneID="FeE-1D-H3e">
-            <objects>
-                <tableViewController storyboardIdentifier="FriendsVC" id="wwZ-yz-xBK" customClass="UsersTableViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5jJ-sv-Feb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="VGn-V0-H4P">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="9WN-Do-Nbw">
-                                    <rect key="frame" x="16" y="24" width="288" height="32"/>
-                                    <segments>
-                                        <segment title="Find Friends"/>
-                                        <segment title="Friends"/>
-                                        <segment title="Requests"/>
-                                    </segments>
-                                    <connections>
-                                        <action selector="segmentedControlButtonTapped:" destination="wwZ-yz-xBK" eventType="valueChanged" id="EEX-NA-Nop"/>
-                                    </connections>
-                                </segmentedControl>
-                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gyr-Vn-c3d">
-                                    <rect key="frame" x="8" y="63" width="304" height="56"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="9WN-Do-Nbw" firstAttribute="top" secondItem="VGn-V0-H4P" secondAttribute="top" constant="24" id="HgV-TK-c6S"/>
-                                <constraint firstItem="gyr-Vn-c3d" firstAttribute="top" secondItem="9WN-Do-Nbw" secondAttribute="bottom" constant="8" id="NSN-iR-Wbu"/>
-                                <constraint firstItem="9WN-Do-Nbw" firstAttribute="centerX" secondItem="VGn-V0-H4P" secondAttribute="centerX" id="O6O-me-IHM"/>
-                                <constraint firstAttribute="bottom" secondItem="gyr-Vn-c3d" secondAttribute="bottom" id="P3K-4s-J6k"/>
-                                <constraint firstItem="gyr-Vn-c3d" firstAttribute="width" secondItem="VGn-V0-H4P" secondAttribute="width" multiplier="0.95" id="QFb-Kw-pH6"/>
-                                <constraint firstItem="gyr-Vn-c3d" firstAttribute="centerX" secondItem="VGn-V0-H4P" secondAttribute="centerX" id="mg5-vW-i6p"/>
-                                <constraint firstItem="9WN-Do-Nbw" firstAttribute="width" secondItem="VGn-V0-H4P" secondAttribute="width" multiplier="0.9" id="s9N-ag-k88"/>
-                            </constraints>
-                        </view>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="60" id="Nro-mO-PWD" customClass="UserTableViewCell" customModule="accounta_bill_a_buddy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="147" width="320" height="60"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nro-mO-PWD" id="JYP-Q6-wlH">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cnV-e6-RiB">
-                                            <rect key="frame" x="16" y="9" width="288" height="42"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(usernameLabel)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FqD-RH-ZHm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="246" height="42"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diy-hG-6g1">
-                                                    <rect key="frame" x="246" y="0.0" width="42" height="42"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="diy-hG-6g1" secondAttribute="height" multiplier="1:1" id="GEI-ZB-brf"/>
-                                                    </constraints>
-                                                    <state key="normal" image="plus.circle" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
-                                                    </state>
-                                                </button>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="cnV-e6-RiB" firstAttribute="centerY" secondItem="JYP-Q6-wlH" secondAttribute="centerY" id="OCg-BB-0L1"/>
-                                        <constraint firstItem="cnV-e6-RiB" firstAttribute="centerX" secondItem="JYP-Q6-wlH" secondAttribute="centerX" id="RVR-Vz-439"/>
-                                        <constraint firstItem="cnV-e6-RiB" firstAttribute="width" secondItem="JYP-Q6-wlH" secondAttribute="width" multiplier="0.9" id="aEG-NL-vmL"/>
-                                        <constraint firstItem="cnV-e6-RiB" firstAttribute="height" secondItem="JYP-Q6-wlH" secondAttribute="height" multiplier="0.7" id="zBA-By-ftu"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="addFriendButton" destination="diy-hG-6g1" id="YK9-fj-Sgs"/>
-                                    <outlet property="addFriendButtonTapped" destination="diy-hG-6g1" id="FtV-Zj-Yhz"/>
-                                    <outlet property="usernameLabel" destination="FqD-RH-ZHm" id="xDR-7w-X6L"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="wwZ-yz-xBK" id="FlF-q5-myp"/>
-                            <outlet property="delegate" destination="wwZ-yz-xBK" id="i5F-d6-q0N"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Friends" id="t3I-6H-Jsa"/>
-                    <connections>
-                        <outlet property="searchBar" destination="gyr-Vn-c3d" id="6XT-gA-ojc"/>
-                        <outlet property="segmentedControl" destination="9WN-Do-Nbw" id="uY9-F9-HTI"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wtY-LS-JE2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-40818.75" y="636.97183098591552"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="fWV-yd-oK9">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="x31-MS-hq5" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DM3-7w-aw5">
->>>>>>> Stashed changes
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-<<<<<<< Updated upstream
                         <segue destination="SvU-hh-38X" kind="relationship" relationship="viewControllers" id="Bo4-64-MyM"/>
                     </connections>
                 </tabBarController>
             </objects>
             <point key="canvasLocation" x="-43453.125" y="636.97183098591552"/>
-=======
-                        <segue destination="wwZ-yz-xBK" kind="relationship" relationship="viewControllers" id="hVA-Vc-ehR"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hnN-LP-Jcq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-41591.25" y="636.97183098591552"/>
->>>>>>> Stashed changes
         </scene>
     </scenes>
     <resources>
