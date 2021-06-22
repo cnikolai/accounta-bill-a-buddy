@@ -13,6 +13,8 @@
 		37DFDDE8267A58CA0055AF6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37DFDDE6267A58CA0055AF6C /* Main.storyboard */; };
 		37DFDDEA267A58CC0055AF6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37DFDDE9267A58CC0055AF6C /* Assets.xcassets */; };
 		37DFDDED267A58CC0055AF6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37DFDDEB267A58CC0055AF6C /* LaunchScreen.storyboard */; };
+		490B11C326827BD00009BE1C /* WagerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B11C226827BD00009BE1C /* WagerCollectionViewCell.swift */; };
+		490B11C726827FD10009BE1C /* WagerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B11C626827FD10009BE1C /* WagerCollectionViewController.swift */; };
 		9B188EF7267A71E40020DA62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B188EF6267A71E40020DA62 /* GoogleService-Info.plist */; };
 		9B3247F8267DBAB100C16040 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3247F7267DBAB100C16040 /* UsersViewController.swift */; };
 		9B3247FB267DBB0A00C16040 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3247FA267DBB0A00C16040 /* Constants.swift */; };
@@ -37,6 +39,8 @@
 		37DFDDE9267A58CC0055AF6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37DFDDEC267A58CC0055AF6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37DFDDEE267A58CC0055AF6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		490B11C226827BD00009BE1C /* WagerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerCollectionViewCell.swift; sourceTree = "<group>"; };
+		490B11C626827FD10009BE1C /* WagerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerCollectionViewController.swift; sourceTree = "<group>"; };
 		9B188EF6267A71E40020DA62 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9B3247F7267DBAB100C16040 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		9B3247FA267DBB0A00C16040 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 				9B4E95A7267BDD8300DA223F /* LoginViewController.swift */,
 				9B74A39326823B3400B6C8E2 /* HomeViewController.swift */,
 				9B3247F7267DBAB100C16040 /* UsersViewController.swift */,
+				490B11C626827FD10009BE1C /* WagerCollectionViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				9B71CAB5267ECC6100B99D3B /* UserTableViewCell.swift */,
+				490B11C226827BD00009BE1C /* WagerCollectionViewCell.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -348,6 +354,7 @@
 			files = (
 				9B71CAB6267ECC6100B99D3B /* UserTableViewCell.swift in Sources */,
 				9B4E95A2267AFB3500DA223F /* UserController.swift in Sources */,
+				490B11C326827BD00009BE1C /* WagerCollectionViewCell.swift in Sources */,
 				37DFDDE1267A58CA0055AF6C /* AppDelegate.swift in Sources */,
 				9B3247F8267DBAB100C16040 /* UsersViewController.swift in Sources */,
 				9B4E959F267AFB1500DA223F /* User.swift in Sources */,
@@ -356,6 +363,7 @@
 				37DFDDE3267A58CA0055AF6C /* SceneDelegate.swift in Sources */,
 				9B4E95C5267C531600DA223F /* Utilities.swift in Sources */,
 				9B3247FB267DBB0A00C16040 /* Constants.swift in Sources */,
+				490B11C726827FD10009BE1C /* WagerCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
