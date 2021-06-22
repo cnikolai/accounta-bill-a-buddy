@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3714EDAB26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3714EDAA26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard */; };
 		37A1BE12267AAE260044FA88 /* Cindy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A1BE11267AAE260044FA88 /* Cindy.storyboard */; };
 		37DFDDE1267A58CA0055AF6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DFDDE0267A58CA0055AF6C /* AppDelegate.swift */; };
 		37DFDDE3267A58CA0055AF6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DFDDE2267A58CA0055AF6C /* SceneDelegate.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		34C0B45614B92C455E86C369 /* Pods-accounta-bill-a-buddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-accounta-bill-a-buddy.release.xcconfig"; path = "Target Support Files/Pods-accounta-bill-a-buddy/Pods-accounta-bill-a-buddy.release.xcconfig"; sourceTree = "<group>"; };
+		3714EDAA26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CindyWagerDetailView.storyboard; sourceTree = "<group>"; };
 		37A1BE11267AAE260044FA88 /* Cindy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cindy.storyboard; sourceTree = "<group>"; };
 		37DFDDDD267A58CA0055AF6C /* accounta-bill-a-buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "accounta-bill-a-buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37DFDDE0267A58CA0055AF6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				37A1BE11267AAE260044FA88 /* Cindy.storyboard */,
+				3714EDAA26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard */,
 			);
 			path = cindystoryboard;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37DFDDED267A58CC0055AF6C /* LaunchScreen.storyboard in Resources */,
+				3714EDAB26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard in Resources */,
 				9B4E9598267AB24100DA223F /* Friends.storyboard in Resources */,
 				9B4E959B267AB25100DA223F /* Rishi.storyboard in Resources */,
 				9B188EF7267A71E40020DA62 /* GoogleService-Info.plist in Resources */,
