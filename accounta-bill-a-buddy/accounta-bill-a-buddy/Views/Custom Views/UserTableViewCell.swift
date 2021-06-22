@@ -25,7 +25,12 @@ class UserTableViewCell: UITableViewCell {
     
     //MARK: - Functions
     func updateView() {
+<<<<<<< Updated upstream
 //        usernameLabel.text = user.username
+=======
+        guard let user = user else { return }
+        usernameLabel.text = user.username
+>>>>>>> Stashed changes
     }
 
 }//End of class
