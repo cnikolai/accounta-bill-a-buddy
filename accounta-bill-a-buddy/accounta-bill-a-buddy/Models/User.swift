@@ -7,6 +7,14 @@
 
 import Foundation
 
-class User {    
+class User {
+    
+    let username: String
+    let email: String
+    
+    init(username: String, email: String) {
+        self.username = username
+        self.email = email
+    }
     
 }//End of class

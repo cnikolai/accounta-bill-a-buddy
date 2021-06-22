@@ -17,9 +17,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
-    @IBOutlet weak var errorLabel: UILabel!
+    
     
     //MARK: - Properties
     private enum Screen {
@@ -54,7 +55,7 @@ class LoginViewController: UIViewController {
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                 if error != nil {
-                    self.showError(error!.localizedDescription)
+                    self.showError("The password or email is invalid.")
                 } else {
                     self.transitionToHome()
                 }
@@ -69,7 +70,7 @@ class LoginViewController: UIViewController {
         } else {
             let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)            
             Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
                 if let error = error {
                     self.showError("Error creating user. \(error.localizedDescription)")
@@ -131,7 +132,7 @@ class LoginViewController: UIViewController {
             let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
             if Utilities.isPasswordValid(cleanedPassword) == false {
-                return "Please make sure your email and password are correct."
+                return "The password or email is invalid."
             }
         }
         return nil
@@ -143,7 +144,7 @@ class LoginViewController: UIViewController {
     }
     
     func transitionToHome() {
-        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
     }
