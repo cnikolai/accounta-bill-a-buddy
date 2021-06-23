@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1bR-qL-lo1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1bR-qL-lo1">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="O8e-gr-Xnq">
-                                <rect key="frame" x="24" y="92" width="272" height="428"/>
+                                <rect key="frame" x="24" y="92" width="272" height="341"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8kq-oL-1ap">
                                         <rect key="frame" x="0.0" y="0.0" width="272" height="32"/>
@@ -54,13 +54,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="200" text="(errorlLabel)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8L-uE-dni">
-                                        <rect key="frame" x="0.0" y="203" width="272" height="149"/>
+                                        <rect key="frame" x="0.0" y="203" width="272" height="62"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r31-B6-hSO">
-                                        <rect key="frame" x="0.0" y="360" width="272" height="30"/>
+                                        <rect key="frame" x="0.0" y="273" width="272" height="30"/>
                                         <color key="backgroundColor" red="0.61845095049999999" green="0.8365031275" blue="0.81589231839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Login"/>
                                         <connections>
@@ -68,7 +68,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bP-6e-b2V">
-                                        <rect key="frame" x="0.0" y="398" width="272" height="30"/>
+                                        <rect key="frame" x="0.0" y="311" width="272" height="30"/>
                                         <color key="backgroundColor" red="0.80354323179999998" green="0.92882410130000004" blue="0.99749571079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Sign Up"/>
                                         <connections>
@@ -82,7 +82,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="O8e-gr-Xnq" firstAttribute="height" secondItem="Zuj-UE-Wpz" secondAttribute="height" multiplier="0.6" id="NBN-aI-Gir"/>
-                            <constraint firstItem="O8e-gr-Xnq" firstAttribute="centerY" secondItem="sBF-52-fVA" secondAttribute="centerY" id="j9c-yi-C3X"/>
                             <constraint firstItem="O8e-gr-Xnq" firstAttribute="centerX" secondItem="sBF-52-fVA" secondAttribute="centerX" id="kcu-ky-qYb"/>
                             <constraint firstItem="O8e-gr-Xnq" firstAttribute="top" secondItem="sBF-52-fVA" secondAttribute="top" constant="48" id="lUV-TO-QzP"/>
                             <constraint firstItem="O8e-gr-Xnq" firstAttribute="width" secondItem="Zuj-UE-Wpz" secondAttribute="width" multiplier="0.85" id="lug-Gp-zzS"/>
@@ -172,11 +171,11 @@
             </objects>
             <point key="canvasLocation" x="101" y="431"/>
         </scene>
-        <!--Item-->
+        <!--Wagers-->
         <scene sceneID="6MN-NZ-rwH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kOv-1W-vNU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="DBm-EE-o7z"/>
+                    <tabBarItem key="tabBarItem" title="Wagers" image="person.2.circle" catalog="system" id="DBm-EE-o7z"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YpU-0h-BDp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -191,11 +190,11 @@
             </objects>
             <point key="canvasLocation" x="99" y="1312"/>
         </scene>
-        <!--Item-->
+        <!--Create Wager-->
         <scene sceneID="e7v-Iv-mKm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gXC-Mg-kiw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="c1e-Yz-hrb"/>
+                    <tabBarItem key="tabBarItem" title="Create Wager" image="rectangle.and.pencil.and.ellipsis.rtl" catalog="system" id="c1e-Yz-hrb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qrs-av-iXw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -208,13 +207,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HEu-L3-E4y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1095" y="431"/>
+            <point key="canvasLocation" x="911" y="431"/>
         </scene>
-        <!--Item-->
+        <!--Friends-->
         <scene sceneID="heR-ok-e2K">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xQh-3h-ceV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="wOg-Yg-6jG"/>
+                    <tabBarItem key="tabBarItem" title="Friends" image="person.2" catalog="system" id="wOg-Yg-6jG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bzQ-ut-K2h">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -231,6 +230,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="person.2" catalog="system" width="128" height="81"/>
+        <image name="person.2.circle" catalog="system" width="128" height="121"/>
+        <image name="rectangle.and.pencil.and.ellipsis.rtl" catalog="system" width="128" height="92"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -25,7 +25,8 @@ class UserTableViewCell: UITableViewCell {
     
     //MARK: - Functions
     func updateView() {
-//        usernameLabel.text = user.username
+        guard let user = user else { return }
+        usernameLabel.text = user.username
     }
 
 }//End of class

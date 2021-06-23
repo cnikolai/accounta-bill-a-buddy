@@ -10,11 +10,18 @@ import Foundation
 class User {
     
     let username: String
-    let email: String
+    let uid: String
     
-    init(username: String, email: String) {
+    init(username: String, uid: String) {
         self.username = username
-        self.email = email
+        self.uid = uid
     }
     
 }//End of class
+
+//MARK: - Extensions
+extension User: Equatable {
+    static func == (lhs: User, rhs: User) -> Bool {
+        return lhs.uid == rhs.uid
+    }
+}//End of extension

@@ -20,8 +20,36 @@ class UserController {
     let db = Firestore.firestore()
     
     //MARK: - Friend Request System
-    func sendRequestToUser(_ userID: String) {
-        
+    func findUserWith(_ name: String) {
+        db.collection("users").whereField("username", isEqualTo: name)
+            .getDocuments { (querySnapshot, error) in
+                if let error = error {
+                    (print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)"))
+                } else {
+                    for doc in querySnapshot!.documents {
+                        print("documentID: \(doc.documentID) => \(doc.data())")
+                        let userData = doc.data()
+                        let username = userData["username"] as? String ?? ""
+                        let uid = userData["uid"] as? String ?? ""
+                        let user = User(username: username, uid: uid)
+                    
+                        if self.users.count == 0 {
+                            self.users.append(user)
+                        } else {
+                            self.filterDuplicateUsers(user)
+                        }
+                    }
+                }
+            }
+    }
+    
+    func filterDuplicateUsers(_ user: User) {
+        users.forEach {
+            if $0 != user {
+                users.append(user)
+            }
+            print($0.uid, user.uid)
+        }
     }
     
     //MARK: - User Account
