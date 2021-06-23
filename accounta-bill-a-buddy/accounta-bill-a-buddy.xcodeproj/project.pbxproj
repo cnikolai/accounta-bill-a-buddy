@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3714EDAB26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3714EDAA26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard */; };
 		37A1BE12267AAE260044FA88 /* Cindy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A1BE11267AAE260044FA88 /* Cindy.storyboard */; };
+		37AFFC302683E9650088E2C6 /* WagerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */; };
+		37AFFC322683E9900088E2C6 /* CreateWagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */; };
+		37AFFC342683E9A60088E2C6 /* CreateWagerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFFC332683E9A60088E2C6 /* CreateWagerDetailViewController.swift */; };
 		37DFDDE1267A58CA0055AF6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DFDDE0267A58CA0055AF6C /* AppDelegate.swift */; };
 		37DFDDE3267A58CA0055AF6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DFDDE2267A58CA0055AF6C /* SceneDelegate.swift */; };
 		37DFDDE8267A58CA0055AF6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37DFDDE6267A58CA0055AF6C /* Main.storyboard */; };
@@ -34,6 +37,9 @@
 		34C0B45614B92C455E86C369 /* Pods-accounta-bill-a-buddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-accounta-bill-a-buddy.release.xcconfig"; path = "Target Support Files/Pods-accounta-bill-a-buddy/Pods-accounta-bill-a-buddy.release.xcconfig"; sourceTree = "<group>"; };
 		3714EDAA26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CindyWagerDetailView.storyboard; sourceTree = "<group>"; };
 		37A1BE11267AAE260044FA88 /* Cindy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cindy.storyboard; sourceTree = "<group>"; };
+		37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerDetailViewController.swift; sourceTree = "<group>"; };
+		37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWagerViewController.swift; sourceTree = "<group>"; };
+		37AFFC332683E9A60088E2C6 /* CreateWagerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWagerDetailViewController.swift; sourceTree = "<group>"; };
 		37DFDDDD267A58CA0055AF6C /* accounta-bill-a-buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "accounta-bill-a-buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37DFDDE0267A58CA0055AF6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37DFDDE2267A58CA0055AF6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +169,9 @@
 				9B74A39326823B3400B6C8E2 /* HomeViewController.swift */,
 				9B3247F7267DBAB100C16040 /* UsersViewController.swift */,
 				490B11C626827FD10009BE1C /* WagerCollectionViewController.swift */,
+				37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */,
+				37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */,
+				37AFFC332683E9A60088E2C6 /* CreateWagerDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -359,12 +368,15 @@
 				9B71CAB6267ECC6100B99D3B /* UserTableViewCell.swift in Sources */,
 				9B4E95A2267AFB3500DA223F /* UserController.swift in Sources */,
 				490B11C326827BD00009BE1C /* WagerCollectionViewCell.swift in Sources */,
+				37AFFC322683E9900088E2C6 /* CreateWagerViewController.swift in Sources */,
 				37DFDDE1267A58CA0055AF6C /* AppDelegate.swift in Sources */,
 				9B3247F8267DBAB100C16040 /* UsersViewController.swift in Sources */,
 				9B4E959F267AFB1500DA223F /* User.swift in Sources */,
 				9B74A39426823B3400B6C8E2 /* HomeViewController.swift in Sources */,
 				9B4E95A8267BDD8300DA223F /* LoginViewController.swift in Sources */,
+				37AFFC302683E9650088E2C6 /* WagerDetailViewController.swift in Sources */,
 				37DFDDE3267A58CA0055AF6C /* SceneDelegate.swift in Sources */,
+				37AFFC342683E9A60088E2C6 /* CreateWagerDetailViewController.swift in Sources */,
 				9B4E95C5267C531600DA223F /* Utilities.swift in Sources */,
 				9B3247FB267DBB0A00C16040 /* Constants.swift in Sources */,
 				490B11C726827FD10009BE1C /* WagerCollectionViewController.swift in Sources */,

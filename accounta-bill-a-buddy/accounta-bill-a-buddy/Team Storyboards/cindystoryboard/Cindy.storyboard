@@ -10,7 +10,7 @@
         <!--Create Wager-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="CindyVC" id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CindyVC" id="Y6W-OH-hqX" customClass="CreateWagerViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,6 +47,7 @@ Goals
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="createWagerAndGoalButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="l1D-tf-brg"/>
                                             <segue destination="ZLU-Me-QMI" kind="presentation" id="k8h-YC-8Nu"/>
                                         </connections>
                                     </button>
@@ -74,9 +75,12 @@ Goals
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="inviteFriendsButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1mJ-4e-KhN"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mn8-Br-ZC7">
-                                        <rect key="frame" x="91" y="307" width="74" height="35"/>
+                                        <rect key="frame" x="57" y="307" width="142" height="35"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.98039215690000003" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="q51-7i-4WC"/>
@@ -84,7 +88,7 @@ Goals
                                         <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
-                                                <fragment content="Done">
+                                                <fragment content="Create Wager">
                                                     <attributes>
                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" size="18" name="ArialMT"/>
@@ -99,6 +103,9 @@ Goals
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="createWagerButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Vc8-Bp-r8W"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -121,26 +128,29 @@ Goals
             </objects>
             <point key="canvasLocation" x="1128.75" y="72.887323943661968"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Wager Detail View Controller-->
         <scene sceneID="bUm-Mv-sGz">
             <objects>
-                <viewController id="ZLU-Me-QMI" sceneMemberID="viewController">
+                <viewController id="ZLU-Me-QMI" customClass="CreateWagerDetailViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PDB-3Z-aEo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XcW-Yx-93g">
-                                <rect key="frame" x="32" y="45" width="256" height="463"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XcW-Yx-93g">
+                                <rect key="frame" x="32" y="45" width="256" height="446.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8Qg-4u-cYq">
-                                        <rect key="frame" x="45" y="0.5" width="166" height="164.5"/>
-                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efb-FG-Z8w">
+                                        <rect key="frame" x="45" y="0.0" width="166" height="166.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="8Qg-4u-cYq" secondAttribute="height" multiplier="1:1" id="HWj-TF-0ua"/>
+                                            <constraint firstAttribute="width" secondItem="efb-FG-Z8w" secondAttribute="height" multiplier="1:1" id="86N-9S-Q9v"/>
                                         </constraints>
-                                    </imageView>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="camera" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="65"/>
+                                        </state>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="de1-PZ-Lgl">
-                                        <rect key="frame" x="45" y="166.5" width="166" height="75"/>
+                                        <rect key="frame" x="45" y="181.5" width="166" height="75"/>
                                         <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="oSV-gy-NVL"/>
@@ -165,7 +175,7 @@ Goals
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x9G-WV-sRw">
-                                        <rect key="frame" x="45" y="262" width="166" height="125"/>
+                                        <rect key="frame" x="45" y="271.5" width="166" height="125"/>
                                         <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="125" id="YJV-hu-o15"/>
@@ -190,7 +200,7 @@ Goals
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pha-fS-RiI">
-                                        <rect key="frame" x="57" y="428" width="142" height="35"/>
+                                        <rect key="frame" x="57" y="411.5" width="142" height="35"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.98039215690000003" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="LO7-If-H8a"/>
@@ -213,12 +223,17 @@ Goals
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="createWagerButtonTapped:" destination="ZLU-Me-QMI" eventType="touchUpInside" id="div-vR-a3l"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="x9G-WV-sRw" firstAttribute="width" secondItem="XcW-Yx-93g" secondAttribute="width" multiplier="0.65" id="Xjv-2F-1V1"/>
-                                    <constraint firstItem="8Qg-4u-cYq" firstAttribute="width" secondItem="XcW-Yx-93g" secondAttribute="width" multiplier="0.65" id="Yok-zn-3Rn"/>
                                     <constraint firstItem="de1-PZ-Lgl" firstAttribute="width" secondItem="XcW-Yx-93g" secondAttribute="width" multiplier="0.65" id="bgq-kb-GCs"/>
+                                    <constraint firstItem="efb-FG-Z8w" firstAttribute="width" secondItem="XcW-Yx-93g" secondAttribute="width" multiplier="0.65" id="dM4-wL-Ehx"/>
+                                    <constraint firstItem="efb-FG-Z8w" firstAttribute="centerX" secondItem="XcW-Yx-93g" secondAttribute="centerX" id="dlX-aL-N47"/>
+                                    <constraint firstItem="de1-PZ-Lgl" firstAttribute="top" secondItem="efb-FG-Z8w" secondAttribute="bottom" constant="16" id="jPk-Qf-JXd"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYg-A5-OhV">
@@ -245,6 +260,9 @@ Goals
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="ZLU-Me-QMI" eventType="touchUpInside" id="C4v-0t-Ql2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FhX-cg-n16"/>
@@ -260,6 +278,10 @@ Goals
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="goalLabel" destination="x9G-WV-sRw" id="arB-6j-vqj"/>
+                        <outlet property="wagerLabel" destination="de1-PZ-Lgl" id="Ks5-OF-6v2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49q-R9-F50" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
