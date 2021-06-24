@@ -22,10 +22,8 @@ class WagerCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isinEditingMode {
-                checkmarkLabel.text = isSelected ? "✓" : ""
+                checkmarkLabel.text = isSelected ? "􀁣" : ""
             }
         }
     }
-    
-    
 }
