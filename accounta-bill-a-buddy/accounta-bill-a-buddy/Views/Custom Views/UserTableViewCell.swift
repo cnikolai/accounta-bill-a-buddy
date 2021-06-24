@@ -21,11 +21,19 @@ class UserTableViewCell: UITableViewCell {
     }
     
     //MARK: - Actions
-    @IBOutlet weak var addFriendButtonTapped: UIButton!
+    @IBAction func addFriendButtonTapped(_ sender: UIButton) {
+        guard let user = user,
+              let currentUser = UserController.sharedInstance.currentUser else { return }
+        user.friendRequestsFrom.append(currentUser.uid)
+        currentUser.friendRequestsTo.append(user.uid)
+        
+        UserController.sharedInstance.pendingFriendRequestBetween(currentUser: currentUser, user: user)
+    }
     
     //MARK: - Functions
     func updateView() {
-//        usernameLabel.text = user.username
+        guard let user = user else { return }
+        usernameLabel.text = user.username
     }
 
 }//End of class

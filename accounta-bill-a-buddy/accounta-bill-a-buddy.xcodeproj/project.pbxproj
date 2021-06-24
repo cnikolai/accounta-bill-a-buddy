@@ -20,7 +20,6 @@
 		490B11C326827BD00009BE1C /* WagerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B11C226827BD00009BE1C /* WagerCollectionViewCell.swift */; };
 		490B11C726827FD10009BE1C /* WagerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B11C626827FD10009BE1C /* WagerCollectionViewController.swift */; };
 		9B188EF7267A71E40020DA62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B188EF6267A71E40020DA62 /* GoogleService-Info.plist */; };
-		9B3247F8267DBAB100C16040 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3247F7267DBAB100C16040 /* UsersViewController.swift */; };
 		9B3247FB267DBB0A00C16040 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3247FA267DBB0A00C16040 /* Constants.swift */; };
 		9B4E9598267AB24100DA223F /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E9597267AB24100DA223F /* Friends.storyboard */; };
 		9B4E959B267AB25100DA223F /* Rishi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E959A267AB25100DA223F /* Rishi.storyboard */; };
@@ -30,6 +29,7 @@
 		9B4E95C5267C531600DA223F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E95C4267C531600DA223F /* Utilities.swift */; };
 		9B71CAB6267ECC6100B99D3B /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B71CAB5267ECC6100B99D3B /* UserTableViewCell.swift */; };
 		9B74A39426823B3400B6C8E2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B74A39326823B3400B6C8E2 /* HomeViewController.swift */; };
+		9BD4F4242682B330004BA786 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD4F4232682B330004BA786 /* FriendsTableViewController.swift */; };
 		CBDC54F172441C5A591A98C9 /* Pods_accounta_bill_a_buddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27AB9544D9BF153A47BC7E2 /* Pods_accounta_bill_a_buddy.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +50,6 @@
 		490B11C226827BD00009BE1C /* WagerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerCollectionViewCell.swift; sourceTree = "<group>"; };
 		490B11C626827FD10009BE1C /* WagerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerCollectionViewController.swift; sourceTree = "<group>"; };
 		9B188EF6267A71E40020DA62 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9B3247F7267DBAB100C16040 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		9B3247FA267DBB0A00C16040 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9B4E9597267AB24100DA223F /* Friends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
 		9B4E959A267AB25100DA223F /* Rishi.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rishi.storyboard; sourceTree = "<group>"; };
@@ -60,6 +59,7 @@
 		9B4E95C4267C531600DA223F /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		9B71CAB5267ECC6100B99D3B /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		9B74A39326823B3400B6C8E2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9BD4F4232682B330004BA786 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		C57BA52408FAC3D45A5C2D3C /* Pods-accounta-bill-a-buddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-accounta-bill-a-buddy.debug.xcconfig"; path = "Target Support Files/Pods-accounta-bill-a-buddy/Pods-accounta-bill-a-buddy.debug.xcconfig"; sourceTree = "<group>"; };
 		D27AB9544D9BF153A47BC7E2 /* Pods_accounta_bill_a_buddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_accounta_bill_a_buddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -167,11 +167,11 @@
 			children = (
 				9B4E95A7267BDD8300DA223F /* LoginViewController.swift */,
 				9B74A39326823B3400B6C8E2 /* HomeViewController.swift */,
-				9B3247F7267DBAB100C16040 /* UsersViewController.swift */,
 				490B11C626827FD10009BE1C /* WagerCollectionViewController.swift */,
 				37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */,
 				37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */,
 				37AFFC332683E9A60088E2C6 /* CreateWagerDetailViewController.swift */,
+				9BD4F4232682B330004BA786 /* FriendsTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -367,10 +367,10 @@
 			files = (
 				9B71CAB6267ECC6100B99D3B /* UserTableViewCell.swift in Sources */,
 				9B4E95A2267AFB3500DA223F /* UserController.swift in Sources */,
+				9BD4F4242682B330004BA786 /* FriendsTableViewController.swift in Sources */,
 				490B11C326827BD00009BE1C /* WagerCollectionViewCell.swift in Sources */,
 				37AFFC322683E9900088E2C6 /* CreateWagerViewController.swift in Sources */,
 				37DFDDE1267A58CA0055AF6C /* AppDelegate.swift in Sources */,
-				9B3247F8267DBAB100C16040 /* UsersViewController.swift in Sources */,
 				9B4E959F267AFB1500DA223F /* User.swift in Sources */,
 				9B74A39426823B3400B6C8E2 /* HomeViewController.swift in Sources */,
 				9B4E95A8267BDD8300DA223F /* LoginViewController.swift in Sources */,
