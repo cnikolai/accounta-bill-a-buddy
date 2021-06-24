@@ -9,24 +9,53 @@ import UIKit
 
 class CreateWagerDetailViewController: UIViewController {
     
+    // MARK:-Properties
+    let imagePicker = UIImagePickerController()
+    
     // MARK:-Outlets
+    @IBOutlet weak var imageImageView: UIImageView!
     @IBOutlet weak var wagerLabel: UIButton!
     @IBOutlet weak var goalLabel: UIButton!
+    @IBOutlet weak var photoPickerButton: UIButton!
     
     // MARK:-Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
     }
     
     // MARK:-Actions
     @IBAction func photoPickerButtonTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Add a photo", message: nil, preferredStyle: .alert)
         
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            self.imagePicker.dismiss(animated: true, completion: nil)
+        }
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
+            self.openCamera()
+        }
+        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { (_) in
+            self.openGallery()
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(cameraAction)
+        alert.addAction(photoLibraryAction)
+        
+        present(alert, animated: true, completion: nil)
     }
+    
     @IBAction func createWagerButtonTapped(_ sender: Any) {
     }
+    
     @IBAction func cancelButtonTapped(_ sender: Any) {
     }
     
+    // MARK:-Functions
+    func setupViews() {
+        imageImageView.contentMode = .scaleAspectFill
+        imageImageView.clipsToBounds = true
+        //imageImageView.backgroundColor = .black
+    }
 
     /*
     // MARK: - Navigation
@@ -40,44 +69,7 @@ class CreateWagerDetailViewController: UIViewController {
    
 }
 
-        let imagePicker = UIImagePickerController()
-        
-        @IBOutlet weak var selectPhotoButton: UIButton!
-        @IBOutlet weak var photoImageView: UIImageView!
-        
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            setupViews()
-        }
-        
-        @IBAction func selectPhotoButtonTapped(_ sender: Any) {
-            let alert = UIAlertController(title: "Add a photo", message: nil, preferredStyle: .alert)
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
-                self.imagePicker.dismiss(animated: true, completion: nil)
-            }
-            let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
-                self.openCamera()
-            }
-            let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { (_) in
-                self.openGallery()
-            }
-            alert.addAction(cancelAction)
-            alert.addAction(cameraAction)
-            alert.addAction(photoLibraryAction)
-            
-            present(alert, animated: true, completion: nil)
-        }
-        
-        func setupViews() {
-            photoImageView.contentMode = .scaleAspectFill
-            photoImageView.clipsToBounds = true
-            photoImageView.backgroundColor = .black
-            imagePicker.delegate = self
-        }
-    }
-
-    extension PhotoPickerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension CreateWagerDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         
         func openCamera() {
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -107,14 +99,9 @@ class CreateWagerDetailViewController: UIViewController {
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let pickedImage = info[.originalImage] as? UIImage {
-                guard let delegate = delegate
-                    else { return }
-                delegate.photoPickerSelected(image: pickedImage)
-                photoImageView.image = pickedImage
-                change title of button.
+                imageImageView.image = pickedImage
             }
             picker.dismiss(animated: true, completion: nil)
         }
-    }
 
 }
