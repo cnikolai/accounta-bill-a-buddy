@@ -11,10 +11,14 @@ class User {
     
     let username: String
     let uid: String
+    var friendRequestsFrom: [String]
+    var friendRequestsTo: [String]
     
-    init(username: String, uid: String) {
+    init(username: String, uid: String, friendRequestsFrom: [String] = [], friendRequestsTo: [String] = []) {
         self.username = username
         self.uid = uid
+        self.friendRequestsFrom = friendRequestsFrom
+        self.friendRequestsTo = friendRequestsTo
     }
     
 }//End of class

@@ -61,6 +61,9 @@
                                                     <state key="normal" image="plus.circle" catalog="system">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="addFriendButtonTapped:" destination="Nro-mO-PWD" eventType="touchUpInside" id="Qch-ro-8cp"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -74,7 +77,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addFriendButton" destination="diy-hG-6g1" id="YK9-fj-Sgs"/>
-                                    <outlet property="addFriendButtonTapped" destination="diy-hG-6g1" id="FtV-Zj-Yhz"/>
                                     <outlet property="usernameLabel" destination="FqD-RH-ZHm" id="xDR-7w-X6L"/>
                                 </connections>
                             </tableViewCell>
