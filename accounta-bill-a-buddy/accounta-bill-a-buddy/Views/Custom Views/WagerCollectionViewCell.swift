@@ -15,15 +15,16 @@ class WagerCollectionViewCell: UICollectionViewCell {
     
     var isinEditingMode: Bool = false {
         didSet {
-            checkmarkLabel.isHidden = !isinEditingMode
+        //    checkmarkLabel.isHidden = !isinEditingMode
         }
     }
     
-    override var isSelected: Bool {
+    var didSelect: Bool = false {
         didSet {
-            if isinEditingMode {
-                checkmarkLabel.text = isSelected ? "􀁣" : ""
-            }
+            
+        
+                checkmarkLabel.text = didSelect ? "weekday" : "swag"
+            print(checkmarkLabel.text ?? "nil")
         }
     }
 }

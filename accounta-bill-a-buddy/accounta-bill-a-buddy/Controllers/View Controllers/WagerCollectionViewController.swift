@@ -33,7 +33,6 @@ class WagerCollectionViewController: UICollectionViewController {
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        
         collectionView.allowsMultipleSelection = editing
         let indexPaths = collectionView.indexPathsForVisibleItems
         for indexPath in indexPaths {
@@ -47,6 +46,10 @@ class WagerCollectionViewController: UICollectionViewController {
             deleteButton.isEnabled = false
         } else {
             deleteButton.isEnabled = true
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wagerCell", for: indexPath) as? WagerCollectionViewCell else {return}
+            cell.didSelect.toggle()
+            collectionView.reloadData()
         }
     }
     
@@ -68,7 +71,7 @@ class WagerCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wagerCell", for: indexPath) as? WagerCollectionViewCell else {return UICollectionViewCell()}
         
         cell.wagerImageView.image = UIImage(named: wagers[indexPath.row])
-        cell.layer.cornerRadius = cell.frame.height / 2
+       // cell.layer.cornerRadius = cell.frame.height / 2
         
         cell.isinEditingMode = isEditing
         

@@ -38,17 +38,18 @@
                                                 <constraint firstAttribute="width" constant="100" id="jM6-ya-dlo"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9o-v0-8ma">
-                                            <rect key="frame" x="58" y="79" width="0.0" height="0.0"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="check" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9o-v0-8ma">
+                                            <rect key="frame" x="54" y="79.5" width="46" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="B9o-v0-8ma" secondAttribute="bottom" id="6Cv-ZD-rwX"/>
                                         <constraint firstItem="Y2v-NP-och" firstAttribute="centerX" secondItem="eyu-nr-ciA" secondAttribute="centerX" id="7B7-fT-0Sf"/>
                                         <constraint firstItem="Y2v-NP-och" firstAttribute="centerY" secondItem="eyu-nr-ciA" secondAttribute="centerY" id="XJj-Zg-eA0"/>
+                                        <constraint firstAttribute="trailing" secondItem="B9o-v0-8ma" secondAttribute="trailing" id="uXB-hU-rZV"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="100" height="100"/>
