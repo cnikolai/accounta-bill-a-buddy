@@ -156,7 +156,7 @@ Goals
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="65"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="photoPickerButtonTapped:" destination="ZLU-Me-QMI" eventType="touchUpInside" id="SCk-BI-ale"/>
+                                                    <action selector="photoPickerButtonTapped:" destination="ZLU-Me-QMI" eventType="touchUpInside" id="et3-WK-CVP"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -302,6 +302,8 @@ Goals
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="goalLabel" destination="x9G-WV-sRw" id="arB-6j-vqj"/>
+                        <outlet property="imageImageView" destination="XQw-wV-kLD" id="WXN-BX-q27"/>
+                        <outlet property="photoPickerButton" destination="efb-FG-Z8w" id="erB-9o-Xbs"/>
                         <outlet property="wagerLabel" destination="de1-PZ-Lgl" id="Ks5-OF-6v2"/>
                     </connections>
                 </viewController>
