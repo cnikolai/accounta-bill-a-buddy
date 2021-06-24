@@ -196,7 +196,6 @@
                     <connections>
                         <outlet property="deadlineTextField" destination="qa5-dn-JzN" id="PHE-lq-1rf"/>
                         <outlet property="goalDescriptionLabel" destination="Jco-U8-4lO" id="KHu-NO-3Y6"/>
-                        <outlet property="imagePickerButtonTapped" destination="GJd-Es-sPH" id="gJa-NQ-sHv"/>
                         <outlet property="wagerTextField" destination="qa5-dn-JzN" id="uaW-tn-qpY"/>
                     </connections>
                 </viewController>
