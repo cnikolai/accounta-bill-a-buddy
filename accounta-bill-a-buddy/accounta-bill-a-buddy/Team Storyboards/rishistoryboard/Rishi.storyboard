@@ -38,6 +38,13 @@
                                                 <constraint firstAttribute="width" constant="100" id="jM6-ya-dlo"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9o-v0-8ma">
+                                            <rect key="frame" x="58" y="79" width="0.0" height="0.0"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Y2v-NP-och" firstAttribute="centerX" secondItem="eyu-nr-ciA" secondAttribute="centerX" id="7B7-fT-0Sf"/>
@@ -46,6 +53,7 @@
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="100" height="100"/>
                                 <connections>
+                                    <outlet property="checkmarkLabel" destination="B9o-v0-8ma" id="oJL-Wq-OLm"/>
                                     <outlet property="wagerImageView" destination="Y2v-NP-och" id="l2w-qR-Yrr"/>
                                 </connections>
                             </collectionViewCell>
@@ -57,21 +65,27 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="JRr-bt-g8Y">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="coG-sF-RL2">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="coG-sF-RL2">
+                            <rect key="frame" x="65.5" y="5.5" width="283" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="First"/>
-                                <segment title="Second"/>
+                                <segment title="My Friend's Wagers"/>
                             </segments>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="trash" id="vPE-oY-1yr">
+                            <connections>
+                                <action selector="deleteButtonTapped:" destination="IBP-Tp-ZbY" id="D46-2Y-Ecf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="wagerCollectionView" destination="3Bt-of-lDU" id="BRH-Lv-bPw"/>
+                        <outlet property="deleteButton" destination="vPE-oY-1yr" id="ORV-nQ-v7f"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aU0-E8-eQO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1833" y="-243"/>
+            <point key="canvasLocation" x="1831.8840579710147" y="-243.08035714285714"/>
         </scene>
         <!--Wagers-->
         <scene sceneID="3DR-ZK-3oh">
