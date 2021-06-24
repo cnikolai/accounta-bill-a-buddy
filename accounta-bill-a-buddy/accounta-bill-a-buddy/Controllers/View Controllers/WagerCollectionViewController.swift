@@ -7,42 +7,73 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "wagerCell"
 
 class WagerCollectionViewController: UICollectionViewController {
     
-    let wagers = ["basketball", "football", "gym", "soccer", "tennis"]
+    var wagers = ["basketball", "football", "gym", "soccer", "tennis"]
     
-    @IBOutlet var wagerCollectionView: UICollectionView!
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
+    
+    @IBAction func deleteButtonTapped(_ sender: UIBarButtonItem) {
+        if let selectedCells = collectionView.indexPathsForSelectedItems {
+            let items = selectedCells.map { $0.item }.sorted().reversed()
+            for item in items {
+                wagers.remove(at: item)
+            }
+            collectionView.deleteItems(at: selectedCells)
+            deleteButton.isEnabled = false
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        wagerCollectionView.delegate = self
-        wagerCollectionView.dataSource = self
-        
-        // Register cell classes
-//        wagerCollectionView.register(WagerCollectionViewCell.self, forCellWithReuseIdentifier: WagerCollectionViewCell.identifier)
-        
+        navigationItem.leftBarButtonItem = editButtonItem
     }
     
-        override func numberOfSections(in collectionView: UICollectionView) -> Int {
-            return 1
-        }
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
         
-        
-        override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return wagers.count
+        collectionView.allowsMultipleSelection = editing
+        let indexPaths = collectionView.indexPathsForVisibleItems
+        for indexPath in indexPaths {
+            let cell = collectionView.cellForItem(at: indexPath) as! WagerCollectionViewCell
+            cell.isinEditingMode = editing
         }
-        
-        override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wagerCell", for: indexPath) as! WagerCollectionViewCell
-            
-            cell.wagerImageView.image = UIImage(named: wagers[indexPath.row])
-            cell.layer.cornerRadius = cell.frame.height / 2
-            
-            return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if !isEditing {
+            deleteButton.isEnabled = false
+        } else {
+            deleteButton.isEnabled = true
         }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let selectedItems = collectionView.indexPathsForSelectedItems, selectedItems.count == 0 {
+            deleteButton.isEnabled = false
+        }
+    }
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return wagers.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wagerCell", for: indexPath) as? WagerCollectionViewCell else {return UICollectionViewCell()}
+        
+        cell.wagerImageView.image = UIImage(named: wagers[indexPath.row])
+        cell.layer.cornerRadius = cell.frame.height / 2
+        
+        cell.isinEditingMode = isEditing
+        
+        return cell
+    }
     
 }
 
