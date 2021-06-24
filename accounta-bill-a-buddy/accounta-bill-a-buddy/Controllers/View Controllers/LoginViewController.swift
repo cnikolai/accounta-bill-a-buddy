@@ -57,6 +57,7 @@ class LoginViewController: UIViewController {
                 if error != nil {
                     self.showError("The password or email is invalid.")
                 } else {
+                    UserController.sharedInstance.getCurrentUser(uid: result!.user.uid)
                     self.transitionToHome()
                 }
             }
@@ -77,10 +78,12 @@ class LoginViewController: UIViewController {
                     print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
                 } else {
                     let db = Firestore.firestore()
-                    db.collection("users").addDocument(data: ["username": username, "uid": result!.user.uid]) { (error) in
+                    db.collection("users").document(result!.user.uid).setData(["username": username, "uid": result!.user.uid]) { (error) in
                         if let error = error {
                             self.showError("Error saving user data.")
                             print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                        } else {
+                            UserController.sharedInstance.getCurrentUser(uid: result!.user.uid)
                         }
                     }
                     //transition to home screen
