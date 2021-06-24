@@ -20,7 +20,6 @@
 		490B11C326827BD00009BE1C /* WagerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B11C226827BD00009BE1C /* WagerCollectionViewCell.swift */; };
 		490B11C726827FD10009BE1C /* WagerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B11C626827FD10009BE1C /* WagerCollectionViewController.swift */; };
 		9B188EF7267A71E40020DA62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B188EF6267A71E40020DA62 /* GoogleService-Info.plist */; };
-		9B3247F8267DBAB100C16040 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3247F7267DBAB100C16040 /* UsersViewController.swift */; };
 		9B3247FB267DBB0A00C16040 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3247FA267DBB0A00C16040 /* Constants.swift */; };
 		9B4E9598267AB24100DA223F /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E9597267AB24100DA223F /* Friends.storyboard */; };
 		9B4E959B267AB25100DA223F /* Rishi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E959A267AB25100DA223F /* Rishi.storyboard */; };
@@ -50,7 +49,6 @@
 		490B11C226827BD00009BE1C /* WagerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerCollectionViewCell.swift; sourceTree = "<group>"; };
 		490B11C626827FD10009BE1C /* WagerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerCollectionViewController.swift; sourceTree = "<group>"; };
 		9B188EF6267A71E40020DA62 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9B3247F7267DBAB100C16040 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		9B3247FA267DBB0A00C16040 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9B4E9597267AB24100DA223F /* Friends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
 		9B4E959A267AB25100DA223F /* Rishi.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rishi.storyboard; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 			children = (
 				9B4E95A7267BDD8300DA223F /* LoginViewController.swift */,
 				9B74A39326823B3400B6C8E2 /* HomeViewController.swift */,
-				9B3247F7267DBAB100C16040 /* UsersViewController.swift */,
 				490B11C626827FD10009BE1C /* WagerCollectionViewController.swift */,
 				37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */,
 				37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */,
@@ -370,7 +367,6 @@
 				490B11C326827BD00009BE1C /* WagerCollectionViewCell.swift in Sources */,
 				37AFFC322683E9900088E2C6 /* CreateWagerViewController.swift in Sources */,
 				37DFDDE1267A58CA0055AF6C /* AppDelegate.swift in Sources */,
-				9B3247F8267DBAB100C16040 /* UsersViewController.swift in Sources */,
 				9B4E959F267AFB1500DA223F /* User.swift in Sources */,
 				9B74A39426823B3400B6C8E2 /* HomeViewController.swift in Sources */,
 				9B4E95A8267BDD8300DA223F /* LoginViewController.swift in Sources */,
