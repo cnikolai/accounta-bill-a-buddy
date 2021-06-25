@@ -15,7 +15,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="3Bt-of-lDU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.11372549019607843" green="0.20784313725490194" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="s4a-6h-hGW">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="estimatedItemSize" width="100" height="100"/>
@@ -38,23 +38,26 @@
                                                 <constraint firstAttribute="width" constant="100" id="jM6-ya-dlo"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="check" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9o-v0-8ma">
-                                            <rect key="frame" x="54" y="79.5" width="46" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbH-Jn-i45">
+                                            <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
+                                            <color key="tintColor" systemColor="systemRedColor"/>
+                                            <state key="normal" image="x.circle.fill" catalog="system"/>
+                                            <connections>
+                                                <action selector="deleteButtonTapped:" destination="mLK-Xo-Goh" eventType="touchUpInside" id="y63-3g-cDS"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="B9o-v0-8ma" secondAttribute="bottom" id="6Cv-ZD-rwX"/>
                                         <constraint firstItem="Y2v-NP-och" firstAttribute="centerX" secondItem="eyu-nr-ciA" secondAttribute="centerX" id="7B7-fT-0Sf"/>
+                                        <constraint firstItem="pbH-Jn-i45" firstAttribute="top" secondItem="eyu-nr-ciA" secondAttribute="top" id="D1Q-6T-h1k"/>
+                                        <constraint firstItem="pbH-Jn-i45" firstAttribute="leading" secondItem="eyu-nr-ciA" secondAttribute="leading" id="Vwv-x5-lhM"/>
                                         <constraint firstItem="Y2v-NP-och" firstAttribute="centerY" secondItem="eyu-nr-ciA" secondAttribute="centerY" id="XJj-Zg-eA0"/>
-                                        <constraint firstAttribute="trailing" secondItem="B9o-v0-8ma" secondAttribute="trailing" id="uXB-hU-rZV"/>
                                     </constraints>
                                 </collectionViewCellContentView>
+                                <color key="backgroundColor" red="0.1137254902" green="0.20784313730000001" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="customSize" width="100" height="100"/>
                                 <connections>
-                                    <outlet property="checkmarkLabel" destination="B9o-v0-8ma" id="oJL-Wq-OLm"/>
+                                    <outlet property="deleteButton" destination="pbH-Jn-i45" id="Ea9-we-3bm"/>
                                     <outlet property="wagerImageView" destination="Y2v-NP-och" id="l2w-qR-Yrr"/>
                                 </connections>
                             </collectionViewCell>
@@ -66,22 +69,22 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="JRr-bt-g8Y">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="edit" id="2Al-go-Vkq">
+                            <connections>
+                                <action selector="editButtonTapped:" destination="IBP-Tp-ZbY" id="5I4-0N-vEr"/>
+                            </connections>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="coG-sF-RL2">
                             <rect key="frame" x="65.5" y="5.5" width="283" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="First"/>
+                                <segment title="My Wagers"/>
                                 <segment title="My Friend's Wagers"/>
                             </segments>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="trash" id="vPE-oY-1yr">
-                            <connections>
-                                <action selector="deleteButtonTapped:" destination="IBP-Tp-ZbY" id="D46-2Y-Ecf"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="deleteButton" destination="vPE-oY-1yr" id="ORV-nQ-v7f"/>
+                        <outlet property="editButton" destination="2Al-go-Vkq" id="ONK-HB-l3d"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aU0-E8-eQO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -110,8 +113,9 @@
     </scenes>
     <resources>
         <image name="basketball" width="225" height="224"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <image name="x.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
