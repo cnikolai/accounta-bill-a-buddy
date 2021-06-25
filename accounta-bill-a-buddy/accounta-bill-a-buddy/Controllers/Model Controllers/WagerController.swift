@@ -14,7 +14,7 @@ class WagerController {
     let db = Firestore.firestore()
     let wagersCollection = "wagers"
     
-    func createAndSaveWager(owner: String, wagerBuddies: [String], wagerPhoto: UIImage?, goalDescription: String, wager: String, deadline: String, progress: Int, completion: @escaping (Result<Wager, DatabaseError>) -> Void) {
+    func createAndSaveWager(owner: String, wagerBuddies: [String], wagerPhoto: UIImage?, goalDescription: String, wager: String, deadline: String, progress: Float, completion: @escaping (Result<Wager, DatabaseError>) -> Void) {
         let newWager = Wager(owner: owner, wagerBuddies: wagerBuddies, wagerPhoto: wagerPhoto, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress)
         
         let wagersRef = db.collection(wagersCollection)
