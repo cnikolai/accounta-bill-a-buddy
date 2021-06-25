@@ -14,9 +14,10 @@ class CreateWagerDetailViewController: UIViewController {
     
     // MARK:-Outlets
     @IBOutlet weak var imageImageView: UIImageView!
-    @IBOutlet weak var wagerLabel: UIButton!
-    @IBOutlet weak var goalLabel: UIButton!
     @IBOutlet weak var photoPickerButton: UIButton!
+    @IBOutlet weak var wagerTextField: UITextView!
+    @IBOutlet weak var goalTextField: UITextView!
+    
     
     // MARK:-Lifecycle
     override func viewDidLoad() {
@@ -45,28 +46,40 @@ class CreateWagerDetailViewController: UIViewController {
     }
     
     @IBAction func createWagerButtonTapped(_ sender: Any) {
+        guard let wager = wagerTextField.text, !wager.isEmpty,
+              !(wager == "\nWhat is your Wager?") else {
+            showError("\nPlease enter a wager", forWhichTextField: "wager")
+            return }
+        guard let goal = goalTextField.text, !goal.isEmpty, !(goal == "\n\nWhat is your Goal?") else {
+            showError("\n\nPlease enter a goal", forWhichTextField: "goal")
+            return }
+        WagerController.sharedInstance.createAndSaveWager(owner: UserController.sharedInstance.currentUser?.username ?? "Guest User", wagerBuddies: [], wagerPhoto: imageImageView.image, goalDescription: goal, wager: wager, deadline: "", progress: 0) { result in
+            switch (result) {
+            case .success(let wager):
+                self.dismissView()
+            case .failure(let error):
+                print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
+            }
+        }
+        dismissView()
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
+        dismissView()
     }
     
     // MARK:-Functions
     func setupViews() {
         imageImageView.contentMode = .scaleAspectFill
         imageImageView.clipsToBounds = true
-        //imageImageView.backgroundColor = .black
+        imagePicker.delegate = self
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    private func dismissView() {
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
-    */
-   
 }
 
 extension CreateWagerDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -100,8 +113,24 @@ extension CreateWagerDetailViewController: UIImagePickerControllerDelegate, UINa
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let pickedImage = info[.originalImage] as? UIImage {
                 imageImageView.image = pickedImage
+                photoPickerButton.setImage(nil, for: .normal)
             }
             picker.dismiss(animated: true, completion: nil)
         }
 
+    func showError(_ message: String, forWhichTextField: String) {
+        if forWhichTextField == "wager" {
+            wagerTextField.text = message
+            wagerTextField.textColor = .red
+            wagerTextField.layer.borderColor = UIColor.red.cgColor
+            wagerTextField.layer.borderWidth = 1.0
+        }
+        if forWhichTextField == "goal" {
+            goalTextField.text = message
+            goalTextField.textColor = .red
+            goalTextField.layer.borderColor = UIColor.red.cgColor
+            goalTextField.layer.borderWidth = 1.0
+        }
+        
+    }
 }

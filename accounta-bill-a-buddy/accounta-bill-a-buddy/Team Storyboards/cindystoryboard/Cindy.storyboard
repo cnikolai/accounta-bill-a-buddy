@@ -137,8 +137,8 @@ Goals
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XcW-Yx-93g">
-                                <rect key="frame" x="32" y="45" width="256" height="446.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="XcW-Yx-93g">
+                                <rect key="frame" x="32" y="75" width="256" height="500.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6xm-2l-Cco">
                                         <rect key="frame" x="45" y="0.0" width="166" height="166.5"/>
@@ -148,6 +148,7 @@ Goals
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efb-FG-Z8w">
                                                 <rect key="frame" x="0.0" y="0.0" width="166" height="166.5"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="efb-FG-Z8w" secondAttribute="height" multiplier="1:1" id="86N-9S-Q9v"/>
                                                 </constraints>
@@ -173,61 +174,44 @@ Goals
                                             <constraint firstItem="efb-FG-Z8w" firstAttribute="leading" secondItem="6xm-2l-Cco" secondAttribute="leading" id="qwv-NT-XeC"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="de1-PZ-Lgl">
-                                        <rect key="frame" x="45" y="181.5" width="166" height="75"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zS3-37-wfg">
+                                        <rect key="frame" x="45" y="182.5" width="166" height="75"/>
                                         <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="oSV-gy-NVL"/>
+                                            <constraint firstAttribute="height" constant="75" id="0n7-KI-FND"/>
                                         </constraints>
-                                        <color key="tintColor" red="0.1137254902" green="0.20784313730000001" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="What is the Wager?">
-                                                    <attributes>
-                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <font key="NSFont" size="18" name="Arial-BoldMT"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x9G-WV-sRw">
-                                        <rect key="frame" x="45" y="271.5" width="166" height="125"/>
+                                        <string key="text">
+What is your Wager?</string>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZnB-CL-SeZ">
+                                        <rect key="frame" x="45" y="273.5" width="166" height="125"/>
                                         <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="125" id="YJV-hu-o15"/>
+                                            <constraint firstAttribute="height" constant="125" id="cWS-dm-NQ3"/>
                                         </constraints>
-                                        <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                        <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="What is your Goal?">
-                                                    <attributes>
-                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <font key="NSFont" size="18" name="Arial-BoldMT"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
+                                        <string key="text">
+
+What is your Goal?</string>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYA-yo-FSv">
+                                        <rect key="frame" x="8" y="414.5" width="240" height="35"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="ZYy-Xh-F0H"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pha-fS-RiI">
-                                        <rect key="frame" x="57" y="411.5" width="142" height="35"/>
+                                        <rect key="frame" x="57" y="465.5" width="142" height="35"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.98039215690000003" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="LO7-If-H8a"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="ygy-MK-Fho"/>
                                         </constraints>
                                         <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <state key="normal">
@@ -253,15 +237,16 @@ Goals
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="ZnB-CL-SeZ" firstAttribute="width" secondItem="XcW-Yx-93g" secondAttribute="width" multiplier="0.65" id="CeI-Sr-fV1"/>
                                     <constraint firstItem="6xm-2l-Cco" firstAttribute="width" secondItem="XcW-Yx-93g" secondAttribute="width" multiplier="0.65" id="LeM-Bv-mnQ"/>
-                                    <constraint firstItem="x9G-WV-sRw" firstAttribute="width" secondItem="XcW-Yx-93g" secondAttribute="width" multiplier="0.65" id="Xjv-2F-1V1"/>
-                                    <constraint firstItem="de1-PZ-Lgl" firstAttribute="width" secondItem="XcW-Yx-93g" secondAttribute="width" multiplier="0.65" id="bgq-kb-GCs"/>
+                                    <constraint firstItem="zS3-37-wfg" firstAttribute="width" secondItem="XcW-Yx-93g" secondAttribute="width" multiplier="0.65" id="iwP-32-3m7"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYg-A5-OhV">
-                                <rect key="frame" x="217" y="4" width="71" height="35"/>
+                                <rect key="frame" x="216" y="16" width="72" height="35"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.98039215690000003" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="DZ6-KU-Abw"/>
                                     <constraint firstAttribute="height" constant="35" id="ad0-Ys-yaH"/>
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
@@ -290,21 +275,21 @@ Goals
                         <viewLayoutGuide key="safeArea" id="FhX-cg-n16"/>
                         <color key="backgroundColor" red="0.37254901960784315" green="0.6705882352941176" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="XcW-Yx-93g" firstAttribute="top" secondItem="FhX-cg-n16" secondAttribute="top" constant="45" id="3Cd-iL-g5Y"/>
+                            <constraint firstItem="XcW-Yx-93g" firstAttribute="top" secondItem="FhX-cg-n16" secondAttribute="top" constant="75" id="3Cd-iL-g5Y"/>
                             <constraint firstItem="XcW-Yx-93g" firstAttribute="width" secondItem="PDB-3Z-aEo" secondAttribute="width" multiplier="0.8" id="GUr-eE-SAr"/>
-                            <constraint firstItem="eYg-A5-OhV" firstAttribute="top" secondItem="FhX-cg-n16" secondAttribute="top" constant="4" id="evv-35-8NQ"/>
+                            <constraint firstItem="eYg-A5-OhV" firstAttribute="top" secondItem="FhX-cg-n16" secondAttribute="top" constant="16" id="evv-35-8NQ"/>
                             <constraint firstItem="eYg-A5-OhV" firstAttribute="trailing" secondItem="XcW-Yx-93g" secondAttribute="trailing" id="hZx-5T-hyi"/>
-                            <constraint firstItem="eYg-A5-OhV" firstAttribute="leading" relation="lessThanOrEqual" secondItem="FhX-cg-n16" secondAttribute="leading" constant="275" id="lGN-BK-4yX"/>
+                            <constraint firstItem="eYg-A5-OhV" firstAttribute="leading" relation="lessThanOrEqual" secondItem="FhX-cg-n16" secondAttribute="leading" constant="300" id="lGN-BK-4yX"/>
                             <constraint firstItem="XcW-Yx-93g" firstAttribute="centerX" secondItem="FhX-cg-n16" secondAttribute="centerX" id="oUR-6c-rHp"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="goalLabel" destination="x9G-WV-sRw" id="arB-6j-vqj"/>
+                        <outlet property="goalTextField" destination="ZnB-CL-SeZ" id="Q30-KA-RUJ"/>
                         <outlet property="imageImageView" destination="XQw-wV-kLD" id="WXN-BX-q27"/>
                         <outlet property="photoPickerButton" destination="efb-FG-Z8w" id="erB-9o-Xbs"/>
-                        <outlet property="wagerLabel" destination="de1-PZ-Lgl" id="Ks5-OF-6v2"/>
+                        <outlet property="wagerTextField" destination="zS3-37-wfg" id="UCD-z9-eGr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49q-R9-F50" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -332,6 +317,9 @@ Goals
     </scenes>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

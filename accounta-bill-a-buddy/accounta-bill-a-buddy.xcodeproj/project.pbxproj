@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3714EDAB26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3714EDAA26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard */; };
+		379162AE268523380059184F /* Wager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379162AD268523380059184F /* Wager.swift */; };
+		379162B0268523450059184F /* WagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379162AF268523450059184F /* WagerController.swift */; };
+		379162B226852D2D0059184F /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379162B126852D2D0059184F /* DatabaseError.swift */; };
 		37A1BE12267AAE260044FA88 /* Cindy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A1BE11267AAE260044FA88 /* Cindy.storyboard */; };
 		37AFFC302683E9650088E2C6 /* WagerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */; };
 		37AFFC322683E9900088E2C6 /* CreateWagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */; };
@@ -36,6 +39,9 @@
 /* Begin PBXFileReference section */
 		34C0B45614B92C455E86C369 /* Pods-accounta-bill-a-buddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-accounta-bill-a-buddy.release.xcconfig"; path = "Target Support Files/Pods-accounta-bill-a-buddy/Pods-accounta-bill-a-buddy.release.xcconfig"; sourceTree = "<group>"; };
 		3714EDAA26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CindyWagerDetailView.storyboard; sourceTree = "<group>"; };
+		379162AD268523380059184F /* Wager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wager.swift; sourceTree = "<group>"; };
+		379162AF268523450059184F /* WagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerController.swift; sourceTree = "<group>"; };
+		379162B126852D2D0059184F /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
 		37A1BE11267AAE260044FA88 /* Cindy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cindy.storyboard; sourceTree = "<group>"; };
 		37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerDetailViewController.swift; sourceTree = "<group>"; };
 		37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWagerViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				9B4E959E267AFB1500DA223F /* User.swift */,
+				379162AD268523380059184F /* Wager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -158,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				9B4E95A1267AFB3500DA223F /* UserController.swift */,
+				379162AF268523450059184F /* WagerController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -199,6 +207,7 @@
 			children = (
 				9B4E95C4267C531600DA223F /* Utilities.swift */,
 				9B3247FA267DBB0A00C16040 /* Constants.swift */,
+				379162B126852D2D0059184F /* DatabaseError.swift */,
 			);
 			path = "Extensions+Helpers";
 			sourceTree = "<group>";
@@ -370,6 +379,7 @@
 				9BD4F4242682B330004BA786 /* FriendsTableViewController.swift in Sources */,
 				490B11C326827BD00009BE1C /* WagerCollectionViewCell.swift in Sources */,
 				37AFFC322683E9900088E2C6 /* CreateWagerViewController.swift in Sources */,
+				379162B226852D2D0059184F /* DatabaseError.swift in Sources */,
 				37DFDDE1267A58CA0055AF6C /* AppDelegate.swift in Sources */,
 				9B4E959F267AFB1500DA223F /* User.swift in Sources */,
 				9B74A39426823B3400B6C8E2 /* HomeViewController.swift in Sources */,
@@ -377,6 +387,8 @@
 				37AFFC302683E9650088E2C6 /* WagerDetailViewController.swift in Sources */,
 				37DFDDE3267A58CA0055AF6C /* SceneDelegate.swift in Sources */,
 				37AFFC342683E9A60088E2C6 /* CreateWagerDetailViewController.swift in Sources */,
+				379162B0268523450059184F /* WagerController.swift in Sources */,
+				379162AE268523380059184F /* Wager.swift in Sources */,
 				9B4E95C5267C531600DA223F /* Utilities.swift in Sources */,
 				9B3247FB267DBB0A00C16040 /* Constants.swift in Sources */,
 				490B11C726827FD10009BE1C /* WagerCollectionViewController.swift in Sources */,
