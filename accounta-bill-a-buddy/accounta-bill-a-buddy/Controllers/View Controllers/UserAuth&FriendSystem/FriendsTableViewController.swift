@@ -46,6 +46,8 @@ class FriendsTableViewController: UITableViewController {
         default:
             break
         }
+        print(sender.selectedSegmentIndex)
+        print(currentScreen)
     }
     
     //MARK: - Functions
@@ -55,13 +57,39 @@ class FriendsTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserController.sharedInstance.users.count
+        var returnValue = 0
+
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            returnValue = UserController.sharedInstance.users.count
+            break
+        case 1:
+            returnValue = 0
+        case 2:
+            returnValue = UserController.sharedInstance.currentUser?.receivedFriendRequests.count ?? 0
+        default:
+            break
+        }
+//        if currentScreen == .findFriends {
+//            return UserController.sharedInstance.users.count
+//        } else if currentScreen == .requests {
+//            return UserController.sharedInstance.currentUser?.receivedFriendRequests.count ?? 0
+//        } else {
+//            return 0
+//        }
+        print(returnValue)
+        return returnValue
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserTableViewCell else { return UITableViewCell() }
-        let user = UserController.sharedInstance.users[indexPath.row]
-        cell.user = user
+        if currentScreen == .findFriends {
+            let user = UserController.sharedInstance.users[indexPath.row]
+            cell.user = user
+        } else if currentScreen == .requests {
+            let request = UserController.sharedInstance.currentUser?.receivedFriendRequests[indexPath.row]
+            cell.request = request
+        }
         return cell
     }
     

@@ -9,16 +9,51 @@ import Foundation
 
 class User {
     
-    let username: String
-    let uid: String
-    var friendRequestsFrom: [String]
-    var friendRequestsTo: [String]
+    var username: String
+    var uid: String
+    var sentFriendRequests: [String]
+    var receivedFriendRequests: [String]
+    var userAdded: Bool?
     
-    init(username: String, uid: String, friendRequestsFrom: [String] = [], friendRequestsTo: [String] = []) {
+    var _username: String {
+        get {
+            return username
+        }
+        set {
+            username = newValue
+        }
+    }
+    var _uid: String {
+        get {
+            return uid
+        }
+        set {
+            uid = newValue
+        }
+    }
+    var _sentFriendRequests: [String] {
+        get {
+            return sentFriendRequests
+        }
+        set {
+            sentFriendRequests = newValue
+        }
+    }
+    var _receivedFriendRequests: [String] {
+        get {
+            return receivedFriendRequests
+        }
+        set {
+            receivedFriendRequests = newValue
+        }
+    }
+    
+    init(username: String, uid: String, sentFriendRequests: [String] = [], receivedFriendRequests: [String] = [], userAdded: Bool = false) {
         self.username = username
         self.uid = uid
-        self.friendRequestsFrom = friendRequestsFrom
-        self.friendRequestsTo = friendRequestsTo
+        self.sentFriendRequests = sentFriendRequests
+        self.receivedFriendRequests = receivedFriendRequests
+        self.userAdded = userAdded
     }
     
 }//End of class
