@@ -173,13 +173,12 @@
 		37DFDDF9267A59780055AF6C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9B4E95A7267BDD8300DA223F /* LoginViewController.swift */,
+				9BFD8DAB26859F71005F3174 /* UserAuth&FriendSystem */,
 				9B74A39326823B3400B6C8E2 /* HomeViewController.swift */,
 				490B11C626827FD10009BE1C /* WagerCollectionViewController.swift */,
 				37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */,
 				37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */,
 				37AFFC332683E9A60088E2C6 /* CreateWagerDetailViewController.swift */,
-				9BD4F4232682B330004BA786 /* FriendsTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -236,6 +235,15 @@
 				9B4E959A267AB25100DA223F /* Rishi.storyboard */,
 			);
 			path = rishistoryboard;
+			sourceTree = "<group>";
+		};
+		9BFD8DAB26859F71005F3174 /* UserAuth&FriendSystem */ = {
+			isa = PBXGroup;
+			children = (
+				9B4E95A7267BDD8300DA223F /* LoginViewController.swift */,
+				9BD4F4232682B330004BA786 /* FriendsTableViewController.swift */,
+			);
+			path = "UserAuth&FriendSystem";
 			sourceTree = "<group>";
 		};
 		A0E886B66907148A0F974A00 /* Pods */ = {

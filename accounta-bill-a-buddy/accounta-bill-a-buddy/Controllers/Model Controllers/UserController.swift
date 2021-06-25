@@ -22,6 +22,8 @@ class UserController {
     
     //MARK: - Friend Request System
     func getCurrentUser(uid: String) {
+        let user = User(username: "", uid: "", sentFriendRequests: [], receivedFriendRequests: [])
+        
         db.collection("users").whereField("uid", isEqualTo: uid)
             .getDocuments { (querySnapshot, error) in
                 if let error = error {
@@ -30,13 +32,31 @@ class UserController {
                     for doc in querySnapshot!.documents {
                         print("documentID: \(doc.documentID) => \(doc.data())")
                         let userData = doc.data()
-                        let username = userData["username"] as? String ?? ""
-                        let uid = userData["uid"] as? String ?? ""
-                        let user = User(username: username, uid: uid)
-                        self.currentUser = user
+                        let username = userData["username"] as? String
+                        let uid = userData["uid"] as? String
+                        
+                        user._username = username!
+                        user._uid = uid!
                     }
                 }
             }
+        
+        db.collection("users").document(uid).collection("pendingRequests").document(uid)
+            .getDocument { (querySnapshot, error) in
+                if let error = error {
+                    print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                } else {
+                    if let userData = querySnapshot?.data() {
+                        let sentFriendRequests = userData["sentFriendRequests"] as? [String]
+                        let receivedFriendRequests = userData["receivedFriendRequests"] as? [String]
+                        
+                        user._sentFriendRequests = sentFriendRequests!
+                        user._receivedFriendRequests = receivedFriendRequests!
+                    }
+                }
+            }
+        
+        self.currentUser = user
     }
     
     func findUserWith(_ name: String) {
@@ -63,18 +83,40 @@ class UserController {
     }
     
     func pendingFriendRequestBetween(currentUser: User, user: User) {
-//        let currentUserData = db.collection("users").document(currentUser.uid).collection("pendingRequests").document(currentUser.uid)
-//        currentUserData.setData(["friendRequestsTo" : currentUser.friendRequestsTo])
-//        
-//        let currentUserData1 = db.collection("users").document(currentUser.uid).collection("pendingRequests").document(currentUser.uid)
-//        currentUserData1.setData(["friendRequestsFrom" : currentUser.friendRequestsFrom])
-//        
-//        let userData = db.collection("users").document(user.uid).collection("pendingRequests").document(user.uid)
-//        userData.setData(["friendRequestsTo" : user.friendRequestsTo])
-//        
-//        let userData1 = db.collection("users").document(user.uid).collection("pendingRequests").document(user.uid)
-//        userData1.setData(["friendRequestsFrom" : user.friendRequestsFrom])
-    
+        var sentFriendRequests = currentUser.sentFriendRequests
+        
+        let _ = db.collection("users").document(currentUser.uid).collection("pendingRequests").document(currentUser.uid)
+            .getDocument(completion: { (snapshot, error)  in
+                if let error = error {
+                    print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                }
+                if let snapshot = snapshot {
+                    guard let userData = snapshot.data() else { return }
+                    let _sentFriendRequests = userData["sentFriendRequests"] as? [String] ?? []
+                    sentFriendRequests = _sentFriendRequests
+                }
+        })
+
+        let currentUserData = db.collection("users").document(currentUser.uid).collection("pendingRequests").document(currentUser.uid)
+        currentUserData.setData(["sentFriendRequests" : sentFriendRequests], merge: true)
+        currentUserData.updateData(["sentFriendRequests" : FieldValue.arrayUnion(currentUser.sentFriendRequests)])
+        
+        var receivedFriendRequests = user.receivedFriendRequests
+        let _ = db.collection("users").document(user.uid).collection("pendingRequests").document(user.uid)
+            .getDocument(completion: { (snapshot, error)  in
+                if let error = error {
+                    print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                }
+                if let snapshot = snapshot {
+                    guard let userData = snapshot.data() else { return }
+                    let _receivedFriendRequests = userData["receivedFriendRequests"] as? [String] ?? []
+                    receivedFriendRequests = _receivedFriendRequests
+                }
+        })
+            
+        let userData = db.collection("users").document(user.uid).collection("pendingRequests").document(user.uid)
+        userData.setData(["receivedFriendRequests" : receivedFriendRequests], merge: true)
+        userData.updateData(["receivedFriendRequests" : FieldValue.arrayUnion(user.receivedFriendRequests)])
     }
     
     func filterDuplicateUsers(_ user: User) {
@@ -84,6 +126,16 @@ class UserController {
             }
             print($0.uid, user.uid)
         }
+    }
+    
+    func filterDuplicateRequests(_ uid: String, from array: [String]) {
+//        array.forEach {
+//            if $0 == uid {
+//
+//            }
+//        
+//        return newArray
+//        }
     }
     
 }//End of class
