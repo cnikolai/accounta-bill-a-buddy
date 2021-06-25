@@ -13,48 +13,36 @@ class WagerCollectionViewController: UICollectionViewController {
     
     var wagers = ["basketball", "football", "gym", "soccer", "tennis"]
     
-    @IBOutlet weak var deleteButton: UIBarButtonItem!
-    
-    @IBAction func deleteButtonTapped(_ sender: UIBarButtonItem) {
-        if let selectedCells = collectionView.indexPathsForSelectedItems {
-            let items = selectedCells.map { $0.item }.sorted().reversed()
-            for item in items {
-                wagers.remove(at: item)
-            }
-            collectionView.deleteItems(at: selectedCells)
-            deleteButton.isEnabled = false
-        }
-    }
-    
+    // Outlets
+    @IBOutlet weak var editButton: UIBarButtonItem!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = editButtonItem
     }
     
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
+    //Actions
+    @IBAction func editButtonTapped(_ sender: Any) {
         
-        collectionView.allowsMultipleSelection = editing
-        let indexPaths = collectionView.indexPathsForVisibleItems
-        for indexPath in indexPaths {
-            let cell = collectionView.cellForItem(at: indexPath) as! WagerCollectionViewCell
-            cell.isinEditingMode = editing
-        }
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if !isEditing {
-            deleteButton.isEnabled = false
+        collectionView.isEditing.toggle()
+        collectionView.reloadData()
+        
+        if collectionView.isEditing {
+            editButton.title = "Done"
         } else {
-            deleteButton.isEnabled = true
+            editButton.title = "Edit"
         }
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let selectedItems = collectionView.indexPathsForSelectedItems, selectedItems.count == 0 {
-            deleteButton.isEnabled = false
-        }
-    }
+    
+//    override func setEditing(_ editing: Bool, animated: Bool) {
+//        super.setEditing(editing, animated: animated)
+//        collectionView.allowsMultipleSelection = editing
+//        let indexPaths = collectionView.indexPathsForVisibleItems
+//        for indexPath in indexPaths {
+//            let cell = collectionView.cellForItem(at: indexPath) as! WagerCollectionViewCell
+//            cell.isinEditingMode = editing
+//        }
+//    }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -67,13 +55,41 @@ class WagerCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wagerCell", for: indexPath) as? WagerCollectionViewCell else {return UICollectionViewCell()}
         
-        cell.wagerImageView.image = UIImage(named: wagers[indexPath.row])
-        cell.layer.cornerRadius = cell.frame.height / 2
+        let wager = wagers[indexPath.row]
+        cell.wager = wager
+        cell.delegate = self
+        cell.isEditing = collectionView.isEditing
         
-        cell.isinEditingMode = isEditing
+        //cell.layer.cornerRadius = cell.frame.height / 2
+        //cell.isinEditingMode = isEditing
         
         return cell
     }
     
-}
+} //End of class
+
+extension WagerCollectionViewController: DeleteCellDelegate {
+    func deleteCellWith(wager: String) {
+        deleteCellAlert(wager: wager)
+
+    }
+    
+    func deleteCellAlert(wager: String) {
+        let alertController = UIAlertController(title: "Delete Wager?", message: "Are you sure you want to delete?", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {
+            (_) in
+            guard let index = self.wagers.firstIndex(of: wager) else {return}
+           self.wagers.remove(at: index)
+            self.collectionView.reloadData()
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        
+        present(alertController, animated: true)
+    }
+} // End of Extension
 

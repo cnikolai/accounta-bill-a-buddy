@@ -7,25 +7,39 @@
 
 import UIKit
 
+protocol DeleteCellDelegate: AnyObject {
+    func deleteCellWith(wager: String)
+}
+
 class WagerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var wagerImageView: UIImageView!
+    @IBOutlet weak var deleteButton: UIButton!
     
-    @IBOutlet weak var checkmarkLabel: UILabel!
     
-    
-    var isinEditingMode: Bool = false {
+    var wager: String? {
         didSet {
-            checkmarkLabel.isHidden = !isinEditingMode
+            updateViews()
         }
     }
     
-    override var isSelected: Bool {
+    var isEditing = false {
         didSet {
-            if isinEditingMode {
-                checkmarkLabel.text = isSelected ? "✓" : ""
-            }
+            deleteButton.isHidden = !isEditing
         }
     }
     
+    weak var delegate: DeleteCellDelegate?
+    
+    @IBAction func deleteButtonTapped(_ sender: Any) {
+        guard let wager = wager else {return}
+        delegate?.deleteCellWith(wager: wager)
+    }
+    
+    func updateViews() {
+        guard let wager = wager else {return}
+        wagerImageView.image = UIImage(named: wager)
+        wagerImageView.layer.cornerRadius = wagerImageView.frame.height / 2
+
+    }
     
 }
