@@ -36,6 +36,8 @@ class FriendsTableViewController: UITableViewController {
     
     //MARK: - Actions
     @IBAction func segmentedControlButtonTapped(_ sender: UISegmentedControl) {
+        tableView.reloadData()
+        
         switch sender.selectedSegmentIndex {
         case 0:
             currentScreen = .findFriends
@@ -46,8 +48,6 @@ class FriendsTableViewController: UITableViewController {
         default:
             break
         }
-        print(sender.selectedSegmentIndex)
-        print(currentScreen)
     }
     
     //MARK: - Functions
@@ -62,7 +62,6 @@ class FriendsTableViewController: UITableViewController {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             returnValue = UserController.sharedInstance.users.count
-            break
         case 1:
             returnValue = 0
         case 2:
@@ -70,26 +69,28 @@ class FriendsTableViewController: UITableViewController {
         default:
             break
         }
-//        if currentScreen == .findFriends {
-//            return UserController.sharedInstance.users.count
-//        } else if currentScreen == .requests {
-//            return UserController.sharedInstance.currentUser?.receivedFriendRequests.count ?? 0
-//        } else {
-//            return 0
-//        }
-        print(returnValue)
+
         return returnValue
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserTableViewCell else { return UITableViewCell() }
-        if currentScreen == .findFriends {
+        
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
             let user = UserController.sharedInstance.users[indexPath.row]
             cell.user = user
-        } else if currentScreen == .requests {
+            cell.selectedSegmentIndex = 0
+        case 1:
+            cell.selectedSegmentIndex = 1
+        case 2:
             let request = UserController.sharedInstance.currentUser?.receivedFriendRequests[indexPath.row]
-            cell.request = request
+            print(request)
+            cell.selectedSegmentIndex = 2
+        default:
+            break
         }
+        cell.parentVC = self
         return cell
     }
     
@@ -103,12 +104,11 @@ class FriendsTableViewController: UITableViewController {
 extension FriendsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty {
-            UserController.sharedInstance.findUserWith(searchText)
+            UserController.sharedInstance.findUser(with: searchText)
             tableView.reloadData()
         } else if searchText.isEmpty {
             UserController.sharedInstance.users = []
         }
-        print(UserController.sharedInstance.users)
         tableView.reloadData()
     }
     

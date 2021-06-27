@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,15 +11,15 @@
             <objects>
                 <tableViewController storyboardIdentifier="FriendsVC" id="wwZ-yz-xBK" customClass="FriendsTableViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5jJ-sv-Feb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="VGn-V0-H4P">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="56"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gyr-Vn-c3d">
-                                    <rect key="frame" x="8" y="0.0" width="304" height="56"/>
+                                    <rect key="frame" x="8" y="0.0" width="584" height="56"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <scopeButtonTitles>
                                         <string>Title</string>
@@ -38,23 +37,23 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="55" id="Nro-mO-PWD" customClass="UserTableViewCell" customModule="accounta_bill_a_buddy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="84" width="320" height="55"/>
+                                <rect key="frame" x="0.0" y="84" width="600" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nro-mO-PWD" id="JYP-Q6-wlH">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cnV-e6-RiB">
-                                            <rect key="frame" x="16" y="5.5" width="288" height="44"/>
+                                            <rect key="frame" x="30" y="5.5" width="540" height="44"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(usernameLabel)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FqD-RH-ZHm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="244" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="496" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diy-hG-6g1">
-                                                    <rect key="frame" x="244" y="0.0" width="44" height="44"/>
+                                                    <rect key="frame" x="496" y="0.0" width="44" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="diy-hG-6g1" secondAttribute="height" multiplier="1:1" id="GEI-ZB-brf"/>
                                                     </constraints>
@@ -62,7 +61,7 @@
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="addFriendButtonTapped:" destination="Nro-mO-PWD" eventType="touchUpInside" id="Qch-ro-8cp"/>
+                                                        <action selector="reusableButtonTapped:" destination="Nro-mO-PWD" eventType="touchUpInside" id="Qch-ro-8cp"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -76,7 +75,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="addFriendButton" destination="diy-hG-6g1" id="YK9-fj-Sgs"/>
+                                    <outlet property="reusableButton" destination="diy-hG-6g1" id="YK9-fj-Sgs"/>
                                     <outlet property="usernameLabel" destination="FqD-RH-ZHm" id="xDR-7w-X6L"/>
                                 </connections>
                             </tableViewCell>

@@ -11,8 +11,8 @@ class User {
     
     var username: String
     var uid: String
-    var sentFriendRequests: [String]
-    var receivedFriendRequests: [String]
+    var sentFriendRequests: [ [String : String] ]
+    var receivedFriendRequests: [ [String : String] ]
     var userAdded: Bool?
     
     var _username: String {
@@ -31,7 +31,7 @@ class User {
             uid = newValue
         }
     }
-    var _sentFriendRequests: [String] {
+    var _sentFriendRequests: [ [String : String] ] {
         get {
             return sentFriendRequests
         }
@@ -39,7 +39,7 @@ class User {
             sentFriendRequests = newValue
         }
     }
-    var _receivedFriendRequests: [String] {
+    var _receivedFriendRequests: [ [String : String] ] {
         get {
             return receivedFriendRequests
         }
@@ -48,7 +48,7 @@ class User {
         }
     }
     
-    init(username: String, uid: String, sentFriendRequests: [String] = [], receivedFriendRequests: [String] = [], userAdded: Bool = false) {
+    init(username: String, uid: String, sentFriendRequests: [ [String : String] ] = [ [:] ], receivedFriendRequests: [ [String : String] ] = [ [:] ], userAdded: Bool = false) {
         self.username = username
         self.uid = uid
         self.sentFriendRequests = sentFriendRequests

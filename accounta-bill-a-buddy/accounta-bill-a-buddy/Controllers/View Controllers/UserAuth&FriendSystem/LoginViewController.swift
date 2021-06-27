@@ -23,6 +23,7 @@ class LoginViewController: UIViewController {
     
     
     //MARK: - Properties
+    var duplicateUsername = false
     private enum Screen {
         case login
         case signUp
@@ -65,30 +66,37 @@ class LoginViewController: UIViewController {
         
     }
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
-        let error = validateFields()
-        if error != nil {
-            showError(error!)
-        } else {
-            let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)            
-            Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-                if let error = error {
-                    self.showError("Error creating user. \(error.localizedDescription)")
-                    print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+        let username = self.usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        UserController.sharedInstance.checkForDuplicateUsername(username) { (result) in
+            if result == false {
+                let error = self.validateFields()
+                if error != nil {
+                    self.showError(error!)
                 } else {
-                    let db = Firestore.firestore()
-                    db.collection("users").document(result!.user.uid).setData(["username": username, "uid": result!.user.uid]) { (error) in
+                    let email = self.emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                    let password = self.passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                    Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
                         if let error = error {
-                            self.showError("Error saving user data.")
+                            self.showError("Error creating user. \(error.localizedDescription)")
                             print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
                         } else {
-                            UserController.sharedInstance.getCurrentUser(uid: result!.user.uid)
+                            let db = Firestore.firestore()
+                            db.collection("users").document(result!.user.uid).setData(["username": username, "uid": result!.user.uid]) { (error) in
+                                if let error = error {
+                                    self.showError("Error saving user data.")
+                                    print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                                } else {
+                                    UserController.sharedInstance.getCurrentUser(uid: result!.user.uid)
+                                }
+                            }
+                            //transition to home screen
+                            self.transitionToHome()
                         }
                     }
-                    //transition to home screen
-                    self.transitionToHome()
                 }
+            } else {
+                self.showError("That username is already taken. Please choose a different one.")
             }
         }
     }
@@ -109,6 +117,7 @@ class LoginViewController: UIViewController {
     }
 
     func validateFields() -> String? {
+        ///Sign-up
         if currentScreen == .signUp {
             if usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
                 emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
@@ -122,10 +131,14 @@ class LoginViewController: UIViewController {
             if Utilities.isPasswordValid(cleanedPassword) == false {
                 return "Please make sure your password is at least 6 characters, contains a special character and a number."
             }
+            
             if Utilities.isUsernameValid(cleanedUsername) == false {
                 return "Please make sure your username is 2-12 characters long and does not contain special characters."
             }
+            
         }
+        
+        ///Login
         if currentScreen == .login {
             if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
                 passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
@@ -138,6 +151,7 @@ class LoginViewController: UIViewController {
                 return "The password or email is invalid."
             }
         }
+            
         return nil
     }
     
