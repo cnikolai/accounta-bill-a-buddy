@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DeleteCellDelegate: AnyObject {
-    func deleteCellWith(wager: String)
+    func deleteCellWith(wager: Wager)
 }
 
 class WagerCollectionViewCell: UICollectionViewCell {
@@ -16,7 +16,7 @@ class WagerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var deleteButton: UIButton!
     
     
-    var wager: String? {
+    var wager: Wager? {
         didSet {
             updateViews()
         }
@@ -37,7 +37,7 @@ class WagerCollectionViewCell: UICollectionViewCell {
     
     func updateViews() {
         guard let wager = wager else {return}
-        wagerImageView.image = UIImage(named: wager)
+        wagerImageView.image = wager.wagerPhoto
         wagerImageView.layer.cornerRadius = wagerImageView.frame.height / 2
 
     }
