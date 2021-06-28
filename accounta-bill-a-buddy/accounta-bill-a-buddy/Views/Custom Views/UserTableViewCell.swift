@@ -84,9 +84,10 @@ class UserTableViewCell: UITableViewCell {
         if !friendAlreadyAdded || !friendRequestAlreadyReceived || !friendsAlready {
             currentUser.sentFriendRequests.append([user.uid : user.username])
             user.receivedFriendRequests.append([currentUser.uid : currentUser.username])
+            delegate?.updateTableView()
         } else {
             reusableButton.isEnabled = false
-            reusableButton.tintColor = .gray
+            reusableButton.tintColor = .systemGray
         }
         
         UserController.sharedInstance.pendingFriendRequestBetween(currentUser: currentUser, user: user)
