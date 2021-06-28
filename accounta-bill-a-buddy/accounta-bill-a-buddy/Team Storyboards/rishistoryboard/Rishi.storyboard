@@ -59,6 +59,7 @@
                                 <connections>
                                     <outlet property="deleteButton" destination="pbH-Jn-i45" id="Ea9-we-3bm"/>
                                     <outlet property="wagerImageView" destination="Y2v-NP-och" id="l2w-qR-Yrr"/>
+                                    <segue destination="uM2-Z0-Mq7" kind="show" identifier="toWagerDetailVC" id="TLU-wT-0Lw"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -90,6 +91,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aU0-E8-eQO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1831.8840579710147" y="-243.08035714285714"/>
+        </scene>
+        <!--CindyWagerDetailView-->
+        <scene sceneID="pYl-hp-2rg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CindyWagerDetailView" id="uM2-Z0-Mq7" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="NuD-IX-cNW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6cI-A0-5Vf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2534" y="-243"/>
         </scene>
         <!--Wagers-->
         <scene sceneID="3DR-ZK-3oh">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -82,7 +82,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="68b-3l-LIu">
                                 <rect key="frame" x="-2069" y="420" width="135.5" height="54.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal Description: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l93-67-GcI">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal Description: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l93-67-GcI" userLabel="Goal Description:">
                                         <rect key="frame" x="0.0" y="0.0" width="135.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -195,7 +195,9 @@
                     </view>
                     <connections>
                         <outlet property="deadlineTextField" destination="qa5-dn-JzN" id="PHE-lq-1rf"/>
-                        <outlet property="goalDescriptionLabel" destination="Jco-U8-4lO" id="KHu-NO-3Y6"/>
+                        <outlet property="goalDescriptionTextField" destination="Jco-U8-4lO" id="tqt-r9-qWb"/>
+                        <outlet property="progressSlider" destination="D7b-ML-NMb" id="GqF-hG-TPE"/>
+                        <outlet property="wagerPhotoImageView" destination="GJd-Es-sPH" id="oVf-jc-Caa"/>
                         <outlet property="wagerTextField" destination="qa5-dn-JzN" id="uaW-tn-qpY"/>
                     </connections>
                 </viewController>

@@ -12,14 +12,20 @@ class WagerDetailViewController: UIViewController {
     // MARK:-Properties
     var progress: Float?
     
+    var wager: Wager?
+    
     // MARK:-Outlets
-    @IBOutlet weak var goalDescriptionLabel: UITextField!
+    @IBOutlet weak var goalDescriptionTextField: UITextField!
+    
     @IBOutlet weak var wagerTextField: UITextField!
     @IBOutlet weak var deadlineTextField: UITextField!
+    @IBOutlet weak var wagerPhotoImageView: UIImageView!
+    @IBOutlet weak var progressSlider: UISlider!
     
     // MARK:-Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
     }
     
     // MARK:-Actions
@@ -38,6 +44,15 @@ class WagerDetailViewController: UIViewController {
         DispatchQueue.main.async {
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func updateViews() {
+        guard let wager = wager else {return}
+        wagerPhotoImageView.image = wager.wagerPhoto
+        goalDescriptionTextField.text = wager.goalDescription
+        deadlineTextField.text = wager.deadline
+        wagerTextField.text = wager.wager
+        progressSlider.value = wager.progress
     }
 
 }

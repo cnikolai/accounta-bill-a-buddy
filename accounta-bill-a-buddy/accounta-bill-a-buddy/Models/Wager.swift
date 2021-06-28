@@ -55,3 +55,15 @@ class Wager {
         self.init(owner: owner, wagerBuddies: wagerBuddies, wagerPhoto: wagerPhoto, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress, uuid: document.documentID)
     }
 }
+
+extension Wager: Equatable {
+    static func == (lhs: Wager, rhs: Wager) -> Bool {
+        print("lhs.uuid", lhs.uuid)
+        print("rhs.uuid", rhs.uuid)
+        return lhs.uuid == rhs.uuid 
+    }
+    
+    
+    
+    
+}
