@@ -58,12 +58,11 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var returnValue = 0
-
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             returnValue = UserController.sharedInstance.users.count
         case 1:
-            returnValue = 0
+            returnValue = UserController.sharedInstance.currentUser?.friends.count ?? 0
         case 2:
             returnValue = UserController.sharedInstance.currentUser?.receivedFriendRequests.count ?? 0
         default:
@@ -82,15 +81,22 @@ class FriendsTableViewController: UITableViewController {
             cell.user = user
             cell.selectedSegmentIndex = 0
         case 1:
+            let friends = UserController.sharedInstance.currentUser?.friends[indexPath.row]
+            friends?.forEach({ (key, value) in
+                cell.friendsData = [key, value]
+            })
             cell.selectedSegmentIndex = 1
         case 2:
-            let request = UserController.sharedInstance.currentUser?.receivedFriendRequests[indexPath.row]
-            print(request)
+            let friendRequest = UserController.sharedInstance.currentUser?.receivedFriendRequests[indexPath.row]
+            friendRequest?.forEach({ (key, value) in
+                cell.friendRequestData = [key, value]
+            })
             cell.selectedSegmentIndex = 2
         default:
             break
         }
         cell.parentVC = self
+        cell.delegate = self
         return cell
     }
     
@@ -120,4 +126,10 @@ extension FriendsTableViewController: UISearchBarDelegate {
         tableView.reloadData()
     }
     
+}//End of extension
+
+extension FriendsTableViewController: CustomCellUpdater {
+    func updateTableView() {
+        tableView.reloadData()
+    }
 }//End of extension

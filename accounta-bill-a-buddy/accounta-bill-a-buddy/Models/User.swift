@@ -9,26 +9,26 @@ import Foundation
 
 class User {
     
-    var username: String
     var uid: String
+    var username: String
     var sentFriendRequests: [ [String : String] ]
     var receivedFriendRequests: [ [String : String] ]
-    var userAdded: Bool?
-    
-    var _username: String {
-        get {
-            return username
-        }
-        set {
-            username = newValue
-        }
-    }
+    var friends: [ [String : String] ]
+
     var _uid: String {
         get {
             return uid
         }
         set {
             uid = newValue
+        }
+    }
+    var _username: String {
+        get {
+            return username
+        }
+        set {
+            username = newValue
         }
     }
     var _sentFriendRequests: [ [String : String] ] {
@@ -47,13 +47,21 @@ class User {
             receivedFriendRequests = newValue
         }
     }
+    var _friends: [ [String : String] ] {
+        get {
+            return friends
+        }
+        set {
+            friends = newValue
+        }
+    }
     
-    init(username: String, uid: String, sentFriendRequests: [ [String : String] ] = [ [:] ], receivedFriendRequests: [ [String : String] ] = [ [:] ], userAdded: Bool = false) {
-        self.username = username
+    init(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = []) {
         self.uid = uid
+        self.username = username
         self.sentFriendRequests = sentFriendRequests
         self.receivedFriendRequests = receivedFriendRequests
-        self.userAdded = userAdded
+        self.friends = friends
     }
     
 }//End of class
