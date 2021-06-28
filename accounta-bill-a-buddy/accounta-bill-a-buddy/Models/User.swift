@@ -9,20 +9,12 @@ import Foundation
 
 class User {
     
-    var username: String
     var uid: String
-    var sentFriendRequests: [String]
-    var receivedFriendRequests: [String]
-    var userAdded: Bool?
-    
-    var _username: String {
-        get {
-            return username
-        }
-        set {
-            username = newValue
-        }
-    }
+    var username: String
+    var sentFriendRequests: [ [String : String] ]
+    var receivedFriendRequests: [ [String : String] ]
+    var friends: [ [String : String] ]
+
     var _uid: String {
         get {
             return uid
@@ -31,7 +23,15 @@ class User {
             uid = newValue
         }
     }
-    var _sentFriendRequests: [String] {
+    var _username: String {
+        get {
+            return username
+        }
+        set {
+            username = newValue
+        }
+    }
+    var _sentFriendRequests: [ [String : String] ] {
         get {
             return sentFriendRequests
         }
@@ -39,7 +39,7 @@ class User {
             sentFriendRequests = newValue
         }
     }
-    var _receivedFriendRequests: [String] {
+    var _receivedFriendRequests: [ [String : String] ] {
         get {
             return receivedFriendRequests
         }
@@ -47,13 +47,21 @@ class User {
             receivedFriendRequests = newValue
         }
     }
+    var _friends: [ [String : String] ] {
+        get {
+            return friends
+        }
+        set {
+            friends = newValue
+        }
+    }
     
-    init(username: String, uid: String, sentFriendRequests: [String] = [], receivedFriendRequests: [String] = [], userAdded: Bool = false) {
-        self.username = username
+    init(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = []) {
         self.uid = uid
+        self.username = username
         self.sentFriendRequests = sentFriendRequests
         self.receivedFriendRequests = receivedFriendRequests
-        self.userAdded = userAdded
+        self.friends = friends
     }
     
 }//End of class
