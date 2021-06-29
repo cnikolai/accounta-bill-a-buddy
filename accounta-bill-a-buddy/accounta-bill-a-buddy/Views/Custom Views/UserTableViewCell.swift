@@ -102,17 +102,20 @@ class UserTableViewCell: UITableViewCell {
         reusableButton.tintColor = .systemBlue
     }
     func showFriendAlert() {
-//        guard let friendRequestData = friendRequestData else { return }
+        guard let friendsData = friendsData else { return }
+        
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let deleteAction = UIAlertAction(title: "Delete Friend", style: .default) { (_) in
             DispatchQueue.main.async {
-                
+                UserController.sharedInstance.deleteFriend(uid: friendsData[0], username: friendsData[1])
+                self.delegate?.updateTableView()
             }
         }
         let blockAction = UIAlertAction(title: "Block Friend", style: .default) { (_) in
             DispatchQueue.main.async {
-                
+                UserController.sharedInstance.blockFriend(uid: friendsData[0], username: friendsData[1])
+                self.delegate?.updateTableView()
             }
         }
         let reportAction = UIAlertAction(title: "Report Friend", style: .default) { (_) in

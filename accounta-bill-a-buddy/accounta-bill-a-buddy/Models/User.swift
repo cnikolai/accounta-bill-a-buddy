@@ -14,6 +14,8 @@ class User {
     var sentFriendRequests: [ [String : String] ]
     var receivedFriendRequests: [ [String : String] ]
     var friends: [ [String : String] ]
+    var blockedUsers: [String]
+    var blockedByUsers: [String]
 
     var _uid: String {
         get {
@@ -55,13 +57,31 @@ class User {
             friends = newValue
         }
     }
+    var _blockedUsers: [String] {
+        get {
+            return blockedUsers
+        }
+        set {
+            blockedUsers = newValue
+        }
+    }
+    var _blockedByUsers: [String] {
+        get {
+            return blockedByUsers
+        }
+        set {
+            return blockedByUsers = newValue
+        }
+    }
     
-    init(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = []) {
+    init(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = [], blockedUsers: [String] = [], blockedByUsers: [String] = []) {
         self.uid = uid
         self.username = username
         self.sentFriendRequests = sentFriendRequests
         self.receivedFriendRequests = receivedFriendRequests
         self.friends = friends
+        self.blockedUsers = blockedUsers
+        self.blockedByUsers = blockedByUsers
     }
     
 }//End of class

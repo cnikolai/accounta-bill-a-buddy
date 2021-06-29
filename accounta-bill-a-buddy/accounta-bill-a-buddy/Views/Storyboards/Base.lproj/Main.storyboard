@@ -103,16 +103,6 @@
             </objects>
             <point key="canvasLocation" x="-676.875" y="430.98591549295776"/>
         </scene>
-        <!--CindyVC-->
-        <scene sceneID="8dX-Uy-uFj">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Cindy" referencedIdentifier="CindyVC" id="LaY-4s-aR6" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="vjd-nn-YoX"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dm8-k9-SAh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1808" y="431"/>
-        </scene>
         <!--FriendsVC-->
         <scene sceneID="iLh-UA-xqH">
             <objects>
@@ -163,7 +153,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="kOv-1W-vNU" kind="relationship" relationship="viewControllers" id="8nW-hs-rZw"/>
-                        <segue destination="gXC-Mg-kiw" kind="relationship" relationship="viewControllers" id="uWt-nz-xJd"/>
                         <segue destination="xQh-3h-ceV" kind="relationship" relationship="viewControllers" id="BLD-Oc-zKa"/>
                     </connections>
                 </tabBarController>
@@ -190,25 +179,6 @@
             </objects>
             <point key="canvasLocation" x="99" y="1312"/>
         </scene>
-        <!--Create Wager-->
-        <scene sceneID="e7v-Iv-mKm">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gXC-Mg-kiw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Create Wager" image="rectangle.and.pencil.and.ellipsis.rtl" catalog="system" id="c1e-Yz-hrb"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qrs-av-iXw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="LaY-4s-aR6" kind="relationship" relationship="rootViewController" id="bNX-MD-h0A"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HEu-L3-E4y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="911" y="431"/>
-        </scene>
         <!--Friends-->
         <scene sceneID="heR-ok-e2K">
             <objects>
@@ -232,7 +202,6 @@
     <resources>
         <image name="person.2" catalog="system" width="128" height="81"/>
         <image name="person.2.circle" catalog="system" width="128" height="121"/>
-        <image name="rectangle.and.pencil.and.ellipsis.rtl" catalog="system" width="128" height="92"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
