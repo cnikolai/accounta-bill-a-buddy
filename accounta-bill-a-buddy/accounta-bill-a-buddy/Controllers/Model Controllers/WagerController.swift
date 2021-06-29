@@ -78,7 +78,7 @@ class WagerController {
                           let goalDescription = document["goalDescription"] as? String,
                           let wager2 = document["wager"] as? String,
                           let deadline = document["deadline"] as? String,
-                          let progress = document["progress"]as? Float,
+//                          let progress = document["progress"]as? Float,
                           let acceptedWagers = document["acceptedWagers"]as? [Wager],
                           let pendingWagers = document["pendingWagers"]as? [Wager] else {return completion(.failure(.couldNotUnwrap))}
                     
