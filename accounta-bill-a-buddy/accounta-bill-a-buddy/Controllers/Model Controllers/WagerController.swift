@@ -58,41 +58,18 @@ class WagerController {
     }
     
     
-    func fetchAllWagersWithOwner(owner: String, completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
-        let wagerRef = db.collection(wagersCollection)
-        var wagers: [Wager] = []
-        wagerRef.getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("There was an error getting wagers with an owner: \(owner). - \(error)")
-                return completion(.failure(.fireError(error)))
-            } else {
-                guard let docs = querySnapshot?.documents
-                else {
-                    
-                    return completion(.failure(.couldNotUnwrap))
-                }
-                for document in docs {
-                    var wager = document.data()
-                    guard let owner = document["owner"] as? String,
-                          let wagerBuddies = document["wagerBuddies"] as? [String],
-                          let goalDescription = document["goalDescription"] as? String,
-                          let wager2 = document["wager"] as? String,
-                          let deadline = document["deadline"] as? String,
-                          let progress = document["progress"] as? Float,
-                          let acceptedWagers = document["acceptedWagers"]as? [Wager],
-                          let pendingWagers = document["pendingWagers"]as? [Wager] else {return completion(.failure(.couldNotUnwrap))}
-                    
-                    var wagerPhoto: UIImage?
-                    
-                    if let wagerPhotoData = document["wagerPhoto"] as? Data {
-                        wagerPhoto = UIImage(data: wagerPhotoData)
-                    }
-                    let currentWager = Wager(owner: owner, wagerBuddies: wagerBuddies, wagerPhoto: wagerPhoto, goalDescription: goalDescription, wager: wager2, deadline: deadline, progress: progress, uuid: document.documentID, acceptedWagers: acceptedWagers, pendingWagers: pendingWagers)
-                    wagers.append(currentWager)
-                }
-                return completion(.success(wagers))
-            }
-        }
+    func fetchAllWagersWithOwner(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
+                return completion(.success(ownedWagers))
+    }
+    
+    func fetchWagersWithFriends(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
+         
+        return completion(.success(acceptedWagers))
+    }
+    
+    func fetchPendingWagers(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
+         
+        return completion(.success(pendingWagers))
     }
     
     func fetchWager(uuid: String, completion: @escaping (Result<Wager, DatabaseError>) -> Void) {
