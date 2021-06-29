@@ -95,6 +95,20 @@ class WagerController {
         }
     }
     
+    func fetchWagersWithFriends(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
+        guard let acceptedWagers = UserController.sharedInstance.currentUser?.acceptedWagers else { return
+            completion(.failure(.couldNotUnwrap))
+        }
+        return completion(.success(acceptedWagers))
+    }
+    
+    func fetchPendingWagers(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
+        guard let pendingWagers = UserController.sharedInstance.currentUser?.pendingWagers else { return
+            completion(.failure(.couldNotUnwrap))
+        }
+        return completion(.success(pendingWagers))
+    }
+    
     func fetchWager(uuid: String, completion: @escaping (Result<Wager, DatabaseError>) -> Void) {
         let wagersRef = db.collection(wagersCollection)
         
