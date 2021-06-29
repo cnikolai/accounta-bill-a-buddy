@@ -299,10 +299,13 @@ class UserController {
     
     ///REPORT FRIEND
     func reportFriend(uid: String, username: String) {
-        deleteFriend(uid: uid, username: username)
         blockFriend(uid: uid, username: username)
         
+        guard let currentUser = currentUser else { return }
+        currentUser.reportedUsers.append([uid : username])
         
+        let currentUserData = db.collection("users").document(currentUser.uid)
+        currentUserData.setData(["reportedUsers": currentUser.reportedUsers], merge: true)
     }
     //reported users array (add a listener for notifications)
     //auth email
