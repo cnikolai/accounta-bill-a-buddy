@@ -298,6 +298,12 @@ class UserController {
     }
     
     ///REPORT FRIEND
+    func reportFriend(uid: String, username: String) {
+        deleteFriend(uid: uid, username: username)
+        blockFriend(uid: uid, username: username)
+        
+        
+    }
     //reported users array (add a listener for notifications)
     //auth email
     
