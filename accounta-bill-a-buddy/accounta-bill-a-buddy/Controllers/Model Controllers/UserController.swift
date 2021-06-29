@@ -375,4 +375,20 @@ class UserController {
         return false
     }
     
+    //MARK: - Wager Request System
+    func fetchAllWagersWithOwner(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
+        guard let currentUser = currentUser else { return completion(.failure(DatabaseError.couldNotUnwrap)) }
+        return completion(.success(currentUser.ownedWagers))
+    }
+    
+    func fetchWagersWithFriends(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
+        guard let currentUser = currentUser else { return completion(.failure(DatabaseError.couldNotUnwrap)) }
+        return completion(.success(currentUser.acceptedWagers))
+    }
+    
+    func fetchPendingWagers(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
+        guard let currentUser = currentUser else { return completion(.failure(DatabaseError.couldNotUnwrap)) }
+        return completion(.success(currentUser.pendingWagers))
+    }
+    
 }//End of class
