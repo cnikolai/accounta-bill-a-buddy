@@ -16,7 +16,10 @@ class User {
     var friends: [ [String : String] ]
     var blockedUsers: [String]
     var blockedByUsers: [String]
-
+    var reportedUsers: [ [String : String] ]
+    var acceptedWagers: [Wager]
+    var pendingWagers: [Wager]
+    
     var _uid: String {
         get {
             return uid
@@ -73,8 +76,16 @@ class User {
             return blockedByUsers = newValue
         }
     }
+    var _reportedUsers: [ [String : String] ] {
+        get {
+            return reportedUsers
+        }
+        set {
+            return reportedUsers = newValue
+        }
+    }
     
-    init(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = [], blockedUsers: [String] = [], blockedByUsers: [String] = []) {
+    init(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = [], blockedUsers: [String] = [], blockedByUsers: [String] = [], reportedUsers: [ [String : String] ] = [], acceptedWagers: [Wager] = [], pendingWagers: [Wager] = []) {
         self.uid = uid
         self.username = username
         self.sentFriendRequests = sentFriendRequests
@@ -82,6 +93,9 @@ class User {
         self.friends = friends
         self.blockedUsers = blockedUsers
         self.blockedByUsers = blockedByUsers
+        self.reportedUsers = reportedUsers
+        self.acceptedWagers = acceptedWagers
+        self.pendingWagers = pendingWagers
     }
     
 }//End of class
