@@ -57,21 +57,6 @@ class WagerController {
         }
     }
     
-    
-    func fetchAllWagersWithOwner(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
-                return completion(.success(ownedWagers))
-    }
-    
-    func fetchWagersWithFriends(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
-         
-        return completion(.success(acceptedWagers))
-    }
-    
-    func fetchPendingWagers(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
-         
-        return completion(.success(pendingWagers))
-    }
-    
     func fetchWager(uuid: String, completion: @escaping (Result<Wager, DatabaseError>) -> Void) {
         let wagersRef = db.collection(wagersCollection)
         
