@@ -39,6 +39,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewFor(screen: .login)
+        WagerController.sharedInstance.createAndSaveDummyWagers()
     }
     
     //MARK: - Actions
