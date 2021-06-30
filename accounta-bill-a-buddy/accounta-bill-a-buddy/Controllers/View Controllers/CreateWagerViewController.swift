@@ -19,13 +19,13 @@ class CreateWagerViewController: UIViewController {
     @IBOutlet weak var goalTextField: UITextView!
     @IBOutlet weak var deadlineTextField: UITextView!
     
+    
     // MARK:-Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
     }
     
-    // MARK:-Actions
     @IBAction func photoPickerButtonTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Add a photo", message: nil, preferredStyle: .alert)
         
@@ -45,6 +45,7 @@ class CreateWagerViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    
     @IBAction func createWagerButtonTapped(_ sender: Any) {
         guard let wager = wagerTextField.text, !wager.isEmpty,
               !(wager == "\nWhat is your Wager?") else {
@@ -60,7 +61,7 @@ class CreateWagerViewController: UIViewController {
         //let wagerBuddies = inviteFriends()
         //UserController.sharedInstance.saveFriends()
         //Jenny, test, Jane
-        WagerController.sharedInstance.createAndSaveWager(owner: UserController.sharedInstance.currentUser?.username ?? "Guest User", invitedFriends: ["seE7sCx6VrhYaTmFemTqHLQNGMO2","PPR1hHW8x0a7ugkG7FQiYHh8Lnt1"], acceptedFriends: ["rBmkx4W5s0VtdLq6PULrhToCau32"], wagerPhoto: imageImageView.image, goalDescription: goal, wager: wager, deadline: "", progress: 0) { result in
+        WagerController.sharedInstance.createAndSaveWager(owner: UserController.sharedInstance.currentUser?.uid ?? "GuestUID", invitedFriends: ["seE7sCx6VrhYaTmFemTqHLQNGMO2","PPR1hHW8x0a7ugkG7FQiYHh8Lnt1"], acceptedFriends: ["rBmkx4W5s0VtdLq6PULrhToCau32"], wagerPhoto: imageImageView.image, goalDescription: goal, wager: wager, deadline: deadline, progress: 0) { result in
             switch (result) {
             case .success(let wager):
                 self.dismissView()
@@ -68,12 +69,13 @@ class CreateWagerViewController: UIViewController {
                 print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
             }
         }
-        dismissView()
+        //dismissView()
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismissView()
     }
+
     
     // MARK:-Functions
     func setupViews() {
@@ -83,9 +85,10 @@ class CreateWagerViewController: UIViewController {
     }
     
     private func dismissView() {
-        DispatchQueue.main.async {
-            self.dismiss(animated: true, completion: nil)
-        }
+        //DispatchQueue.main.async {
+            //self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+        //}
     }
 }
 
