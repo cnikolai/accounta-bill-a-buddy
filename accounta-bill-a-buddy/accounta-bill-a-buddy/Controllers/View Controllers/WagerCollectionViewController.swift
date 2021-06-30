@@ -9,7 +9,11 @@ import UIKit
 
 private let reuseIdentifier = "wagerCell"
 
-class WagerCollectionViewController: UICollectionViewController {
+class WagerCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
     
     var wagers: [Wager] = [] //["basketball", "football", "gym", "soccer", "tennis"]
     
@@ -18,12 +22,19 @@ class WagerCollectionViewController: UICollectionViewController {
     // Outlets
     @IBOutlet weak var editButton: UIBarButtonItem!
     
+    @IBOutlet weak var segmentedController: UISegmentedControl!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    //Properties
     override func viewDidLoad() {
         super.viewDidLoad()
         WagerController.sharedInstance.createAndSaveDummyWagers()
+        collectionView.register(WagerCollectionViewCell.self, forCellWithReuseIdentifier: "wagerCell")
+        collectionView.delegate = self
+        collectionView.dataSource = self
         wagers = WagerController.sharedInstance.wagers
         //       self.toDetailView = UIStoryboardSegue(identifier: "toDetailView", source: self, destination: WagerDetailViewController as? UIViewController   ?? nil)
-        
     }
     
     //Actions
@@ -39,22 +50,37 @@ class WagerCollectionViewController: UICollectionViewController {
         }
     }
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    @IBAction func segmentedControllerTapped(_ sender: Any) {
+        
+    }
+    
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return wagers.count
-    }
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        var returnValue = 0
+//        switch segmentedController.selectedSegmentIndex {
+//        case 0:
+//            returnValue = UserController.sharedInstance.currentUser?.ownedWagers.count ?? 0
+//        case 1:
+//            returnValue = UserController.sharedInstance.currentUser?.acceptedWagers.count ?? 0
+//        case 2:
+//            returnValue = UserController.sharedInstance.currentUser?.pendingWagers.count ?? 0
+//        default: break
+//        }
+//        return returnValue
+//    }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wagerCell", for: indexPath) as? WagerCollectionViewCell else {return UICollectionViewCell()}
         
         let wager = wagers[indexPath.row]
-        cell.wager = wager
-     //   cell.wagerImageView.image = wager.wagerPhoto
+        // cell.wager = wager
+        // cell.wagerImageView.image = wager.wagerPhoto
         cell.delegate = self
-        cell.isEditing = collectionView.isEditing
+       // cell.isEditing = collectionView.isEditing
         
         
         return cell
