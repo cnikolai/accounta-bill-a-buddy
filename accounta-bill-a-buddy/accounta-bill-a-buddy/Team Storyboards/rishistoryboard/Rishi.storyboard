@@ -1,96 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Md7-Tn-Rl0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Wager Collection View Controller-->
-        <scene sceneID="N3j-GH-rPg">
+        <!--Cindy-->
+        <scene sceneID="8mZ-e2-NQU">
             <objects>
-                <collectionViewController storyboardIdentifier="RishiVC" id="IBP-Tp-ZbY" customClass="WagerCollectionViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="3Bt-of-lDU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.11372549019607843" green="0.20784313725490194" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="s4a-6h-hGW">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="estimatedItemSize" width="100" height="100"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="wagerCell" id="mLK-Xo-Goh" customClass="WagerCollectionViewCell" customModule="accounta_bill_a_buddy" customModuleProvider="target">
-                                <rect key="frame" x="10" y="10" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eyu-nr-ciA">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="basketball" translatesAutoresizingMaskIntoConstraints="NO" id="Y2v-NP-och">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="100" id="UUn-8b-Nxe"/>
-                                                <constraint firstAttribute="width" constant="100" id="jM6-ya-dlo"/>
-                                            </constraints>
-                                        </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbH-Jn-i45">
-                                            <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
-                                            <color key="tintColor" systemColor="systemRedColor"/>
-                                            <state key="normal" image="x.circle.fill" catalog="system"/>
-                                            <connections>
-                                                <action selector="deleteButtonTapped:" destination="mLK-Xo-Goh" eventType="touchUpInside" id="y63-3g-cDS"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="Y2v-NP-och" firstAttribute="centerX" secondItem="eyu-nr-ciA" secondAttribute="centerX" id="7B7-fT-0Sf"/>
-                                        <constraint firstItem="pbH-Jn-i45" firstAttribute="top" secondItem="eyu-nr-ciA" secondAttribute="top" id="D1Q-6T-h1k"/>
-                                        <constraint firstItem="pbH-Jn-i45" firstAttribute="leading" secondItem="eyu-nr-ciA" secondAttribute="leading" id="Vwv-x5-lhM"/>
-                                        <constraint firstItem="Y2v-NP-och" firstAttribute="centerY" secondItem="eyu-nr-ciA" secondAttribute="centerY" id="XJj-Zg-eA0"/>
-                                    </constraints>
-                                </collectionViewCellContentView>
-                                <color key="backgroundColor" red="0.1137254902" green="0.20784313730000001" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
-                                <size key="customSize" width="100" height="100"/>
-                                <connections>
-                                    <outlet property="deleteButton" destination="pbH-Jn-i45" id="Ea9-we-3bm"/>
-                                    <outlet property="wagerImageView" destination="Y2v-NP-och" id="l2w-qR-Yrr"/>
-                                    <segue destination="uM2-Z0-Mq7" kind="show" identifier="toWagerDetailVC" id="TLU-wT-0Lw"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="IBP-Tp-ZbY" id="zfu-44-fmN"/>
-                            <outlet property="delegate" destination="IBP-Tp-ZbY" id="QVw-vB-uLr"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" id="JRr-bt-g8Y">
-                        <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="edit" id="2Al-go-Vkq">
-                            <connections>
-                                <action selector="editButtonTapped:" destination="IBP-Tp-ZbY" id="5I4-0N-vEr"/>
-                            </connections>
-                        </barButtonItem>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="coG-sF-RL2">
-                            <rect key="frame" x="65.5" y="5.5" width="283" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="My Wagers"/>
-                                <segment title="My Friend's Wagers"/>
-                            </segments>
-                        </segmentedControl>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="editButton" destination="2Al-go-Vkq" id="ONK-HB-l3d"/>
-                    </connections>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aU0-E8-eQO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Cindy" id="UWL-qI-A1n" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="7pl-hy-dSc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iy8-DX-oXz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1831.8840579710147" y="-243.08035714285714"/>
+            <point key="canvasLocation" x="3277" y="173"/>
         </scene>
         <!--CindyWagerDetailView-->
         <scene sceneID="pYl-hp-2rg">
@@ -100,33 +27,123 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cI-A0-5Vf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2534" y="-243"/>
+            <point key="canvasLocation" x="3251" y="425"/>
         </scene>
-        <!--Wagers-->
-        <scene sceneID="3DR-ZK-3oh">
+        <!--Wager Collection View Controller-->
+        <scene sceneID="vv6-aU-Ddy">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rlA-04-zO0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Wagers" id="XRO-2e-DbU"/>
+                <viewController storyboardIdentifier="RishiVC" id="D1n-uM-2vi" customClass="WagerCollectionViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WQT-WF-pek">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hag-Bf-SwP">
+                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <segments>
+                                    <segment title="My Wagers"/>
+                                    <segment title="My Friend's"/>
+                                    <segment title="Requested"/>
+                                </segments>
+                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="P79-8q-LqO">
+                                <rect key="frame" x="0.0" y="119" width="414" height="743"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0hp-Yy-rBw">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="wagerCell" id="OvO-57-0sZ" customClass="WagerCollectionViewCell" customModule="accounta_bill_a_buddy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bWi-Qz-3zM">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bCb-RJ-HVB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9p-U0-dAc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="16" height="22"/>
+                                                    <state key="normal" image="icons8-delete-16"/>
+                                                    <connections>
+                                                        <action selector="deleteButtonTapped:" destination="OvO-57-0sZ" eventType="touchUpInside" id="hMp-je-o45"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bCb-RJ-HVB" firstAttribute="top" secondItem="bWi-Qz-3zM" secondAttribute="top" id="CSX-Ol-JRK"/>
+                                                <constraint firstItem="L9p-U0-dAc" firstAttribute="top" secondItem="bWi-Qz-3zM" secondAttribute="top" id="NzG-Ty-ity"/>
+                                                <constraint firstItem="bCb-RJ-HVB" firstAttribute="leading" secondItem="bWi-Qz-3zM" secondAttribute="leading" id="VRk-it-bWi"/>
+                                                <constraint firstItem="L9p-U0-dAc" firstAttribute="leading" secondItem="bWi-Qz-3zM" secondAttribute="leading" id="cDh-VA-aAf"/>
+                                                <constraint firstAttribute="trailing" secondItem="bCb-RJ-HVB" secondAttribute="trailing" id="dgt-LV-9En"/>
+                                                <constraint firstAttribute="bottom" secondItem="bCb-RJ-HVB" secondAttribute="bottom" id="h0K-Hm-6mD"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="deleteButton" destination="L9p-U0-dAc" id="3WG-24-LDV"/>
+                                            <outlet property="wagerImageView" destination="bCb-RJ-HVB" id="6di-Am-l3f"/>
+                                            <segue destination="uM2-Z0-Mq7" kind="show" identifier="toWagerDetailVC" id="Ti8-1F-fom"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6WM-WY-Un5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="P79-8q-LqO" firstAttribute="leading" secondItem="6WM-WY-Un5" secondAttribute="leading" id="96V-UX-D7I"/>
+                            <constraint firstItem="6WM-WY-Un5" firstAttribute="trailing" secondItem="P79-8q-LqO" secondAttribute="trailing" id="H9C-YV-zmK"/>
+                            <constraint firstItem="hag-Bf-SwP" firstAttribute="top" secondItem="6WM-WY-Un5" secondAttribute="top" id="cZy-PS-mEC"/>
+                            <constraint firstItem="6WM-WY-Un5" firstAttribute="trailing" secondItem="hag-Bf-SwP" secondAttribute="trailing" id="eNJ-3W-bzt"/>
+                            <constraint firstItem="6WM-WY-Un5" firstAttribute="bottom" secondItem="P79-8q-LqO" secondAttribute="bottom" id="hd1-hQ-GDh"/>
+                            <constraint firstItem="P79-8q-LqO" firstAttribute="top" secondItem="hag-Bf-SwP" secondAttribute="bottom" id="j8M-it-njT"/>
+                            <constraint firstItem="hag-Bf-SwP" firstAttribute="leading" secondItem="6WM-WY-Un5" secondAttribute="leading" id="o01-tY-LBL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lLP-D4-n15">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="ef2-k5-KS1"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OxQ-rq-9XD">
+                            <connections>
+                                <segue destination="UWL-qI-A1n" kind="show" id="IIN-pu-JoR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="P79-8q-LqO" id="Van-hw-BMp"/>
+                        <outlet property="editButton" destination="ef2-k5-KS1" id="r72-tH-EFm"/>
+                        <outlet property="segmentedController" destination="hag-Bf-SwP" id="vP1-kE-Yef"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tuu-RC-SMc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2658" y="425"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="23G-t4-sne">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Md7-Tn-Rl0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xcz-3t-OUn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="S7H-rk-fKt">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="IBP-Tp-ZbY" kind="relationship" relationship="rootViewController" id="0lw-f6-hc2"/>
+                        <segue destination="D1n-uM-2vi" kind="relationship" relationship="rootViewController" id="iND-tQ-Dx3"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lPq-x8-Mwz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pTv-BM-WXY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1053.6231884057972" y="-243.08035714285714"/>
+            <point key="canvasLocation" x="1850.7246376811595" y="424.55357142857139"/>
         </scene>
     </scenes>
     <resources>
-        <image name="basketball" width="225" height="224"/>
-        <image name="x.circle.fill" catalog="system" width="128" height="121"/>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="icons8-delete-16" width="16" height="16"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
