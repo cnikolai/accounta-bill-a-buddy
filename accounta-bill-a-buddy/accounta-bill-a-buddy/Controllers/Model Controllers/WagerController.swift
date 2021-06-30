@@ -76,6 +76,8 @@ class WagerController {
             "owner": "\(newWager.owner)",
             "wagerPhoto": newWager.wagerPhoto?.jpegData(compressionQuality: 1),
             "goalDescription": "\(newWager.goalDescription)",
+            "acceptedFriends": "\(newWager.acceptedFriends)",
+            "invitedFriends": "\(newWager.invitedFriends)",
             "wager": "\(newWager.wager)",
             "deadline": "\(newWager.deadline)",
             "progress": "\(newWager.progress)"
