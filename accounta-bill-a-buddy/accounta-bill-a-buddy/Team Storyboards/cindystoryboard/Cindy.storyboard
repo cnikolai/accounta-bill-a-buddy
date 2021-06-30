@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="NWe-rA-oBb">
-                                <rect key="frame" x="32" y="75" width="256" height="342"/>
+                                <rect key="frame" x="32" y="75" width="256" height="201"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y2E-o5-lyz">
                                         <rect key="frame" x="45" y="0.0" width="166" height="125"/>
@@ -52,36 +52,8 @@ Goals
                                             <segue destination="ZLU-Me-QMI" kind="presentation" id="k8h-YC-8Nu"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GPu-86-Wa7">
-                                        <rect key="frame" x="45" y="166" width="166" height="55"/>
-                                        <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="55" id="WlF-zN-mht"/>
-                                        </constraints>
-                                        <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                        <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Invite Friends">
-                                                    <attributes>
-                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <font key="NSFont" size="18" name="Arial-BoldMT"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="inviteFriendsButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1mJ-4e-KhN"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mn8-Br-ZC7">
-                                        <rect key="frame" x="57" y="307" width="142" height="35"/>
+                                        <rect key="frame" x="57" y="166" width="142" height="35"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.98039215690000003" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="q51-7i-4WC"/>
@@ -111,7 +83,6 @@ Goals
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="y2E-o5-lyz" firstAttribute="width" secondItem="NWe-rA-oBb" secondAttribute="width" multiplier="0.65" id="1sZ-mi-n4v"/>
-                                    <constraint firstItem="GPu-86-Wa7" firstAttribute="width" secondItem="NWe-rA-oBb" secondAttribute="width" multiplier="0.65" id="IhK-E1-fBD"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -138,7 +109,7 @@ Goals
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="XcW-Yx-93g">
-                                <rect key="frame" x="32" y="75" width="256" height="500.5"/>
+                                <rect key="frame" x="32" y="75" width="256" height="571.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6xm-2l-Cco">
                                         <rect key="frame" x="45" y="0.0" width="166" height="166.5"/>
@@ -199,15 +170,43 @@ What is your Goal?</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GPu-86-Wa7">
+                                        <rect key="frame" x="54" y="414.5" width="148" height="55"/>
+                                        <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="WlF-zN-mht"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Invite Friends">
+                                                    <attributes>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" size="18" name="Arial-BoldMT"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="inviteFriendsButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1mJ-4e-KhN"/>
+                                        </connections>
+                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYA-yo-FSv">
-                                        <rect key="frame" x="8" y="414.5" width="240" height="35"/>
+                                        <rect key="frame" x="8" y="485.5" width="240" height="35"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="ZYy-Xh-F0H"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pha-fS-RiI">
-                                        <rect key="frame" x="57" y="465.5" width="142" height="35"/>
+                                        <rect key="frame" x="57" y="536.5" width="142" height="35"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.98039215690000003" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="LO7-If-H8a"/>
@@ -295,6 +294,214 @@ What is your Goal?</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49q-R9-F50" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1837.5" y="72.887323943661968"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="CkI-p0-8Sk">
+            <objects>
+                <viewController id="mMD-Gk-Gbk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Asv-E6-gTJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ug-lJ-KVy">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="1100"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMW-Tb-C6M">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1000" id="ND4-9F-UQC"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dIq-1Q-AJW">
+                                        <rect key="frame" x="10" y="69" width="256" height="571.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfL-8c-Rp5">
+                                                <rect key="frame" x="44.5" y="0.0" width="166.5" height="166.5"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B8Y-qw-4LV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="166.5" height="166.5"/>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFd-14-dMq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="166.5" height="166.5"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="GFd-14-dMq" secondAttribute="height" multiplier="1:1" id="u79-sQ-GqB"/>
+                                                        </constraints>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" image="camera" catalog="system">
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="65"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="photoPickerButtonTapped:" destination="ZLU-Me-QMI" eventType="touchUpInside" id="wrd-bB-aeR"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="B8Y-qw-4LV" secondAttribute="trailing" id="JGQ-bt-aXs"/>
+                                                    <constraint firstAttribute="trailing" secondItem="GFd-14-dMq" secondAttribute="trailing" id="Zl3-t0-UOx"/>
+                                                    <constraint firstItem="GFd-14-dMq" firstAttribute="leading" secondItem="LfL-8c-Rp5" secondAttribute="leading" id="m1h-26-8ku"/>
+                                                    <constraint firstAttribute="width" secondItem="LfL-8c-Rp5" secondAttribute="height" multiplier="1:1" id="ncA-PZ-uHa"/>
+                                                    <constraint firstItem="B8Y-qw-4LV" firstAttribute="top" secondItem="LfL-8c-Rp5" secondAttribute="top" id="oRV-JU-8dg"/>
+                                                    <constraint firstItem="GFd-14-dMq" firstAttribute="top" secondItem="LfL-8c-Rp5" secondAttribute="top" id="qPT-aC-GLI"/>
+                                                    <constraint firstAttribute="bottom" secondItem="B8Y-qw-4LV" secondAttribute="bottom" id="tEv-kW-NLd"/>
+                                                    <constraint firstItem="B8Y-qw-4LV" firstAttribute="leading" secondItem="LfL-8c-Rp5" secondAttribute="leading" id="uvd-dY-GwA"/>
+                                                    <constraint firstAttribute="bottom" secondItem="GFd-14-dMq" secondAttribute="bottom" id="vLs-cM-Ytz"/>
+                                                </constraints>
+                                            </view>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2sd-nG-LLI">
+                                                <rect key="frame" x="44.5" y="182.5" width="166.5" height="75"/>
+                                                <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="75" id="fQX-yK-0lC"/>
+                                                </constraints>
+                                                <string key="text">
+What is your Wager?</string>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OIs-wf-iwN">
+                                                <rect key="frame" x="44.5" y="273.5" width="166.5" height="125"/>
+                                                <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="125" id="fkB-Q6-sSj"/>
+                                                </constraints>
+                                                <string key="text">
+
+What is your Goal?</string>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gxT-lo-eXU">
+                                                <rect key="frame" x="54" y="414.5" width="148" height="55"/>
+                                                <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="55" id="u2P-CG-dG0"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                                <state key="normal">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Invite Friends">
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="18" name="Arial-BoldMT"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="inviteFriendsButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="RXR-hw-cCC"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEG-pv-tWS">
+                                                <rect key="frame" x="8" y="485.5" width="240" height="35"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="MmH-qc-J4q"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eBS-6G-TaH">
+                                                <rect key="frame" x="57" y="536.5" width="142" height="35"/>
+                                                <color key="backgroundColor" red="0.94509803920000002" green="0.98039215690000003" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="gpR-Gg-Glv"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="tEI-kJ-0oE"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                                <state key="normal">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Create Wager">
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="18" name="ArialMT"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="createWagerButtonTapped:" destination="ZLU-Me-QMI" eventType="touchUpInside" id="Peb-jO-FO2"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="2sd-nG-LLI" firstAttribute="width" secondItem="dIq-1Q-AJW" secondAttribute="width" multiplier="0.65" id="75r-VX-PGd"/>
+                                            <constraint firstItem="LfL-8c-Rp5" firstAttribute="width" secondItem="dIq-1Q-AJW" secondAttribute="width" multiplier="0.65" id="Oef-RN-ZQm"/>
+                                            <constraint firstItem="OIs-wf-iwN" firstAttribute="width" secondItem="dIq-1Q-AJW" secondAttribute="width" multiplier="0.65" id="PPg-LA-tgY"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1et-O6-g5I">
+                                        <rect key="frame" x="194" y="10" width="72" height="35"/>
+                                        <color key="backgroundColor" red="0.94509803920000002" green="0.98039215690000003" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="72" id="0ly-jV-icn"/>
+                                            <constraint firstAttribute="height" constant="35" id="5Nh-Zg-se4"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Cancel">
+                                                    <attributes>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" size="13" name="ArialMT"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelButtonTapped:" destination="ZLU-Me-QMI" eventType="touchUpInside" id="YJS-Ns-p7u"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="uMW-Tb-C6M" firstAttribute="width" secondItem="V6S-WS-T9a" secondAttribute="width" id="0Ru-1s-1rk"/>
+                                    <constraint firstItem="uMW-Tb-C6M" firstAttribute="bottom" secondItem="JH7-aQ-SRq" secondAttribute="bottom" id="2X1-SD-ZOG"/>
+                                    <constraint firstItem="uMW-Tb-C6M" firstAttribute="leading" secondItem="JH7-aQ-SRq" secondAttribute="leading" id="4Oq-Ps-gAF"/>
+                                    <constraint firstItem="1et-O6-g5I" firstAttribute="trailing" secondItem="dIq-1Q-AJW" secondAttribute="trailing" id="F59-Cr-6fY"/>
+                                    <constraint firstItem="uMW-Tb-C6M" firstAttribute="trailing" secondItem="JH7-aQ-SRq" secondAttribute="trailing" id="Qjw-XM-G1K"/>
+                                    <constraint firstItem="uMW-Tb-C6M" firstAttribute="top" secondItem="JH7-aQ-SRq" secondAttribute="top" id="s8J-rJ-AwA"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="JH7-aQ-SRq"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="V6S-WS-T9a"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DSL-Ay-2SF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Ug-lJ-KVy" firstAttribute="top" secondItem="DSL-Ay-2SF" secondAttribute="top" id="93S-c5-09Q"/>
+                            <constraint firstItem="6Ug-lJ-KVy" firstAttribute="bottom" secondItem="DSL-Ay-2SF" secondAttribute="bottom" id="B0G-M9-oCL"/>
+                            <constraint firstItem="6Ug-lJ-KVy" firstAttribute="trailing" secondItem="DSL-Ay-2SF" secondAttribute="trailing" id="Caw-8U-0s8"/>
+                            <constraint firstItem="6Ug-lJ-KVy" firstAttribute="leading" secondItem="DSL-Ay-2SF" secondAttribute="leading" id="jVl-ub-9Wv"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="320" height="1100"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EQP-9z-mXC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2576.25" y="72.887323943661968"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mkn-9j-RFi">
