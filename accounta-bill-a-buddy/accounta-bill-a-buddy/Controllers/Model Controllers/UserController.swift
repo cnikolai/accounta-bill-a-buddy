@@ -51,7 +51,7 @@ class UserController {
                     print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
                 } else {
                     for doc in querySnapshot!.documents {
-                        //                        print("documentID: \(doc.documentID) => \(doc.data())")
+                        //print("documentID: \(doc.documentID) => \(doc.data())")
                         let userData = doc.data()
                         let uid = userData["uid"] as? String ?? ""
                         let username = userData["username"] as? String ?? ""
@@ -375,20 +375,20 @@ class UserController {
         return false
     }
     
-    //MARK: - Wager Request System
-    func fetchAllWagersWithOwner(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
-        guard let currentUser = currentUser else { return completion(.failure(DatabaseError.couldNotUnwrap)) }
-        return completion(.success(currentUser.ownedWagers))
-    }
-    
-    func fetchWagersWithFriends(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
-        guard let currentUser = currentUser else { return completion(.failure(DatabaseError.couldNotUnwrap)) }
-        return completion(.success(currentUser.acceptedWagers))
-    }
-    
-    func fetchPendingWagers(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
-        guard let currentUser = currentUser else { return completion(.failure(DatabaseError.couldNotUnwrap)) }
-        return completion(.success(currentUser.pendingWagers))
-    }
+    //MARK: - Fetch Wagers
+//    func fetchAllWagersWithOwner(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
+//        guard let currentUser = currentUser else { return completion(.failure(DatabaseError.couldNotUnwrap)) }
+//        return completion(.success(currentUser.myWagers))
+//    }
+//    
+//    func fetchWagersWithFriends(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
+//        guard let currentUser = currentUser else { return completion(.failure(DatabaseError.couldNotUnwrap)) }
+//        return completion(.success(currentUser.myFriendsWagers))
+//    }
+//    
+//    func fetchPendingWagers(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
+//        guard let currentUser = currentUser else { return completion(.failure(DatabaseError.couldNotUnwrap)) }
+//        return completion(.success(currentUser.wagerRequests))
+//    }
     
 }//End of class

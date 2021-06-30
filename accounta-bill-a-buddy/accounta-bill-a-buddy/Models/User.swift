@@ -9,6 +9,7 @@ import Foundation
 
 class User {
     
+    ///Friend Request System Properties
     var uid: String
     var username: String
     var sentFriendRequests: [ [String : String] ]
@@ -17,9 +18,14 @@ class User {
     var blockedUsers: [String]
     var blockedByUsers: [String]
     var reportedUsers: [ [String : String] ]
-    var ownedWagers: [Wager]
-    var acceptedWagers: [Wager]
-    var pendingWagers: [Wager]
+    
+    ///Wagers Properties
+    //An array of wager ids that reference an object in the wagers top-level collection that were created by the current user
+    var myWagers: [String]
+    //An array of wager ids that reference an object in the wagers top-level collection that the current user accepted and is part of
+    var myFriendsWagers: [String]
+    //An array of wager ids that reference an object in the wagers top-level collection that need to be accepted or denied by the current user
+    var wagerRequests: [String]
     
     var _uid: String {
         get {
@@ -86,7 +92,7 @@ class User {
         }
     }
     
-    init(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = [], blockedUsers: [String] = [], blockedByUsers: [String] = [], reportedUsers: [ [String : String] ] = [], ownedWagers: [Wager] = [], acceptedWagers: [Wager] = [], pendingWagers: [Wager] = []) {
+    init(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = [], blockedUsers: [String] = [], blockedByUsers: [String] = [], reportedUsers: [ [String : String] ] = [], myWagers: [String] = [], myFriendsWagers: [String] = [], wagerRequests: [String] = []) {
         self.uid = uid
         self.username = username
         self.sentFriendRequests = sentFriendRequests
@@ -95,9 +101,9 @@ class User {
         self.blockedUsers = blockedUsers
         self.blockedByUsers = blockedByUsers
         self.reportedUsers = reportedUsers
-        self.ownedWagers = ownedWagers
-        self.acceptedWagers = acceptedWagers
-        self.pendingWagers = pendingWagers
+        self.myWagers = myWagers
+        self.myFriendsWagers = myFriendsWagers
+        self.wagerRequests = wagerRequests
     }
     
 }//End of class
