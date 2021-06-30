@@ -15,80 +15,102 @@ class WagerController {
     let wagersCollection = "wagers"
     var wagers: [Wager] = []
     
-    
     func createDummyWagers() {
         
-        let newWager = Wager(owner: "rishikolappa@gmail.com", wagerBuddies: ["test@test.org", "test@test.com"], wagerPhoto: UIImage(named: "soccer"), goalDescription: "soccer", wager: "Test Wager", deadline: "Test date", progress: 0.3, uuid: "001")
-        wagers.append(newWager)
+//        let wager1 = Wager(wagerID: "rishikolappa@gmail.com", owner: ["test@test.org", "test@test.com"], invitedFriends: ["rishi"], acceptedFriends: UIImage(named: "soccer"), goalDescription: "soccer", wager: "Test Wager", deadline: "Test date", progress: 0.3)
+
+        createAndSaveWager(owner: "rishikolappa@gmail.com", invitedFriends: ["test@test.org", "test@test.com"], acceptedFriends: ["rishi"], wagerPhoto: UIImage(named: "football"), goalDescription: "football", wager: "Test Wager", deadline: "Test date", progress: 0.5,completion: { result in
+            switch result {
+            case .success(let wager):
+                self.wagers.append(wager)
+            case .failure(let error):
+                print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
+            }
+        })
         
-        let newWager2 = Wager(owner: "rishikolappa@gmail.com", wagerBuddies: ["test@test.org", "test@test.com"], goalDescription: "football", wager: "Test Wager", deadline: "Test date", progress: 0.5, uuid: "002")
-        wagers.append(newWager2)
+        createAndSaveWager(owner: "rishikolappa@gmail.com", invitedFriends: ["test@test.org", "test@test.com"], acceptedFriends: ["rishi"], wagerPhoto: UIImage(named: "basketball"), goalDescription: "basketball", wager: "Test Wager", deadline: "Test date", progress: 0.7, completion: { result in
+            switch result {
+            case .success(let wager):
+                self.wagers.append(wager)
+            case .failure(let error):
+                print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
+            }
+        })
         
-        let newWager3 = Wager(owner: "rishikolappa@gmail.com", wagerBuddies: ["test@test.org", "test@test.com"], wagerPhoto: UIImage(named: "basketball"), goalDescription: "basketball", wager: "Test Wager", deadline: "Test date", progress: 0.7, uuid: "003")
-        wagers.append(newWager3)
+        createAndSaveWager(owner: "rishikolappa@gmail.com", invitedFriends: ["test@test.org", "test@test.com"], acceptedFriends: ["rishi"], wagerPhoto: UIImage(named: "tennis"), goalDescription: "tennis", wager: "Test Wager", deadline: "Test date", progress: 0.4,completion: { result in
+            switch result {
+            case .success(let wager):
+                self.wagers.append(wager)
+            case .failure(let error):
+                print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
+            }
+        })
         
-        let newWager4 = Wager(owner: "rishikolappa@gmail.com", wagerBuddies: ["test@test.org", "test@test.com"], wagerPhoto: UIImage(named: "tennis"), goalDescription: "tennis", wager: "Test Wager", deadline: "Test date", progress: 0.4, uuid: "004")
-        wagers.append(newWager4)
-        
-        let newWager5 = Wager(owner: "rishikolappa@gmail.com", wagerBuddies: ["test@test.org", "test@test.com"], wagerPhoto: UIImage(named: "gym"), goalDescription: "gym", wager: "Test Wager", deadline: "Test date", progress: 0.2, uuid: "005")
-        wagers.append(newWager5)
+        createAndSaveWager(owner: "rishikolappa@gmail.com", invitedFriends: ["test@test.org", "test@test.com"], acceptedFriends: ["rishi"], wagerPhoto: UIImage(named: "gym"), goalDescription: "gym", wager: "Test Wager", deadline: "Test date", progress: 0.2,completion: { result in
+            switch result {
+            case .success(let wager):
+                self.wagers.append(wager)
+            case .failure(let error):
+                print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
+            }
+        })
     }
     
     func createAndSaveDummyWagers() {
         
-        createAndSaveWager(owner: "rishikolappa@gmail.com", wagerBuddies: ["test@test.org", "test@test.com"], wagerPhoto: UIImage(named: "soccer"), goalDescription: "soccer", wager: "Test Wager", deadline: "Test date", progress: 0.3, completion: { result in
+        createAndSaveWager(owner: "rishikolappa@gmail.com", invitedFriends: ["test@test.org", "test@test.com"], acceptedFriends: ["rishi"], wagerPhoto: UIImage(named: "soccer"), goalDescription: "soccer", wager: "Test Wager", deadline: "Test date", progress: 0.3, completion: { result in
             switch result {
-                case .success(let wager):
-                    self.wagers.append(wager)
-                case .failure(let error):
-                    print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
+            case .success(let wager):
+                self.wagers.append(wager)
+            case .failure(let error):
+                print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
             }
         })
         
-        createAndSaveWager(owner: "rishikolappa@gmail.com", wagerBuddies: ["test@test.org", "test@test.com"], wagerPhoto: UIImage(named: "football"), goalDescription: "football", wager: "Test Wager", deadline: "Test date", progress: 0.5,completion: { result in
+        createAndSaveWager(owner: "rishikolappa@gmail.com", invitedFriends: ["test@test.org", "test@test.com"], acceptedFriends: ["rishi"], wagerPhoto: UIImage(named: "football"), goalDescription: "football", wager: "Test Wager", deadline: "Test date", progress: 0.5,completion: { result in
             switch result {
-                case .success(let wager):
-                    self.wagers.append(wager)
-                case .failure(let error):
-                    print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
+            case .success(let wager):
+                self.wagers.append(wager)
+            case .failure(let error):
+                print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
             }
         })
         
-        createAndSaveWager(owner: "rishikolappa@gmail.com", wagerBuddies: ["test@test.org", "test@test.com"], wagerPhoto: UIImage(named: "basketball"), goalDescription: "basketball", wager: "Test Wager", deadline: "Test date", progress: 0.7, completion: { result in
+        createAndSaveWager(owner: "rishikolappa@gmail.com", invitedFriends: ["test@test.org", "test@test.com"], acceptedFriends: ["rishi"], wagerPhoto: UIImage(named: "basketball"), goalDescription: "basketball", wager: "Test Wager", deadline: "Test date", progress: 0.7, completion: { result in
             switch result {
-                case .success(let wager):
-                    self.wagers.append(wager)
-                case .failure(let error):
-                    print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
+            case .success(let wager):
+                self.wagers.append(wager)
+            case .failure(let error):
+                print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
             }
         })
         
-        createAndSaveWager(owner: "rishikolappa@gmail.com", wagerBuddies: ["test@test.org", "test@test.com"], wagerPhoto: UIImage(named: "tennis"), goalDescription: "tennis", wager: "Test Wager", deadline: "Test date", progress: 0.4,completion: { result in
+        createAndSaveWager(owner: "rishikolappa@gmail.com", invitedFriends: ["test@test.org", "test@test.com"], acceptedFriends: ["rishi"], wagerPhoto: UIImage(named: "tennis"), goalDescription: "tennis", wager: "Test Wager", deadline: "Test date", progress: 0.4,completion: { result in
             switch result {
-                case .success(let wager):
-                    self.wagers.append(wager)
-                case .failure(let error):
-                    print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
+            case .success(let wager):
+                self.wagers.append(wager)
+            case .failure(let error):
+                print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
             }
         })
         
-        createAndSaveWager(owner: "rishikolappa@gmail.com", wagerBuddies: ["test@test.org", "test@test.com"], wagerPhoto: UIImage(named: "gym"), goalDescription: "gym", wager: "Test Wager", deadline: "Test date", progress: 0.2,completion: { result in
+        createAndSaveWager(owner: "rishikolappa@gmail.com", invitedFriends: ["test@test.org", "test@test.com"], acceptedFriends: ["rishi"], wagerPhoto: UIImage(named: "gym"), goalDescription: "gym", wager: "Test Wager", deadline: "Test date", progress: 0.2,completion: { result in
             switch result {
-                case .success(let wager):
-                    self.wagers.append(wager)
-                case .failure(let error):
-                    print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
+            case .success(let wager):
+                self.wagers.append(wager)
+            case .failure(let error):
+                print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
             }
         })
     }
     
-    func createAndSaveWager(owner: String, wagerBuddies: [String], wagerPhoto: UIImage?, goalDescription: String, wager: String, deadline: String, progress: Float, completion: @escaping (Result<Wager, DatabaseError>) -> Void) {
-        let newWager = Wager(owner: owner, wagerBuddies: wagerBuddies, wagerPhoto: wagerPhoto, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress)
+    func createAndSaveWager(owner: String, invitedFriends: [String], acceptedFriends: [String], wagerPhoto: UIImage?, goalDescription: String, wager: String, deadline: String, progress: Float, completion: @escaping (Result<Wager, DatabaseError>) -> Void) {
+        
+        let newWager = Wager(owner: owner, invitedFriends: invitedFriends, acceptedFriends: acceptedFriends, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress, wagerPhoto: wagerPhoto)
         
         let wagersRef = db.collection(wagersCollection)
-        wagersRef.document("\(newWager.uuid)").setData([
+        wagersRef.document("\(newWager.wagerID)").setData([
             "owner": "\(newWager.owner)",
-            "wagerBuddies": "\(newWager.wagerBuddies)",
             "wagerPhoto": newWager.wagerPhoto?.jpegData(compressionQuality: 1),
             "goalDescription": "\(newWager.goalDescription)",
             "wager": "\(newWager.wager)",
@@ -99,7 +121,7 @@ class WagerController {
                 print("Error adding document: \(error)")
                 return completion(.failure(.fireError(error)))
             } else {
-                print("Wager Document added with ID: \(newWager.uuid)")
+                print("Wager Document added with ID: \(newWager.wagerID)")
                 return completion(.success(newWager))
             }
         }

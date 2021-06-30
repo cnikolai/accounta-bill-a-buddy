@@ -61,6 +61,7 @@ class UserTableViewCell: UITableViewCell {
         
         if friendAlreadyAdded || friendRequestAlreadyReceived {
             reusableButton.isEnabled = false
+            reusableButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
             reusableButton.tintColor = .darkGray
         } else if friendsAlready {
             reusableButton.isEnabled = false
