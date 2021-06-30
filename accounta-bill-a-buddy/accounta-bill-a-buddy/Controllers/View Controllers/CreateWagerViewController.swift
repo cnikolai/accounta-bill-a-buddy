@@ -17,6 +17,7 @@ class CreateWagerViewController: UIViewController {
     @IBOutlet weak var photoPickerButton: UIButton!
     @IBOutlet weak var wagerTextField: UITextView!
     @IBOutlet weak var goalTextField: UITextView!
+    @IBOutlet weak var deadlineTextField: UITextView!
     
     // MARK:-Lifecycle
     override func viewDidLoad() {
@@ -51,6 +52,10 @@ class CreateWagerViewController: UIViewController {
             return }
         guard let goal = goalTextField.text, !goal.isEmpty, !(goal == "\n\nWhat is your Goal?") else {
             showError("\n\nPlease enter a goal", forWhichTextField: "goal")
+            return }
+        guard let deadline = deadlineTextField.text, !deadline.isEmpty,
+              !(deadline == "What is the Wager Deadline?") else {
+            showError("\nPlease enter a wager deadline", forWhichTextField: "deadline")
             return }
         //let wagerBuddies = inviteFriends()
         //UserController.sharedInstance.saveFriends()
@@ -132,6 +137,12 @@ extension CreateWagerViewController: UIImagePickerControllerDelegate, UINavigati
             goalTextField.textColor = .red
             goalTextField.layer.borderColor = UIColor.red.cgColor
             goalTextField.layer.borderWidth = 1.0
+        }
+        if forWhichTextField == "deadline" {
+            deadlineTextField.text = message
+            deadlineTextField.textColor = .red
+            deadlineTextField.layer.borderColor = UIColor.red.cgColor
+            deadlineTextField.layer.borderWidth = 1.0
         }
         
     }
