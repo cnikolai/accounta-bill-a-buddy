@@ -52,7 +52,10 @@ class CreateWagerViewController: UIViewController {
         guard let goal = goalTextField.text, !goal.isEmpty, !(goal == "\n\nWhat is your Goal?") else {
             showError("\n\nPlease enter a goal", forWhichTextField: "goal")
             return }
-        WagerController.sharedInstance.createAndSaveWager(owner: UserController.sharedInstance.currentUser?.username ?? "Guest User", wagerBuddies: [], wagerPhoto: imageImageView.image, goalDescription: goal, wager: wager, deadline: "", progress: 0) { result in
+        //let wagerBuddies = inviteFriends()
+        //UserController.sharedInstance.saveFriends()
+        //Jenny, test, Jane
+        WagerController.sharedInstance.createAndSaveWager(owner: UserController.sharedInstance.currentUser?.username ?? "Guest User", invitedFriends: ["seE7sCx6VrhYaTmFemTqHLQNGMO2","PPR1hHW8x0a7ugkG7FQiYHh8Lnt1"], acceptedFriends: ["rBmkx4W5s0VtdLq6PULrhToCau32"], wagerPhoto: imageImageView.image, goalDescription: goal, wager: wager, deadline: "", progress: 0) { result in
             switch (result) {
             case .success(let wager):
                 self.dismissView()

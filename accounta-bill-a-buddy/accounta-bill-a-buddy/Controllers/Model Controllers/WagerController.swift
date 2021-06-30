@@ -58,7 +58,12 @@ class WagerController {
     
     func createAndSaveDummyWagers() {
         
-        createAndSaveWager(owner: "rishikolappa@gmail.com", invitedFriends: ["test@test.org", "test@test.com"], acceptedFriends: ["rishi"], wagerPhoto: UIImage(named: "soccer"), goalDescription: "soccer", wager: "Test Wager", deadline: "Test date", progress: 0.3, completion: { result in
+        //3GU1xW4m3Mhgzk7l5bFSCoTk9Az1 - sally
+        //PPR1hHW8x0a7ugkG7FQiYHh8Lnt1 - test
+        //TXoF08aoFxU2F3fgwJ1H8HbWsGh2 - Test
+        //huN052Z3kJXcApf234j0Y7ds78g2 - Bob
+        //rBmkx4W5s0VtdLq6PULrhToCau32 - Jane
+        createAndSaveWager(owner: "", invitedFriends: ["test@test.org", "test@test.com"], acceptedFriends: ["rishi"], wagerPhoto: UIImage(named: "soccer"), goalDescription: "soccer", wager: "Test Wager", deadline: "Test date", progress: 0.3, completion: { result in
             switch result {
             case .success(let wager):
                 self.wagers.append(wager)

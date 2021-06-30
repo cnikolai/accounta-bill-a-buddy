@@ -20,7 +20,7 @@ class WagerCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        WagerController.sharedInstance.createDummyWagers()
+        WagerController.sharedInstance.createAndSaveDummyWagers()
         wagers = WagerController.sharedInstance.wagers
         //       self.toDetailView = UIStoryboardSegue(identifier: "toDetailView", source: self, destination: WagerDetailViewController as? UIViewController   ?? nil)
         
