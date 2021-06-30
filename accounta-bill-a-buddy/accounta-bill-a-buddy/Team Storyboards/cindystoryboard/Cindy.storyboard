@@ -307,11 +307,11 @@ What is your Goal?</string>
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="1100"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMW-Tb-C6M">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="670"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="761"/>
                                         <color key="backgroundColor" red="0.37254901959999998" green="0.6705882353" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dIq-1Q-AJW">
-                                        <rect key="frame" x="54" y="69" width="212" height="585"/>
+                                        <rect key="frame" x="54" y="69" width="212" height="676"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfL-8c-Rp5">
                                                 <rect key="frame" x="16" y="0.0" width="180" height="180"/>
@@ -372,8 +372,18 @@ What is your Goal?</string>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What is the Wager Deadline?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KBv-dr-P65">
+                                                <rect key="frame" x="16" y="428" width="180" height="75"/>
+                                                <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="75" id="Hld-55-Oqr"/>
+                                                </constraints>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gxT-lo-eXU">
-                                                <rect key="frame" x="16" y="428" width="180" height="55"/>
+                                                <rect key="frame" x="16" y="519" width="180" height="55"/>
                                                 <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="u2P-CG-dG0"/>
@@ -401,14 +411,14 @@ What is your Goal?</string>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEG-pv-tWS">
-                                                <rect key="frame" x="0.0" y="499" width="212" height="35"/>
+                                                <rect key="frame" x="0.0" y="590" width="212" height="35"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="MmH-qc-J4q"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eBS-6G-TaH">
-                                                <rect key="frame" x="35" y="550" width="142" height="35"/>
+                                                <rect key="frame" x="35" y="641" width="142" height="35"/>
                                                 <color key="backgroundColor" red="0.94509803920000002" green="0.98039215690000003" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="gpR-Gg-Glv"/>
@@ -503,6 +513,7 @@ What is your Goal?</string>
                     </view>
                     <size key="freeformSize" width="320" height="1100"/>
                     <connections>
+                        <outlet property="deadlineTextField" destination="KBv-dr-P65" id="njR-Ff-2PF"/>
                         <outlet property="goalTextField" destination="OIs-wf-iwN" id="xeU-N4-1Z7"/>
                         <outlet property="imageImageView" destination="B8Y-qw-4LV" id="gdJ-rK-jZp"/>
                         <outlet property="photoPickerButton" destination="GFd-14-dMq" id="Ypt-P2-Qic"/>
