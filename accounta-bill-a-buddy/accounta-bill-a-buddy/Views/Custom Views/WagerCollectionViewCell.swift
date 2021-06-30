@@ -22,11 +22,11 @@ class WagerCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    var isEditing = false {
-        didSet {
-            deleteButton.isHidden = !isEditing
-        }
-    }
+//  //  var isEditing = false {
+//      //  didSet {
+//       //     deleteButton.isHidden = !isEditing
+//        }
+//    }
     
     weak var delegate: DeleteCellDelegate?
     
@@ -37,7 +37,7 @@ class WagerCollectionViewCell: UICollectionViewCell {
     
     func updateViews() {
         guard let wager = wager else {return}
-        wagerImageView.image = wager.wagerPhoto
+       // wagerImageView.image = UIImage(data: wager.wagerPhotoData ?? Data()) //UIImage(named: "football") wager.wagerPhoto
         wagerImageView.layer.cornerRadius = wagerImageView.frame.height / 2
 
     }
