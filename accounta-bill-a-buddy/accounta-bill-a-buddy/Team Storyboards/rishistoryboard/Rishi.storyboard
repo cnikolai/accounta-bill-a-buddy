@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Md7-Tn-Rl0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Md7-Tn-Rl0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Cindy-->
+        <!--CindyVC-->
         <scene sceneID="8mZ-e2-NQU">
             <objects>
-                <viewControllerPlaceholder storyboardName="Cindy" id="UWL-qI-A1n" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Cindy" referencedIdentifier="CindyVC" id="UWL-qI-A1n" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="7pl-hy-dSc"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iy8-DX-oXz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3277" y="173"/>
+            <point key="canvasLocation" x="3188" y="406"/>
         </scene>
         <!--CindyWagerDetailView-->
         <scene sceneID="pYl-hp-2rg">
@@ -27,7 +27,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cI-A0-5Vf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3251" y="425"/>
+            <point key="canvasLocation" x="3251" y="443"/>
         </scene>
         <!--Wager Collection View Controller-->
         <scene sceneID="vv6-aU-Ddy">

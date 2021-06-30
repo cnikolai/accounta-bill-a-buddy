@@ -76,7 +76,9 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wagerCell", for: indexPath) as? WagerCollectionViewCell else {return UICollectionViewCell()}
         
+
         //let wager = wagers[indexPath.row]
+
         // cell.wager = wager
         // cell.wagerImageView.image = wager.wagerPhoto
         cell.delegate = self
