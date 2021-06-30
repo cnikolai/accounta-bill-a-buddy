@@ -14,7 +14,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         return 5
     }
     
-    
     var wagers: [Wager] = [] //["basketball", "football", "gym", "soccer", "tennis"]
     
     var toDetailView: UIStoryboardSegue!

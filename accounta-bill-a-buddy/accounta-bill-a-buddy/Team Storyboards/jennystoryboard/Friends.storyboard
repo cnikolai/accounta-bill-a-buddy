@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,29 +17,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="VGn-V0-H4P">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gyr-Vn-c3d">
-                                    <rect key="frame" x="8" y="0.0" width="398" height="56"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <scopeButtonTitles>
-                                        <string>Title</string>
-                                        <string>Title</string>
-                                    </scopeButtonTitles>
-                                </searchBar>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="vSr-UC-zBS">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                    <subviews>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="9WN-Do-Nbw">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Find Friends"/>
+                                                <segment title="Friends"/>
+                                                <segment title="Requests"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="segmentedControlButtonTapped:" destination="wwZ-yz-xBK" eventType="valueChanged" id="EEX-NA-Nop"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gyr-Vn-c3d">
+                                            <rect key="frame" x="0.0" y="32" width="414" height="56"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <scopeButtonTitles>
+                                                <string>Title</string>
+                                                <string>Title</string>
+                                            </scopeButtonTitles>
+                                        </searchBar>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="gyr-Vn-c3d" secondAttribute="trailing" constant="8" id="3XZ-jf-OMo"/>
-                                <constraint firstAttribute="bottom" secondItem="gyr-Vn-c3d" secondAttribute="bottom" id="4p3-bp-IwN"/>
-                                <constraint firstItem="gyr-Vn-c3d" firstAttribute="leading" secondItem="VGn-V0-H4P" secondAttribute="leading" constant="8" id="m7l-Xn-eEQ"/>
-                                <constraint firstItem="gyr-Vn-c3d" firstAttribute="top" secondItem="VGn-V0-H4P" secondAttribute="top" id="xoP-6T-oOr"/>
+                                <constraint firstItem="vSr-UC-zBS" firstAttribute="centerX" secondItem="VGn-V0-H4P" secondAttribute="centerX" id="9c1-lr-BSK"/>
+                                <constraint firstItem="vSr-UC-zBS" firstAttribute="centerY" secondItem="VGn-V0-H4P" secondAttribute="centerY" id="joh-qq-Z4A"/>
+                                <constraint firstItem="vSr-UC-zBS" firstAttribute="width" secondItem="VGn-V0-H4P" secondAttribute="width" id="rH8-4u-HtC"/>
+                                <constraint firstAttribute="bottom" secondItem="vSr-UC-zBS" secondAttribute="bottom" id="rUS-DI-JWw"/>
                             </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="55" id="Nro-mO-PWD" customClass="UserTableViewCell" customModule="accounta_bill_a_buddy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="84" width="414" height="55"/>
+                                <rect key="frame" x="0.0" y="116" width="414" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nro-mO-PWD" id="JYP-Q6-wlH">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
@@ -88,18 +106,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="4eR-vE-VmC">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="9WN-Do-Nbw">
-                            <rect key="frame" x="63.5" y="6" width="287" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Find Friends"/>
-                                <segment title="Friends"/>
-                                <segment title="Requests"/>
-                            </segments>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape" catalog="system" id="UIt-Wc-HV8">
                             <connections>
-                                <action selector="segmentedControlButtonTapped:" destination="wwZ-yz-xBK" eventType="valueChanged" id="EEX-NA-Nop"/>
+                                <segue destination="hhM-s5-c55" kind="show" id="g9P-UF-1Pm"/>
                             </connections>
-                        </segmentedControl>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="gyr-Vn-c3d" id="dNJ-NK-eDv"/>
@@ -108,7 +119,109 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wtY-LS-JE2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-42761.25" y="597.88732394366195"/>
+            <point key="canvasLocation" x="-42762.318840579712" y="597.32142857142856"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="qMQ-LU-j3g">
+            <objects>
+                <viewController id="hhM-s5-c55" customClass="ProfileViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Imt-tu-5cb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="profileLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQJ-s2-Usm">
+                                <rect key="frame" x="115" y="127" width="158" height="123"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RwO-Lu-IKR">
+                                <rect key="frame" x="96" y="330" width="195" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log Out"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViU-pp-f2h">
+                                <rect key="frame" x="96" y="399" width="195" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Blocked Users"/>
+                                <connections>
+                                    <segue destination="B3g-yA-WKK" kind="show" id="Y0b-er-Hox"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tWe-rs-WTK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0Q0-aa-Iww"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dJG-Vg-fIP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-41979.710144927536" y="596.65178571428567"/>
+        </scene>
+        <!--Blocked Users-->
+        <scene sceneID="1oJ-Z6-qvT">
+            <objects>
+                <viewController id="B3g-yA-WKK" customClass="BlockedUsersViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FMU-3g-WtT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pSu-wL-BQr">
+                                <rect key="frame" x="48" y="189" width="314" height="434"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blockedUserCell" rowHeight="64" id="4ca-ee-GKW">
+                                        <rect key="frame" x="0.0" y="28" width="314" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4ca-ee-GKW" id="Ul2-gi-20Z">
+                                            <rect key="frame" x="0.0" y="0.0" width="314" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="4f0-rW-3KK">
+                                                    <rect key="frame" x="15.5" y="13" width="283" height="38"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="usernameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qj0-on-o6I">
+                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="38"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h37-I6-FHE">
+                                                            <rect key="frame" x="180" y="0.0" width="103" height="38"/>
+                                                            <color key="backgroundColor" red="0.26380470123613187" green="0.66846784930860115" blue="0.91693694016029093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="tintColor" systemColor="systemRedColor"/>
+                                                            <state key="normal" title="Unblock">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
+                                                            </state>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4f0-rW-3KK" firstAttribute="height" secondItem="Ul2-gi-20Z" secondAttribute="height" multiplier="0.6" id="EnP-83-tsT"/>
+                                                <constraint firstItem="4f0-rW-3KK" firstAttribute="centerY" secondItem="Ul2-gi-20Z" secondAttribute="centerY" id="Ul5-QN-xE1"/>
+                                                <constraint firstItem="4f0-rW-3KK" firstAttribute="width" secondItem="Ul2-gi-20Z" secondAttribute="width" multiplier="0.9" id="dGK-hY-0LH"/>
+                                                <constraint firstItem="4f0-rW-3KK" firstAttribute="centerX" secondItem="Ul2-gi-20Z" secondAttribute="centerX" id="env-2U-6zu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sEb-mc-enn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Blocked Users" id="dFz-Ah-Uj7"/>
+                    <connections>
+                        <outlet property="tableView" destination="pSu-wL-BQr" id="hT2-Vd-gSn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Own-RZ-g6S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-41206" y="598"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fWV-yd-oK9">
@@ -149,9 +262,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
