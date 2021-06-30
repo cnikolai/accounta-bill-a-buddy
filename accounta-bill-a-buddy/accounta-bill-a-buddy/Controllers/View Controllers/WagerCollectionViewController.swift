@@ -29,10 +29,10 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     //Properties
     override func viewDidLoad() {
         super.viewDidLoad()
+        WagerController.sharedInstance.createAndSaveDummyWagers()
         collectionView.register(WagerCollectionViewCell.self, forCellWithReuseIdentifier: "wagerCell")
         collectionView.delegate = self
         collectionView.dataSource = self
-        WagerController.sharedInstance.createDummyWagers()
         wagers = WagerController.sharedInstance.wagers
         //       self.toDetailView = UIStoryboardSegue(identifier: "toDetailView", source: self, destination: WagerDetailViewController as? UIViewController   ?? nil)
     }

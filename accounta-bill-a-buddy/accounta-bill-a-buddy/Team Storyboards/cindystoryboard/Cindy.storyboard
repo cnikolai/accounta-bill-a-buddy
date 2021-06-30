@@ -295,10 +295,10 @@ What is your Goal?</string>
             </objects>
             <point key="canvasLocation" x="1837.5" y="72.887323943661968"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Wager View Controller-->
         <scene sceneID="CkI-p0-8Sk">
             <objects>
-                <viewController id="mMD-Gk-Gbk" sceneMemberID="viewController">
+                <viewController id="mMD-Gk-Gbk" customClass="CreateWagerViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Asv-E6-gTJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -307,23 +307,20 @@ What is your Goal?</string>
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="1100"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMW-Tb-C6M">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1000" id="ND4-9F-UQC"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="761"/>
+                                        <color key="backgroundColor" red="0.37254901959999998" green="0.6705882353" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dIq-1Q-AJW">
-                                        <rect key="frame" x="10" y="69" width="256" height="571.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dIq-1Q-AJW">
+                                        <rect key="frame" x="54" y="69" width="212" height="676"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfL-8c-Rp5">
-                                                <rect key="frame" x="44.5" y="0.0" width="166.5" height="166.5"/>
+                                                <rect key="frame" x="16" y="0.0" width="180" height="180"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B8Y-qw-4LV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="166.5" height="166.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFd-14-dMq">
-                                                        <rect key="frame" x="0.0" y="0.0" width="166.5" height="166.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="GFd-14-dMq" secondAttribute="height" multiplier="1:1" id="u79-sQ-GqB"/>
@@ -351,7 +348,7 @@ What is your Goal?</string>
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2sd-nG-LLI">
-                                                <rect key="frame" x="44.5" y="182.5" width="166.5" height="75"/>
+                                                <rect key="frame" x="16" y="196" width="180" height="75"/>
                                                 <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="75" id="fQX-yK-0lC"/>
@@ -359,11 +356,11 @@ What is your Goal?</string>
                                                 <string key="text">
 What is your Wager?</string>
                                                 <color key="textColor" systemColor="labelColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OIs-wf-iwN">
-                                                <rect key="frame" x="44.5" y="273.5" width="166.5" height="125"/>
+                                                <rect key="frame" x="16" y="287" width="180" height="125"/>
                                                 <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="125" id="fkB-Q6-sSj"/>
@@ -372,11 +369,21 @@ What is your Wager?</string>
 
 What is your Goal?</string>
                                                 <color key="textColor" systemColor="labelColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What is the Wager Deadline?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KBv-dr-P65">
+                                                <rect key="frame" x="16" y="428" width="180" height="75"/>
+                                                <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="75" id="Hld-55-Oqr"/>
+                                                </constraints>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gxT-lo-eXU">
-                                                <rect key="frame" x="54" y="414.5" width="148" height="55"/>
+                                                <rect key="frame" x="16" y="519" width="180" height="55"/>
                                                 <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="u2P-CG-dG0"/>
@@ -387,7 +394,7 @@ What is your Goal?</string>
                                                         <fragment content="Invite Friends">
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" size="18" name="Arial-BoldMT"/>
+                                                                <font key="NSFont" size="17" name="HelveticaNeue"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -404,14 +411,14 @@ What is your Goal?</string>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEG-pv-tWS">
-                                                <rect key="frame" x="8" y="485.5" width="240" height="35"/>
+                                                <rect key="frame" x="0.0" y="590" width="212" height="35"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="MmH-qc-J4q"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eBS-6G-TaH">
-                                                <rect key="frame" x="57" y="536.5" width="142" height="35"/>
+                                                <rect key="frame" x="35" y="641" width="142" height="35"/>
                                                 <color key="backgroundColor" red="0.94509803920000002" green="0.98039215690000003" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="gpR-Gg-Glv"/>
@@ -441,13 +448,14 @@ What is your Goal?</string>
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="2sd-nG-LLI" firstAttribute="width" secondItem="dIq-1Q-AJW" secondAttribute="width" multiplier="0.65" id="75r-VX-PGd"/>
-                                            <constraint firstItem="LfL-8c-Rp5" firstAttribute="width" secondItem="dIq-1Q-AJW" secondAttribute="width" multiplier="0.65" id="Oef-RN-ZQm"/>
-                                            <constraint firstItem="OIs-wf-iwN" firstAttribute="width" secondItem="dIq-1Q-AJW" secondAttribute="width" multiplier="0.65" id="PPg-LA-tgY"/>
+                                            <constraint firstItem="2sd-nG-LLI" firstAttribute="width" secondItem="dIq-1Q-AJW" secondAttribute="width" multiplier="0.85" id="75r-VX-PGd"/>
+                                            <constraint firstItem="LfL-8c-Rp5" firstAttribute="width" secondItem="dIq-1Q-AJW" secondAttribute="width" multiplier="0.85" id="Oef-RN-ZQm"/>
+                                            <constraint firstItem="OIs-wf-iwN" firstAttribute="width" secondItem="dIq-1Q-AJW" secondAttribute="width" multiplier="0.85" id="PPg-LA-tgY"/>
+                                            <constraint firstItem="gxT-lo-eXU" firstAttribute="width" secondItem="dIq-1Q-AJW" secondAttribute="width" multiplier="0.85" id="Wnj-eY-DDf"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1et-O6-g5I">
-                                        <rect key="frame" x="194" y="10" width="72" height="35"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1et-O6-g5I">
+                                        <rect key="frame" x="194" y="16" width="72" height="35"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.98039215690000003" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="72" id="0ly-jV-icn"/>
@@ -478,9 +486,15 @@ What is your Goal?</string>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="uMW-Tb-C6M" firstAttribute="width" secondItem="V6S-WS-T9a" secondAttribute="width" id="0Ru-1s-1rk"/>
+                                    <constraint firstItem="dIq-1Q-AJW" firstAttribute="top" secondItem="1et-O6-g5I" secondAttribute="bottom" constant="18" id="1zK-Bd-8Iq"/>
                                     <constraint firstItem="uMW-Tb-C6M" firstAttribute="bottom" secondItem="JH7-aQ-SRq" secondAttribute="bottom" id="2X1-SD-ZOG"/>
                                     <constraint firstItem="uMW-Tb-C6M" firstAttribute="leading" secondItem="JH7-aQ-SRq" secondAttribute="leading" id="4Oq-Ps-gAF"/>
+                                    <constraint firstItem="dIq-1Q-AJW" firstAttribute="width" secondItem="6Ug-lJ-KVy" secondAttribute="width" multiplier="0.6625" id="6lK-fD-4lS"/>
+                                    <constraint firstItem="1et-O6-g5I" firstAttribute="leading" secondItem="V6S-WS-T9a" secondAttribute="leading" constant="194" id="9th-IR-Zuk"/>
+                                    <constraint firstItem="1et-O6-g5I" firstAttribute="top" secondItem="V6S-WS-T9a" secondAttribute="top" constant="16" id="C9m-eJ-D0B"/>
+                                    <constraint firstItem="dIq-1Q-AJW" firstAttribute="centerX" secondItem="6Ug-lJ-KVy" secondAttribute="centerX" id="Dhf-9F-gk3"/>
                                     <constraint firstItem="1et-O6-g5I" firstAttribute="trailing" secondItem="dIq-1Q-AJW" secondAttribute="trailing" id="F59-Cr-6fY"/>
+                                    <constraint firstItem="JH7-aQ-SRq" firstAttribute="bottom" secondItem="dIq-1Q-AJW" secondAttribute="bottom" constant="16" id="K5f-Cf-W08"/>
                                     <constraint firstItem="uMW-Tb-C6M" firstAttribute="trailing" secondItem="JH7-aQ-SRq" secondAttribute="trailing" id="Qjw-XM-G1K"/>
                                     <constraint firstItem="uMW-Tb-C6M" firstAttribute="top" secondItem="JH7-aQ-SRq" secondAttribute="top" id="s8J-rJ-AwA"/>
                                 </constraints>
@@ -498,6 +512,13 @@ What is your Goal?</string>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="320" height="1100"/>
+                    <connections>
+                        <outlet property="deadlineTextField" destination="KBv-dr-P65" id="njR-Ff-2PF"/>
+                        <outlet property="goalTextField" destination="OIs-wf-iwN" id="xeU-N4-1Z7"/>
+                        <outlet property="imageImageView" destination="B8Y-qw-4LV" id="gdJ-rK-jZp"/>
+                        <outlet property="photoPickerButton" destination="GFd-14-dMq" id="Ypt-P2-Qic"/>
+                        <outlet property="wagerTextField" destination="2sd-nG-LLI" id="DGl-zX-Zkw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EQP-9z-mXC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
