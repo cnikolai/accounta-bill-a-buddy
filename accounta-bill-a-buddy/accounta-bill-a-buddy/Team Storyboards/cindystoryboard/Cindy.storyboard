@@ -11,7 +11,7 @@
         <!--Create Wager View Controller-->
         <scene sceneID="CkI-p0-8Sk">
             <objects>
-                <viewController id="mMD-Gk-Gbk" customClass="CreateWagerViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CindyVC" id="mMD-Gk-Gbk" customClass="CreateWagerViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Asv-E6-gTJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
