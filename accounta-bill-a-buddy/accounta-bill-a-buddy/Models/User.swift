@@ -14,6 +14,7 @@ class User {
     var username: String
     var sentFriendRequests: [ [String : String] ]
     var receivedFriendRequests: [ [String : String] ]
+    //uuid:username
     var friends: [ [String : String] ]
     var blockedUsers: [String]
     var blockedByUsers: [String]

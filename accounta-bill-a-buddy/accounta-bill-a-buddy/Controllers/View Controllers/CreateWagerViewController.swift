@@ -26,6 +26,13 @@ class CreateWagerViewController: UIViewController {
         setupViews()
     }
     
+    @IBAction func inviteFriendsButtonTapped(_ sender: Any) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "InviteFriends", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "InviteFriendsVC") as! InviteFriendsListTableViewController
+        newViewController.modalPresentationStyle = .fullScreen
+        self.present(newViewController, animated: true, completion: nil)
+    }
+    
     @IBAction func photoPickerButtonTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Add a photo", message: nil, preferredStyle: .alert)
         
