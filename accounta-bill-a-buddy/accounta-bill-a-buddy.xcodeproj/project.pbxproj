@@ -14,7 +14,6 @@
 		37A1BE12267AAE260044FA88 /* Cindy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A1BE11267AAE260044FA88 /* Cindy.storyboard */; };
 		37AFFC302683E9650088E2C6 /* WagerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */; };
 		37AFFC322683E9900088E2C6 /* CreateWagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */; };
-		37AFFC342683E9A60088E2C6 /* CreateWagerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFFC332683E9A60088E2C6 /* CreateWagerDetailViewController.swift */; };
 		37B87E63268E1D0E00EAD4FE /* InviteFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37B87E62268E1D0E00EAD4FE /* InviteFriends.storyboard */; };
 		37B87E65268E1EDD00EAD4FE /* InviteFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B87E64268E1EDD00EAD4FE /* InviteFriendsTableViewCell.swift */; };
 		37B87E67268E201B00EAD4FE /* InviteFriendsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B87E66268E201B00EAD4FE /* InviteFriendsListTableViewController.swift */; };
@@ -53,7 +52,6 @@
 		37A1BE11267AAE260044FA88 /* Cindy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cindy.storyboard; sourceTree = "<group>"; };
 		37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerDetailViewController.swift; sourceTree = "<group>"; };
 		37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWagerViewController.swift; sourceTree = "<group>"; };
-		37AFFC332683E9A60088E2C6 /* CreateWagerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWagerDetailViewController.swift; sourceTree = "<group>"; };
 		37B87E62268E1D0E00EAD4FE /* InviteFriends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InviteFriends.storyboard; sourceTree = "<group>"; };
 		37B87E64268E1EDD00EAD4FE /* InviteFriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		37B87E66268E201B00EAD4FE /* InviteFriendsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsListTableViewController.swift; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 				490B11C626827FD10009BE1C /* WagerCollectionViewController.swift */,
 				37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */,
 				37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */,
-				37AFFC332683E9A60088E2C6 /* CreateWagerDetailViewController.swift */,
 				37B87E64268E1EDD00EAD4FE /* InviteFriendsTableViewCell.swift */,
 				37B87E66268E201B00EAD4FE /* InviteFriendsListTableViewController.swift */,
 				37B87E6A268E3D4B00EAD4FE /* AcceptRejectFriendsViewController.swift */,
@@ -433,7 +430,6 @@
 				9B4E95A8267BDD8300DA223F /* LoginViewController.swift in Sources */,
 				37AFFC302683E9650088E2C6 /* WagerDetailViewController.swift in Sources */,
 				37DFDDE3267A58CA0055AF6C /* SceneDelegate.swift in Sources */,
-				37AFFC342683E9A60088E2C6 /* CreateWagerDetailViewController.swift in Sources */,
 				379162B0268523450059184F /* WagerController.swift in Sources */,
 				9B52ABDD268D0ACD002D7B42 /* BlockedUsersViewController.swift in Sources */,
 				379162AE268523380059184F /* Wager.swift in Sources */,

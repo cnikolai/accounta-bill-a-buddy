@@ -390,6 +390,7 @@ class UserController {
         return false
     }
     
+    //MARK:- Dummy Data
     func createAndSaveUser(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = [], blockedUsers: [String] = [], blockedByUsers: [String] = [], reportedUsers: [ [String : String] ] = [], myWagers: [String] = [], myFriendsWagers: [String] = [], wagerRequests: [String] = [], completion: @escaping (Result<User, DatabaseError>) -> Void) {
         
         let newUser = User(uid: uid, username: username, sentFriendRequests: sentFriendRequests, receivedFriendRequests: receivedFriendRequests, friends: friends, blockedUsers: blockedUsers, blockedByUsers: blockedByUsers, reportedUsers: reportedUsers, myWagers: myWagers, myFriendsWagers: myFriendsWagers, wagerRequests: wagerRequests)
@@ -412,6 +413,14 @@ class UserController {
     
     func createDummyUser() {
         let dummyUser1 = createAndSaveUser(uid: UUID().uuidString, username: "test", sentFriendRequests: [], receivedFriendRequests: [], friends: [["3GU1xW4m3Mhgzk7l5bFSCoTk9Az1": "Sally"] , ["huN052Z3kJXcApf234j0Y7ds78g2" : "Bob"], ["rBmkx4W5s0VtdLq6PULrhToCau32" : "Jane" ]], blockedUsers: [], blockedByUsers: [], reportedUsers: [], myWagers: [], myFriendsWagers: [], wagerRequests: [], completion: {_ in})
+    }
+    
+    func appendWagerToFriendsWagerList(userfriend: String, wagerId: String) {
+        self.db.collection("users").document(userfriend).updateData(["wagerRequests" : FieldValue.arrayUnion([wagerId])])
+    }
+    
+    func appendWagerToOwnerWagerList(wagerId: String) {
+        self.db.collection("users").document((currentUser?._uid)!).updateData(["myWagers" : FieldValue.arrayUnion([wagerId])])
     }
     
     //MARK: - Fetch Wagers
