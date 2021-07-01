@@ -15,6 +15,11 @@
 		37AFFC302683E9650088E2C6 /* WagerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */; };
 		37AFFC322683E9900088E2C6 /* CreateWagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */; };
 		37AFFC342683E9A60088E2C6 /* CreateWagerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFFC332683E9A60088E2C6 /* CreateWagerDetailViewController.swift */; };
+		37B87E63268E1D0E00EAD4FE /* InviteFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37B87E62268E1D0E00EAD4FE /* InviteFriends.storyboard */; };
+		37B87E65268E1EDD00EAD4FE /* InviteFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B87E64268E1EDD00EAD4FE /* InviteFriendsTableViewCell.swift */; };
+		37B87E67268E201B00EAD4FE /* InviteFriendsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B87E66268E201B00EAD4FE /* InviteFriendsListTableViewController.swift */; };
+		37B87E69268E352300EAD4FE /* ApproveRejectFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37B87E68268E352300EAD4FE /* ApproveRejectFriends.storyboard */; };
+		37B87E6B268E3D4B00EAD4FE /* AcceptRejectFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B87E6A268E3D4B00EAD4FE /* AcceptRejectFriendsViewController.swift */; };
 		37DFDDE1267A58CA0055AF6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DFDDE0267A58CA0055AF6C /* AppDelegate.swift */; };
 		37DFDDE3267A58CA0055AF6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DFDDE2267A58CA0055AF6C /* SceneDelegate.swift */; };
 		37DFDDE8267A58CA0055AF6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37DFDDE6267A58CA0055AF6C /* Main.storyboard */; };
@@ -49,6 +54,11 @@
 		37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerDetailViewController.swift; sourceTree = "<group>"; };
 		37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWagerViewController.swift; sourceTree = "<group>"; };
 		37AFFC332683E9A60088E2C6 /* CreateWagerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWagerDetailViewController.swift; sourceTree = "<group>"; };
+		37B87E62268E1D0E00EAD4FE /* InviteFriends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InviteFriends.storyboard; sourceTree = "<group>"; };
+		37B87E64268E1EDD00EAD4FE /* InviteFriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsTableViewCell.swift; sourceTree = "<group>"; };
+		37B87E66268E201B00EAD4FE /* InviteFriendsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsListTableViewController.swift; sourceTree = "<group>"; };
+		37B87E68268E352300EAD4FE /* ApproveRejectFriends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveRejectFriends.storyboard; sourceTree = "<group>"; };
+		37B87E6A268E3D4B00EAD4FE /* AcceptRejectFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptRejectFriendsViewController.swift; sourceTree = "<group>"; };
 		37DFDDDD267A58CA0055AF6C /* accounta-bill-a-buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "accounta-bill-a-buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37DFDDE0267A58CA0055AF6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37DFDDE2267A58CA0055AF6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +103,8 @@
 			children = (
 				37A1BE11267AAE260044FA88 /* Cindy.storyboard */,
 				3714EDAA26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard */,
+				37B87E62268E1D0E00EAD4FE /* InviteFriends.storyboard */,
+				37B87E68268E352300EAD4FE /* ApproveRejectFriends.storyboard */,
 			);
 			path = cindystoryboard;
 			sourceTree = "<group>";
@@ -184,6 +196,9 @@
 				37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */,
 				37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */,
 				37AFFC332683E9A60088E2C6 /* CreateWagerDetailViewController.swift */,
+				37B87E64268E1EDD00EAD4FE /* InviteFriendsTableViewCell.swift */,
+				37B87E66268E201B00EAD4FE /* InviteFriendsListTableViewController.swift */,
+				37B87E6A268E3D4B00EAD4FE /* AcceptRejectFriendsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -344,9 +359,11 @@
 				9B4E9598267AB24100DA223F /* Friends.storyboard in Resources */,
 				9B541515268B7B05000D5445 /* tiffany.storyboard in Resources */,
 				9B4E959B267AB25100DA223F /* Rishi.storyboard in Resources */,
+				37B87E63268E1D0E00EAD4FE /* InviteFriends.storyboard in Resources */,
 				9B188EF7267A71E40020DA62 /* GoogleService-Info.plist in Resources */,
 				37DFDDEA267A58CC0055AF6C /* Assets.xcassets in Resources */,
 				37DFDDE8267A58CA0055AF6C /* Main.storyboard in Resources */,
+				37B87E69268E352300EAD4FE /* ApproveRejectFriends.storyboard in Resources */,
 				37A1BE12267AAE260044FA88 /* Cindy.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,8 +420,11 @@
 				9B71CAB6267ECC6100B99D3B /* UserTableViewCell.swift in Sources */,
 				9B4E95A2267AFB3500DA223F /* UserController.swift in Sources */,
 				9BD4F4242682B330004BA786 /* FriendsTableViewController.swift in Sources */,
+				37B87E65268E1EDD00EAD4FE /* InviteFriendsTableViewCell.swift in Sources */,
+				37B87E67268E201B00EAD4FE /* InviteFriendsListTableViewController.swift in Sources */,
 				490B11C326827BD00009BE1C /* WagerCollectionViewCell.swift in Sources */,
 				37AFFC322683E9900088E2C6 /* CreateWagerViewController.swift in Sources */,
+				37B87E6B268E3D4B00EAD4FE /* AcceptRejectFriendsViewController.swift in Sources */,
 				379162B226852D2D0059184F /* DatabaseError.swift in Sources */,
 				9B52ABDA268D0A7D002D7B42 /* ProfileViewController.swift in Sources */,
 				9B52ABE0268D0B1C002D7B42 /* BlockedUserTableViewCell.swift in Sources */,
