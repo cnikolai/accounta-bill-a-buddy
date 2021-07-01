@@ -80,7 +80,7 @@ class UserController {
         let blockedByUser = checkIfBlockedByUser(username: name)
         
         if !userBlocked && !blockedByUser {
-        db.collection("users").whereField("username", isEqualTo: name)
+            db.collection("users").whereField("username", isEqualTo: name)
                 .getDocuments { (querySnapshot, error) in
                     if let error = error {
                         (print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)"))
@@ -375,20 +375,103 @@ class UserController {
         return false
     }
     
+    func createAndSaveUser(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = [], blockedUsers: [String] = [], blockedByUsers: [String] = [], reportedUsers: [ [String : String] ] = [], myWagers: [String] = [], myFriendsWagers: [String] = [], wagerRequests: [String] = [], completion: @escaping (Result<User, DatabaseError>) -> Void) {
+        
+        let newUser = User(uid: uid, username: username, sentFriendRequests: sentFriendRequests, receivedFriendRequests: receivedFriendRequests, friends: friends, blockedUsers: blockedUsers, blockedByUsers: blockedByUsers, reportedUsers: reportedUsers, myWagers: myWagers, myFriendsWagers: myFriendsWagers, wagerRequests: wagerRequests)
+        
+        let userRef = db.collection("users")
+        userRef.document("\(newUser.uid)").setData([
+            "username": "\(newUser.username)",
+            "friends" : "\(newUser.friends)"
+            
+        ]) { error in
+            if let error = error {
+                print("Error adding document: \(error)")
+                return completion(.failure(.fireError(error)))
+            } else {
+                print("User Document added with ID: \(newUser.uid)")
+                return completion(.success(newUser))
+            }
+        }
+    }
+    
+    func createDummyUser() {
+        let dummyUser1 = createAndSaveUser(uid: UUID().uuidString, username: "test", sentFriendRequests: [], receivedFriendRequests: [], friends: [["3GU1xW4m3Mhgzk7l5bFSCoTk9Az1": "Sally"] , ["huN052Z3kJXcApf234j0Y7ds78g2" : "Bob"], ["rBmkx4W5s0VtdLq6PULrhToCau32" : "Jane" ]], blockedUsers: [], blockedByUsers: [], reportedUsers: [], myWagers: [], myFriendsWagers: [], wagerRequests: [], completion: {_ in})
+    }
+    
     //MARK: - Fetch Wagers
-//    func fetchAllWagersWithOwner(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
-//        guard let currentUser = currentUser else { return completion(.failure(DatabaseError.couldNotUnwrap)) }
-//        return completion(.success(currentUser.myWagers))
-//    }
-//    
-//    func fetchWagersWithFriends(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
-//        guard let currentUser = currentUser else { return completion(.failure(DatabaseError.couldNotUnwrap)) }
-//        return completion(.success(currentUser.myFriendsWagers))
-//    }
-//    
-//    func fetchPendingWagers(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
-//        guard let currentUser = currentUser else { return completion(.failure(DatabaseError.couldNotUnwrap)) }
-//        return completion(.success(currentUser.wagerRequests))
-//    }
+    //    func fetchAllWagersWithOwner(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
+    //        guard let currentUser = currentUser else { return completion(.failure(DatabaseError.couldNotUnwrap)) }
+    //        return completion(.success(currentUser.myWagers))
+    //    }
+    //
+    //    func fetchWagersWithFriends(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
+    //        guard let currentUser = currentUser else { return completion(.failure(DatabaseError.couldNotUnwrap)) }
+    //        return completion(.success(currentUser.myFriendsWagers))
+    //    }
+    //
+    //    func fetchPendingWagers(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
+    //        guard let currentUser = currentUser else { return completion(.failure(DatabaseError.couldNotUnwrap)) }
+    //        return completion(.success(currentUser.wagerRequests))
+    //    }
     
 }//End of class
+
+extension UserController {
+    func fetchMyWagers() -> [Wager] {
+        guard let currentUser = currentUser else { return [] }
+        let myWagersStrings = currentUser.myWagers
+        
+        var myWagers: [Wager] = []
+        for wager in myWagersStrings {
+            WagerController.sharedInstance.fetchWager(uuid: wager) { result in
+                switch result {
+                case .success(let wager): myWagers.append(wager)
+                case .failure(let error):
+                    print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+                }
+            }
+        }
+        return myWagers
+    }
+    
+    func fetchMyFriendsWagers() -> [Wager] {
+        guard let currentUser = currentUser else { return [] }
+        let myFriendsWagersStrings = currentUser.myFriendsWagers
+        
+        var myFriendsWagers: [Wager] = []
+        for wager in myFriendsWagersStrings {
+            WagerController.sharedInstance.fetchWager(uuid: wager) { result in
+                switch result {
+                case .success(let wager):
+                    myFriendsWagers.append(wager)
+                case .failure(let error):
+                    print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+                    
+                }
+            }
+        }
+        return myFriendsWagers
+    }
+    
+    func fetchWagerRequests() -> [Wager] {
+        guard let currentUser = currentUser else { return [] }
+        let wagerRequestsStrings = currentUser.wagerRequests
+        
+        var wagerRequests: [Wager] = []
+        for wager in wagerRequestsStrings {
+            WagerController.sharedInstance.fetchWager(uuid: wager) { result in
+                switch result {
+                case .success(let wager):
+                    wagerRequests.append(wager)
+                case .failure(let error):
+                    print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+                    
+                }
+            }
+        }
+        return wagerRequests
+    }
+}
+
+
