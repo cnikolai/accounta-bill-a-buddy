@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol InviteFriendsDelegate: AnyObject {
+    func addInviteFriendsToCurrentUserFriendsArray(friends: [String])
+}
+
 class InviteFriendsTableViewCell: UITableViewCell {
 
    
@@ -16,20 +20,20 @@ class InviteFriendsTableViewCell: UITableViewCell {
             updateViews()
         }
     }
+    weak var delegate: InviteFriendsDelegate?
     
     // MARK:-Outlets
     @IBOutlet weak var friendNameLabel: UILabel!
     @IBOutlet weak var selectFriendButton: UIButton!
     
     @IBAction func didTapFriendButton(_ sender: Any) {
-        if selectFriendButton.currentImage == UIImage(systemName: "person.fill") {
-        selectFriendButton.setImage(UIImage(systemName: "person.fill.checkmark"), for: .normal)
+        if selectFriendButton.currentImage == UIImage(systemName: "circle") {
+        selectFriendButton.setImage(UIImage(systemName: "person.crop.circle.badge.checkmark"), for: .normal)
         }
         else {
-            selectFriendButton.setImage(UIImage(systemName: "person.fill"), for: .normal)
+            selectFriendButton.setImage(UIImage(systemName: "circle"), for: .normal)
         }
     }
-    
     
     // MARK:-Functions
     func updateViews() {
