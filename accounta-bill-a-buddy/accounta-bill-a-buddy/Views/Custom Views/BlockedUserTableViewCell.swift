@@ -7,17 +7,33 @@
 
 import UIKit
 
+protocol UnblockUserCellDelegate: AnyObject {
+    func unblockUser()
+}
+
 class BlockedUserTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    //MARK: - Outlets
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var unblockButton: UIButton!
+    
+    //MARK: - Properties
+    weak var delegate: UnblockUserCellDelegate?
+    var blockedUser: String? {
+        didSet {
+            updateView()
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    //MARK: - Actions
+    @IBAction func unblockButtonTapped(_ sender: UIButton) {
+        unblockButton.tintColor = .gray
+    }
+    
+    //MARK: - Functions
+    func updateView() {
+        guard let blockedUser = blockedUser else { return }
+        usernameLabel.text = blockedUser
     }
 
 }//End of class

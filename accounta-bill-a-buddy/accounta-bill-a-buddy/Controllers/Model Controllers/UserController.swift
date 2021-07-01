@@ -297,6 +297,21 @@ class UserController {
         
     }
     
+    ///UNBLOCK USER
+    func unblockUser(username: String) {
+        guard let currentUser = currentUser else { return }
+        //Remove from current user's blockedUsers array and save to db
+        if let index = currentUser.blockedUsers.firstIndex(where: { $0 == username }) {
+            currentUser.blockedUsers.remove(at: index)
+        }
+        
+        let currentUserData = db.collection("users").document(currentUser.uid)
+        currentUserData.setData(["blockedUsers": currentUser.blockedUsers], merge: true)
+        
+        //Remove current user from user's blockedByUser's array and save to db
+        
+    }
+    
     ///REPORT FRIEND
     func reportFriend(uid: String, username: String) {
         blockFriend(uid: uid, username: username)

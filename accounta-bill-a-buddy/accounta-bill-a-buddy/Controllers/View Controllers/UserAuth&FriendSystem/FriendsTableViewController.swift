@@ -12,6 +12,7 @@ class FriendsTableViewController: UITableViewController {
     //MARK: - Outlets
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var stackViewHeight: NSLayoutConstraint!
     
     //MARK: - Properties
     private enum Screen {
@@ -53,6 +54,11 @@ class FriendsTableViewController: UITableViewController {
     //MARK: - Functions
     private func setupViewFor(screen: Screen) {
         searchBar.isHidden = (currentScreen == .requests || currentScreen == .friends)
+        if searchBar.isHidden {
+            stackViewHeight.constant = 32.0
+        } else {
+            stackViewHeight.constant = 88.0
+        }
     }
     
     // MARK: - Table view data source
