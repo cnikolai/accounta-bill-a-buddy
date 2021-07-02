@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
@@ -14,7 +15,7 @@ class ProfileViewController: UIViewController {
     
     //MARK: - Properties
     
-    
+
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,13 @@ class ProfileViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction func logOutButtonTapped(_ sender: UIButton) {
-        
+        try! Auth.auth().signOut()
+    
+        if Auth.auth().currentUser == nil {
+            let rootController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginVC")
+            rootController.modalPresentationStyle = .fullScreen
+            present(rootController, animated: true, completion: nil)
+        }
     }
     
     //MARK: - Functions
