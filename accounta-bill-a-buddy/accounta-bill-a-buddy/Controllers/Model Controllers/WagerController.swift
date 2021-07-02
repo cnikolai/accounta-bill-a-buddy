@@ -66,6 +66,22 @@ class WagerController {
             }
     }
     
+    func createWagerArray(wagerStrings: [String]) -> [Wager] {
+        
+        var myWagers: [Wager] = []
+        for wager in wagerStrings {
+            WagerController.sharedInstance.fetchWager(wagerID: wager) { result in
+                switch result {
+                case .success(let wager): myWagers.append(wager)
+                case .failure(let error):
+                    print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+                }
+            }
+        }
+        return myWagers
+        
+    }
+    
     ///ACCEPT/DECLINE Wagers
     func removeWagerFromMyPendingWagers(wagerId: String) {
         guard let indexofWagerToBeRemvoed = UserController.sharedInstance.currentUser?.myWagers.firstIndex(of: wagerId) else { return }
