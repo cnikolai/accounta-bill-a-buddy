@@ -10,9 +10,6 @@ import UIKit
 private let reuseIdentifier = "wagerCell"
 
 class WagerCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
     
     var wagers: [Wager] = [] //["basketball", "football", "gym", "soccer", "tennis"]
     
@@ -33,6 +30,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         collectionView.delegate = self
         collectionView.dataSource = self
         wagers = WagerController.sharedInstance.wagers
+        tempFuncFetchWagers()
         //       self.toDetailView = UIStoryboardSegue(identifier: "toDetailView", source: self, destination: WagerDetailViewController as? UIViewController   ?? nil)
     }
     
@@ -49,28 +47,39 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         }
     }
     
-    @IBAction func segmentedControllerTapped(_ sender: Any) {
-        
+    func tempFuncFetchWagers() {
+        guard let currentUser = UserController.sharedInstance.currentUser else { return }
+        let wagersArray = currentUser.myWagers
+        print(wagersArray)
     }
+    
+//    @IBAction func segmentedControllerTapped(_ sender: Any) {
+//        switch segmentedController.selectedSegmentIndex {
+//        case 0:
+//            let wagersArray = UserController.sharedInstance.fetchMyWagers()
+//            print(wagersArray)
+//        default: break
+//        }
+//    }
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        var returnValue = 0
-//        switch segmentedController.selectedSegmentIndex {
-//        case 0:
-//            returnValue = UserController.sharedInstance.currentUser?.ownedWagers.count ?? 0
-//        case 1:
-//            returnValue = UserController.sharedInstance.currentUser?.acceptedWagers.count ?? 0
-//        case 2:
-//            returnValue = UserController.sharedInstance.currentUser?.pendingWagers.count ?? 0
-//        default: break
-//        }
-//        return returnValue
-//    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        var returnValue = 0
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            returnValue = UserController.sharedInstance.currentUser?.myWagers.count ?? 0
+        case 1:
+            returnValue = UserController.sharedInstance.currentUser?.myFriendsWagers.count ?? 0
+        case 2:
+            returnValue = UserController.sharedInstance.currentUser?.wagerRequests.count ?? 0
+        default: break
+        }
+        return returnValue
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wagerCell", for: indexPath) as? WagerCollectionViewCell else {return UICollectionViewCell()}

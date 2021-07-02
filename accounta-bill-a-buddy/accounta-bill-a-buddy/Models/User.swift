@@ -93,6 +93,33 @@ class User {
         }
     }
     
+    var _myWagers: [String] {
+        get {
+            return myWagers
+        }
+        set {
+            myWagers = newValue
+        }
+    }
+    
+    var _myFriendsWagers: [String] {
+        get {
+            return myFriendsWagers
+        }
+        set {
+            myFriendsWagers = newValue
+        }
+    }
+    
+    var _wagerRequests: [String] {
+        get {
+            return wagerRequests
+        }
+        set {
+            wagerRequests = newValue
+        }
+    }
+    
     init(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = [], blockedUsers: [ [String : String] ] = [], blockedByUsers: [ [String : String] ] = [], reportedUsers: [ [String : String] ] = [], myWagers: [String] = [], myFriendsWagers: [String] = [], wagerRequests: [String] = []) {
         self.uid = uid
         self.username = username
