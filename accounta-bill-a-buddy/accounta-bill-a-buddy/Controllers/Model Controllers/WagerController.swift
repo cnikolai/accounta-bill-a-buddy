@@ -108,4 +108,56 @@ class WagerController {
             }
         }
     }
+    
+    ///ACCEPT/DECLINE Wagers
+    func removeWagerFromMyPendingWagers(wagerId: String) {
+        guard let indexofWagerToBeRemvoed = UserController.sharedInstance.currentUser?.myWagers.firstIndex(of: wagerId) else { return }
+        UserController.sharedInstance.currentUser?.myWagers.remove(at: indexofWagerToBeRemvoed)
+        //save currentuser mywagers to database
+        UserController.sharedInstance.updateMyWagersList()
+        
+    }
+   
+    func addWagerToMyFriendsWagers(wager: Wager) {
+        UserController.sharedInstance.currentUser?.myFriendsWagers.append(wager.wagerID)
+        guard let indexofWagerToBeChanged = WagerController.sharedInstance.wagers.firstIndex(of: wager) else { return }
+        WagerController.sharedInstance.wagers[indexofWagerToBeChanged].acceptedFriends.append(UserController.sharedInstance.currentUser!._uid)
+        //save currentuser myfriendswagers and current wager acceptedFriends to database
+        UserController.sharedInstance.updateMyFriendsWagersList()
+        updateWagerAcceptedFriends(wagerId: wager.wagerID, acceptedFriends: WagerController.sharedInstance.wagers[indexofWagerToBeChanged].acceptedFriends)
+    }
+    
+    func removeCurrentUserFromWagersFriendsList(wager: Wager) {
+        guard let indexofWagerToBeChanged = WagerController.sharedInstance.wagers.firstIndex(of: wager) else { return }
+        guard let indexofCurrentUserasInvitedFriendofWager = WagerController.sharedInstance.wagers[indexofWagerToBeChanged].invitedFriends.firstIndex(of: UserController.sharedInstance.currentUser!._uid) else { return }
+        WagerController.sharedInstance.wagers[indexofWagerToBeChanged].invitedFriends.remove(at: indexofCurrentUserasInvitedFriendofWager)
+        //save current wager invitedfriends to database
+        updateWagerInvitedFriends(wagerId: wager.wagerID, invitedFriends: WagerController.sharedInstance.wagers[indexofWagerToBeChanged].invitedFriends)
+    }
+    
+    func updateWagerAcceptedFriends(wagerId: String, acceptedFriends: [String]) {
+        let wagersRef = db.collection(wagersCollection).document(wagerId)
+        wagersRef.updateData([
+            "acceptedFriends": acceptedFriends
+            ]) { err in
+                if let err = err {
+                    print("Error updating accepted friends for wager document: \(err)")
+                } else {
+                    print("Accepted friends for wager Document successfully updated")
+                }
+            }
+    }
+    
+    func updateWagerInvitedFriends(wagerId: String, invitedFriends: [String]) {
+        let wagersRef = db.collection(wagersCollection).document(wagerId)
+        wagersRef.updateData([
+            "invitedFriends": invitedFriends
+            ]) { err in
+                if let err = err {
+                    print("Error updating invited friends for wager document: \(err)")
+                } else {
+                    print("Invited friends for wager Document successfully updated")
+                }
+            }
+    }
 }

@@ -9,6 +9,9 @@ import UIKit
 
 class AcceptRejectFriendsViewController: UIViewController {
 
+    // MARK:-Properties
+    var wager: Wager?
+    
     // MARK:-Outlets
     @IBOutlet weak var wagerImageView: UIImageView!
     @IBOutlet weak var invitingYouLabel: UILabel!
@@ -27,15 +30,19 @@ class AcceptRejectFriendsViewController: UIViewController {
         dismissView()
     }
     
-    @IBAction func rejectButtonTapped(_ sender: Any) {
-        
+    @IBAction func declineButtonTapped(_ sender: Any) {
+        guard let wager = wager else { return }
+        WagerController.sharedInstance.removeWagerFromMyPendingWagers(wagerId: wager.wagerID)
+        WagerController.sharedInstance.addWagerToMyFriendsWagers(wager: wager)
     }
     
     @IBAction func approveButtonTapped(_ sender: Any) {
-        
+        guard let wager = wager else { return }
+        WagerController.sharedInstance.removeWagerFromMyPendingWagers(wagerId: wager.wagerID)
+        WagerController.sharedInstance.removeCurrentUserFromWagersFriendsList(wager: wager)
     }
     
     func dismissView() {
-        
+        self.navigationController?.popViewController(animated: true)
     }
 }
