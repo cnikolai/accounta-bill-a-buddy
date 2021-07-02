@@ -10,7 +10,7 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class LoginViewController: UIViewController {
-    
+  
     //MARK: - Outlets
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -168,12 +168,11 @@ class LoginViewController: UIViewController {
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
     }
-    
+ 
 }//End of class
 
 
 extension LoginViewController: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         passwordTextField.resignFirstResponder()
         

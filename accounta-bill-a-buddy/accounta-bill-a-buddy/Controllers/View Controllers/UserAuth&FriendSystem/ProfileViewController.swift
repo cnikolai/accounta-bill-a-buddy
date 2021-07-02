@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
@@ -23,7 +24,13 @@ class ProfileViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction func logOutButtonTapped(_ sender: UIButton) {
+        try! Auth.auth().signOut()
         
+//        if let storyboard = self.storyboard {
+//        let vc = storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! UINavigationController
+//            self.present(vc, animated: true, completion: nil)
+        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+//        }
     }
     
     //MARK: - Functions
