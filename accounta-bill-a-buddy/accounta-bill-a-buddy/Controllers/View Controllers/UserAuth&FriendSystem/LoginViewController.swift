@@ -141,7 +141,7 @@ class LoginViewController: UIViewController {
             }
             
             if Utilities.isUsernameValid(cleanedUsername) == false {
-                return "Please make sure your username is 2-12 characters long and does not contain special characters."
+                return "Please make sure your username is 2-12 characters long, lowercased, and does not special characters"
             }
             
         }
