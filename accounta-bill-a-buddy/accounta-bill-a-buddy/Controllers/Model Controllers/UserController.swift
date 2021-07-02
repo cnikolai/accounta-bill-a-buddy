@@ -495,7 +495,7 @@ extension UserController {
         
         var myWagers: [Wager] = []
         for wager in myWagersStrings {
-            WagerController.sharedInstance.fetchWager(uuid: wager) { result in
+            WagerController.sharedInstance.fetchWager(wagerID: wager) { result in
                 switch result {
                 case .success(let wager): myWagers.append(wager)
                 case .failure(let error):
@@ -512,7 +512,7 @@ extension UserController {
         
         var myFriendsWagers: [Wager] = []
         for wager in myFriendsWagersStrings {
-            WagerController.sharedInstance.fetchWager(uuid: wager) { result in
+            WagerController.sharedInstance.fetchWager(wagerID: wager) { result in
                 switch result {
                 case .success(let wager):
                     myFriendsWagers.append(wager)
@@ -531,7 +531,7 @@ extension UserController {
         
         var wagerRequests: [Wager] = []
         for wager in wagerRequestsStrings {
-            WagerController.sharedInstance.fetchWager(uuid: wager) { result in
+            WagerController.sharedInstance.fetchWager(wagerID: wager) { result in
                 switch result {
                 case .success(let wager):
                     wagerRequests.append(wager)

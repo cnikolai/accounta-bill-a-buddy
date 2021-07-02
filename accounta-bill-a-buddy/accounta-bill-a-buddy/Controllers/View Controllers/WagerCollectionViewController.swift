@@ -17,9 +17,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     // Outlets
     @IBOutlet weak var editButton: UIBarButtonItem!
-    
     @IBOutlet weak var segmentedController: UISegmentedControl!
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
     //Properties
@@ -30,7 +28,16 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         collectionView.delegate = self
         collectionView.dataSource = self
         wagers = WagerController.sharedInstance.wagers
-        tempFuncFetchWagers()
+        //tempFuncFetchWagers()
+        WagerController.sharedInstance.fetchWager(wagerID: "0DA2C012-6F05-4104-B3F0-18A2FCB0C104") { result in
+            switch result {
+            case .success(let wager):
+                print("Wager:")
+                print(wager.wagerID)
+            case .failure(let error):
+                print("Could not fetch wager. \(error)")
+            }
+        }
         //       self.toDetailView = UIStoryboardSegue(identifier: "toDetailView", source: self, destination: WagerDetailViewController as? UIViewController   ?? nil)
     }
     
@@ -61,7 +68,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
 //        default: break
 //        }
 //    }
-    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
