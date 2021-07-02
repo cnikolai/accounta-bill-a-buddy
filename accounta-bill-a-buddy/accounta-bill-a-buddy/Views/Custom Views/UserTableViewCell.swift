@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol CustomCellUpdater: AnyObject {
-    func updateTableView()
-}
-
 class UserTableViewCell: UITableViewCell {
 
     //MARK: - Outlets

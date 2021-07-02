@@ -35,6 +35,7 @@
 		9B4E95A2267AFB3500DA223F /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E95A1267AFB3500DA223F /* UserController.swift */; };
 		9B4E95A8267BDD8300DA223F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E95A7267BDD8300DA223F /* LoginViewController.swift */; };
 		9B4E95C5267C531600DA223F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E95C4267C531600DA223F /* Utilities.swift */; };
+		9B4EEFCE268E90B600733AC7 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EEFCD268E90B600733AC7 /* Protocols.swift */; };
 		9B52ABDA268D0A7D002D7B42 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B52ABD9268D0A7D002D7B42 /* ProfileViewController.swift */; };
 		9B52ABDD268D0ACD002D7B42 /* BlockedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B52ABDC268D0ACD002D7B42 /* BlockedUsersViewController.swift */; };
 		9B52ABE0268D0B1C002D7B42 /* BlockedUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B52ABDF268D0B1C002D7B42 /* BlockedUserTableViewCell.swift */; };
@@ -76,6 +77,7 @@
 		9B4E95A1267AFB3500DA223F /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		9B4E95A7267BDD8300DA223F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9B4E95C4267C531600DA223F /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		9B4EEFCD268E90B600733AC7 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		9B52ABD9268D0A7D002D7B42 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9B52ABDC268D0ACD002D7B42 /* BlockedUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUsersViewController.swift; sourceTree = "<group>"; };
 		9B52ABDF268D0B1C002D7B42 /* BlockedUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUserTableViewCell.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				9B4E95C4267C531600DA223F /* Utilities.swift */,
 				9B3247FA267DBB0A00C16040 /* Constants.swift */,
 				379162B126852D2D0059184F /* DatabaseError.swift */,
+				9B4EEFCD268E90B600733AC7 /* Protocols.swift */,
 			);
 			path = "Extensions+Helpers";
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				9B4E959F267AFB1500DA223F /* User.swift in Sources */,
 				9B4E95A8267BDD8300DA223F /* LoginViewController.swift in Sources */,
 				37AFFC302683E9650088E2C6 /* WagerDetailViewController.swift in Sources */,
+				9B4EEFCE268E90B600733AC7 /* Protocols.swift in Sources */,
 				37DFDDE3267A58CA0055AF6C /* SceneDelegate.swift in Sources */,
 				379162B0268523450059184F /* WagerController.swift in Sources */,
 				9B52ABDD268D0ACD002D7B42 /* BlockedUsersViewController.swift in Sources */,
