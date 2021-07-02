@@ -20,11 +20,18 @@ class InviteFriendsListTableViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.allowsSelection = false
+    }
+    
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
 }
 
 extension InviteFriendsListTableViewController: UITableViewDelegate, UITableViewDataSource {
@@ -35,12 +42,8 @@ extension InviteFriendsListTableViewController: UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "InviteFriendsCell", for: indexPath) as? InviteFriendsTableViewCell else { return UITableViewCell()}
-                 
-             //guard let friend = self.journal else { return UITableViewCell() }
              let friend = UserController.sharedInstance.currentUser?._friends[indexPath.row]
-             
              cell.friend = friend
-             
              return cell
     }
 }

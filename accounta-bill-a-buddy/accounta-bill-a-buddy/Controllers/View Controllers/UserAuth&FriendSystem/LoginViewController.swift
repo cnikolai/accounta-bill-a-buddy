@@ -38,6 +38,7 @@ class LoginViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordTextField.delegate = self
         setupViewFor(screen: .login)
     }
     
@@ -45,8 +46,10 @@ class LoginViewController: UIViewController {
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
         currentScreen = (sender.selectedSegmentIndex == 0 ? .login : .signUp)
     }
+    
     @IBAction func forgotPasswordButtonTapped(_ sender: UIButton) {
     }
+    
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         let error = validateFields()
         if error != nil {
@@ -63,8 +66,8 @@ class LoginViewController: UIViewController {
                 }
             }
         }
-        
     }
+    
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
         let username = self.usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
@@ -167,3 +170,18 @@ class LoginViewController: UIViewController {
     }
     
 }//End of class
+
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        passwordTextField.resignFirstResponder()
+        
+        if segmentedControl.selectedSegmentIndex == 0 {
+            loginButtonTapped(UIButton())
+        } else if segmentedControl.selectedSegmentIndex == 1 {
+            signUpButtonTapped(UIButton())
+        }
+        return true
+    }
+}

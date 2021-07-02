@@ -24,6 +24,9 @@ class CreateWagerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.hidesBackButton = true;
+        self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = false;
     }
     
     @IBAction func inviteFriendsButtonTapped(_ sender: Any) {
@@ -55,28 +58,31 @@ class CreateWagerViewController: UIViewController {
     
     @IBAction func createWagerButtonTapped(_ sender: Any) {
         guard let wager = wagerTextField.text, !wager.isEmpty,
-              !(wager == "\nWhat is your Wager?") else {
+              !(wager == "\nWhat is your Wager?"), !(wager == "\nPlease enter a wager") else {
             showError("\nPlease enter a wager", forWhichTextField: "wager")
             return }
-        guard let goal = goalTextField.text, !goal.isEmpty, !(goal == "\n\nWhat is your Goal?") else {
+        guard let goal = goalTextField.text, !goal.isEmpty, !(goal == "\n\nWhat is your Goal?"),!(goal == "\n\nPlease enter a goal") else {
             showError("\n\nPlease enter a goal", forWhichTextField: "goal")
             return }
         guard let deadline = deadlineTextField.text, !deadline.isEmpty,
-              !(deadline == "What is the Wager Deadline?") else {
+              !(deadline == "What is the Wager Deadline?"), !(deadline == "\nPlease enter a wager deadline") else {
             showError("\nPlease enter a wager deadline", forWhichTextField: "deadline")
             return }
-        //let wagerBuddies = inviteFriends()
-        //UserController.sharedInstance.saveFriends()
-        //Jenny, test, Jane
-        WagerController.sharedInstance.createAndSaveWager(owner: UserController.sharedInstance.currentUser?.uid ?? "GuestUID", invitedFriends: ["seE7sCx6VrhYaTmFemTqHLQNGMO2","PPR1hHW8x0a7ugkG7FQiYHh8Lnt1"], acceptedFriends: ["rBmkx4W5s0VtdLq6PULrhToCau32"], wagerPhoto: imageImageView.image, goalDescription: goal, wager: wager, deadline: deadline, progress: 0) { result in
+        WagerController.sharedInstance.createAndSaveWager(owner: (UserController.sharedInstance.currentUser?.uid)!, invitedFriends: ["huN052Z3kJXcApf234j0Y7ds78g2","rBmkx4W5s0VtdLq6PULrhToCau32"], acceptedFriends: [], wagerPhoto: imageImageView.image, goalDescription: goal, wager: wager, deadline: deadline, progress: 0) { result in
             switch (result) {
             case .success(let wager):
+                //add new wager to owner's wager list
+                UserController.sharedInstance.appendWagerToOwnerWagerList(wagerId: wager.wagerID)
+                //add new wager to all of friends pendingWagers list
+                for userfriend in wager.invitedFriends {
+                    UserController.sharedInstance.appendWagerToFriendsWagerList(userfriend: userfriend, wagerId: wager.wagerID)
+                }
                 self.dismissView()
             case .failure(let error):
                 print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
             }
         }
-        //dismissView()
+        
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
