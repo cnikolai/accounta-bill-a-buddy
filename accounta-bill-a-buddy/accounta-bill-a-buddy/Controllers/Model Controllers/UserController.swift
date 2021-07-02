@@ -416,17 +416,17 @@ class UserController {
             })
         }
 
-        return false
+        return blocked
     }
     
     //MARK:- Dummy Data
-    func createAndSaveUser(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = [], blockedUsers: [String] = [], blockedByUsers: [String] = [], reportedUsers: [ [String : String] ] = [], myWagers: [String] = [], myFriendsWagers: [String] = [], wagerRequests: [String] = [], completion: @escaping (Result<User, DatabaseError>) -> Void) {
-        
-        let newUser = User(uid: uid, username: username, sentFriendRequests: sentFriendRequests, receivedFriendRequests: receivedFriendRequests, friends: friends, blockedUsers: blockedUsers, blockedByUsers: blockedByUsers, reportedUsers: reportedUsers, myWagers: myWagers, myFriendsWagers: myFriendsWagers, wagerRequests: wagerRequests)
-
-        
-        return blocked
-    }
+//    func createAndSaveUser(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = [], blockedUsers: [String] = [], blockedByUsers: [String] = [], reportedUsers: [ [String : String] ] = [], myWagers: [String] = [], myFriendsWagers: [String] = [], wagerRequests: [String] = [], completion: @escaping (Result<User, DatabaseError>) -> Void) {
+//
+//        let newUser = User(uid: uid, username: username, sentFriendRequests: sentFriendRequests, receivedFriendRequests: receivedFriendRequests, friends: friends, blockedUsers: blockedUsers, blockedByUsers: blockedByUsers, reportedUsers: reportedUsers, myWagers: myWagers, myFriendsWagers: myFriendsWagers, wagerRequests: wagerRequests)
+//
+//
+//        return blocked
+//    }
     
 //    func createAndSaveUser(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = [], blockedUsers: [String] = [], blockedByUsers: [String] = [], reportedUsers: [ [String : String] ] = [], myWagers: [String] = [], myFriendsWagers: [String] = [], wagerRequests: [String] = [], completion: @escaping (Result<User, DatabaseError>) -> Void) {
 //
