@@ -7,9 +7,9 @@
 
 import UIKit
 
-//protocol InviteFriendsDelegate: AnyObject {
-//    func addInviteFriendsToCurrentUserFriendsArray(friends: [String])
-//}
+protocol InviteFriendsTableViewCellDelegate: AnyObject {
+    func saveFriends(_ sender: InviteFriendsTableViewCell)
+}
 
 class InviteFriendsTableViewCell: UITableViewCell {
 
@@ -20,19 +20,15 @@ class InviteFriendsTableViewCell: UITableViewCell {
             updateViews()
         }
     }
-    //weak var delegate: InviteFriendsDelegate?
+    var inviteWagerFriend = false
+    weak var delegate: InviteFriendsTableViewCellDelegate?
     
     // MARK:-Outlets
     @IBOutlet weak var friendNameLabel: UILabel!
     @IBOutlet weak var selectFriendButton: UIButton!
     
     @IBAction func didTapFriendButton(_ sender: Any) {
-        if selectFriendButton.currentImage == UIImage(systemName: "circle") {
-        selectFriendButton.setImage(UIImage(systemName: "person.crop.circle.badge.checkmark"), for: .normal)
-        }
-        else {
-            selectFriendButton.setImage(UIImage(systemName: "circle"), for: .normal)
-        }
+        delegate?.saveFriends(self)
     }
     
     // MARK:-Functions
@@ -40,5 +36,17 @@ class InviteFriendsTableViewCell: UITableViewCell {
         guard let friend = friend else { return }
         friendNameLabel.text = friend.values.first
     }
+    
+    func toggleButton() {
+        inviteWagerFriend.toggle()
+        
+        if inviteWagerFriend {
+            selectFriendButton.setImage(UIImage(systemName: "person.crop.circle.badge.checkmark"), for: .normal)
+        } else {
+            selectFriendButton.setImage(UIImage(systemName: "circle"), for: .normal)
+        }
+    }
 
 }
+
+
