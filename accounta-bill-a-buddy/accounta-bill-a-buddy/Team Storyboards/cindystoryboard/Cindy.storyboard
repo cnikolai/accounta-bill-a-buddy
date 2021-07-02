@@ -233,6 +233,7 @@ What is your Goal?</string>
                         <outlet property="deadlineTextField" destination="KBv-dr-P65" id="VbB-po-NUF"/>
                         <outlet property="goalTextField" destination="OIs-wf-iwN" id="U6x-Eo-7l4"/>
                         <outlet property="imageImageView" destination="B8Y-qw-4LV" id="1Tz-sp-2at"/>
+                        <outlet property="inviteFriendsButton" destination="gxT-lo-eXU" id="Vgs-6C-xf4"/>
                         <outlet property="photoPickerButton" destination="GFd-14-dMq" id="Z7D-JQ-bit"/>
                         <outlet property="wagerTextField" destination="2sd-nG-LLI" id="OEj-eb-S81"/>
                     </connections>

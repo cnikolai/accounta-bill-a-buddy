@@ -11,6 +11,7 @@ class CreateWagerViewController: UIViewController {
 
     // MARK:-Properties
     let imagePicker = UIImagePickerController()
+    var wagerFriends: [String] = []
     
     // MARK:-Outlets
     @IBOutlet weak var imageImageView: UIImageView!
@@ -18,6 +19,7 @@ class CreateWagerViewController: UIViewController {
     @IBOutlet weak var wagerTextField: UITextView!
     @IBOutlet weak var goalTextField: UITextView!
     @IBOutlet weak var deadlineTextField: UITextView!
+    @IBOutlet weak var inviteFriendsButton: UIButton!
     
     
     // MARK:-Lifecycle
@@ -27,6 +29,7 @@ class CreateWagerViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = nil;
         self.navigationItem.hidesBackButton = true;
         self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = false;
+        InviteFriendsListTableViewController.delegate = self
     }
     
     @IBAction func inviteFriendsButtonTapped(_ sender: Any) {
@@ -68,7 +71,7 @@ class CreateWagerViewController: UIViewController {
               !(deadline == "What is the Wager Deadline?"), !(deadline == "\nPlease enter a wager deadline") else {
             showError("\nPlease enter a wager deadline", forWhichTextField: "deadline")
             return }
-        WagerController.sharedInstance.createAndSaveWager(owner: (UserController.sharedInstance.currentUser?.uid)!, invitedFriends: ["huN052Z3kJXcApf234j0Y7ds78g2","rBmkx4W5s0VtdLq6PULrhToCau32"], acceptedFriends: [], wagerPhoto: imageImageView.image, goalDescription: goal, wager: wager, deadline: deadline, progress: 0) { result in
+        WagerController.sharedInstance.createAndSaveWager(owner: (UserController.sharedInstance.currentUser?.uid)!, invitedFriends: wagerFriends, acceptedFriends: [], wagerPhoto: imageImageView.image, goalDescription: goal, wager: wager, deadline: deadline, progress: 0) { result in
             switch (result) {
             case .success(let wager):
                 //add new wager to owner's wager list
@@ -162,4 +165,13 @@ extension CreateWagerViewController: UIImagePickerControllerDelegate, UINavigati
         }
         
     }
+}//eoc
+
+extension CreateWagerViewController: InviteFriendsListTableViewControllerDelegate {
+    func passFriends(_ sender: InviteFriendsListTableViewController) {
+        print(sender.wagerFriends)
+        inviteFriendsButton.setTitle( sender.wagerFriends.joined(separator: ", "), for: .normal)
+        wagerFriends = sender.wagerFriends
+    }
 }
+
