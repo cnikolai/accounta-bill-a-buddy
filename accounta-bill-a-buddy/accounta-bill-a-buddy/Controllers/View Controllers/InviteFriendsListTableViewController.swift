@@ -25,6 +25,7 @@ class InviteFriendsListTableViewController: UIViewController {
     
     @IBAction func doneButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+        
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
