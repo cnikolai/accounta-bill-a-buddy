@@ -16,8 +16,8 @@ class InviteFriendsListTableViewController: UIViewController {
 
     // MARK:- Properties
     var friend: [String:String]?
-    var wagerFriends: [String] = []
-    //var invitedFriend: [String: String] = []
+    var wagerFriends: [String:String] = []
+    var invitedFriend: [String:String] ={}
 
     // MARK:-Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -65,21 +65,14 @@ extension InviteFriendsListTableViewController: InviteFriendsTableViewCellDelega
     func saveFriends(_ sender: InviteFriendsTableViewCell) {
         sender.toggleButton()
         
-    //invitedFriend = sender.friend ?? [:]
+        guard let invitedFriend = sender.friend!.values.first! as String? else { return }
         
-//        if sender.inviteWagerFriend {
-//            wagerFriends.append(sender.friendNameLabel.text ?? "unknown")
-//        } else if let person = sender.friendNameLabel.text,
-//                  let index = wagerFriends.firstIndex(of: person) {
-//                wagerFriends.remove(at: index)
-//        }
-//        if sender.inviteWagerFriend {
-//            wagerFriends.append(sender.friend[String: String])
-//        } else if let person = sender.friend,
-//                  let index = wagerFriends.firstIndex(of: person) {
-//                wagerFriends.remove(at: index)
-//        }
-        
+        if sender.inviteWagerFriend {
+            wagerFriends.append(invitedFriend)
+        } else if let person = invitedFriend as String?,
+                  let index = wagerFriends.firstIndex(of: person) {
+                wagerFriends.remove(at: index)
+        }
         print(wagerFriends)
     }
 }
