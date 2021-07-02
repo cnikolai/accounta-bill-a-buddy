@@ -15,7 +15,7 @@ class ProfileViewController: UIViewController {
     
     //MARK: - Properties
     
-    
+
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +25,12 @@ class ProfileViewController: UIViewController {
     //MARK: - Actions
     @IBAction func logOutButtonTapped(_ sender: UIButton) {
         try! Auth.auth().signOut()
-        
-//        if let storyboard = self.storyboard {
-//        let vc = storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! UINavigationController
-//            self.present(vc, animated: true, completion: nil)
-        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
-//        }
+    
+        if Auth.auth().currentUser == nil {
+            let rootController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginVC")
+            rootController.modalPresentationStyle = .fullScreen
+            present(rootController, animated: true, completion: nil)
+        }
     }
     
     //MARK: - Functions
