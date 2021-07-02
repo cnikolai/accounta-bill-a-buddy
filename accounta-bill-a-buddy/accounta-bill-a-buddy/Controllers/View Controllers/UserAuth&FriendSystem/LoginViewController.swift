@@ -38,6 +38,7 @@ class LoginViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        persistentLogin()
         passwordTextField.delegate = self
         setupViewFor(screen: .login)
     }
@@ -172,6 +173,19 @@ class LoginViewController: UIViewController {
         let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
+    }
+    
+    func persistentLogin() {
+        if Auth.auth().currentUser != nil {
+            guard let user = Auth.auth().currentUser else { return }
+            UserController.sharedInstance.getCurrentUser(uid: user.uid) { (result) in
+                if result {
+                    self.transitionToHome()
+                } else {
+                    print("Failed to get current user")
+                }
+            }
+        }
     }
  
 }//End of class
