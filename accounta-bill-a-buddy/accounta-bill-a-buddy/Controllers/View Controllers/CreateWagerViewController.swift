@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CreateWagerViewController: UIViewController {
 
@@ -72,7 +73,7 @@ class CreateWagerViewController: UIViewController {
               !(deadline == "What is the Wager Deadline?"), !(deadline == "\nPlease enter a wager deadline") else {
             showError("\nPlease enter a wager deadline", forWhichTextField: "deadline")
             return }
-        WagerController.sharedInstance.createAndSaveWager(owner: (UserController.sharedInstance.currentUser?.uid)!, invitedFriends: invitedFriendsUIDs, acceptedFriends: [], wagerPhoto: imageImageView.image, goalDescription: goal, wager: wager, deadline: deadline, progress: 0) { result in
+        WagerController.sharedInstance.createAndSaveWager(wagerID: UUID().uuidString, owner: (UserController.sharedInstance.currentUser?.uid)!, invitedFriends: invitedFriendsUIDs, acceptedFriends: [], wagerPhoto: imageImageView.image, goalDescription: goal, wager: wager, deadline: deadline, progress: 0) { result in
             switch (result) {
             case .success(let wager):
                 //add new wager to owner's wager list

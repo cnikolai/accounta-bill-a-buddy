@@ -44,7 +44,8 @@ class Wager {
     }
     
     convenience init?(document: DocumentSnapshot) {
-        guard let owner = document["owner"] as? String,
+        guard let wagerID = document["wagerID"] as? String,
+              let owner = document["owner"] as? String,
               let goalDescription = document["goalDescription"] as? String,
               let wager = document["wager"] as? String,
               let invitedFriends = document["invitedFriends"] as? [String],
@@ -58,7 +59,7 @@ class Wager {
             wagerPhoto = UIImage(data: wagerPhotoData)
         }
         
-        self.init(wagerID: document.documentID, owner: owner, invitedFriends: invitedFriends, acceptedFriends: acceptedFriends, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress, wagerPhoto: wagerPhoto)
+        self.init(wagerID: wagerID, owner: owner, invitedFriends: invitedFriends, acceptedFriends: acceptedFriends, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress, wagerPhoto: wagerPhoto)
     }
 }//End of class
 
