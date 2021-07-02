@@ -116,7 +116,7 @@ class FriendsTableViewController: UITableViewController {
 extension FriendsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty {
-            UserController.sharedInstance.findUser(with: searchText)
+            UserController.sharedInstance.findUser(with: searchText.lowercased())
             tableView.reloadData()
         } else if searchText.isEmpty {
             UserController.sharedInstance.users = []
