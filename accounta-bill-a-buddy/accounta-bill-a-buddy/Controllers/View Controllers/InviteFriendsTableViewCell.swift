@@ -7,9 +7,9 @@
 
 import UIKit
 
-protocol InviteFriendsDelegate: AnyObject {
-    func addInviteFriendsToCurrentUserFriendsArray(friends: [String])
-}
+//protocol InviteFriendsDelegate: AnyObject {
+//    func addInviteFriendsToCurrentUserFriendsArray(friends: [String])
+//}
 
 class InviteFriendsTableViewCell: UITableViewCell {
 
@@ -20,7 +20,7 @@ class InviteFriendsTableViewCell: UITableViewCell {
             updateViews()
         }
     }
-    weak var delegate: InviteFriendsDelegate?
+    //weak var delegate: InviteFriendsDelegate?
     
     // MARK:-Outlets
     @IBOutlet weak var friendNameLabel: UILabel!
