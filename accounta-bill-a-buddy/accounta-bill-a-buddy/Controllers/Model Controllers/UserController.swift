@@ -533,6 +533,34 @@ extension UserController {
         }
         return wagerRequests
     }
-}
+    
+    ///ACCEPT/DECLINE Wagers
+    func updateMyWagersList() {
+        let currentUserDataRef = db.collection("users").document(currentUser!.uid)
+        currentUserDataRef.updateData([
+            "myWagers": currentUser?.myWagers
+        ]) { err in
+            if let err = err {
+                print("Error updating myWagers document: \(err)")
+            } else {
+                print("myWagers Document successfully updated")
+            }
+        }
+    }
+    
+    func updateMyFriendsWagersList() {
+        let currentUserDataRef = db.collection("users").document(currentUser!.uid)
+        currentUserDataRef.updateData([
+            "myFriendsWagers": currentUser?.myFriendsWagers
+        ]) { err in
+            if let err = err {
+                print("Error updating myFriendsWagers document: \(err)")
+            } else {
+                print("myFriendsWagers Document successfully updated")
+            }
+        }
+    }
+    
+}//end of class
 
 
