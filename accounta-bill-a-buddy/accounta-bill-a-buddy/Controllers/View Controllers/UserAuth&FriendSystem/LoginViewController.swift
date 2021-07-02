@@ -61,8 +61,11 @@ class LoginViewController: UIViewController {
                 if error != nil {
                     self.showError("The password or email is invalid.")
                 } else {
-                    UserController.sharedInstance.getCurrentUser(uid: result!.user.uid)
-                    self.transitionToHome()
+                    UserController.sharedInstance.getCurrentUser(uid: result!.user.uid) { success in
+                        if success {
+                            self.transitionToHome()
+                        }
+                    }
                 }
             }
         }
@@ -90,7 +93,9 @@ class LoginViewController: UIViewController {
                                     self.showError("Error saving user data.")
                                     print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
                                 } else {
-                                    UserController.sharedInstance.getCurrentUser(uid: result!.user.uid)
+                                    UserController.sharedInstance.getCurrentUser(uid: result!.user.uid) { success in
+                                        print("getCurrentUser successful")
+                                    }
                                 }
                             }
                             //transition to home screen

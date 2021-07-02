@@ -11,7 +11,8 @@ class CreateWagerViewController: UIViewController {
 
     // MARK:-Properties
     let imagePicker = UIImagePickerController()
-    var wagerFriends: [String] = []
+    var wagerFriends: [[String:String]] = []
+    var invitedFriendsUIDs: [String] = []
     
     // MARK:-Outlets
     @IBOutlet weak var imageImageView: UIImageView!
@@ -71,7 +72,7 @@ class CreateWagerViewController: UIViewController {
               !(deadline == "What is the Wager Deadline?"), !(deadline == "\nPlease enter a wager deadline") else {
             showError("\nPlease enter a wager deadline", forWhichTextField: "deadline")
             return }
-        WagerController.sharedInstance.createAndSaveWager(owner: (UserController.sharedInstance.currentUser?.uid)!, invitedFriends: wagerFriends, acceptedFriends: [], wagerPhoto: imageImageView.image, goalDescription: goal, wager: wager, deadline: deadline, progress: 0) { result in
+        WagerController.sharedInstance.createAndSaveWager(owner: (UserController.sharedInstance.currentUser?.uid)!, invitedFriends: invitedFriendsUIDs, acceptedFriends: [], wagerPhoto: imageImageView.image, goalDescription: goal, wager: wager, deadline: deadline, progress: 0) { result in
             switch (result) {
             case .success(let wager):
                 //add new wager to owner's wager list
@@ -169,9 +170,15 @@ extension CreateWagerViewController: UIImagePickerControllerDelegate, UINavigati
 
 extension CreateWagerViewController: InviteFriendsListTableViewControllerDelegate {
     func passFriends(_ sender: InviteFriendsListTableViewController) {
-        print(sender.wagerFriends)
-        inviteFriendsButton.setTitle( sender.wagerFriends.joined(separator: ", "), for: .normal)
+        print("invited friends2: \(sender.wagerFriends)")
         wagerFriends = sender.wagerFriends
+        for friend in wagerFriends {
+            for key in friend.keys {
+                invitedFriendsUIDs.append(key)
+            }
+        }
+        print(invitedFriendsUIDs)
+        //inviteFriendsButton.setTitle( invitedFriendsUUIs.joined(separator: ", "), for: .normal)
     }
 }
 
