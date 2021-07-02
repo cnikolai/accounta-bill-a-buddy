@@ -16,8 +16,8 @@ class User {
     var receivedFriendRequests: [ [String : String] ]
     //uuid:username
     var friends: [ [String : String] ]
-    var blockedUsers: [String]
-    var blockedByUsers: [String]
+    var blockedUsers: [ [String : String] ]
+    var blockedByUsers: [ [String : String] ]
     var reportedUsers: [ [String : String] ]
     
     ///Wagers Properties
@@ -68,7 +68,7 @@ class User {
             friends = newValue
         }
     }
-    var _blockedUsers: [String] {
+    var _blockedUsers: [ [String : String] ] {
         get {
             return blockedUsers
         }
@@ -76,7 +76,7 @@ class User {
             blockedUsers = newValue
         }
     }
-    var _blockedByUsers: [String] {
+    var _blockedByUsers: [ [String : String] ] {
         get {
             return blockedByUsers
         }
@@ -93,7 +93,7 @@ class User {
         }
     }
     
-    init(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = [], blockedUsers: [String] = [], blockedByUsers: [String] = [], reportedUsers: [ [String : String] ] = [], myWagers: [String] = [], myFriendsWagers: [String] = [], wagerRequests: [String] = []) {
+    init(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = [], blockedUsers: [ [String : String] ] = [], blockedByUsers: [ [String : String] ] = [], reportedUsers: [ [String : String] ] = [], myWagers: [String] = [], myFriendsWagers: [String] = [], wagerRequests: [String] = []) {
         self.uid = uid
         self.username = username
         self.sentFriendRequests = sentFriendRequests

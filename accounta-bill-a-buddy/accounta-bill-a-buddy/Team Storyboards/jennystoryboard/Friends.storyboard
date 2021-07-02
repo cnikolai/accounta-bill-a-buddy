@@ -52,9 +52,8 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="vSr-UC-zBS" firstAttribute="centerX" secondItem="VGn-V0-H4P" secondAttribute="centerX" id="9c1-lr-BSK"/>
-                                <constraint firstItem="vSr-UC-zBS" firstAttribute="centerY" secondItem="VGn-V0-H4P" secondAttribute="centerY" id="joh-qq-Z4A"/>
+                                <constraint firstItem="vSr-UC-zBS" firstAttribute="top" secondItem="VGn-V0-H4P" secondAttribute="top" id="ern-Q9-cce"/>
                                 <constraint firstItem="vSr-UC-zBS" firstAttribute="width" secondItem="VGn-V0-H4P" secondAttribute="width" id="rH8-4u-HtC"/>
-                                <constraint firstAttribute="bottom" secondItem="vSr-UC-zBS" secondAttribute="bottom" id="rUS-DI-JWw"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -210,7 +209,7 @@
                                 <rect key="frame" x="0.0" y="44" width="320" height="475"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blockedUserCell" rowHeight="64" id="4ca-ee-GKW" customClass="BlockedUserTableViewCell" customModule="accounta_bill_a_buddy" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blockedUserCell" rowHeight="64" id="4ca-ee-GKW" customClass="BlockedUserTableViewCell" customModule="accounta_bill_a_buddy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4ca-ee-GKW" id="Ul2-gi-20Z">
@@ -252,7 +251,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="unblockButton" destination="h37-I6-FHE" id="eYp-Fk-1Xs"/>
+                                            <outlet property="unblockButton" destination="h37-I6-FHE" id="5Id-jR-7TE"/>
                                             <outlet property="usernameLabel" destination="Qj0-on-o6I" id="mtR-ad-4t5"/>
                                         </connections>
                                     </tableViewCell>
@@ -317,7 +316,7 @@
     </scenes>
     <resources>
         <image name="gearshape" catalog="system" width="128" height="121"/>
-        <image name="plus.circle" catalog="system" width="128" height="121"/>
+        <image name="plus.circle" catalog="system" width="32" height="32"/>
         <image name="profilePhotoPlaceholder" width="423" height="422"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

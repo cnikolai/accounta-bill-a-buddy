@@ -56,8 +56,8 @@ class UserController {
                         let uid = userData["uid"] as? String ?? ""
                         let username = userData["username"] as? String ?? ""
                         let friends = userData["friends"] as? [ [String : String] ] ?? []
-                        let blockedUsers = userData["blockedUsers"] as? [String] ?? []
-                        let blockedByUsers = userData["blockedByUsers"] as? [String] ?? []
+                        let blockedUsers = userData["blockedUsers"] as? [ [String : String] ] ?? []
+                        let blockedByUsers = userData["blockedByUsers"] as? [ [String : String] ] ?? []
                         
                         user._uid = uid
                         user._username = username
@@ -271,7 +271,7 @@ class UserController {
         deleteFriend(uid: uid, username: username)
         
         guard let currentUser = currentUser else { return }
-        currentUser.blockedUsers.append(username)
+        currentUser.blockedUsers.append([uid : username])
         
         let currentUserData = db.collection("users").document(currentUser.uid)
         currentUserData.setData(["blockedUsers": currentUser.blockedUsers], merge: true)
@@ -284,11 +284,11 @@ class UserController {
                 } else {
                     if let snapshot = snapshot {
                         guard let userData = snapshot.data() else { return }
-                        var blockedByUsers = userData["blockedByUsers"] as? [String] ?? []
+                        var blockedByUsers = userData["blockedByUsers"] as? [ [String : String] ] ?? []
                         
                         ///Additional read to write to the current state of the user's friends array
                         self.db.collection("users").document(uid).setData(["blockedByUsers" : blockedByUsers], merge: true)
-                        blockedByUsers.append(currentUser.username)
+                        blockedByUsers.append([currentUser.uid : currentUser.username])
                         
                         self.db.collection("users").document(uid).updateData(["blockedByUsers" : FieldValue.arrayUnion(blockedByUsers)])
                     }
@@ -298,17 +298,36 @@ class UserController {
     }
     
     ///UNBLOCK USER
-    func unblockUser(username: String) {
+    func unblockUser(uid: String, username: String) {
         guard let currentUser = currentUser else { return }
-        //Remove from current user's blockedUsers array and save to db
-        if let index = currentUser.blockedUsers.firstIndex(where: { $0 == username }) {
+//        Remove from current user's blockedUsers array and save to db
+        if let index = currentUser.blockedUsers.firstIndex(where: { $0 == [uid : username] }) {
             currentUser.blockedUsers.remove(at: index)
         }
         
         let currentUserData = db.collection("users").document(currentUser.uid)
         currentUserData.setData(["blockedUsers": currentUser.blockedUsers], merge: true)
         
-        //Remove current user from user's blockedByUser's array and save to db
+        ///Fetch user's blockedByUsers array and add current user to the blockedByUsers array, then update blockedByUsers array and save to db
+        db.collection("users").document(uid)
+            .getDocument { (snapshot, error) in
+                if let error = error {
+                    print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                } else {
+                    if let snapshot = snapshot {
+                        guard let userData = snapshot.data() else { return }
+                        var blockedByUsers = userData["blockedByUsers"] as? [ [String : String] ] ?? []
+                        
+                        //Remove current user from user's blockedByUser's array and save to db
+                        if let index = blockedByUsers.firstIndex(where: { $0 == [currentUser.uid : currentUser.username] }) {
+                            blockedByUsers.remove(at: index)
+                        }
+                        
+                        self.db.collection("users").document(uid).setData(["blockedByUsers" : blockedByUsers], merge: true)
+                        self.db.collection("users").document(uid).updateData(["blockedByUsers" : FieldValue.arrayUnion(blockedByUsers)])
+                    }
+                }
+            }
         
     }
     
@@ -369,50 +388,60 @@ class UserController {
     }
     
     func checkIfUserIsBlocked(username: String) -> Bool {
+        var blocked = false
+        
         if let currentUser = currentUser {
-            for name in currentUser.blockedUsers {
-                if name == username {
-                    return true
+            currentUser.blockedUsers.forEach({ (dictionary) in
+                for data in dictionary {
+                    if data.value == username {
+                        blocked = true
+                    }
                 }
-            }
+            })
         }
-        return false
+        
+        return blocked
     }
     
     func checkIfBlockedByUser(username: String) -> Bool {
+        var blocked = false
+        
         if let currentUser = currentUser {
-            for name in currentUser.blockedByUsers {
-                if name == username {
-                    return true
+            currentUser.blockedByUsers.forEach({ (dictionary) in
+                for data in dictionary {
+                    if data.value == username {
+                        blocked = true
+                    }
                 }
-            }
+            })
         }
-        return false
+        
+        return blocked
     }
     
-    func createAndSaveUser(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = [], blockedUsers: [String] = [], blockedByUsers: [String] = [], reportedUsers: [ [String : String] ] = [], myWagers: [String] = [], myFriendsWagers: [String] = [], wagerRequests: [String] = [], completion: @escaping (Result<User, DatabaseError>) -> Void) {
-        
-        let newUser = User(uid: uid, username: username, sentFriendRequests: sentFriendRequests, receivedFriendRequests: receivedFriendRequests, friends: friends, blockedUsers: blockedUsers, blockedByUsers: blockedByUsers, reportedUsers: reportedUsers, myWagers: myWagers, myFriendsWagers: myFriendsWagers, wagerRequests: wagerRequests)
-        
-        let userRef = db.collection("users")
-        userRef.document("\(newUser.uid)").setData([
-            "username": "\(newUser.username)",
-            "friends" : "\(newUser.friends)"
-            
-        ]) { error in
-            if let error = error {
-                print("Error adding document: \(error)")
-                return completion(.failure(.fireError(error)))
-            } else {
-                print("User Document added with ID: \(newUser.uid)")
-                return completion(.success(newUser))
-            }
-        }
-    }
-    
-    func createDummyUser() {
-        let dummyUser1 = createAndSaveUser(uid: UUID().uuidString, username: "test", sentFriendRequests: [], receivedFriendRequests: [], friends: [["3GU1xW4m3Mhgzk7l5bFSCoTk9Az1": "Sally"] , ["huN052Z3kJXcApf234j0Y7ds78g2" : "Bob"], ["rBmkx4W5s0VtdLq6PULrhToCau32" : "Jane" ]], blockedUsers: [], blockedByUsers: [], reportedUsers: [], myWagers: [], myFriendsWagers: [], wagerRequests: [], completion: {_ in})
-    }
+//    func createAndSaveUser(uid: String, username: String, sentFriendRequests: [ [String : String] ] = [], receivedFriendRequests: [ [String : String] ] = [], friends: [ [String : String] ] = [], blockedUsers: [String] = [], blockedByUsers: [String] = [], reportedUsers: [ [String : String] ] = [], myWagers: [String] = [], myFriendsWagers: [String] = [], wagerRequests: [String] = [], completion: @escaping (Result<User, DatabaseError>) -> Void) {
+//
+//        let newUser = User(uid: uid, username: username, sentFriendRequests: sentFriendRequests, receivedFriendRequests: receivedFriendRequests, friends: friends, blockedUsers: blockedUsers, blockedByUsers: blockedByUsers, reportedUsers: reportedUsers, myWagers: myWagers, myFriendsWagers: myFriendsWagers, wagerRequests: wagerRequests)
+//        
+//        let userRef = db.collection("users")
+//        userRef.document("\(newUser.uid)").setData([
+//            "username": "\(newUser.username)",
+//            "friends" : "\(newUser.friends)"
+//
+//        ]) { error in
+//            if let error = error {
+//                print("Error adding document: \(error)")
+//                return completion(.failure(.fireError(error)))
+//            } else {
+//                print("User Document added with ID: \(newUser.uid)")
+//                return completion(.success(newUser))
+//            }
+//        }
+//    }
+//
+//    func createDummyUser() {
+//        let dummyUser1 = createAndSaveUser(uid: UUID().uuidString, username: "test", sentFriendRequests: [], receivedFriendRequests: [], friends: [["3GU1xW4m3Mhgzk7l5bFSCoTk9Az1": "Sally"] , ["huN052Z3kJXcApf234j0Y7ds78g2" : "Bob"], ["rBmkx4W5s0VtdLq6PULrhToCau32" : "Jane" ]], blockedUsers: [], blockedByUsers: [], reportedUsers: [], myWagers: [], myFriendsWagers: [], wagerRequests: [], completion: {_ in})
+//    }
     
     //MARK: - Fetch Wagers
     //    func fetchAllWagersWithOwner(completion: @escaping (Result<[Wager], DatabaseError>) -> Void) {
