@@ -66,20 +66,32 @@ class WagerController {
             }
     }
     
-    func createWagerArray(wagerStrings: [String]) -> [Wager] {
-        
+    func createWagerArray(wagerStrings: [String], completion: @escaping (Result<[Wager], Error>) -> Void) {
+        let group = DispatchGroup()
         var myWagers: [Wager] = []
+        var errors: [Error] = []
+        
         for wager in wagerStrings {
-            WagerController.sharedInstance.fetchWager(wagerID: wager) { result in
+            group.enter()
+            fetchWager(wagerID: wager) { result in
                 switch result {
-                case .success(let wager): myWagers.append(wager)
+                case .success(let wager):
+                    myWagers.append(wager)
                 case .failure(let error):
                     print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+                    errors.append(error)
                 }
+                group.leave()
             }
         }
-        return myWagers
-        
+
+        group.notify(queue: .global()) {
+            // NOTE: Returns the first error but probably should return them all
+            if let error = errors.first {
+                completion(.failure(error))
+            }
+            completion(.success(myWagers))
+        }
     }
     
     ///ACCEPT/DECLINE Wagers

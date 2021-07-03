@@ -106,19 +106,46 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     }
     
     func createWagerArrays(myWagers: [String], myFriendsWagers: [String], wagersRequests: [String], completion: ((Bool) -> Void)?) {
+        let group = DispatchGroup()
         
-        let myWagers = WagerController.sharedInstance.createWagerArray(wagerStrings: myWagers)
-        let myFriendsWagers = WagerController.sharedInstance.createWagerArray(wagerStrings: myFriendsWagers)
-        let wagerRequests = WagerController.sharedInstance.createWagerArray(wagerStrings: wagersRequests)
+        //NOTE: Repeating code here, fix
+        group.enter()
+        WagerController.sharedInstance.createWagerArray(wagerStrings: myWagers) { result in
+            switch result {
+            case .success(let wagers):
+                self.myWagers = wagers
+                print(wagers)
+            case .failure(let error):
+                break
+            }
+            group.leave()
+        }
         
-        self.myWagers = myWagers
-        self.myFriendsWagers = myFriendsWagers
-        self.wagerRequests = wagerRequests
-        print(self.myWagers)
-        print(self.myFriendsWagers)
-        print(self.wagerRequests)
-        completion?(true)
+        group.enter()
+        WagerController.sharedInstance.createWagerArray(wagerStrings: myFriendsWagers) { result in
+            switch result {
+            case .success(let wagers):
+                self.myFriendsWagers = wagers
+            case .failure(let error):
+                break
+            }
+            group.leave()
+        }
         
+        group.enter()
+        WagerController.sharedInstance.createWagerArray(wagerStrings: wagersRequests) { result in
+            switch result {
+            case .success(let wagers):
+                self.wagerRequests = wagers
+            case .failure(let error):
+                break
+            }
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            completion?(true)
+        }
     }
     
     
@@ -146,31 +173,31 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
 } //End of class
 
 //extension WagerCollectionViewController: DeleteCellDelegate {
-////    func deleteCellWith(wager: Wager) {
-////        deleteCellAlert(wager: wager)
-//
+//    func deleteCellWith(wager: Wager) {
+//        deleteCellAlert(wager: wager)
+
 //    }
+
+//    func deleteCellAlert(wager: Wager) {
 //
-////    func deleteCellAlert(wager: Wager) {
-////
-////        let alertController = UIAlertController(title: "Delete Wager?", message: "Are you sure you want to delete?", preferredStyle: .alert)
-////
-////        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-////
-////        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {
-////            (_) in
-//////            let index2 = self.wagers.firstIndex(of: wager)
-//////            print(index2)
-////            guard let index = self.wagers.firstIndex(of: wager) else {return}
-////            print(wager.goalDescription)
-////            self.wagers.remove(at: index)
-////            self.collectionView.reloadData()
-////        }
-////
-////        alertController.addAction(cancelAction)
-////        alertController.addAction(deleteAction)
-////
-////        present(alertController, animated: true)
-////    }
+//        let alertController = UIAlertController(title: "Delete Wager?", message: "Are you sure you want to delete?", preferredStyle: .alert)
+//
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+//
+//        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {
+//            (_) in
+//            let index2 = self.wagers.firstIndex(of: wager)
+//            print(index2)
+//            guard let index = self.wagers.firstIndex(of: wager) else {return}
+//            print(wager.goalDescription)
+//            self.wagers.remove(at: index)
+//            self.collectionView.reloadData()
+//        }
+//
+//        alertController.addAction(cancelAction)
+//        alertController.addAction(deleteAction)
+//
+//        present(alertController, animated: true)
+//    }
 //} // End of Extension
 
