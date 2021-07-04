@@ -86,8 +86,7 @@ class CreateWagerViewController: UIViewController {
             case .failure(let error):
                 print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
             }
-        }
-        
+        }        
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {

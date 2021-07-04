@@ -64,6 +64,7 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var returnValue = 0
+        
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             returnValue = UserController.sharedInstance.users.count
