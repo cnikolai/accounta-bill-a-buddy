@@ -27,7 +27,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
-                                                <segment title="Find Friends"/>
+                                                <segment title="Find Friend"/>
                                                 <segment title="Friends"/>
                                                 <segment title="Requests"/>
                                             </segments>
@@ -316,7 +316,7 @@
     </scenes>
     <resources>
         <image name="gearshape" catalog="system" width="128" height="121"/>
-        <image name="plus.circle" catalog="system" width="32" height="32"/>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="profilePhotoPlaceholder" width="423" height="422"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

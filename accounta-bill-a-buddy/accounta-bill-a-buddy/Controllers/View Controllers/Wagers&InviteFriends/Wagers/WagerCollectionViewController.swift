@@ -25,9 +25,15 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     //Properties
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.register(WagerCollectionViewCell.self, forCellWithReuseIdentifier: "wagerCell")
+        //        collectionView.register(WagerCollectionViewCell.self, forCellWithReuseIdentifier: "wagerCell")
         collectionView.delegate = self
         collectionView.dataSource = self
+        createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
+            print("Wagers Array created successfully")
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
             print("Wagers Array created successfully")
         }
@@ -49,17 +55,12 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     func tempFuncFetchWagers() {
         guard let currentUser = UserController.sharedInstance.currentUser else { return }
         let wagersArray = currentUser.myWagers
-        print(wagersArray)
+        //        print("wagersArray:", wagersArray)
     }
     
-    //    @IBAction func segmentedControllerTapped(_ sender: Any) {
-    //        switch segmentedController.selectedSegmentIndex {
-    //        case 0:
-    //            let wagersArray = UserController.sharedInstance.fetchMyWagers()
-    //            print(wagersArray)
-    //        default: break
-    //        }
-    //    }
+        @IBAction func segmentedControllerTapped(_ sender: UISegmentedControl) {
+            collectionView.reloadData()
+        }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -67,42 +68,41 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var returnValue = 0
+        
         switch segmentedController.selectedSegmentIndex {
         case 0:
-            returnValue = UserController.sharedInstance.currentUser?.myWagers.count ?? 0
+            returnValue = myWagers.count
         case 1:
-            returnValue = UserController.sharedInstance.currentUser?.myFriendsWagers.count ?? 0
+            returnValue = myFriendsWagers.count
         case 2:
-            returnValue = UserController.sharedInstance.currentUser?.wagerRequests.count ?? 0
+            returnValue = wagerRequests.count
         default: break
         }
+        
         return returnValue
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wagerCell", for: indexPath) as? WagerCollectionViewCell else {return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wagerCell", for: indexPath) as? WagerCollectionViewCell else { return UICollectionViewCell() }
+        
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            let myWager = myWagers[indexPath.row]
+            cell.myWager = myWager
+            cell.selectedSegmentIndex = 0
+        case 1:
+            let myFriendsWager = myFriendsWagers[indexPath.row]
+            cell.myFriendsWager = myFriendsWager
+            cell.selectedSegmentIndex = 1
+        case 2:
+            let wagerRequest = wagerRequests[indexPath.row]
+            cell.wagerRequest = wagerRequest
+            cell.selectedSegmentIndex = 2
+        default:
+            break
+        }
         
         return cell
-        
-        //        switch segmentedControl.selectedSegmentIndex {
-        //        case 0:
-        //            let user = UserController.sharedInstance.users[indexPath.row]
-        //            cell.user = user
-        //            cell.selectedSegmentIndex = 0
-        //        case 1:
-        //            let friends = UserController.sharedInstance.currentUser?.friends[indexPath.row]
-        //            friends?.forEach({ (key, value) in
-        //                cell.friendsData = [key, value]
-        //            })
-        //            cell.selectedSegmentIndex = 1
-        //        case 2:
-        //            let friendRequest = UserController.sharedInstance.currentUser?.receivedFriendRequests[indexPath.row]
-        //            friendRequest?.forEach({ (key, value) in
-        //                cell.friendRequestData = [key, value]
-        //            })
-        //            cell.selectedSegmentIndex = 2
-        //        default:
-        //            break
     }
     
     func createWagerArrays(myWagers: [String], myFriendsWagers: [String], wagersRequests: [String], completion: ((Bool) -> Void)?) {
@@ -111,34 +111,46 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         //NOTE: Repeating code here, fix
         group.enter()
         WagerController.sharedInstance.createWagerArray(wagerStrings: myWagers) { result in
-            switch result {
-            case .success(let wagers):
-                self.myWagers = wagers
-                print(wagers)
-            case .failure(let error):
-                break
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let wagers):
+                    self.myWagers = wagers
+                    self.collectionView.reloadData()
+                    print("myWagers:", self.myWagers)
+                case .failure(let error):
+                    print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                    break
+                }
             }
             group.leave()
         }
         
         group.enter()
         WagerController.sharedInstance.createWagerArray(wagerStrings: myFriendsWagers) { result in
-            switch result {
-            case .success(let wagers):
-                self.myFriendsWagers = wagers
-            case .failure(let error):
-                break
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let wagers):
+                    self.myFriendsWagers = wagers
+                    self.collectionView.reloadData()
+                case .failure(let error):
+                    print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                    break
+                }
             }
             group.leave()
         }
         
         group.enter()
         WagerController.sharedInstance.createWagerArray(wagerStrings: wagersRequests) { result in
-            switch result {
-            case .success(let wagers):
-                self.wagerRequests = wagers
-            case .failure(let error):
-                break
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let wagers):
+                    self.wagerRequests = wagers
+                    self.collectionView.reloadData()
+                case .failure(let error):
+                    print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                    break
+                }
             }
             group.leave()
         }
@@ -164,14 +176,15 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
                 let indexPath = self.collectionView!.indexPath(for: cell) else {return}
             // let indexPath = self.WagerCollectionViewCell.indexPath(for: cell) else {return}
             
-            let wager = WagerController.sharedInstance.wagers[indexPath.row]
-            // print("goalDescription", wager.goalDescription)
-            destinationVC.wager = wager
+//            let wager = WagerController.sharedInstance.wagers[indexPath.row]
+//            // print("goalDescription", wager.goalDescription)
+//            destinationVC.wager = wager
         }
     }
     
 } //End of class
 
+//MARK: - Extensions
 //extension WagerCollectionViewController: DeleteCellDelegate {
 //    func deleteCellWith(wager: Wager) {
 //        deleteCellAlert(wager: wager)
