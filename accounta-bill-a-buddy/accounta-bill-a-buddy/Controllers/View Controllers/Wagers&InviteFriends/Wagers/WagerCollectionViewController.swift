@@ -249,28 +249,20 @@ extension WagerCollectionViewController: DeleteCellDelegate {
     }
     
     func deleteCellAlert(wager: Wager, selectedSegmentIndex: Int) {
-        
-        let alertController = UIAlertController(title: "Delete Wager?", message: "Are you sure you want to delete?", preferredStyle: .alert)
-        
+        let alertController = UIAlertController(title: "Delete Wager", message: "Are you sure you want to delete?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {
-            (_) in
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
             if selectedSegmentIndex == 0 {
                 //Delete Wager object from Wagers collection and from current user's myWagers array
                 WagerController.sharedInstance.deleteWager(wagerID: wager.wagerID)
                 WagerController.sharedInstance.deleteWagerFromMyWagers(wagerToDelete: wager)
                 WagerController.sharedInstance.deleteWagerFromFriendsRequests(wagerToDelete: wager)
                 WagerController.sharedInstance.deleteWagerFromMyFriendsWagers(wagerToDelete: wager)
-                
                 self.collectionView.reloadData()
             } else if selectedSegmentIndex == 1 {
-                guard let index = self.myFriendsWagers.firstIndex(of: wager) else {return}
-                self.myFriendsWagers.remove(at: index)
-                self.collectionView.reloadData()
-            } else if selectedSegmentIndex == 2 {
-                guard let index = self.wagerRequests.firstIndex(of: wager) else {return}
-                self.wagerRequests.remove(at: index)
+                self.presentLeaveAlert()
+                WagerController.sharedInstance.removeUserFromWager(wagerID: wager.wagerID)
+                WagerController.sharedInstance.leaveFriendsWager(wagerToLeave: wager)
                 self.collectionView.reloadData()
             } else {
                 return
@@ -281,6 +273,17 @@ extension WagerCollectionViewController: DeleteCellDelegate {
         alertController.addAction(deleteAction)
         
         present(alertController, animated: true)
+    }
+    
+    func presentLeaveAlert() {
+        let leaveAlertController = UIAlertController(title: "Leave Wager", message: "Are you sure you want to leave this wager?", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        leaveAlertController.addAction(okAction)
+        leaveAlertController.addAction(cancelAction)
+        
+        present(leaveAlertController, animated: true)
     }
 } // End of Extension
 
