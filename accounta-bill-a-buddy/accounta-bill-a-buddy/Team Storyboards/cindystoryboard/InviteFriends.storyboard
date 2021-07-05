@@ -68,85 +68,41 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="eTc-s0-KXn"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ekz-BG-Qeo">
-                                <rect key="frame" x="342" y="44" width="72" height="35"/>
-                                <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="72" id="U1s-xY-4Ey"/>
-                                    <constraint firstAttribute="height" constant="35" id="qUe-iI-a1m"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Cancel">
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="13" name="ArialMT"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d05-1M-naI">
+                                <rect key="frame" x="363" y="46" width="41" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Done"/>
                                 <connections>
-                                    <action selector="cancelButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="unC-Yu-lJv"/>
+                                    <action selector="doneButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sJT-En-Jka"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JqR-gP-Hw1">
-                                <rect key="frame" x="0.0" y="44" width="72" height="35"/>
-                                <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="72" id="pPh-pe-8Mo"/>
-                                    <constraint firstAttribute="height" constant="35" id="tRa-Wn-EfH"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Done">
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="13" name="ArialMT"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6f-Oy-6fQ">
+                                <rect key="frame" x="10" y="46" width="53" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Cancel"/>
                                 <connections>
-                                    <action selector="cancelButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tQX-jj-bdk"/>
-                                    <action selector="doneButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="uoL-vc-Abf"/>
+                                    <action selector="cancelButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="onL-f8-Vqd"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ekz-BG-Qeo" secondAttribute="trailing" id="3oU-JZ-e26"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="d05-1M-naI" secondAttribute="trailing" constant="10" id="1f5-i9-GBX"/>
                             <constraint firstAttribute="bottom" secondItem="amT-Su-yrj" secondAttribute="bottom" id="9vq-5K-I1Z"/>
                             <constraint firstItem="LID-my-0jy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="75" id="CSm-66-UZg"/>
+                            <constraint firstItem="amT-Su-yrj" firstAttribute="top" secondItem="s6f-Oy-6fQ" secondAttribute="bottom" id="DQm-Qm-R0b"/>
                             <constraint firstItem="amT-Su-yrj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Hbh-VF-kaZ"/>
                             <constraint firstItem="amT-Su-yrj" firstAttribute="top" secondItem="LID-my-0jy" secondAttribute="bottom" id="J7e-5o-2b8"/>
-                            <constraint firstItem="LID-my-0jy" firstAttribute="leading" secondItem="JqR-gP-Hw1" secondAttribute="trailing" constant="3" id="NoF-64-EPc"/>
                             <constraint firstItem="amT-Su-yrj" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="SxW-IQ-LKQ"/>
-                            <constraint firstItem="amT-Su-yrj" firstAttribute="top" secondItem="JqR-gP-Hw1" secondAttribute="bottom" id="Xxr-fv-LQ4"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LID-my-0jy" secondAttribute="trailing" constant="75" id="aOS-LM-9oR"/>
+                            <constraint firstItem="amT-Su-yrj" firstAttribute="top" secondItem="d05-1M-naI" secondAttribute="bottom" id="aPW-NB-Ha6"/>
                             <constraint firstItem="LID-my-0jy" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="e2W-QF-glL"/>
-                            <constraint firstItem="ekz-BG-Qeo" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" id="fgy-cw-kIT"/>
-                            <constraint firstItem="JqR-gP-Hw1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="zw1-wx-xHy"/>
+                            <constraint firstItem="s6f-Oy-6fQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="js8-Bb-gOV"/>
                         </constraints>
                     </view>
                     <toolbarItems/>

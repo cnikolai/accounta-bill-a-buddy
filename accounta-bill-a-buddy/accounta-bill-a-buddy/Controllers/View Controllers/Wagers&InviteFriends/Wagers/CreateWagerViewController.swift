@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class CreateWagerViewController: UIViewController {
+class CreateWagerViewController: UIViewController, UITextViewDelegate {
 
     // MARK:-Properties
     let imagePicker = UIImagePickerController()
@@ -18,21 +18,63 @@ class CreateWagerViewController: UIViewController {
     // MARK:-Outlets
     @IBOutlet weak var imageImageView: UIImageView!
     @IBOutlet weak var photoPickerButton: UIButton!
-    @IBOutlet weak var wagerTextField: UITextView!
-    @IBOutlet weak var goalTextField: UITextView!
-    @IBOutlet weak var deadlineTextField: UITextView!
+    @IBOutlet weak var wagerTextView: UITextView!
+    @IBOutlet weak var goalTextView: UITextView!
+    @IBOutlet weak var deadlineTextView: UITextView!
     @IBOutlet weak var inviteFriendsButton: UIButton!
+    @IBOutlet weak var friendsTextView: UITextView!
     
     
     // MARK:-Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        self.navigationItem.leftBarButtonItem = nil;
-        self.navigationItem.hidesBackButton = true;
-        self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = false;
+        wagerTextView.delegate = self
+        goalTextView.delegate = self
+        deadlineTextView.delegate = self
+        
+//        self.navigationItem.leftBarButtonItem = nil;
+//        self.navigationItem.hidesBackButton = true;
+//        self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = false;
         InviteFriendsListTableViewController.delegate = self
+        setupElements()
     }
+    
+    func setupElements() {
+        inviteFriendsButton.tintColor = #colorLiteral(red: 0.3725490196, green: 0.6705882353, blue: 0.8588235294, alpha: 1)
+        Utilities.styleTextView(wagerTextView)
+        Utilities.styleTextView(goalTextView)
+        Utilities.styleTextView(deadlineTextView)
+        Utilities.styleTextView(friendsTextView)
+        wagerTextView.text = "Enter wager..."
+        goalTextView.text = "Enter goal..."
+        deadlineTextView.text = "Enter deadline..."
+        wagerTextView.textColor = UIColor.lightGray
+        goalTextView.textColor = UIColor.lightGray
+        deadlineTextView.textColor = UIColor.lightGray
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.textColor = UIColor.lightGray
+            
+            if textView == wagerTextView {
+                textView.text = "Enter wager..."
+            } else if textView == goalTextView {
+                textView.text = "Enter goal..."
+            } else if textView == deadlineTextView {
+                textView.text = "Enter deadline..."
+            }
+        }
+    }
+    
     
     @IBAction func inviteFriendsButtonTapped(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "InviteFriends", bundle: nil)
@@ -62,14 +104,14 @@ class CreateWagerViewController: UIViewController {
     
     
     @IBAction func createWagerButtonTapped(_ sender: Any) {
-        guard let wager = wagerTextField.text, !wager.isEmpty,
+        guard let wager = wagerTextView.text, !wager.isEmpty,
               !(wager == "\nWhat is your Wager?"), !(wager == "\nPlease enter a wager") else {
             showError("\nPlease enter a wager", forWhichTextField: "wager")
             return }
-        guard let goal = goalTextField.text, !goal.isEmpty, !(goal == "\n\nWhat is your Goal?"),!(goal == "\n\nPlease enter a goal") else {
+        guard let goal = goalTextView.text, !goal.isEmpty, !(goal == "\n\nWhat is your Goal?"),!(goal == "\n\nPlease enter a goal") else {
             showError("\n\nPlease enter a goal", forWhichTextField: "goal")
             return }
-        guard let deadline = deadlineTextField.text, !deadline.isEmpty,
+        guard let deadline = deadlineTextView.text, !deadline.isEmpty,
               !(deadline == "What is the Wager Deadline?"), !(deadline == "\nPlease enter a wager deadline") else {
             showError("\nPlease enter a wager deadline", forWhichTextField: "deadline")
             return }
@@ -88,11 +130,11 @@ class CreateWagerViewController: UIViewController {
             }
         }        
     }
-    
+
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismissView()
     }
-
+    
     
     // MARK:-Functions
     func setupViews() {
@@ -147,22 +189,22 @@ extension CreateWagerViewController: UIImagePickerControllerDelegate, UINavigati
 
     func showError(_ message: String, forWhichTextField: String) {
         if forWhichTextField == "wager" {
-            wagerTextField.text = message
-            wagerTextField.textColor = .red
-            wagerTextField.layer.borderColor = UIColor.red.cgColor
-            wagerTextField.layer.borderWidth = 1.0
+            wagerTextView.text = message
+            wagerTextView.textColor = .red
+            wagerTextView.layer.borderColor = UIColor.red.cgColor
+            wagerTextView.layer.borderWidth = 1.0
         }
         if forWhichTextField == "goal" {
-            goalTextField.text = message
-            goalTextField.textColor = .red
-            goalTextField.layer.borderColor = UIColor.red.cgColor
-            goalTextField.layer.borderWidth = 1.0
+            goalTextView.text = message
+            goalTextView.textColor = .red
+            goalTextView.layer.borderColor = UIColor.red.cgColor
+            goalTextView.layer.borderWidth = 1.0
         }
         if forWhichTextField == "deadline" {
-            deadlineTextField.text = message
-            deadlineTextField.textColor = .red
-            deadlineTextField.layer.borderColor = UIColor.red.cgColor
-            deadlineTextField.layer.borderWidth = 1.0
+            deadlineTextView.text = message
+            deadlineTextView.textColor = .red
+            deadlineTextView.layer.borderColor = UIColor.red.cgColor
+            deadlineTextView.layer.borderWidth = 1.0
         }
         
     }
