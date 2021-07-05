@@ -51,9 +51,6 @@ class WagerCollectionViewCell: UICollectionViewCell {
         } else if selectedSegmentIndex == 1 {
             guard let myFriendsWager = myFriendsWager else { return }
             delegate?.deleteCellWith(wager: myFriendsWager, selectedSegmentIndex: 1)
-        } else if selectedSegmentIndex == 2 {
-            guard let wagerRequest = wagerRequest else { return }
-            delegate?.deleteCellWith(wager: wagerRequest, selectedSegmentIndex: 2)
         } else {
             return
         }
