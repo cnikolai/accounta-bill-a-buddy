@@ -31,13 +31,22 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
             print("Wagers Array created successfully")
         }
+//        WagerController.sharedInstance.deleteWager(wagerID: "3BCC0D22-AF1E-4510-9ED2-EA6D1038910C")
+//        WagerController.sharedInstance.fetchWager(wagerID: "32CA0720-62BF-411B-BEB4-A5A36D22B5D5") { result in
+//            switch result {
+//            case .success(let wager):
+//                print(wager)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
+//        createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
             self.collectionView.reloadData()
-            print("Wagers Array created successfully")
-        }
+//            print("Wagers Array created successfully")
+//        }
     }
     
     //Actions
@@ -215,7 +224,10 @@ extension WagerCollectionViewController: DeleteCellDelegate {
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {
             (_) in
             if selectedSegmentIndex == 0 {
+                print(self.myWagers.forEach({ $0.wagerID
+                }))
                 guard let index = self.myWagers.firstIndex(of: wager) else {return}
+                print(index)
                 self.myWagers.remove(at: index)
                 self.collectionView.reloadData()
             } else if selectedSegmentIndex == 1 {

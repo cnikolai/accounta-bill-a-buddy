@@ -46,6 +46,7 @@ class WagerCollectionViewCell: UICollectionViewCell {
     @IBAction func deleteButtonTapped(_ sender: Any) {
         if selectedSegmentIndex == 0  {
             guard let myWager = myWager else { return }
+            print(myWager.wagerID)
             delegate?.deleteCellWith(wager: myWager, selectedSegmentIndex: 0)
         } else if selectedSegmentIndex == 1 {
             guard let myFriendsWager = myFriendsWager else { return }
