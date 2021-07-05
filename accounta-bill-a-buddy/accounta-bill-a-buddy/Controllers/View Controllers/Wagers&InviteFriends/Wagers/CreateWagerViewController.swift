@@ -93,7 +93,6 @@ class CreateWagerViewController: UIViewController {
         dismissView()
     }
 
-    
     // MARK:-Functions
     func setupViews() {
         imageImageView.contentMode = .scaleAspectFill
@@ -102,10 +101,7 @@ class CreateWagerViewController: UIViewController {
     }
     
     private func dismissView() {
-        //DispatchQueue.main.async {
-            //self.dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
-        //}
     }
 }
 
@@ -166,7 +162,7 @@ extension CreateWagerViewController: UIImagePickerControllerDelegate, UINavigati
         }
         
     }
-}//eoc
+}//end of class
 
 extension CreateWagerViewController: InviteFriendsListTableViewControllerDelegate {
     func passFriends(_ sender: InviteFriendsListTableViewController) {
@@ -178,7 +174,6 @@ extension CreateWagerViewController: InviteFriendsListTableViewControllerDelegat
             }
         }
         print(invitedFriendsUIDs)
-        //inviteFriendsButton.setTitle( invitedFriendsUUIs.joined(separator: ", "), for: .normal)
     }
 }
 
