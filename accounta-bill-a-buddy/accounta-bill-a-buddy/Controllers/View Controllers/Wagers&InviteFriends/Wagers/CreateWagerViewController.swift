@@ -132,7 +132,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     }
 
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        dismissView()
+        self.dismiss(animated: true, completion: nil)
     }
 
     
