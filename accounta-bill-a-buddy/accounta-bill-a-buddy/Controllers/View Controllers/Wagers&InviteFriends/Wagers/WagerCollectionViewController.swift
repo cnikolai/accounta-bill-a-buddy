@@ -170,15 +170,18 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toWagerDetailVC" {
+            print("inside prepare for segue")
             guard
                 let destinationVC = segue.destination as? WagerDetailViewController,
                 let cell = sender as? WagerCollectionViewCell,
                 let indexPath = self.collectionView!.indexPath(for: cell) else {return}
-            // let indexPath = self.WagerCollectionViewCell.indexPath(for: cell) else {return}
+                //let indexPath = self.WagerCollectionViewCell.indexPath(for: cell) else {return}
             
-            //            let wager = WagerController.sharedInstance.wagers[indexPath.row]
-            //            // print("goalDescription", wager.goalDescription)
-            //            destinationVC.wager = wager
+                print("indexPath: ",indexPath.row)
+                print("wagers.count: ", myWagers.count)
+                let wager = myWagers[indexPath.row]
+                print("goalDescription", wager.goalDescription)
+                destinationVC.wager = wager
         }
     }
 } //End of class
