@@ -115,6 +115,39 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            let storyboard = UIStoryboard(name: "WagerDetailView", bundle: nil)
+             guard
+                 let destinationVC = storyboard.instantiateViewController(identifier: "WagerDetailViewController") as? WagerDetailViewController else {return}
+            let wager = myWagers[indexPath.row]
+            print("goalDescription", wager.goalDescription)
+            destinationVC.wager = wager
+            destinationVC.owner = true
+            present(destinationVC, animated: true, completion: nil)
+        case 1:
+            let storyboard = UIStoryboard(name: "WagerDetailView", bundle: nil)
+             guard
+                 let destinationVC = storyboard.instantiateViewController(identifier: "WagerDetailViewController") as? WagerDetailViewController else {return}
+            let wager = myFriendsWagers[indexPath.row]
+            print("goalDescription", wager.goalDescription)
+            destinationVC.wager = wager
+            destinationVC.owner = false
+            present(destinationVC, animated: true, completion: nil)
+        case 2:
+           let storyboard = UIStoryboard(name: "ApproveRejectFriends", bundle: nil)
+            guard
+                let destinationVC = storyboard.instantiateViewController(identifier: "ApproveRejectFriendsStoryboard") as? AcceptRejectFriendsViewController else {return}
+            let wager = wagerRequests[indexPath.row]
+            print("goalDescription", wager.goalDescription)
+            destinationVC.wager = wager
+            present(destinationVC, animated: true, completion: nil)
+        default:
+            break
+        }
+    }
+    
     func createWagerArrays(myWagers: [String], myFriendsWagers: [String], wagersRequests: [String], completion: ((Bool) -> Void)?) {
         let group = DispatchGroup()
         
@@ -171,41 +204,41 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toWagerDetailVC" {
-            switch segmentedController.selectedSegmentIndex {
-            case 0:
-                guard
-                    let destinationVC = segue.destination as? WagerDetailViewController,
-                    let cell = sender as? WagerCollectionViewCell,
-                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
-                print("inside prepare for segue segmented controller: case 0")
-                let wager = myWagers[indexPath.row]
-                print("goalDescription", wager.goalDescription)
-                destinationVC.wager = wager
-                destinationVC.owner = true
-            case 1:
-                guard
-                    let destinationVC = segue.destination as? WagerDetailViewController,
-                    let cell = sender as? WagerCollectionViewCell,
-                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
-                print("inside prepare for segue segmented controller: case 1")
-                let wager = myFriendsWagers[indexPath.row]
-                print("goalDescription", wager.goalDescription)
-                destinationVC.wager = wager
-                destinationVC.owner = false
-            case 2:
-                guard
-                    let destinationVC = segue.destination as? AcceptRejectFriendsViewController,
-                    let cell = sender as? WagerCollectionViewCell,
-                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
-                print("inside prepare for segue segmented controller: case 2")
-                let wager = wagerRequests[indexPath.row]
-                print("goalDescription", wager.goalDescription)
-                destinationVC.wager = wager
-            default:
-                break
-            }
-        }
+//        if segue.identifier == "toWagerDetailVC" {
+//            switch segmentedController.selectedSegmentIndex {
+//            case 0:
+//                guard
+//                    let destinationVC = segue.destination as? WagerDetailViewController,
+//                    let cell = sender as? WagerCollectionViewCell,
+//                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
+//                print("inside prepare for segue segmented controller: case 0")
+//                let wager = myWagers[indexPath.row]
+//                print("goalDescription", wager.goalDescription)
+//                destinationVC.wager = wager
+//                destinationVC.owner = true
+//            case 1:
+//                guard
+//                    let destinationVC = segue.destination as? WagerDetailViewController,
+//                    let cell = sender as? WagerCollectionViewCell,
+//                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
+//                print("inside prepare for segue segmented controller: case 1")
+//                let wager = myFriendsWagers[indexPath.row]
+//                print("goalDescription", wager.goalDescription)
+//                destinationVC.wager = wager
+//                destinationVC.owner = false
+//            case 2:
+//                guard
+//                    let destinationVC = segue.destination as? AcceptRejectFriendsViewController,
+//                    let cell = sender as? WagerCollectionViewCell,
+//                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
+//                print("inside prepare for segue segmented controller: case 2")
+//                let wager = wagerRequests[indexPath.row]
+//                print("goalDescription", wager.goalDescription)
+//                destinationVC.wager = wager
+//            default:
+//                break
+//            }
+//        }
     }
 } //End of class
 

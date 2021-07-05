@@ -67,7 +67,8 @@ class WagerDetailViewController: UIViewController {
     }
     
     private func dismissView() {
-        self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func updateViews() {

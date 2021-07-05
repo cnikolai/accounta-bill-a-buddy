@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3714EDAB26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3714EDAA26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard */; };
+		3714EDAB26829E0D00BCD8B0 /* WagerDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3714EDAA26829E0D00BCD8B0 /* WagerDetailView.storyboard */; };
 		379162AE268523380059184F /* Wager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379162AD268523380059184F /* Wager.swift */; };
 		379162B0268523450059184F /* WagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379162AF268523450059184F /* WagerController.swift */; };
 		379162B226852D2D0059184F /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379162B126852D2D0059184F /* DatabaseError.swift */; };
-		37A1BE12267AAE260044FA88 /* Cindy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A1BE11267AAE260044FA88 /* Cindy.storyboard */; };
+		37A1BE12267AAE260044FA88 /* CreateWager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A1BE11267AAE260044FA88 /* CreateWager.storyboard */; };
 		37AFFC302683E9650088E2C6 /* WagerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */; };
 		37AFFC322683E9900088E2C6 /* CreateWagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */; };
 		37B87E63268E1D0E00EAD4FE /* InviteFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37B87E62268E1D0E00EAD4FE /* InviteFriends.storyboard */; };
@@ -46,11 +46,11 @@
 
 /* Begin PBXFileReference section */
 		34C0B45614B92C455E86C369 /* Pods-accounta-bill-a-buddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-accounta-bill-a-buddy.release.xcconfig"; path = "Target Support Files/Pods-accounta-bill-a-buddy/Pods-accounta-bill-a-buddy.release.xcconfig"; sourceTree = "<group>"; };
-		3714EDAA26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CindyWagerDetailView.storyboard; sourceTree = "<group>"; };
+		3714EDAA26829E0D00BCD8B0 /* WagerDetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WagerDetailView.storyboard; sourceTree = "<group>"; };
 		379162AD268523380059184F /* Wager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wager.swift; sourceTree = "<group>"; };
 		379162AF268523450059184F /* WagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerController.swift; sourceTree = "<group>"; };
 		379162B126852D2D0059184F /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
-		37A1BE11267AAE260044FA88 /* Cindy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cindy.storyboard; sourceTree = "<group>"; };
+		37A1BE11267AAE260044FA88 /* CreateWager.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateWager.storyboard; sourceTree = "<group>"; };
 		37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerDetailViewController.swift; sourceTree = "<group>"; };
 		37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWagerViewController.swift; sourceTree = "<group>"; };
 		37B87E62268E1D0E00EAD4FE /* InviteFriends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InviteFriends.storyboard; sourceTree = "<group>"; };
@@ -101,8 +101,8 @@
 		37A1BE10267AAE120044FA88 /* cindystoryboard */ = {
 			isa = PBXGroup;
 			children = (
-				37A1BE11267AAE260044FA88 /* Cindy.storyboard */,
-				3714EDAA26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard */,
+				37A1BE11267AAE260044FA88 /* CreateWager.storyboard */,
+				3714EDAA26829E0D00BCD8B0 /* WagerDetailView.storyboard */,
 				37B87E62268E1D0E00EAD4FE /* InviteFriends.storyboard */,
 				37B87E68268E352300EAD4FE /* ApproveRejectFriends.storyboard */,
 			);
@@ -411,7 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37DFDDED267A58CC0055AF6C /* LaunchScreen.storyboard in Resources */,
-				3714EDAB26829E0D00BCD8B0 /* CindyWagerDetailView.storyboard in Resources */,
+				3714EDAB26829E0D00BCD8B0 /* WagerDetailView.storyboard in Resources */,
 				9B4E9598267AB24100DA223F /* Friends.storyboard in Resources */,
 				9B4E959B267AB25100DA223F /* Rishi.storyboard in Resources */,
 				37B87E63268E1D0E00EAD4FE /* InviteFriends.storyboard in Resources */,
@@ -419,7 +419,7 @@
 				37DFDDEA267A58CC0055AF6C /* Assets.xcassets in Resources */,
 				37DFDDE8267A58CA0055AF6C /* Main.storyboard in Resources */,
 				37B87E69268E352300EAD4FE /* ApproveRejectFriends.storyboard in Resources */,
-				37A1BE12267AAE260044FA88 /* Cindy.storyboard in Resources */,
+				37A1BE12267AAE260044FA88 /* CreateWager.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
