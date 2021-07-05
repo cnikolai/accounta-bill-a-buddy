@@ -59,19 +59,24 @@ class WagerCollectionViewCell: UICollectionViewCell {
     //MARK: - Functions
     func updateMyWagersView() {
         guard let myWager = myWager else {return}
+        deleteButton.isEnabled = true
+        deleteButton.isHidden = false
         wagerImageView?.image = myWager.wagerPhoto
         wagerImageView?.layer.cornerRadius = wagerImageView.frame.height / 2
     }
     
     func updateMyFriendsWagersView() {
         guard let myFriendsWager = myFriendsWager else {return}
+        deleteButton.isEnabled = true
+        deleteButton.isHidden = false
         wagerImageView?.image = myFriendsWager.wagerPhoto
         wagerImageView?.layer.cornerRadius = wagerImageView.frame.height / 2
     }
     
     func updateRequestedView() {
         guard let wagerRequest = wagerRequest else {return}
-        print(wagerRequest.wagerID)
+        deleteButton.isEnabled = false
+        deleteButton.isHidden = true
         wagerImageView?.image = wagerRequest.wagerPhoto
         wagerImageView?.layer.cornerRadius = wagerImageView.frame.height / 2
     }

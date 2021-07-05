@@ -44,10 +44,4 @@ class ProfileViewController: UIViewController {
     func updateView() {
         profileLabel.text = UserController.sharedInstance.currentUser?.username
     }
-
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-    }
-
 }//End of class
