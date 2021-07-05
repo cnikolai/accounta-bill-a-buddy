@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,7 +15,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5jJ-sv-Feb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.67660411610000004" green="0.85804396869999999" blue="0.84589028389999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="VGn-V0-H4P">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -35,8 +35,9 @@
                                                 <action selector="segmentedControlButtonTapped:" destination="wwZ-yz-xBK" eventType="valueChanged" id="EEX-NA-Nop"/>
                                             </connections>
                                         </segmentedControl>
-                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gyr-Vn-c3d">
-                                            <rect key="frame" x="0.0" y="32" width="320" height="56"/>
+                                        <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyr-Vn-c3d">
+                                            <rect key="frame" x="0.0" y="37" width="320" height="51"/>
+                                            <color key="backgroundColor" red="0.67660411610000004" green="0.85804396869999999" blue="0.84589028389999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <scopeButtonTitles>
                                                 <string>Title</string>
@@ -49,7 +50,7 @@
                                     </constraints>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="vSr-UC-zBS" firstAttribute="centerX" secondItem="VGn-V0-H4P" secondAttribute="centerX" id="9c1-lr-BSK"/>
                                 <constraint firstItem="vSr-UC-zBS" firstAttribute="top" secondItem="VGn-V0-H4P" secondAttribute="top" id="ern-Q9-cce"/>
@@ -58,7 +59,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="55" id="Nro-mO-PWD" customClass="UserTableViewCell" customModule="accounta_bill_a_buddy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="116" width="320" height="55"/>
+                                <rect key="frame" x="0.0" y="112.5" width="320" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nro-mO-PWD" id="JYP-Q6-wlH">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
@@ -95,6 +96,7 @@
                                         <constraint firstItem="cnV-e6-RiB" firstAttribute="height" secondItem="JYP-Q6-wlH" secondAttribute="height" multiplier="0.8" id="zBA-By-ftu"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.67660411611658955" green="0.85804396867752075" blue="0.84589028390848608" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <outlet property="reusableButton" destination="diy-hG-6g1" id="YK9-fj-Sgs"/>
                                     <outlet property="usernameLabel" destination="FqD-RH-ZHm" id="xDR-7w-X6L"/>
@@ -133,31 +135,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="profileLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQJ-s2-Usm">
-                                <rect key="frame" x="87.5" y="142" width="145" height="30"/>
+                                <rect key="frame" x="87.5" y="154" width="145" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="a2M-fG-rrS">
-                                <rect key="frame" x="64" y="326" width="192" height="112"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="a2M-fG-rrS">
+                                <rect key="frame" x="24" y="338" width="272" height="83"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViU-pp-f2h">
-                                        <rect key="frame" x="0.0" y="0.0" width="192" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="272" height="30"/>
                                         <color key="backgroundColor" red="0.43865627838409044" green="0.71519430890582858" blue="0.86673815497036633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <state key="normal" title="Blocked Users">
-                                            <color key="titleColor" systemColor="labelColor"/>
+                                            <color key="titleColor" systemColor="linkColor"/>
                                         </state>
                                         <connections>
                                             <segue destination="B3g-yA-WKK" kind="show" id="Y0b-er-Hox"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RwO-Lu-IKR">
-                                        <rect key="frame" x="0.0" y="72" width="192" height="40"/>
+                                        <rect key="frame" x="0.0" y="53" width="272" height="30"/>
                                         <color key="backgroundColor" systemColor="systemGray2Color"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="WTh-iX-GZn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <state key="normal" title="Log Out">
-                                            <color key="titleColor" systemColor="labelColor"/>
+                                            <color key="titleColor" red="0.98039215686274506" green="0.3411764705882353" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="logOutButtonTapped:" destination="hhM-s5-c55" eventType="touchUpInside" id="JZ9-50-CdD"/>
@@ -166,17 +171,16 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePhotoPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Haz-ZC-UuQ">
-                                <rect key="frame" x="54" y="52" width="212" height="210"/>
+                                <rect key="frame" x="54" y="64" width="212" height="210"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="210" id="Ct5-x0-VOy"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tWe-rs-WTK"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.11372549019607843" green="0.20784313725490194" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="tWe-rs-WTK" firstAttribute="bottom" secondItem="a2M-fG-rrS" secondAttribute="bottom" constant="81" id="6B7-Wg-Lnt"/>
-                            <constraint firstItem="Haz-ZC-UuQ" firstAttribute="top" secondItem="tWe-rs-WTK" secondAttribute="top" constant="8" id="6ya-YW-CK6"/>
+                            <constraint firstItem="Haz-ZC-UuQ" firstAttribute="top" secondItem="tWe-rs-WTK" secondAttribute="top" constant="20" id="6ya-YW-CK6"/>
                             <constraint firstItem="Haz-ZC-UuQ" firstAttribute="width" secondItem="Imt-tu-5cb" secondAttribute="width" multiplier="0.661836" id="CiB-7E-9UP"/>
                             <constraint firstItem="OQJ-s2-Usm" firstAttribute="width" secondItem="Imt-tu-5cb" secondAttribute="width" multiplier="0.454106" id="SG3-5c-YVA"/>
                             <constraint firstItem="Haz-ZC-UuQ" firstAttribute="centerY" secondItem="OQJ-s2-Usm" secondAttribute="centerY" id="VbJ-V5-bg9"/>
@@ -184,12 +188,14 @@
                             <constraint firstItem="Haz-ZC-UuQ" firstAttribute="centerX" secondItem="tWe-rs-WTK" secondAttribute="centerX" id="XDk-bU-Dlm"/>
                             <constraint firstItem="a2M-fG-rrS" firstAttribute="top" secondItem="Haz-ZC-UuQ" secondAttribute="bottom" constant="64" id="XVS-il-Gpa"/>
                             <constraint firstItem="a2M-fG-rrS" firstAttribute="centerX" secondItem="tWe-rs-WTK" secondAttribute="centerX" id="YiF-N2-ALE"/>
-                            <constraint firstItem="a2M-fG-rrS" firstAttribute="width" secondItem="Imt-tu-5cb" secondAttribute="width" multiplier="0.6" id="gHV-Wu-dOv"/>
                             <constraint firstItem="Haz-ZC-UuQ" firstAttribute="centerX" secondItem="OQJ-s2-Usm" secondAttribute="centerX" id="wD6-q1-YxC"/>
+                            <constraint firstItem="a2M-fG-rrS" firstAttribute="width" secondItem="Imt-tu-5cb" secondAttribute="width" multiplier="0.85" id="wpe-Pg-0o9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="0Q0-aa-Iww"/>
                     <connections>
+                        <outlet property="blockedUsersButton" destination="ViU-pp-f2h" id="GUl-vi-qI8"/>
+                        <outlet property="logOutButton" destination="RwO-Lu-IKR" id="wrd-hY-MCg"/>
                         <outlet property="profileLabel" destination="OQJ-s2-Usm" id="CQ7-jT-KEQ"/>
                     </connections>
                 </viewController>
@@ -210,7 +216,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blockedUserCell" rowHeight="64" id="4ca-ee-GKW" customClass="BlockedUserTableViewCell" customModule="accounta_bill_a_buddy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="64"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="320" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4ca-ee-GKW" id="Ul2-gi-20Z">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
@@ -318,8 +324,8 @@
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="profilePhotoPlaceholder" width="423" height="422"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
