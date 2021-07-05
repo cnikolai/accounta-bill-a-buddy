@@ -109,15 +109,20 @@ class UserTableViewCell: UITableViewCell {
                 self.delegate?.updateTableView()
             }
         }
-        let blockAction = UIAlertAction(title: "Block Friend", style: .default) { (_) in
+        let blockAction = UIAlertAction(title: "Block Friend", style: .destructive) { (_) in
             DispatchQueue.main.async {
                 UserController.sharedInstance.blockFriend(uid: friendsData[0], username: friendsData[1])
                 self.delegate?.updateTableView()
             }
         }
-        let reportAction = UIAlertAction(title: "Report Friend", style: .default) { (_) in
+        let reportAction = UIAlertAction(title: "Report Friend", style: .destructive) { (_) in
             DispatchQueue.main.async {
-                
+                UserController.sharedInstance.reportFriend(uid: friendsData[0], username: friendsData[1])
+                let reportController = UIAlertController(title: "Report", message: "User has been blocked and reported.", preferredStyle: .alert)
+                let reportSentAction = UIAlertAction(title: "Ok", style: .default)
+                reportController.addAction(reportSentAction)
+                self.parentVC?.present(reportController, animated: true, completion: nil)
+                self.delegate?.updateTableView()
             }
         }
         
