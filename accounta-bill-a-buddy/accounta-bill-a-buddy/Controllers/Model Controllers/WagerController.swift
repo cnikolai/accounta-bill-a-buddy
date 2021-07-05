@@ -145,8 +145,24 @@ class WagerController {
             }
         }
     }
-    
-    ///DELETE WAGER
+  
+    func updateWager(wager: Wager) {
+        let wagersRef = db.collection(wagersCollection).document(wager.wagerID)
+        wagersRef.updateData([
+            "goalDescription": wager.goalDescription,
+            "wager": wager.wager,
+            "deadline": wager.deadline,
+            "progress": wager.progress
+        ]) { err in
+            if let err = err {
+                print("Error updating wager: \(err)")
+            } else {
+                print("Wager successfully updated")
+            }
+        }       
+    }
+  
+     ///DELETE WAGER
     //Delete Wager from Wagers collection
     func deleteWager(wagerID: String) {
         
