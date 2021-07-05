@@ -134,7 +134,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismissView()
     }
-    
+
     
     // MARK:-Functions
     func setupViews() {
@@ -144,10 +144,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     }
     
     private func dismissView() {
-        //DispatchQueue.main.async {
-            //self.dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
-        //}
     }
 }
 
@@ -208,7 +205,7 @@ extension CreateWagerViewController: UIImagePickerControllerDelegate, UINavigati
         }
         
     }
-}//eoc
+}//end of class
 
 extension CreateWagerViewController: InviteFriendsListTableViewControllerDelegate {
     func passFriends(_ sender: InviteFriendsListTableViewController) {
@@ -220,7 +217,6 @@ extension CreateWagerViewController: InviteFriendsListTableViewControllerDelegat
             }
         }
         print(invitedFriendsUIDs)
-        //inviteFriendsButton.setTitle( invitedFriendsUUIs.joined(separator: ", "), for: .normal)
     }
 }
 

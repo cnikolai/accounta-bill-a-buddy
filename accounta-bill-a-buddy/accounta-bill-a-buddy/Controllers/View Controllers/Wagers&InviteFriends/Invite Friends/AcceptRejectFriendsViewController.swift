@@ -15,7 +15,6 @@ class AcceptRejectFriendsViewController: UIViewController {
     // MARK:-Outlets
     @IBOutlet weak var wagerImageView: UIImageView!
     @IBOutlet weak var invitingYouLabel: UILabel!
-   
     @IBOutlet weak var goalDescriptionLabel: UILabel!
     @IBOutlet weak var wagerLabel: UITextField!
     @IBOutlet weak var deadlineLabel: UITextField!
@@ -23,6 +22,7 @@ class AcceptRejectFriendsViewController: UIViewController {
     // MARK:-Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        invitingYouLabel.text = UserController.sharedInstance.currentUser!.username + " is inviting you to a wager!"
     }
     
     // MARK:-Actions
