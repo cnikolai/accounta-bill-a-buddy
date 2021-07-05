@@ -25,10 +25,9 @@ class Utilities {
         textView.layer.cornerRadius = 10
     }
     
-//    static func friendsLabel(_ label: UILabel) {
-//        label.layer.borderWidth = 1
-//        label.layer.borderColor = UIColor.systemGray4.cgColor
-//        label.layer.cornerRadius = 10
-//    }
+    static func styleFilledButton(_ button:UIButton) {
+        button.backgroundColor = UIColor.init(red: 158/255, green: 213/255, blue: 208/255, alpha: 1)
+        button.layer.cornerRadius = 2.0
+    }
     
 }//End of class

@@ -11,7 +11,7 @@ import Firebase
 class ForgotPasswordViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
-    
+    @IBOutlet weak var resetPasswordButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     
     
@@ -19,6 +19,11 @@ class ForgotPasswordViewController: UIViewController {
         super.viewDidLoad()
         errorLabel.alpha = 0
         emailTextField.delegate = self
+        setupViews()
+    }
+    
+    func setupViews() {
+        Utilities.styleFilledButton(resetPasswordButton)
     }
     
     @IBAction func resetPasswordButtonTapped(_ sender: Any) {
