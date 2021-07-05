@@ -224,11 +224,12 @@ extension WagerCollectionViewController: DeleteCellDelegate {
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {
             (_) in
             if selectedSegmentIndex == 0 {
-                print(self.myWagers.forEach({ $0.wagerID
-                }))
-                guard let index = self.myWagers.firstIndex(of: wager) else {return}
-                print(index)
-                self.myWagers.remove(at: index)
+                //Delete Wager object from Wagers collection and from current user's myWagers array
+                WagerController.sharedInstance.deleteWager(wagerID: wager.wagerID)
+                WagerController.sharedInstance.deleteWagerFromMyWagers(wagerToDelete: wager)
+                WagerController.sharedInstance.deleteWagerFromFriendsRequests(wagerToDelete: wager)
+                WagerController.sharedInstance.deleteWagerFromMyFriendsWagers(wagerToDelete: wager)
+                
                 self.collectionView.reloadData()
             } else if selectedSegmentIndex == 1 {
                 guard let index = self.myFriendsWagers.firstIndex(of: wager) else {return}
