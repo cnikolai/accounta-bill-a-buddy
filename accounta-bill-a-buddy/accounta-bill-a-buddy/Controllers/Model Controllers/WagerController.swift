@@ -165,17 +165,6 @@ class WagerController {
      ///DELETE WAGER
     //Delete Wager from Wagers collection
     func deleteWager(wagerID: String) {
-        
-        fetchWager(wagerID: wagerID) { result in
-            switch result {
-            case .success(let wager):
-                self.deleteWagerFromMyFriendsWagers(wagerToDelete: wager)
-                self.deleteWagerFromFriendsRequests(wagerToDelete: wager)
-            case .failure(let error):
-                print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
-            }
-        }
-        
         let wagersRef = db.collection(wagersCollection).document(wagerID)
         wagersRef.delete() { error in
             if let error = error {
@@ -207,7 +196,6 @@ class WagerController {
                     }
                 }
             }
-        
     }
     
     //Delete wager from friend's myFriendsWagers array in Users collection
@@ -254,6 +242,54 @@ class WagerController {
                     }
                 }
         }
+    }
+    
+    ///LEAVE FRIEND'S WAGER
+    //Remove Wager from current user's myFriendsWagers array
+    func leaveFriendsWager(wagerToLeave: Wager) {
+        guard let currentUser = UserController.sharedInstance.currentUser else { return }
+
+        self.db.collection("users").document(currentUser.uid)
+            .getDocument { (snapshot, error) in
+                if let error = error {
+                    print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                } else {
+                    if let data = snapshot?.data() {
+                        var myFriendsWagers = data["myWagers"] as? [String] ?? []
+                        
+                        if let index = myFriendsWagers.firstIndex(of: wagerToLeave.wagerID) {
+                            myFriendsWagers.remove(at: index)
+                        }
+                        
+                        let currentUserData = self.db.collection("users").document(currentUser.uid)
+                        currentUserData.setData(["myFriendsWagers": myFriendsWagers], merge: true)
+                    }
+                }
+            }
+    }
+    
+    //Remove current user from Wager object's acceptedFriends array
+    func removeUserFromWager(wagerID: String) {
+        guard let currentUser = UserController.sharedInstance.currentUser else { return }
+        
+        db.collection(wagersCollection).document(wagerID)
+            .getDocument { (snapshot, error) in
+                if let error = error {
+                    print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                } else {
+                    if let data = snapshot?.data() {
+                        var acceptedFriends = data["acceptedFriends"] as? [String] ?? []
+                        
+                        if let index = acceptedFriends.firstIndex(of: wagerID) {
+                            acceptedFriends.remove(at: index)
+                        }
+                        
+                        let currentUserData = self.db.collection("users").document(currentUser.uid)
+                        currentUserData.setData(["acceptedFriends": acceptedFriends], merge: true)
+                        
+                    }
+                }
+            }
     }
     
 }//End of class

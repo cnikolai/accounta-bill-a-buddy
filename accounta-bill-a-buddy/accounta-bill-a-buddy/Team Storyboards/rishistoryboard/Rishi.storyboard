@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Md7-Tn-Rl0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Md7-Tn-Rl0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--CindyVC-->
+        <!--CreateWager-->
+        <scene sceneID="IBP-3N-9dX">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CreateWager" storyboardName="CreateWager" id="do0-qN-2uT" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="c4t-ad-Xvr"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NH2-5q-Qhv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3268" y="289"/>
+        </scene>
+        <!--WagerDetailViewController-->
         <scene sceneID="8mZ-e2-NQU">
             <objects>
-                <viewControllerPlaceholder storyboardName="Cindy" referencedIdentifier="CindyVC" id="UWL-qI-A1n" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="WagerDetailView" storyboardName="WagerDetailView" referencedIdentifier="WagerDetailViewController" id="UWL-qI-A1n" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="7pl-hy-dSc"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iy8-DX-oXz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3188" y="406"/>
-        </scene>
-        <!--CindyWagerDetailView-->
-        <scene sceneID="pYl-hp-2rg">
-            <objects>
-                <viewControllerPlaceholder storyboardName="CindyWagerDetailView" id="uM2-Z0-Mq7" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="NuD-IX-cNW"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6cI-A0-5Vf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3251" y="443"/>
         </scene>
         <!--Wager Collection View Controller-->
         <scene sceneID="vv6-aU-Ddy">
@@ -93,7 +93,6 @@
                                         <connections>
                                             <outlet property="deleteButton" destination="L9p-U0-dAc" id="3WG-24-LDV"/>
                                             <outlet property="wagerImageView" destination="bCb-RJ-HVB" id="6di-Am-l3f"/>
-                                            <segue destination="uM2-Z0-Mq7" kind="show" identifier="toWagerDetailVC" id="Ti8-1F-fom"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -115,7 +114,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="ef2-k5-KS1"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OxQ-rq-9XD">
                             <connections>
-                                <segue destination="UWL-qI-A1n" kind="show" identifier="" id="IIN-pu-JoR"/>
+                                <segue destination="do0-qN-2uT" kind="show" id="aro-yW-HrR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
