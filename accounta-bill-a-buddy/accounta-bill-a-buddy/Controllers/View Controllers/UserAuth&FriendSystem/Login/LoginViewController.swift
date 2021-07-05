@@ -41,6 +41,12 @@ class LoginViewController: UIViewController {
         persistentLogin()
         passwordTextField.delegate = self
         setupViewFor(screen: .login)
+        setupViews()
+    }
+    
+    func setupViews() {
+        Utilities.styleFilledButton(loginButton)
+        Utilities.styleFilledButton(signUpButton)
     }
     
     //MARK: - Actions
