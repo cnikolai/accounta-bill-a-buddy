@@ -84,7 +84,7 @@ class WagerController {
                 group.leave()
             }
         }
-
+        
         group.notify(queue: .global()) {
             // NOTE: Returns the first error but probably should return them all
             if let error = errors.first {
@@ -146,6 +146,8 @@ class WagerController {
         }
     }
     
+    ///DELETE WAGER
+    //Delete Wager from Wagers collection
     func deleteWager(wagerID: String) {
         
         fetchWager(wagerID: wagerID) { result in
@@ -158,44 +160,85 @@ class WagerController {
             }
         }
         
-        //Delete wager document from wagers collection
         let wagersRef = db.collection(wagersCollection).document(wagerID)
-            wagersRef.delete() { error in
+        wagersRef.delete() { error in
             if let error = error {
                 print("Error removing wager document: \(error)")
             } else {
                 print("Successfully deleted wager with id: \(wagerID)")
             }
         }
+    }
+    
+    //Delete wager from myWagers array in Users collection
+    func deleteWagerFromMyWagers(wagerToDelete: Wager) {
+        guard let currentUser = UserController.sharedInstance.currentUser else { return }
+
+        self.db.collection("users").document(currentUser.uid)
+            .getDocument { (snapshot, error) in
+                if let error = error {
+                    print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                } else {
+                    if let data = snapshot?.data() {
+                        var myWagers = data["myWagers"] as? [String] ?? []
+                        
+                        if let index = myWagers.firstIndex(of: wagerToDelete.wagerID) {
+                            myWagers.remove(at: index)
+                        }
+                        
+                        let currentUserData = self.db.collection("users").document(currentUser.uid)
+                        currentUserData.setData(["myWagers": myWagers], merge: true)
+                    }
+                }
+            }
         
     }
     
+    //Delete wager from friend's myFriendsWagers array in Users collection
     func deleteWagerFromMyFriendsWagers(wagerToDelete: Wager) {
         for friend in wagerToDelete.acceptedFriends {
-            self.db.collection("users").document(friend).updateData([
-                "myFriendsWagers": FieldValue.delete(),
-            ]) { error in
-                if let error = error {
-                    print("Error deleting wager from myFriendsWagers: \(error)")
-                } else {
-                    print("Wager successfully deleted from myFriendsWagers")
+            self.db.collection("users").document(friend)
+                .getDocument { (snapshot, error) in
+                    if let error = error {
+                        print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                    } else {
+                        if let data = snapshot?.data() {
+                            var myFriendsWagers = data["myFriendsWagers"] as? [String] ?? []
+                            
+                            if let index = myFriendsWagers.firstIndex(of: wagerToDelete.wagerID) {
+                                myFriendsWagers.remove(at: index)
+                            }
+                            
+                            let userData = self.db.collection("users").document(friend)
+                            userData.setData(["myFriendsWagers": myFriendsWagers], merge: true)
+                        }
+                    }
                 }
-            }
         }
     }
     
+    //Delete wager from friend's wagerRequests array in Users collection
     func deleteWagerFromFriendsRequests(wagerToDelete: Wager) {
         for friend in wagerToDelete.invitedFriends {
-            self.db.collection("users").document(friend).updateData([
-                "wagerRequests": FieldValue.delete(),
-            ]) { error in
-                if let error = error {
-                    print("Error deleting wager from wagerRequests: \(error)")
-                } else {
-                    print("Wager successfully deleted from wagerRequests")
+            self.db.collection("users").document(friend)
+                .getDocument { (snapshot, error) in
+                    if let error = error {
+                        print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                    } else {
+                        if let data = snapshot?.data() {
+                            var wagerRequests = data["wagerRequests"] as? [String] ?? []
+                            
+                            if let index = wagerRequests.firstIndex(of: wagerToDelete.wagerID) {
+                                wagerRequests.remove(at: index)
+                            }
+                            
+                            let userData = self.db.collection("users").document(friend)
+                            userData.setData(["wagerRequests": wagerRequests], merge: true)
+                        }
+                    }
                 }
-            }
         }
     }
     
-}
+}//End of class
+
