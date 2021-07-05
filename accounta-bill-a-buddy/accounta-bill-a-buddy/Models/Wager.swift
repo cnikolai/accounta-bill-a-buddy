@@ -66,8 +66,7 @@ class Wager {
 //MARK: - Extensions
 extension Wager: Equatable {
     static func == (lhs: Wager, rhs: Wager) -> Bool {
-        print("lhs.wagerID", lhs.wagerID)
-        print("rhs.wagerID", rhs.wagerID)
+        print("lhs.wagerID", lhs.wagerID, "rhs.wagerID", rhs.wagerID)
         return lhs.wagerID == rhs.wagerID
     }
 }//End of extension
