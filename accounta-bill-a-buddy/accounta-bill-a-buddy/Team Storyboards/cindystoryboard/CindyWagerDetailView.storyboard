@@ -198,7 +198,7 @@
                         <outlet property="goalDescriptionTextField" destination="Jco-U8-4lO" id="tqt-r9-qWb"/>
                         <outlet property="progressSlider" destination="D7b-ML-NMb" id="GqF-hG-TPE"/>
                         <outlet property="wagerPhotoImageView" destination="GJd-Es-sPH" id="oVf-jc-Caa"/>
-                        <outlet property="wagerTextField" destination="qa5-dn-JzN" id="uaW-tn-qpY"/>
+                        <outlet property="wagerTextField" destination="gFT-1L-zd2" id="NFi-yM-DVe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

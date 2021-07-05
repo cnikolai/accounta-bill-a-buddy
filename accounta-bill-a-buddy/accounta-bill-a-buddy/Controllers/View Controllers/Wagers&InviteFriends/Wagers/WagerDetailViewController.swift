@@ -16,7 +16,6 @@ class WagerDetailViewController: UIViewController {
     
     // MARK:-Outlets
     @IBOutlet weak var goalDescriptionTextField: UITextField!
-    
     @IBOutlet weak var wagerTextField: UITextField!
     @IBOutlet weak var deadlineTextField: UITextField!
     @IBOutlet weak var wagerPhotoImageView: UIImageView!
