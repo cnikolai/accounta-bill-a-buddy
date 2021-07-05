@@ -63,10 +63,9 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jco-U8-4lO">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jco-U8-4lO">
                                         <rect key="frame" x="0.0" y="20.5" width="269" height="79.5"/>
                                         <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur iaculis diam nunc, dictum lobortis enim lacinia non. Maecenas sagittis interdum nibh vitae ullamcorper. Aliquam vitae accumsan nisi. Proin auctor enim id nibh auctor elementum. Suspendisse fringilla viverra neque sit amet faucibus. Nunc at nisi pulvinar, bibendum felis a, malesuada ligula. Phasellus tincidunt pulvinar euismod. Suspendisse quam nisl, aliquam a blandit ut, ullamcorper vel lectus. Nunc sit amet dolor dui. Donec at malesuada tellus, non feugiat nulla. Proin blandit quam odio, sed tristique neque feugiat eu. Cras rhoncus sem eget augue lacinia mattis. Phasellus vulputate tincidunt sem, dignissim vulputate leo hendrerit in. </string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -74,6 +73,7 @@
                                 <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="HT8-8e-dVg"/>
+                                    <constraint firstItem="Jco-U8-4lO" firstAttribute="width" secondItem="NUx-hv-dcy" secondAttribute="width" id="Xjz-Fd-k00"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -153,38 +153,46 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </stackView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="D7b-ML-NMb">
-                                <rect key="frame" x="70.5" y="567" width="273" height="31"/>
-                                <color key="minimumTrackTintColor" systemColor="systemGreenColor"/>
-                                <connections>
-                                    <action selector="progressSliderTapped:" destination="Y6W-OH-hqX" eventType="valueChanged" id="ghx-l2-aIw"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="261" verticalHuggingPriority="261" ambiguous="YES" text="Progress:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smg-Eb-h6B">
-                                <rect key="frame" x="72" y="493" width="73" height="34"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="SZn-dH-dpO">
+                                <rect key="frame" x="72.5" y="567" width="269" height="50.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="261" verticalHuggingPriority="261" text="Progress:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smg-Eb-h6B">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="Yc0-lA-aBG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="D7b-ML-NMb">
+                                        <rect key="frame" x="-2" y="20.5" width="247" height="31"/>
+                                        <color key="minimumTrackTintColor" systemColor="systemGreenColor"/>
+                                        <connections>
+                                            <action selector="progressSliderTapped:" destination="Y6W-OH-hqX" eventType="valueChanged" id="ghx-l2-aIw"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="9Pn-2S-uDL"/>
+                                    <constraint firstItem="D7b-ML-NMb" firstAttribute="width" secondItem="SZn-dH-dpO" secondAttribute="width" multiplier="0.65" constant="68.150000000000006" id="aky-9l-4x6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.1137254902" green="0.20784313730000001" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="SZn-dH-dpO" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.65" id="7Hm-Mp-bIU"/>
                             <constraint firstItem="GJd-Es-sPH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="64" id="Dhr-tF-uu7"/>
                             <constraint firstItem="NUx-hv-dcy" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Dkt-jH-mPv"/>
-                            <constraint firstItem="D7b-ML-NMb" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Fab-nq-gsT"/>
                             <constraint firstItem="mdH-4Z-N5w" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.65" id="LWc-P2-qFQ"/>
                             <constraint firstItem="NUx-hv-dcy" firstAttribute="top" secondItem="GJd-Es-sPH" secondAttribute="bottom" constant="16" id="O3D-yS-7iK"/>
                             <constraint firstItem="GJd-Es-sPH" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Pq1-wX-TYB"/>
                             <constraint firstItem="mdH-4Z-N5w" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="RYd-dT-KqH"/>
                             <constraint firstItem="NUx-hv-dcy" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.65" id="XkS-Ej-ekg"/>
-                            <constraint firstItem="D7b-ML-NMb" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.65" id="YJs-Xu-Zmf"/>
-                            <constraint firstItem="D7b-ML-NMb" firstAttribute="top" secondItem="mdH-4Z-N5w" secondAttribute="bottom" constant="25" id="aSk-x9-36r"/>
+                            <constraint firstItem="SZn-dH-dpO" firstAttribute="top" secondItem="mdH-4Z-N5w" secondAttribute="bottom" constant="25" id="awi-nU-PCn"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="JPO-RA-JwB" secondAttribute="trailing" constant="45" id="iaC-6e-LoP"/>
                             <constraint firstItem="JPO-RA-JwB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="kqU-si-d55"/>
+                            <constraint firstItem="SZn-dH-dpO" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="qCs-60-iWq"/>
                             <constraint firstItem="mdH-4Z-N5w" firstAttribute="top" secondItem="NUx-hv-dcy" secondAttribute="bottom" constant="20" id="wvT-LI-aTb"/>
                         </constraints>
                     </view>
