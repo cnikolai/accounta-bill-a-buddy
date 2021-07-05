@@ -12,7 +12,12 @@ class WagerDetailViewController: UIViewController {
     // MARK:-Properties
     var progress: Float?
     
-    var wager: Wager?
+    var wager: Wager? {
+        didSet {
+            //updateViews()
+        }
+    }
+    var owner: Bool?
     
     // MARK:-Outlets
     @IBOutlet weak var goalDescriptionTextField: UITextField!
@@ -25,24 +30,44 @@ class WagerDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+//        self.navigationItem.leftBarButtonItem = nil;
+//        self.navigationItem.hidesBackButton = true;
+//        self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = false;
     }
     
     // MARK:-Actions
     @IBAction func progressSliderTapped(_ sender: UISlider) {
         print("slider value: ", sender.value)
         progress = sender.value
-        
     }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
-        //cmn - update wager
+        guard let wager = wager,
+              let owner = owner else { return }
+        guard let goalDescription = goalDescriptionTextField.text,
+              let wagertext = wagerTextField.text,
+              let deadline = deadlineTextField.text,
+              let progress = progressSlider?.value else { return }
+        //update wager in currentview
+        wager.goalDescription = goalDescription
+        wager.wager = wagertext
+        wager.deadline = deadline
+        wager.progress = progress
+        //update wager in database
+        WagerController.sharedInstance.updateWager(wager: wager)
+        //update wager in app
+        if (owner) {
+            UserController.sharedInstance.updateMyWagersList(with: wager)
+        }
+        else {
+            UserController.sharedInstance.updateMyFriendsWagersList(with: wager)
+
+        }
         dismissView()
     }
     
     private func dismissView() {
-        DispatchQueue.main.async {
-            self.dismiss(animated: true, completion: nil)
-        }
+        self.navigationController?.popViewController(animated: true)
     }
     
     func updateViews() {
