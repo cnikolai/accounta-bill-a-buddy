@@ -12,13 +12,21 @@ class ProfileViewController: UIViewController {
 
     //MARK: - Outlets
     @IBOutlet weak var profileLabel: UILabel!
+    @IBOutlet weak var blockedUsersButton: UIButton!
+    @IBOutlet weak var logOutButton: UIButton!
     
     //MARK: - Properties
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
         updateView()
+    }
+    
+    func setupViews() {
+        Utilities.styleFilledButton(blockedUsersButton)
+        Utilities.styleFilledButton(logOutButton)
     }
     
     //MARK: - Actions
