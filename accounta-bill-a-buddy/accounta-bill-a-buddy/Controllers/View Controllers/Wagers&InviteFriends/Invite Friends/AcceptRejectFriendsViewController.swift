@@ -22,7 +22,8 @@ class AcceptRejectFriendsViewController: UIViewController {
     // MARK:-Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        invitingYouLabel.text = UserController.sharedInstance.currentUser!.username + " is inviting you to a wager!"
+        let owner = fetchCurrentWagersOwner()
+        invitingYouLabel.text = owner + " is inviting you to a wager!"
     }
     
     // MARK:-Actions
@@ -45,5 +46,10 @@ class AcceptRejectFriendsViewController: UIViewController {
     func dismissView() {
         //self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func fetchCurrentWagersOwner() -> String {
+        guard let wager = wager else { return "" }
+        return wager.owner
     }
 }
