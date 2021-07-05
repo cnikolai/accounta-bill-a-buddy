@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DeleteCellDelegate: AnyObject {
-    func deleteCellWith(wager: Wager)
+    func deleteCellWith(wager: Wager, selectedSegmentIndex: Int)
 }
 
 class WagerCollectionViewCell: UICollectionViewCell {
@@ -44,8 +44,18 @@ class WagerCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Actions
     @IBAction func deleteButtonTapped(_ sender: Any) {
-        guard let wager = myWager else {return}
-        delegate?.deleteCellWith(wager: wager)
+        if selectedSegmentIndex == 0  {
+            guard let myWager = myWager else { return }
+            delegate?.deleteCellWith(wager: myWager, selectedSegmentIndex: 0)
+        } else if selectedSegmentIndex == 1 {
+            guard let myFriendsWager = myFriendsWager else { return }
+            delegate?.deleteCellWith(wager: myFriendsWager, selectedSegmentIndex: 1)
+        } else if selectedSegmentIndex == 2 {
+            guard let wagerRequest = wagerRequest else { return }
+            delegate?.deleteCellWith(wager: wagerRequest, selectedSegmentIndex: 2)
+        } else {
+            return
+        }
     }
     
     //MARK: - Functions
@@ -63,6 +73,7 @@ class WagerCollectionViewCell: UICollectionViewCell {
     
     func updateRequestedView() {
         guard let wagerRequest = wagerRequest else {return}
+        print(wagerRequest.wagerID)
         wagerImageView?.image = wagerRequest.wagerPhoto
         wagerImageView?.layer.cornerRadius = wagerImageView.frame.height / 2
     }

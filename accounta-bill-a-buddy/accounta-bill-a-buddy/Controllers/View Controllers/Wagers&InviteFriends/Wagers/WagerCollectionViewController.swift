@@ -35,13 +35,13 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     override func viewWillAppear(_ animated: Bool) {
         createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
+            self.collectionView.reloadData()
             print("Wagers Array created successfully")
         }
     }
     
     //Actions
     @IBAction func editButtonTapped(_ sender: Any) {
-        
         collectionView.isEditing.toggle()
         collectionView.reloadData()
         
@@ -58,9 +58,9 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         //        print("wagersArray:", wagersArray)
     }
     
-        @IBAction func segmentedControllerTapped(_ sender: UISegmentedControl) {
-            collectionView.reloadData()
-        }
+    @IBAction func segmentedControllerTapped(_ sender: UISegmentedControl) {
+        collectionView.reloadData()
+    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -102,6 +102,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             break
         }
         
+        cell.delegate = self
         return cell
     }
     
@@ -160,7 +161,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         }
     }
     
-    
     //let wager = wagers[indexPath.row]
     
     // cell.wager = wager
@@ -176,41 +176,48 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
                 let indexPath = self.collectionView!.indexPath(for: cell) else {return}
             // let indexPath = self.WagerCollectionViewCell.indexPath(for: cell) else {return}
             
-//            let wager = WagerController.sharedInstance.wagers[indexPath.row]
-//            // print("goalDescription", wager.goalDescription)
-//            destinationVC.wager = wager
+            //            let wager = WagerController.sharedInstance.wagers[indexPath.row]
+            //            // print("goalDescription", wager.goalDescription)
+            //            destinationVC.wager = wager
         }
     }
-    
 } //End of class
 
 //MARK: - Extensions
-//extension WagerCollectionViewController: DeleteCellDelegate {
-//    func deleteCellWith(wager: Wager) {
-//        deleteCellAlert(wager: wager)
-
-//    }
-
-//    func deleteCellAlert(wager: Wager) {
-//
-//        let alertController = UIAlertController(title: "Delete Wager?", message: "Are you sure you want to delete?", preferredStyle: .alert)
-//
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-//
-//        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {
-//            (_) in
-//            let index2 = self.wagers.firstIndex(of: wager)
-//            print(index2)
-//            guard let index = self.wagers.firstIndex(of: wager) else {return}
-//            print(wager.goalDescription)
-//            self.wagers.remove(at: index)
-//            self.collectionView.reloadData()
-//        }
-//
-//        alertController.addAction(cancelAction)
-//        alertController.addAction(deleteAction)
-//
-//        present(alertController, animated: true)
-//    }
-//} // End of Extension
+extension WagerCollectionViewController: DeleteCellDelegate {
+    func deleteCellWith(wager: Wager, selectedSegmentIndex: Int) {
+        deleteCellAlert(wager: wager, selectedSegmentIndex: selectedSegmentIndex)
+    }
+    
+    func deleteCellAlert(wager: Wager, selectedSegmentIndex: Int) {
+        
+        let alertController = UIAlertController(title: "Delete Wager?", message: "Are you sure you want to delete?", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {
+            (_) in
+            if selectedSegmentIndex == 0 {
+                guard let index = self.myWagers.firstIndex(of: wager) else {return}
+                self.myWagers.remove(at: index)
+                self.collectionView.reloadData()
+            } else if selectedSegmentIndex == 1 {
+                guard let index = self.myFriendsWagers.firstIndex(of: wager) else {return}
+                self.myFriendsWagers.remove(at: index)
+                self.collectionView.reloadData()
+            } else if selectedSegmentIndex == 2 {
+                guard let index = self.wagerRequests.firstIndex(of: wager) else {return}
+                self.wagerRequests.remove(at: index)
+                self.collectionView.reloadData()
+            } else {
+                return
+            }
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        
+        present(alertController, animated: true)
+    }
+} // End of Extension
 
