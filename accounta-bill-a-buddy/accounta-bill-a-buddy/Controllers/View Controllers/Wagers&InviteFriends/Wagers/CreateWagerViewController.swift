@@ -132,7 +132,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     }
 
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismissView()
     }
 
     
@@ -144,7 +144,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     }
     
     private func dismissView() {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
