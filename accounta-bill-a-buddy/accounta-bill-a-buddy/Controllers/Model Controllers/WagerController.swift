@@ -256,5 +256,9 @@ class WagerController {
         }
     }
     
+    func fetchCurrentWagersOwner(for wager: Wager, completion: @escaping (Result<String, DatabaseError>)->Void) {
+        
+    }
+    
 }//End of class
 

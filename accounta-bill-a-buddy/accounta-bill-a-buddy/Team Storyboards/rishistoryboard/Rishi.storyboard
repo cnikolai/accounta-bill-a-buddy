@@ -9,6 +9,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--CreateWager-->
+        <scene sceneID="IBP-3N-9dX">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CreateWager" storyboardName="CreateWager" id="do0-qN-2uT" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="c4t-ad-Xvr"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NH2-5q-Qhv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3268" y="289"/>
+        </scene>
         <!--WagerDetailViewController-->
         <scene sceneID="8mZ-e2-NQU">
             <objects>
@@ -104,7 +114,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="ef2-k5-KS1"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OxQ-rq-9XD">
                             <connections>
-                                <segue destination="UWL-qI-A1n" kind="show" identifier="" id="IIN-pu-JoR"/>
+                                <segue destination="do0-qN-2uT" kind="show" id="aro-yW-HrR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
