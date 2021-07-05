@@ -145,4 +145,57 @@ class WagerController {
             }
         }
     }
+    
+    func deleteWager(wagerID: String) {
+        
+        fetchWager(wagerID: wagerID) { result in
+            switch result {
+            case .success(let wager):
+                self.deleteWagerFromMyFriendsWagers(wagerToDelete: wager)
+                self.deleteWagerFromFriendsRequests(wagerToDelete: wager)
+            case .failure(let error):
+                print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+            }
+        }
+        
+        //Delete wager document from wagers collection
+        let wagersRef = db.collection(wagersCollection).document(wagerID)
+            wagersRef.delete() { error in
+            if let error = error {
+                print("Error removing wager document: \(error)")
+            } else {
+                print("Successfully deleted wager with id: \(wagerID)")
+            }
+        }
+        
+    }
+    
+    func deleteWagerFromMyFriendsWagers(wagerToDelete: Wager) {
+        for friend in wagerToDelete.acceptedFriends {
+            self.db.collection("users").document(friend).updateData([
+                "myFriendsWagers": FieldValue.delete(),
+            ]) { error in
+                if let error = error {
+                    print("Error deleting wager from myFriendsWagers: \(error)")
+                } else {
+                    print("Wager successfully deleted from myFriendsWagers")
+                }
+            }
+        }
+    }
+    
+    func deleteWagerFromFriendsRequests(wagerToDelete: Wager) {
+        for friend in wagerToDelete.invitedFriends {
+            self.db.collection("users").document(friend).updateData([
+                "wagerRequests": FieldValue.delete(),
+            ]) { error in
+                if let error = error {
+                    print("Error deleting wager from wagerRequests: \(error)")
+                } else {
+                    print("Wager successfully deleted from wagerRequests")
+                }
+            }
+        }
+    }
+    
 }
