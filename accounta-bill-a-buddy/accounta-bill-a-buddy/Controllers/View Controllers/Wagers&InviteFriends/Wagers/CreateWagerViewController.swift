@@ -15,6 +15,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     var wagerFriends: [[String:String]] = []
     var invitedFriendsUIDs: [String] = []
     var invitedFriendsNames: [String] = []
+    var photopickerbuttontapped = false
     
     // MARK:-Outlets
     @IBOutlet weak var imageImageView: UIImageView!
@@ -85,6 +86,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func photoPickerButtonTapped(_ sender: Any) {
+        photopickerbuttontapped = true
         let alert = UIAlertController(title: "Add a photo", message: nil, preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
@@ -116,6 +118,9 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
               !(deadline == "Enter deadline..."),!(deadline == "Please enter a wager deadline") else {
             showError("Please enter a wager deadline", forWhichTextField: "deadline")
             return }
+        if !photopickerbuttontapped {
+            imageImageView.image = UIImage(named: "wagerDefaultPhoto")
+        }
         WagerController.sharedInstance.createAndSaveWager(wagerID: UUID().uuidString, owner: (UserController.sharedInstance.currentUser?.uid)!, invitedFriends: invitedFriendsUIDs, acceptedFriends: [], wagerPhoto: imageImageView.image, goalDescription: goal, wager: wager, deadline: deadline, progress: 0) { result in
             switch (result) {
             case .success(let wager):

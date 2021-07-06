@@ -109,22 +109,11 @@ class WagerController {
     
     func addWagerToMyFriendsWagers(wager: Wager) {
         UserController.sharedInstance.currentUser?.myFriendsWagers.append(wager.wagerID)
-//        guard let indexofWagerToBeChanged = UserController.sharedInstance.currentUser?.myFriendsWagers.firstIndex(of: wager.wagerID) else {
-//            print("inside addwagertomyfriendswagers")
-//            return }
-//        UserController.sharedInstance.currentUser?.myFriendsWagers[indexofWagerToBeChanged].
-//
-//        acceptedFriends.append(UserController.sharedInstance.currentUser!._uid)
-        //save currentuser myfriendswagers and current wager acceptedFriends to database
         UserController.sharedInstance.updateMyFriendsWagersList()
-        //updateWagerAcceptedFriends(wagerId: wager.wagerID, acceptedFriends: WagerController.sharedInstance.wagers[indexofWagerToBeChanged].acceptedFriends)
+        //UserController.sharedInstance.updateMyFriendsWagersList(with: wager)
     }
     
     func removeCurrentUserFromWagersInvitedFriendsList(wager: Wager) {
-//        guard let indexofWagerToBeChanged = WagerController.sharedInstance.wagers.firstIndex(of: wager) else {
-//            print("inside removecurrentuserfromwagersfriendslist")
-//            return
-//        }
         guard let indexofCurrentUserasInvitedFriendofWager = wager.invitedFriends.firstIndex(of: UserController.sharedInstance.currentUser!._uid) else {
             print("inside indexofcurrentuserasinvitedfrinewofwager")
             return

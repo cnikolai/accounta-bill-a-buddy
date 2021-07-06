@@ -171,6 +171,7 @@
                     <connections>
                         <outlet property="deadlineTextView" destination="1bK-Vo-r83" id="Ptl-Ya-KS7"/>
                         <outlet property="goalTextView" destination="K7Q-KR-Ulv" id="ym2-nh-VAr"/>
+                        <outlet property="invitedFriendsLabel" destination="tSh-qr-ISU" id="qgi-eU-46j"/>
                         <outlet property="invitedFriendsTextView" destination="sc6-fy-6HD" id="1ry-fC-GKx"/>
                         <outlet property="progressSlider" destination="oqP-oc-vtq" id="7XR-VQ-4Fd"/>
                         <outlet property="wagerPhotoImageView" destination="3Wl-Ja-vdY" id="ml9-DZ-F5k"/>
