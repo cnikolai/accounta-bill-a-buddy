@@ -79,14 +79,14 @@ class WagerDetailViewController: UIViewController {
         guard let edit = edit else { return }
         if !edit {
             //disable text fields from input
-            goalDescriptionTextField.isEnabled = false
-            goalDescriptionTextField.isUserInteractionEnabled = false
-            wagerTextField.isEnabled = false
-            wagerTextField.isUserInteractionEnabled = false
+            //goalTextView.isEnabled = false
+            goalTextView.isUserInteractionEnabled = false
+            //wagerTextView.enabled = false
+            wagerTextView.isUserInteractionEnabled = false
             progressSlider.isEnabled = false
             progressSlider.isUserInteractionEnabled = false
             //hide friends
-            invitedFriendsLabel.isHidden = true
+            invitedFriendsTextView.isHidden = true
         }
         wagerPhotoImageView.image = wager.wagerPhoto
         goalTextView.text = wager.goalDescription
