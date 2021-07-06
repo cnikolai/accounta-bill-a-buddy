@@ -31,15 +31,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
             print("Wagers Array created successfully")
         }
-//        WagerController.sharedInstance.deleteWager(wagerID: "3BCC0D22-AF1E-4510-9ED2-EA6D1038910C")
-//        WagerController.sharedInstance.fetchWager(wagerID: "32CA0720-62BF-411B-BEB4-A5A36D22B5D5") { result in
-//            switch result {
-//            case .success(let wager):
-//                print(wager)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,13 +51,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             editButton.title = "Edit"
         }
     }
-    
-    func tempFuncFetchWagers() {
-        guard let currentUser = UserController.sharedInstance.currentUser else { return }
-        let wagersArray = currentUser.myWagers
-        //        print("wagersArray:", wagersArray)
-    }
-    
+        
     @IBAction func segmentedControllerTapped(_ sender: UISegmentedControl) {
         collectionView.reloadData()
     }
@@ -126,7 +111,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             destinationVC.wager = wager
             destinationVC.owner = true
             destinationVC.edit = true
-            destinationVC.modalPresentationStyle = .fullScreen
+            //destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)
         case 1:
             let storyboard = UIStoryboard(name: "WagerDetailView", bundle: nil)
@@ -137,7 +122,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             destinationVC.wager = wager
             destinationVC.owner = false
             destinationVC.edit = false
-            destinationVC.modalPresentationStyle = .fullScreen
+            //destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)
         case 2:
            let storyboard = UIStoryboard(name: "ApproveDenyFriends", bundle: nil)
