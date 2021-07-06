@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 private let reuseIdentifier = "wagerCell"
 
@@ -18,6 +19,9 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var segmentedController: UISegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let db = Firestore.firestore()
+    var dataRef: DocumentReference?
+    
     var myWagers: [Wager] = []
     var myFriendsWagers: [Wager] = []
     var wagerRequests: [Wager] = []
@@ -25,19 +29,26 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     //Properties
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        collectionView.register(WagerCollectionViewCell.self, forCellWithReuseIdentifier: "wagerCell")
         collectionView.delegate = self
         collectionView.dataSource = self
-        createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
-            print("Wagers Array created successfully")
+        loadData {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-//        createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
-            self.collectionView.reloadData()
-//            print("Wagers Array created successfully")
-//        }
+    func loadData(completed: @escaping () -> ()) {
+        dataRef = db.collection("users").document(UserController.sharedInstance.currentUser!._uid)
+        dataRef?.addSnapshotListener { [self] (querySnapshot, error) in
+            guard error == nil else {
+                print("Error loading data from Firebase listener. --- \(error!)")
+                return completed()
+            }
+            guard let data = querySnapshot else { return }
+            createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
+                print("Wagers Array updated successfully after listener activated.")
+                self.collectionView.reloadData()
+            }
+            completed()
+        }
     }
     
     //Actions
@@ -189,43 +200,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         }
     }
     
-    //override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toWagerDetailVC" {
-//            switch segmentedController.selectedSegmentIndex {
-//            case 0:
-//                guard
-//                    let destinationVC = segue.destination as? WagerDetailViewController,
-//                    let cell = sender as? WagerCollectionViewCell,
-//                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
-//                print("inside prepare for segue segmented controller: case 0")
-//                let wager = myWagers[indexPath.row]
-//                print("goalDescription", wager.goalDescription)
-//                destinationVC.wager = wager
-//                destinationVC.owner = true
-//            case 1:
-//                guard
-//                    let destinationVC = segue.destination as? WagerDetailViewController,
-//                    let cell = sender as? WagerCollectionViewCell,
-//                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
-//                print("inside prepare for segue segmented controller: case 1")
-//                let wager = myFriendsWagers[indexPath.row]
-//                print("goalDescription", wager.goalDescription)
-//                destinationVC.wager = wager
-//                destinationVC.owner = false
-//            case 2:
-//                guard
-//                    let destinationVC = segue.destination as? AcceptRejectFriendsViewController,
-//                    let cell = sender as? WagerCollectionViewCell,
-//                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
-//                print("inside prepare for segue segmented controller: case 2")
-//                let wager = wagerRequests[indexPath.row]
-//                print("goalDescription", wager.goalDescription)
-//                destinationVC.wager = wager
-//            default:
-//                break
-//            }
-//        }
-  //  }
 } //End of class
 
 //MARK: - Extensions
@@ -247,8 +221,6 @@ extension WagerCollectionViewController: DeleteCellDelegate {
                 self.collectionView.reloadData()
             } else if selectedSegmentIndex == 1 {
                 self.presentLeaveAlert()
-//<----------cmn commented out because gave error            //WagerController.sharedInstance.removeUserFromWager(wagerID: wager.wagerID)
-//<----------cmn commented out because gave error             //WagerController.sharedInstance.leaveFriendsWager(wagerToLeave: wager)
                 self.collectionView.reloadData()
             } else {
                 return
@@ -271,5 +243,6 @@ extension WagerCollectionViewController: DeleteCellDelegate {
         
         present(leaveAlertController, animated: true)
     }
+    
 } // End of Extension
 
