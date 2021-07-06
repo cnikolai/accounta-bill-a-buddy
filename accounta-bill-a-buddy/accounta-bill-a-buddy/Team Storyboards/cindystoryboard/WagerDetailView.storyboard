@@ -160,18 +160,52 @@
                                     <constraint firstItem="D7b-ML-NMb" firstAttribute="width" secondItem="SZn-dH-dpO" secondAttribute="width" multiplier="0.65" constant="68.150000000000006" id="aky-9l-4x6"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="eKh-8b-N3D">
+                                <rect key="frame" x="72.5" y="642.5" width="269" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invited Friends:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccT-nP-yzQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="116.5" height="25"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(invited Friends)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2LI-bT-4iX">
+                                        <rect key="frame" x="0.0" y="25" width="269" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="cXJ-Zu-6s5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.6588235294" green="0.85490196080000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Dh6-Ny-6OR"/>
+                                    <constraint firstItem="2LI-bT-4iX" firstAttribute="width" secondItem="eKh-8b-N3D" secondAttribute="width" id="jej-pq-ofD"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.1137254902" green="0.20784313730000001" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="eKh-8b-N3D" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="6tJ-0X-bmr"/>
                             <constraint firstItem="SZn-dH-dpO" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.65" id="7Hm-Mp-bIU"/>
                             <constraint firstItem="GJd-Es-sPH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="64" id="Dhr-tF-uu7"/>
                             <constraint firstItem="NUx-hv-dcy" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Dkt-jH-mPv"/>
+                            <constraint firstItem="eKh-8b-N3D" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.65" id="H29-L8-pFh"/>
                             <constraint firstItem="mdH-4Z-N5w" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.65" id="LWc-P2-qFQ"/>
                             <constraint firstItem="NUx-hv-dcy" firstAttribute="top" secondItem="GJd-Es-sPH" secondAttribute="bottom" constant="16" id="O3D-yS-7iK"/>
                             <constraint firstItem="GJd-Es-sPH" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Pq1-wX-TYB"/>
                             <constraint firstItem="mdH-4Z-N5w" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="RYd-dT-KqH"/>
                             <constraint firstItem="NUx-hv-dcy" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.65" id="XkS-Ej-ekg"/>
+                            <constraint firstItem="eKh-8b-N3D" firstAttribute="top" secondItem="SZn-dH-dpO" secondAttribute="bottom" constant="25" id="aVq-3f-D8Y"/>
                             <constraint firstItem="SZn-dH-dpO" firstAttribute="top" secondItem="mdH-4Z-N5w" secondAttribute="bottom" constant="25" id="awi-nU-PCn"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="JPO-RA-JwB" secondAttribute="trailing" constant="45" id="iaC-6e-LoP"/>
                             <constraint firstItem="JPO-RA-JwB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="kqU-si-d55"/>
@@ -182,6 +216,7 @@
                     <connections>
                         <outlet property="deadlineTextField" destination="qa5-dn-JzN" id="PHE-lq-1rf"/>
                         <outlet property="goalDescriptionTextField" destination="Jco-U8-4lO" id="tqt-r9-qWb"/>
+                        <outlet property="invitedFriendsLabel" destination="2LI-bT-4iX" id="pRX-7l-rUw"/>
                         <outlet property="progressSlider" destination="D7b-ML-NMb" id="GqF-hG-TPE"/>
                         <outlet property="wagerPhotoImageView" destination="GJd-Es-sPH" id="oVf-jc-Caa"/>
                         <outlet property="wagerTextField" destination="gFT-1L-zd2" id="NFi-yM-DVe"/>

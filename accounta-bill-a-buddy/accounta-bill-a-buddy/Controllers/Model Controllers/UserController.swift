@@ -431,7 +431,6 @@ class UserController {
 
     ///WAGERS
     func appendWagerToFriendsWagerList(userfriend: String, wagerId: String) {
-        //currentUser?._myFriendsWagers.append(wagerId)
         self.db.collection("users").document(userfriend).updateData(["wagerRequests" : FieldValue.arrayUnion([wagerId])])
     }
     
@@ -584,6 +583,36 @@ extension UserController {
             }
     }
     
+    ///*paramater - input an array of uids for the friends
+    ///output an array of usernames for the uids
+    func fetchInvitedFriendsNames(for invitedFriends: [String], completion: @escaping (Result<[String],DatabaseError>)-> Void) {
+        var invitedFriendsNames: [String] = []
+        for invitedFriend in invitedFriends {
+            print("invitedFriend: ", invitedFriend)
+            //chops off the beginning and ending quotation marks
+//            let start = invitedFriend.index(invitedFriend.startIndex, offsetBy: 1)
+//            let end = invitedFriend.index(invitedFriend.endIndex, offsetBy: -1)
+//            let range = start..<end
+//            let mySubstring = invitedFriend[range]
+            print("inside invtedFriendsArray inside fetch invited friends names function1", invitedFriend)
+            db.collection("users").document(invitedFriend)
+                .getDocument { (snapshot, error) in
+                    if let error = error {
+                        print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                    } else {
+                        if let snapshot = snapshot {
+                            guard let userData = snapshot.data() else { return }
+                            let username = userData["username"] as? String ?? ""
+                            invitedFriendsNames.append(username)
+                            if invitedFriendsNames.count == invitedFriends.count {
+                                completion(.success(invitedFriendsNames))
+                            }
+                        }
+                    }
+                }
+        }
+       
+    }
 }//end of class
 
 
