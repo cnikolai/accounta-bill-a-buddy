@@ -268,10 +268,7 @@ extension WagerCollectionViewController: DeleteCellDelegate {
             let leaveAction = UIAlertAction(title: "Leave", style: .destructive) { (_) in
                 WagerController.sharedInstance.removeUserFromWager(wagerID: wager.wagerID)
                 WagerController.sharedInstance.leaveFriendsWager(wagerToLeave: wager)
-            } else if selectedSegmentIndex == 1 {
-                self.presentLeaveAlert()
-                self.collectionView.reloadData()
-            }
+            } 
             leaveAlertController.addAction(cancelAction)
             leaveAlertController.addAction(leaveAction)
             present(leaveAlertController, animated: true)
