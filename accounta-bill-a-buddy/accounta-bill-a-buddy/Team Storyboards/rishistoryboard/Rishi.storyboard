@@ -18,7 +18,7 @@
             </objects>
             <point key="canvasLocation" x="3285" y="425"/>
         </scene>
-        <!--Wager Collection View Controller-->
+        <!--Wagers-->
         <scene sceneID="vv6-aU-Ddy">
             <objects>
                 <viewController storyboardIdentifier="RishiVC" id="D1n-uM-2vi" customClass="WagerCollectionViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,7 +31,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
                                     <segment title="My Wagers"/>
-                                    <segment title="My Friend's"/>
+                                    <segment title="Friend's Wagers"/>
                                     <segment title="Requested"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -102,7 +102,7 @@
                             <constraint firstItem="hag-Bf-SwP" firstAttribute="leading" secondItem="6WM-WY-Un5" secondAttribute="leading" id="o01-tY-LBL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="lLP-D4-n15">
+                    <navigationItem key="navigationItem" title="Wagers" id="lLP-D4-n15">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="ef2-k5-KS1"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OxQ-rq-9XD">
                             <connections>

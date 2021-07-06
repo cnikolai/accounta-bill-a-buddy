@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="amT-Su-yrj">
-                                <rect key="frame" x="0.0" y="79" width="414" height="817"/>
+                                <rect key="frame" x="0.0" y="89" width="414" height="807"/>
                                 <color key="backgroundColor" red="0.37254901959999998" green="0.6705882353" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InviteFriendsCell" rowHeight="70" id="jNP-3X-6Wj" customClass="InviteFriendsTableViewCell" customModule="accounta_bill_a_buddy" customModuleProvider="target">
@@ -28,16 +28,18 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cph-z1-cVJ">
-                                                    <rect key="frame" x="349" y="16" width="20" height="38"/>
-                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <state key="normal" image="circle" catalog="system"/>
+                                                    <rect key="frame" x="358" y="16" width="28" height="38"/>
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" image="circle" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="didTapFriendButton:" destination="jNP-3X-6Wj" eventType="touchUpInside" id="eFL-aJ-pT9"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Friend)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JzM-Te-7kO">
-                                                    <rect key="frame" x="45" y="16" width="61" height="38"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="28" y="16" width="67" height="38"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -47,12 +49,12 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="JzM-Te-7kO" secondAttribute="bottom" constant="5" id="g6q-66-5iQ"/>
                                                 <constraint firstItem="JzM-Te-7kO" firstAttribute="top" secondItem="doq-b5-T6r" secondAttribute="topMargin" constant="5" id="hGf-7s-KJr"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="JzM-Te-7kO" secondAttribute="bottom" constant="5" id="jIe-Dy-p0h"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="cph-z1-cVJ" secondAttribute="trailing" constant="25" id="k6r-dl-9uh"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="cph-z1-cVJ" secondAttribute="trailing" constant="8" id="k6r-dl-9uh"/>
                                                 <constraint firstItem="JzM-Te-7kO" firstAttribute="top" secondItem="doq-b5-T6r" secondAttribute="topMargin" constant="5" id="oAg-Zd-JxT"/>
                                                 <constraint firstItem="cph-z1-cVJ" firstAttribute="top" secondItem="doq-b5-T6r" secondAttribute="topMargin" constant="5" id="pIm-st-R0E"/>
                                                 <constraint firstItem="cph-z1-cVJ" firstAttribute="top" secondItem="doq-b5-T6r" secondAttribute="topMargin" constant="5" id="sGf-zr-8dH"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="cph-z1-cVJ" secondAttribute="bottom" constant="5" id="t1s-h5-zah"/>
-                                                <constraint firstItem="JzM-Te-7kO" firstAttribute="leading" secondItem="doq-b5-T6r" secondAttribute="leadingMargin" constant="25" id="voj-Gm-3xR"/>
+                                                <constraint firstItem="JzM-Te-7kO" firstAttribute="leading" secondItem="doq-b5-T6r" secondAttribute="leadingMargin" constant="8" id="voj-Gm-3xR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.37254901959999998" green="0.6705882353" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -63,17 +65,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LID-my-0jy">
-                                <rect key="frame" x="75" y="44" width="264" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LID-my-0jy">
+                                <rect key="frame" x="75" y="44" width="264" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="eTc-s0-KXn"/>
+                                    <constraint firstAttribute="height" constant="45" id="eTc-s0-KXn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d05-1M-naI">
-                                <rect key="frame" x="363" y="46" width="41" height="33"/>
+                                <rect key="frame" x="363" y="50" width="41" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
@@ -81,7 +83,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6f-Oy-6fQ">
-                                <rect key="frame" x="10" y="46" width="53" height="33"/>
+                                <rect key="frame" x="10" y="50" width="53" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
@@ -95,12 +97,12 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="d05-1M-naI" secondAttribute="trailing" constant="10" id="1f5-i9-GBX"/>
                             <constraint firstAttribute="bottom" secondItem="amT-Su-yrj" secondAttribute="bottom" id="9vq-5K-I1Z"/>
                             <constraint firstItem="LID-my-0jy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="75" id="CSm-66-UZg"/>
-                            <constraint firstItem="amT-Su-yrj" firstAttribute="top" secondItem="s6f-Oy-6fQ" secondAttribute="bottom" id="DQm-Qm-R0b"/>
+                            <constraint firstItem="amT-Su-yrj" firstAttribute="top" secondItem="s6f-Oy-6fQ" secondAttribute="bottom" constant="6" id="DQm-Qm-R0b"/>
                             <constraint firstItem="amT-Su-yrj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Hbh-VF-kaZ"/>
                             <constraint firstItem="amT-Su-yrj" firstAttribute="top" secondItem="LID-my-0jy" secondAttribute="bottom" id="J7e-5o-2b8"/>
                             <constraint firstItem="amT-Su-yrj" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="SxW-IQ-LKQ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LID-my-0jy" secondAttribute="trailing" constant="75" id="aOS-LM-9oR"/>
-                            <constraint firstItem="amT-Su-yrj" firstAttribute="top" secondItem="d05-1M-naI" secondAttribute="bottom" id="aPW-NB-Ha6"/>
+                            <constraint firstItem="amT-Su-yrj" firstAttribute="top" secondItem="d05-1M-naI" secondAttribute="bottom" constant="6" id="aPW-NB-Ha6"/>
                             <constraint firstItem="LID-my-0jy" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="e2W-QF-glL"/>
                             <constraint firstItem="s6f-Oy-6fQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="js8-Bb-gOV"/>
                         </constraints>
