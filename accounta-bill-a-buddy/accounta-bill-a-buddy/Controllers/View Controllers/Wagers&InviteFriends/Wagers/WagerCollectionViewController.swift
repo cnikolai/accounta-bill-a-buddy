@@ -29,7 +29,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         collectionView.delegate = self
         collectionView.dataSource = self
         createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
-            print("Wagers Array created successfully")
+//            print("Wagers Array created successfully")
         }
 //        WagerController.sharedInstance.deleteWager(wagerID: "3BCC0D22-AF1E-4510-9ED2-EA6D1038910C")
 //        WagerController.sharedInstance.fetchWager(wagerID: "32CA0720-62BF-411B-BEB4-A5A36D22B5D5") { result in
@@ -39,13 +39,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
 //            case .failure(let error):
 //                print(error)
 //            }
-//        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-//        createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
-            self.collectionView.reloadData()
-//            print("Wagers Array created successfully")
 //        }
     }
     
@@ -61,12 +54,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         }
     }
     
-    func tempFuncFetchWagers() {
-        guard let currentUser = UserController.sharedInstance.currentUser else { return }
-        let wagersArray = currentUser.myWagers
-        //        print("wagersArray:", wagersArray)
-    }
-    
+
     @IBAction func segmentedControllerTapped(_ sender: UISegmentedControl) {
         collectionView.reloadData()
     }
@@ -161,8 +149,11 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
                 switch result {
                 case .success(let wagers):
                     self.myWagers = wagers
+                    //re-fetch data from firebase to sync up UI
+                    self.createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
+//                        print("Wagers Array created successfully")
+                    }
                     self.collectionView.reloadData()
-                    print("myWagers:", self.myWagers)
                 case .failure(let error):
                     print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
                     break
@@ -177,6 +168,10 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
                 switch result {
                 case .success(let wagers):
                     self.myFriendsWagers = wagers
+                    //re-fetch data from firebase to sync up UI
+                    self.createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
+//                        print("Wagers Array created successfully")
+                    }
                     self.collectionView.reloadData()
                 case .failure(let error):
                     print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
@@ -264,8 +259,8 @@ extension WagerCollectionViewController: DeleteCellDelegate {
                 self.collectionView.reloadData()
             } else if selectedSegmentIndex == 1 {
                 self.presentLeaveAlert()
-//<----------cmn commented out because gave error            //WagerController.sharedInstance.removeUserFromWager(wagerID: wager.wagerID)
-//<----------cmn commented out because gave error             //WagerController.sharedInstance.leaveFriendsWager(wagerToLeave: wager)
+                WagerController.sharedInstance.removeUserFromWager(wagerID: wager.wagerID)
+                WagerController.sharedInstance.leaveFriendsWager(wagerToLeave: wager)
                 self.collectionView.reloadData()
             } else {
                 return
