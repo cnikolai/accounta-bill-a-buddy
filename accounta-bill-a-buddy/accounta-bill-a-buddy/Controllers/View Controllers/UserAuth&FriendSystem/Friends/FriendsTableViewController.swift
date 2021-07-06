@@ -30,6 +30,8 @@ class FriendsTableViewController: UITableViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableHeaderView?.bounds.size.height = 32.0
+        tableView.tableHeaderView?.clipsToBounds = true
         
         searchBar.delegate = self
         setupViewFor(screen: .friends)
@@ -55,8 +57,10 @@ class FriendsTableViewController: UITableViewController {
     private func setupViewFor(screen: Screen) {
         searchBar.isHidden = (currentScreen == .requests || currentScreen == .friends)
         if searchBar.isHidden {
+            tableView.tableHeaderView?.bounds.size.height = 32.0
             stackViewHeight.constant = 32.0
         } else {
+            tableView.tableHeaderView?.bounds.size.height = 88.0
             stackViewHeight.constant = 88.0
         }
     }
