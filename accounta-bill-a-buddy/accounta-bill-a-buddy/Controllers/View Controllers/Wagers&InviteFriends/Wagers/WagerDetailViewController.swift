@@ -20,12 +20,12 @@ class WagerDetailViewController: UIViewController {
     var owner: Bool?
     
     // MARK:-Outlets
-    @IBOutlet weak var goalDescriptionTextField: UITextField!
-    @IBOutlet weak var wagerTextField: UITextField!
-    @IBOutlet weak var deadlineTextField: UITextField!
+    @IBOutlet weak var wagerTextView: UITextView!
+    @IBOutlet weak var goalTextView: UITextView!
+    @IBOutlet weak var deadlineTextView: UITextView!
+    @IBOutlet weak var invitedFriendsTextView: UITextView!
     @IBOutlet weak var wagerPhotoImageView: UIImageView!
     @IBOutlet weak var progressSlider: UISlider!
-    @IBOutlet weak var invitedFriendsLabel: UILabel!
     
     // MARK:-Lifecycle
     override func viewDidLoad() {
@@ -45,9 +45,9 @@ class WagerDetailViewController: UIViewController {
     @IBAction func doneButtonTapped(_ sender: Any) {
         guard let wager = wager,
               let owner = owner else { return }
-        guard let goalDescription = goalDescriptionTextField.text,
-              let wagertext = wagerTextField.text,
-              let deadline = deadlineTextField.text,
+        guard let goalDescription = goalTextView.text,
+              let wagertext = wagerTextView.text,
+              let deadline = deadlineTextView.text,
               let progress = progressSlider?.value else { return }
         //update wager in currentview
         wager.goalDescription = goalDescription
@@ -75,14 +75,14 @@ class WagerDetailViewController: UIViewController {
     func updateViews() {
         guard let wager = wager else {return}
         wagerPhotoImageView.image = wager.wagerPhoto
-        goalDescriptionTextField.text = wager.goalDescription
-        deadlineTextField.text = wager.deadline
-        wagerTextField.text = wager.wager
+        goalTextView.text = wager.goalDescription
+        deadlineTextView.text = wager.deadline
+        wagerTextView.text = wager.wager
         progressSlider.value = wager.progress
         UserController.sharedInstance.fetchInvitedFriendsNames(for: wager.invitedFriends, completion: { result in
             switch result {
             case .success(let invitedFriendsNames):
-                self.invitedFriendsLabel.text = invitedFriendsNames.joined(separator: ", ")
+                self.invitedFriendsTextView.text = invitedFriendsNames.joined(separator: ", ")
             case .failure(let error):
                 print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
             }
