@@ -33,6 +33,14 @@ class WagerDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        setupViews()
+    }
+    
+    func setupViews() {
+        Utilities.styleTextView(wagerTextView)
+        Utilities.styleTextView(goalTextView)
+        Utilities.styleTextView(deadlineTextView)
+        Utilities.styleTextView(invitedFriendsTextView)
     }
     
     // MARK:-Actions

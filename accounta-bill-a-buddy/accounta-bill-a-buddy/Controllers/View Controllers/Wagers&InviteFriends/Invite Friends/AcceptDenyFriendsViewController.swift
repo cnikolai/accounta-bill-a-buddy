@@ -15,9 +15,11 @@ class AcceptDenyFriendsViewController: UIViewController {
     // MARK:-Outlets
     @IBOutlet weak var wagerImageView: UIImageView!
     @IBOutlet weak var invitingYouLabel: UILabel!
-    @IBOutlet weak var goalDescriptionLabel: UILabel!
-    @IBOutlet weak var wagerLabel: UITextField!
-    @IBOutlet weak var deadlineLabel: UITextField!
+    @IBOutlet weak var wagerTextView: UITextView!
+    @IBOutlet weak var goalTextView: UITextView!
+    @IBOutlet weak var deadlineTextView: UITextView!
+    @IBOutlet weak var declineButton: UIButton!
+    @IBOutlet weak var acceptButton: UIButton!
     
     // MARK:-Lifecycle
     override func viewDidLoad() {
@@ -27,10 +29,7 @@ class AcceptDenyFriendsViewController: UIViewController {
     }
     
     // MARK:-Actions
-    @IBAction func doneButtonPressed(_ sender: Any) {
-        dismissView()
-    }
-    
+      
     @IBAction func declineButtonTapped(_ sender: Any) {
         guard let wager = wager else { return }
         
@@ -47,6 +46,11 @@ class AcceptDenyFriendsViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        dismissView()
+    }
+    
+
     func dismissView() {
         //self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
@@ -67,8 +71,13 @@ class AcceptDenyFriendsViewController: UIViewController {
     func setupViews() {
         guard let wager = wager else { return }
         wagerImageView.image = wager.wagerPhoto
-        goalDescriptionLabel.text = wager.goalDescription
-        wagerLabel.text = wager.wager
-        deadlineLabel.text = wager.deadline
+        goalTextView.text = wager.goalDescription
+        wagerTextView.text = wager.wager
+        deadlineTextView.text = wager.deadline
+        Utilities.styleTextView(wagerTextView)
+        Utilities.styleTextView(goalTextView)
+        Utilities.styleTextView(deadlineTextView)
+        Utilities.styleFillButtonRoundedCornersOnly(acceptButton)
+        Utilities.styleFillButtonRoundedCornersOnly(declineButton)
     }
 }
