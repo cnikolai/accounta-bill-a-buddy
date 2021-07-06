@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wagerDefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="3Wl-Ja-vdY">
-                                <rect key="frame" x="117" y="108" width="180" height="180"/>
+                                <rect key="frame" x="117" y="116" width="180" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="3Wl-Ja-vdY" secondAttribute="height" multiplier="1:1" id="6CI-D5-PBE"/>
                                     <constraint firstAttribute="width" constant="180" id="qrY-KF-1zM"/>
@@ -25,7 +25,7 @@
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="iPb-sr-ALi">
-                                <rect key="frame" x="20" y="304" width="374" height="447.5"/>
+                                <rect key="frame" x="20" y="312" width="374" height="447.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="UjY-Ws-6QZ">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="102.5"/>
@@ -126,18 +126,39 @@
                                     <constraint firstItem="1bK-Vo-r83" firstAttribute="height" secondItem="v3r-Pt-O8u" secondAttribute="height" multiplier="0.6" id="VaC-xa-B1Z"/>
                                 </constraints>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0Z-E6-Cf2">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem id="Xl9-aQ-H3i">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rjE-pr-FAR">
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="J6r-KT-fM6" id="AuS-3p-cHV"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="P2y-gb-ANn">
+                                            <connections>
+                                                <action selector="doneButtonTapped:" destination="J6r-KT-fM6" id="IZO-f3-pLJ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2W5-QI-6rR"/>
                         <color key="backgroundColor" red="0.1137254902" green="0.20784313730000001" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3Wl-Ja-vdY" firstAttribute="centerX" secondItem="2W5-QI-6rR" secondAttribute="centerX" id="DLb-X5-UE5"/>
                             <constraint firstItem="iPb-sr-ALi" firstAttribute="top" secondItem="3Wl-Ja-vdY" secondAttribute="bottom" constant="16" id="Vdh-Vv-aU8"/>
+                            <constraint firstItem="f0Z-E6-Cf2" firstAttribute="centerX" secondItem="3Wl-Ja-vdY" secondAttribute="centerX" id="cIn-xu-Y9W"/>
+                            <constraint firstItem="f0Z-E6-Cf2" firstAttribute="top" secondItem="2W5-QI-6rR" secondAttribute="top" id="mcC-iV-3mA"/>
                             <constraint firstItem="iPb-sr-ALi" firstAttribute="leading" secondItem="2W5-QI-6rR" secondAttribute="leading" constant="20" id="nIW-QL-Qu1"/>
                             <constraint firstItem="2W5-QI-6rR" firstAttribute="trailing" secondItem="iPb-sr-ALi" secondAttribute="trailing" constant="20" id="p8p-eV-2Fa"/>
-                            <constraint firstItem="3Wl-Ja-vdY" firstAttribute="top" secondItem="2W5-QI-6rR" secondAttribute="top" constant="20" id="pY6-sP-MFT"/>
+                            <constraint firstItem="3Wl-Ja-vdY" firstAttribute="top" secondItem="f0Z-E6-Cf2" secondAttribute="top" constant="72" id="pY6-sP-MFT"/>
+                            <constraint firstItem="f0Z-E6-Cf2" firstAttribute="leading" secondItem="7GR-Xg-e2V" secondAttribute="leadingMargin" constant="-20" id="wKT-KD-mRh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZXC-sN-Wv6">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vXM-0s-9NJ"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="5pg-vc-ngb">
                             <connections>
                                 <action selector="doneButtonTapped:" destination="J6r-KT-fM6" id="IgH-sP-TX4"/>
@@ -156,24 +177,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZy-5b-Lze" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1455" y="70"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="BGQ-aA-ZXc">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bYy-aR-75E" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="izp-0w-ujg">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="J6r-KT-fM6" kind="relationship" relationship="rootViewController" id="mIh-tO-wBb"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zjd-w0-h6Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="744.92753623188412" y="69.642857142857139"/>
         </scene>
     </scenes>
     <resources>

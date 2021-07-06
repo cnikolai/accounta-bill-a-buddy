@@ -16,17 +16,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NH2-5q-Qhv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3268" y="289"/>
-        </scene>
-        <!--WagerDetailViewController-->
-        <scene sceneID="8mZ-e2-NQU">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="WagerDetailView" storyboardName="WagerDetailView" referencedIdentifier="WagerDetailViewController" id="UWL-qI-A1n" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="7pl-hy-dSc"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iy8-DX-oXz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3188" y="406"/>
+            <point key="canvasLocation" x="3285" y="425"/>
         </scene>
         <!--Wager Collection View Controller-->
         <scene sceneID="vv6-aU-Ddy">

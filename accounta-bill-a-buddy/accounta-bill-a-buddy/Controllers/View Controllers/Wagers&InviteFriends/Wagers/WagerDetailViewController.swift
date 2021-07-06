@@ -33,9 +33,6 @@ class WagerDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-//        self.navigationItem.leftBarButtonItem = nil;
-//        self.navigationItem.hidesBackButton = true;
-//        self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = false;
     }
     
     // MARK:-Actions
@@ -66,6 +63,11 @@ class WagerDetailViewController: UIViewController {
             UserController.sharedInstance.updateMyFriendsWagersList(with: wager)
 
         }
+        dismissView()
+    }
+    
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
         dismissView()
     }
     
