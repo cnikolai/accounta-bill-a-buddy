@@ -133,7 +133,6 @@ class User {
         self.myFriendsWagers = myFriendsWagers
         self.wagerRequests = wagerRequests
     }
-    
 }//End of class
 
 //MARK: - Extensions

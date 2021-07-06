@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,17 +16,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NH2-5q-Qhv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3268" y="289"/>
-        </scene>
-        <!--WagerDetailViewController-->
-        <scene sceneID="8mZ-e2-NQU">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="WagerDetailView" storyboardName="WagerDetailView" referencedIdentifier="WagerDetailViewController" id="UWL-qI-A1n" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="7pl-hy-dSc"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iy8-DX-oXz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3188" y="406"/>
+            <point key="canvasLocation" x="3285" y="425"/>
         </scene>
         <!--Wager Collection View Controller-->
         <scene sceneID="vv6-aU-Ddy">
@@ -39,18 +28,20 @@
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hag-Bf-SwP">
                                 <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
                                     <segment title="My Wagers"/>
                                     <segment title="My Friend's"/>
                                     <segment title="Requested"/>
                                 </segments>
+                                <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="segmentedControllerTapped:" destination="D1n-uM-2vi" eventType="valueChanged" id="KKB-Gq-0D1"/>
                                 </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="P79-8q-LqO">
                                 <rect key="frame" x="0.0" y="119" width="414" height="743"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.37254901959999998" green="0.6705882353" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0hp-Yy-rBw">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -99,7 +90,8 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6WM-WY-Un5"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.37254901959999998" green="0.6705882353" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="P79-8q-LqO" firstAttribute="leading" secondItem="6WM-WY-Un5" secondAttribute="leading" id="96V-UX-D7I"/>
                             <constraint firstItem="6WM-WY-Un5" firstAttribute="trailing" secondItem="P79-8q-LqO" secondAttribute="trailing" id="H9C-YV-zmK"/>
@@ -149,8 +141,5 @@
     </scenes>
     <resources>
         <image name="icons8-delete-16" width="16" height="16"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

@@ -31,15 +31,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
 //            print("Wagers Array created successfully")
         }
-//        WagerController.sharedInstance.deleteWager(wagerID: "3BCC0D22-AF1E-4510-9ED2-EA6D1038910C")
-//        WagerController.sharedInstance.fetchWager(wagerID: "32CA0720-62BF-411B-BEB4-A5A36D22B5D5") { result in
-//            switch result {
-//            case .success(let wager):
-//                print(wager)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
     }
     
     //Actions
@@ -54,7 +45,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         }
     }
     
-
     @IBAction func segmentedControllerTapped(_ sender: UISegmentedControl) {
         collectionView.reloadData()
     }
@@ -113,7 +103,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             print("goalDescription", wager.goalDescription)
             destinationVC.wager = wager
             destinationVC.owner = true
-            destinationVC.modalPresentationStyle = .fullScreen
+            destinationVC.edit = true
             present(destinationVC, animated: true, completion: nil)
         case 1:
             let storyboard = UIStoryboard(name: "WagerDetailView", bundle: nil)
@@ -123,7 +113,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             print("goalDescription", wager.goalDescription)
             destinationVC.wager = wager
             destinationVC.owner = false
-            destinationVC.modalPresentationStyle = .fullScreen
+            destinationVC.edit = false
             present(destinationVC, animated: true, completion: nil)
         case 2:
            let storyboard = UIStoryboard(name: "ApproveDenyFriends", bundle: nil)
@@ -132,7 +122,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             let wager = wagerRequests[indexPath.row]
             print("goalDescription", wager.goalDescription)
             destinationVC.wager = wager
-            destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)
         default:
             break
@@ -142,7 +131,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     func createWagerArrays(myWagers: [String], myFriendsWagers: [String], wagersRequests: [String], completion: ((Bool) -> Void)?) {
         let group = DispatchGroup()
         
-        //NOTE: Repeating code here, fix
         group.enter()
         WagerController.sharedInstance.createWagerArray(wagerStrings: myWagers) { result in
             DispatchQueue.main.async {

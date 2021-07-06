@@ -14,6 +14,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     let imagePicker = UIImagePickerController()
     var wagerFriends: [[String:String]] = []
     var invitedFriendsUIDs: [String] = []
+    var invitedFriendsNames: [String] = []
     
     // MARK:-Outlets
     @IBOutlet weak var imageImageView: UIImageView!
@@ -104,16 +105,16 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     
     
     @IBAction func createWagerButtonTapped(_ sender: Any) {
-        guard let wager = wagerTextView.text, !wager.isEmpty,
-              !(wager == "\nWhat is your Wager?"), !(wager == "\nPlease enter a wager") else {
-            showError("\nPlease enter a wager", forWhichTextField: "wager")
+        guard let wager = wagerTextView.text, !wager.isEmpty,!(wager == "Enter wager..."),
+              !(wager == "Please enter a wager") else {
+            showError("Please enter a wager", forWhichTextField: "wager")
             return }
-        guard let goal = goalTextView.text, !goal.isEmpty, !(goal == "\n\nWhat is your Goal?"),!(goal == "\n\nPlease enter a goal") else {
-            showError("\n\nPlease enter a goal", forWhichTextField: "goal")
+        guard let goal = goalTextView.text, !goal.isEmpty,!(goal == "Enter goal..."),!(goal == "Please enter a goal") else {
+            showError("Please enter a goal", forWhichTextField: "goal")
             return }
         guard let deadline = deadlineTextView.text, !deadline.isEmpty,
-              !(deadline == "What is the Wager Deadline?"), !(deadline == "\nPlease enter a wager deadline") else {
-            showError("\nPlease enter a wager deadline", forWhichTextField: "deadline")
+              !(deadline == "Enter deadline..."),!(deadline == "Please enter a wager deadline") else {
+            showError("Please enter a wager deadline", forWhichTextField: "deadline")
             return }
         WagerController.sharedInstance.createAndSaveWager(wagerID: UUID().uuidString, owner: (UserController.sharedInstance.currentUser?.uid)!, invitedFriends: invitedFriendsUIDs, acceptedFriends: [], wagerPhoto: imageImageView.image, goalDescription: goal, wager: wager, deadline: deadline, progress: 0) { result in
             switch (result) {
@@ -210,13 +211,21 @@ extension CreateWagerViewController: UIImagePickerControllerDelegate, UINavigati
 extension CreateWagerViewController: InviteFriendsListTableViewControllerDelegate {
     func passFriends(_ sender: InviteFriendsListTableViewController) {
         print("invited friends2: \(sender.wagerFriends)")
+        //reset the friends names and uuids of the friends just in case the user has selected the friends button twice
+        invitedFriendsNames = []
+        invitedFriendsUIDs = []
         wagerFriends = sender.wagerFriends
         for friend in wagerFriends {
             for key in friend.keys {
                 invitedFriendsUIDs.append(key)
             }
+            for value in friend.values {
+                invitedFriendsNames.append(value)
+            }
         }
         print(invitedFriendsUIDs)
+        print(invitedFriendsNames)
+        friendsTextView.text = invitedFriendsNames.joined(separator: ", ")
     }
 }
 

@@ -18,11 +18,14 @@ class WagerDetailViewController: UIViewController {
         }
     }
     var owner: Bool?
+    //a variable to keep track of when we are editing a view versus just viewing a view (segment #0 versus segment #1)
+    var edit: Bool?
     
     // MARK:-Outlets
-    @IBOutlet weak var goalDescriptionTextField: UITextField!
-    @IBOutlet weak var wagerTextField: UITextField!
-    @IBOutlet weak var deadlineTextField: UITextField!
+    @IBOutlet weak var wagerTextView: UITextView!
+    @IBOutlet weak var goalTextView: UITextView!
+    @IBOutlet weak var deadlineTextView: UITextView!
+    @IBOutlet weak var invitedFriendsTextView: UITextView!
     @IBOutlet weak var wagerPhotoImageView: UIImageView!
     @IBOutlet weak var progressSlider: UISlider!
     
@@ -30,9 +33,14 @@ class WagerDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-//        self.navigationItem.leftBarButtonItem = nil;
-//        self.navigationItem.hidesBackButton = true;
-//        self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = false;
+        setupViews()
+    }
+    
+    func setupViews() {
+        Utilities.styleTextView(wagerTextView)
+        Utilities.styleTextView(goalTextView)
+        Utilities.styleTextView(deadlineTextView)
+        Utilities.styleTextView(invitedFriendsTextView)
     }
     
     // MARK:-Actions
@@ -44,9 +52,9 @@ class WagerDetailViewController: UIViewController {
     @IBAction func doneButtonTapped(_ sender: Any) {
         guard let wager = wager,
               let owner = owner else { return }
-        guard let goalDescription = goalDescriptionTextField.text,
-              let wagertext = wagerTextField.text,
-              let deadline = deadlineTextField.text,
+        guard let goalDescription = goalTextView.text,
+              let wagertext = wagerTextView.text,
+              let deadline = deadlineTextView.text,
               let progress = progressSlider?.value else { return }
         //update wager in currentview
         wager.goalDescription = goalDescription
@@ -66,6 +74,11 @@ class WagerDetailViewController: UIViewController {
         dismissView()
     }
     
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        dismissView()
+    }
+    
     private func dismissView() {
         //self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
@@ -73,11 +86,32 @@ class WagerDetailViewController: UIViewController {
     
     func updateViews() {
         guard let wager = wager else {return}
+        guard let edit = edit else { return }
+        if !edit {
+            //disable text fields from input
+            //goalTextView.isEnabled = false
+            goalTextView.isUserInteractionEnabled = false
+            //wagerTextView.enabled = false
+            wagerTextView.isUserInteractionEnabled = false
+            progressSlider.isEnabled = false
+            progressSlider.isUserInteractionEnabled = false
+            deadlineTextView.isUserInteractionEnabled = false
+            //hide friends
+            invitedFriendsTextView.isHidden = true
+        }
         wagerPhotoImageView.image = wager.wagerPhoto
-        goalDescriptionTextField.text = wager.goalDescription
-        deadlineTextField.text = wager.deadline
-        wagerTextField.text = wager.wager
+        goalTextView.text = wager.goalDescription
+        deadlineTextView.text = wager.deadline
+        wagerTextView.text = wager.wager
         progressSlider.value = wager.progress
+        UserController.sharedInstance.fetchInvitedFriendsNames(for: wager.invitedFriends, completion: { result in
+            switch result {
+            case .success(let invitedFriendsNames):
+                self.invitedFriendsTextView.text = invitedFriendsNames.joined(separator: ", ")
+            case .failure(let error):
+                print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
+            }
+        })
     }
 
 }

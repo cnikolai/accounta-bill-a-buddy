@@ -431,12 +431,11 @@ class UserController {
 
     ///WAGERS
     func appendWagerToFriendsWagerList(userfriend: String, wagerId: String) {
-        //currentUser?._myFriendsWagers.append(wagerId)
         self.db.collection("users").document(userfriend).updateData(["wagerRequests" : FieldValue.arrayUnion([wagerId])])
     }
     
     func appendWagerToOwnerWagerList(wagerId: String) {
-        currentUser?._myWagers.append(wagerId)
+        currentUser?.myWagers.append(wagerId)
         self.db.collection("users").document((currentUser?._uid)!).updateData(["myWagers" : FieldValue.arrayUnion([wagerId])])
     }
     
@@ -519,7 +518,7 @@ extension UserController {
     func updateMyWagersList() {
         let currentUserDataRef = db.collection("users").document(currentUser!.uid)
         currentUserDataRef.updateData([
-            "myWagers": currentUser?._myWagers
+            "myWagers": currentUser?.myWagers
         ]) { err in
             if let err = err {
                 print("Error updating myWagers document: \(err)")
@@ -545,7 +544,7 @@ extension UserController {
     func updateMyFriendsWagersList() {
         let currentUserDataRef = db.collection("users").document(currentUser!.uid)
         currentUserDataRef.updateData([
-            "myFriendsWagers": currentUser?._myFriendsWagers
+            "myFriendsWagers": currentUser?.myFriendsWagers
         ]) { err in
             if let err = err {
                 print("Error updating myFriendsWagers document: \(err)")
@@ -557,17 +556,17 @@ extension UserController {
     
     //Wager Detail View - updating wager in app (locally) and for user
     func updateMyWagersList(with wager: Wager) {
-        guard let index = currentUser?._myWagers.firstIndex(of: wager.wagerID) else { return }
-        currentUser?._myWagers.remove(at: index)
-        currentUser?._myWagers.insert(wager.wagerID, at: index)
+        guard let index = currentUser?.myWagers.firstIndex(of: wager.wagerID) else { return }
+        currentUser?.myWagers.remove(at: index)
+        currentUser?.myWagers.insert(wager.wagerID, at: index)
         updateMyWagersList()
     }
     
     //Wager Detail View - updating wager in app (locally) and for user
     func updateMyFriendsWagersList(with wager: Wager) {
-        guard let index = currentUser?._myFriendsWagers.firstIndex(of: wager.wagerID) else { return }
-        currentUser?._myFriendsWagers.remove(at: index)
-        currentUser?._myFriendsWagers.insert(wager.wagerID, at: index)
+        guard let index = currentUser?.myFriendsWagers.firstIndex(of: wager.wagerID) else { return }
+        currentUser?.myFriendsWagers.remove(at: index)
+        currentUser?.myFriendsWagers.insert(wager.wagerID, at: index)
         updateMyFriendsWagersList()
     }
     
@@ -584,6 +583,30 @@ extension UserController {
             }
     }
     
+    ///*paramater - input an array of uids for the friends
+    ///output an array of usernames for the uids
+    func fetchInvitedFriendsNames(for invitedFriends: [String], completion: @escaping (Result<[String],DatabaseError>)-> Void) {
+        var invitedFriendsNames: [String] = []
+        for invitedFriend in invitedFriends {
+            print("invitedFriend: ", invitedFriend)
+            db.collection("users").document(invitedFriend)
+                .getDocument { (snapshot, error) in
+                    if let error = error {
+                        print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                    } else {
+                        if let snapshot = snapshot {
+                            guard let userData = snapshot.data() else { return }
+                            let username = userData["username"] as? String ?? ""
+                            invitedFriendsNames.append(username)
+                            if invitedFriendsNames.count == invitedFriends.count {
+                                completion(.success(invitedFriendsNames))
+                            }
+                        }
+                    }
+                }
+        }
+       
+    }
 }//end of class
 
 

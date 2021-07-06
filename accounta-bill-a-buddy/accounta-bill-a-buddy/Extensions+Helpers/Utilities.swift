@@ -30,4 +30,8 @@ class Utilities {
         button.layer.cornerRadius = 2.0
     }
     
+    static func styleFillButtonRoundedCornersOnly(_ button:UIButton) {
+        button.layer.cornerRadius = 2.0
+    }
+    
 }//End of class

@@ -54,12 +54,13 @@ class WagerController {
                         let owner = wagerData["owner"] as? String ?? ""
                         let goalDescription = wagerData["goalDescription"] as? String ?? ""
                         let wager = wagerData["wager"] as? String ?? ""
+                        let wagerPhotoData = wagerData["wagerPhoto"] as? Data ?? Data()
                         let invitedFriends = wagerData["invitedFriends"] as? [String] ?? []
                         let acceptedFriends = wagerData["acceptedFriends"] as? [String] ?? []
                         let deadline = wagerData["deadline"] as? String ?? ""
                         let progress = wagerData["progress"] as? Float ?? 0.0
                         
-                        let newWager = Wager(wagerID: wagerID, owner: owner, invitedFriends: invitedFriends, acceptedFriends: acceptedFriends, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress, wagerPhoto: UIImage(named: "wagerDefaultPhoto"))
+                        let newWager = Wager(wagerID: wagerID, owner: owner, invitedFriends: invitedFriends, acceptedFriends: acceptedFriends, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress, wagerPhoto: UIImage(data: wagerPhotoData))
                         return(completion(.success(newWager)))
                     }
                 }
@@ -101,17 +102,17 @@ class WagerController {
         UserController.sharedInstance.currentUser?._wagerRequests.remove(at: indexofWagerToBeRemvoed)
         //save currentuser mywagers to database
         UserController.sharedInstance.updateMyWagerRequestsList()
-        //UserController.sharedInstance.currentUser?._myFriendsWagers.append(wagerId)
+        //UserController.sharedInstance.currentUser?.myFriendsWagers.append(wagerId)
         //UserController.sharedInstance.updateMyFriendsWagersList()
         
     }
     
     func addWagerToMyFriendsWagers(wager: Wager) {
-        UserController.sharedInstance.currentUser?._myFriendsWagers.append(wager.wagerID)
-//        guard let indexofWagerToBeChanged = UserController.sharedInstance.currentUser?._myFriendsWagers.firstIndex(of: wager.wagerID) else {
+        UserController.sharedInstance.currentUser?.myFriendsWagers.append(wager.wagerID)
+//        guard let indexofWagerToBeChanged = UserController.sharedInstance.currentUser?.myFriendsWagers.firstIndex(of: wager.wagerID) else {
 //            print("inside addwagertomyfriendswagers")
 //            return }
-//        UserController.sharedInstance.currentUser?._myFriendsWagers[indexofWagerToBeChanged].
+//        UserController.sharedInstance.currentUser?.myFriendsWagers[indexofWagerToBeChanged].
 //
 //        acceptedFriends.append(UserController.sharedInstance.currentUser!._uid)
         //save currentuser myfriendswagers and current wager acceptedFriends to database
