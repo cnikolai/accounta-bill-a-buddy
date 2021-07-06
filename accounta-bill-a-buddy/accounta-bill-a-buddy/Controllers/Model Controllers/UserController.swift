@@ -589,12 +589,6 @@ extension UserController {
         var invitedFriendsNames: [String] = []
         for invitedFriend in invitedFriends {
             print("invitedFriend: ", invitedFriend)
-            //chops off the beginning and ending quotation marks
-//            let start = invitedFriend.index(invitedFriend.startIndex, offsetBy: 1)
-//            let end = invitedFriend.index(invitedFriend.endIndex, offsetBy: -1)
-//            let range = start..<end
-//            let mySubstring = invitedFriend[range]
-            print("inside invtedFriendsArray inside fetch invited friends names function1", invitedFriend)
             db.collection("users").document(invitedFriend)
                 .getDocument { (snapshot, error) in
                     if let error = error {
