@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Accept Reject Friends View Controller-->
+        <!--Accept Deny Friends View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="ApproveRejectFriendsStoryboard" id="Y6W-OH-hqX" customClass="AcceptRejectFriendsViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApproveDenyFriendsStoryboard" id="Y6W-OH-hqX" customClass="AcceptDenyFriendsViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -145,8 +145,8 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="110" translatesAutoresizingMaskIntoConstraints="NO" id="coq-8Z-oLt">
-                                <rect key="frame" x="73" y="642" width="263" height="35"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="110" translatesAutoresizingMaskIntoConstraints="NO" id="coq-8Z-oLt">
+                                <rect key="frame" x="75.5" y="642" width="263" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RDH-KK-RYT">
                                         <rect key="frame" x="0.0" y="0.0" width="79" height="35"/>
@@ -220,8 +220,10 @@
                             <constraint firstItem="qaL-5D-6Pq" firstAttribute="top" secondItem="TLv-w1-umJ" secondAttribute="bottom" constant="25" id="aTT-98-M1r"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="VG6-YZ-Pvv" secondAttribute="trailing" constant="35" id="fVk-XT-SgO"/>
                             <constraint firstItem="VG6-YZ-Pvv" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="gWI-42-tCe"/>
+                            <constraint firstItem="coq-8Z-oLt" firstAttribute="top" secondItem="Wsn-x5-j6v" secondAttribute="bottom" constant="78" id="m2U-1M-dfl"/>
                             <constraint firstItem="TLv-w1-umJ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="mR4-iK-x4Q"/>
                             <constraint firstItem="hvw-X5-sD6" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.65" id="tnu-Qg-swq"/>
+                            <constraint firstItem="coq-8Z-oLt" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="uUi-t0-Asv"/>
                             <constraint firstItem="qaL-5D-6Pq" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="wu6-uX-NHb"/>
                         </constraints>
                     </view>

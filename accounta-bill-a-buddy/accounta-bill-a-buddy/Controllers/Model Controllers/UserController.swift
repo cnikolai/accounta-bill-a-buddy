@@ -431,10 +431,12 @@ class UserController {
 
     ///WAGERS
     func appendWagerToFriendsWagerList(userfriend: String, wagerId: String) {
+        //currentUser?._myFriendsWagers.append(wagerId)
         self.db.collection("users").document(userfriend).updateData(["wagerRequests" : FieldValue.arrayUnion([wagerId])])
     }
     
     func appendWagerToOwnerWagerList(wagerId: String) {
+        currentUser?._myWagers.append(wagerId)
         self.db.collection("users").document((currentUser?._uid)!).updateData(["myWagers" : FieldValue.arrayUnion([wagerId])])
     }
     
@@ -527,6 +529,19 @@ extension UserController {
         }
     }
     
+    func updateMyWagerRequestsList() {
+        let currentUserDataRef = db.collection("users").document(currentUser!.uid)
+        currentUserDataRef.updateData([
+            "wagerRequests": currentUser?._wagerRequests
+        ]) { err in
+            if let err = err {
+                print("Error updating wagerRequests document: \(err)")
+            } else {
+                print("wagerRequests Document successfully updated")
+            }
+        }
+    }
+    
     func updateMyFriendsWagersList() {
         let currentUserDataRef = db.collection("users").document(currentUser!.uid)
         currentUserDataRef.updateData([
@@ -554,6 +569,19 @@ extension UserController {
         currentUser?._myFriendsWagers.remove(at: index)
         currentUser?._myFriendsWagers.insert(wager.wagerID, at: index)
         updateMyFriendsWagersList()
+    }
+    
+    func fetchWagerOwnerName(with uid: String, completion: ((String) -> Void)?) {
+        db.collection("users").whereField("uid", isEqualTo: uid)
+            .getDocuments { (querySnapshot, error) in
+                if let error = error {
+                    print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                } else {
+                    let userDoc = querySnapshot!.documents.first!.data()
+                    let username = userDoc["username"] as? String ?? ""
+                        completion?(username)
+                }
+            }
     }
     
 }//end of class

@@ -10,6 +10,7 @@ import Firebase
 
 class Wager {
     var wagerID: String
+    //holds the uuid of the owner
     var owner: String
     
     //stores the uid of friends

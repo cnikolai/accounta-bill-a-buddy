@@ -125,6 +125,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             print("goalDescription", wager.goalDescription)
             destinationVC.wager = wager
             destinationVC.owner = true
+            destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)
         case 1:
             let storyboard = UIStoryboard(name: "WagerDetailView", bundle: nil)
@@ -134,14 +135,16 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             print("goalDescription", wager.goalDescription)
             destinationVC.wager = wager
             destinationVC.owner = false
+            destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)
         case 2:
-           let storyboard = UIStoryboard(name: "ApproveRejectFriends", bundle: nil)
+           let storyboard = UIStoryboard(name: "ApproveDenyFriends", bundle: nil)
             guard
-                let destinationVC = storyboard.instantiateViewController(identifier: "ApproveRejectFriendsStoryboard") as? AcceptRejectFriendsViewController else {return}
+                let destinationVC = storyboard.instantiateViewController(identifier: "ApproveDenyFriendsStoryboard") as? AcceptDenyFriendsViewController else {return}
             let wager = wagerRequests[indexPath.row]
             print("goalDescription", wager.goalDescription)
             destinationVC.wager = wager
+            destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)
         default:
             break
@@ -203,7 +206,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "toWagerDetailVC" {
 //            switch segmentedController.selectedSegmentIndex {
 //            case 0:
@@ -239,7 +242,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
 //                break
 //            }
 //        }
-    }
+  //  }
 } //End of class
 
 //MARK: - Extensions
@@ -261,8 +264,8 @@ extension WagerCollectionViewController: DeleteCellDelegate {
                 self.collectionView.reloadData()
             } else if selectedSegmentIndex == 1 {
                 self.presentLeaveAlert()
-                WagerController.sharedInstance.removeUserFromWager(wagerID: wager.wagerID)
-                WagerController.sharedInstance.leaveFriendsWager(wagerToLeave: wager)
+//<----------cmn commented out because gave error            //WagerController.sharedInstance.removeUserFromWager(wagerID: wager.wagerID)
+//<----------cmn commented out because gave error             //WagerController.sharedInstance.leaveFriendsWager(wagerToLeave: wager)
                 self.collectionView.reloadData()
             } else {
                 return
