@@ -85,6 +85,7 @@ class WagerDetailViewController: UIViewController {
             wagerTextView.isUserInteractionEnabled = false
             progressSlider.isEnabled = false
             progressSlider.isUserInteractionEnabled = false
+            deadlineTextView.isUserInteractionEnabled = false
             //hide friends
             invitedFriendsTextView.isHidden = true
         }

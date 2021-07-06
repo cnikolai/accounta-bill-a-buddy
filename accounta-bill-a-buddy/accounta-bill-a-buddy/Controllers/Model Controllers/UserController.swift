@@ -435,7 +435,7 @@ class UserController {
     }
     
     func appendWagerToOwnerWagerList(wagerId: String) {
-        currentUser?._myWagers.append(wagerId)
+        currentUser?.myWagers.append(wagerId)
         self.db.collection("users").document((currentUser?._uid)!).updateData(["myWagers" : FieldValue.arrayUnion([wagerId])])
     }
     
@@ -518,7 +518,7 @@ extension UserController {
     func updateMyWagersList() {
         let currentUserDataRef = db.collection("users").document(currentUser!.uid)
         currentUserDataRef.updateData([
-            "myWagers": currentUser?._myWagers
+            "myWagers": currentUser?.myWagers
         ]) { err in
             if let err = err {
                 print("Error updating myWagers document: \(err)")
@@ -544,7 +544,7 @@ extension UserController {
     func updateMyFriendsWagersList() {
         let currentUserDataRef = db.collection("users").document(currentUser!.uid)
         currentUserDataRef.updateData([
-            "myFriendsWagers": currentUser?._myFriendsWagers
+            "myFriendsWagers": currentUser?.myFriendsWagers
         ]) { err in
             if let err = err {
                 print("Error updating myFriendsWagers document: \(err)")
@@ -556,17 +556,17 @@ extension UserController {
     
     //Wager Detail View - updating wager in app (locally) and for user
     func updateMyWagersList(with wager: Wager) {
-        guard let index = currentUser?._myWagers.firstIndex(of: wager.wagerID) else { return }
-        currentUser?._myWagers.remove(at: index)
-        currentUser?._myWagers.insert(wager.wagerID, at: index)
+        guard let index = currentUser?.myWagers.firstIndex(of: wager.wagerID) else { return }
+        currentUser?.myWagers.remove(at: index)
+        currentUser?.myWagers.insert(wager.wagerID, at: index)
         updateMyWagersList()
     }
     
     //Wager Detail View - updating wager in app (locally) and for user
     func updateMyFriendsWagersList(with wager: Wager) {
-        guard let index = currentUser?._myFriendsWagers.firstIndex(of: wager.wagerID) else { return }
-        currentUser?._myFriendsWagers.remove(at: index)
-        currentUser?._myFriendsWagers.insert(wager.wagerID, at: index)
+        guard let index = currentUser?.myFriendsWagers.firstIndex(of: wager.wagerID) else { return }
+        currentUser?.myFriendsWagers.remove(at: index)
+        currentUser?.myFriendsWagers.insert(wager.wagerID, at: index)
         updateMyFriendsWagersList()
     }
     
