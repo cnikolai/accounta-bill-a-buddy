@@ -22,6 +22,7 @@ class WagerDetailViewController: UIViewController {
     var edit: Bool?
     
     // MARK:-Outlets
+    @IBOutlet weak var wagerOwnerLabel: UILabel!
     @IBOutlet weak var wagerTextView: UITextView!
     @IBOutlet weak var goalTextView: UITextView!
     @IBOutlet weak var deadlineTextView: UITextView!
@@ -100,6 +101,13 @@ class WagerDetailViewController: UIViewController {
             //hide friends
             invitedFriendsTextView.isHidden = true
             invitedFriendsLabel.isHidden = true
+            wagerOwnerLabel.isHidden = false
+            let ownername: () = UserController.sharedInstance.fetchWagerOwnerName(with: wager.owner, completion: { ownername in
+                    self.wagerOwnerLabel.text = "\(ownername)'s Wager!"
+            })
+        }
+        else {
+            wagerOwnerLabel.isHidden = true
         }
         wagerPhotoImageView.image = wager.wagerPhoto
         goalTextView.text = wager.goalDescription
@@ -108,10 +116,10 @@ class WagerDetailViewController: UIViewController {
         progressSlider.value = wager.progress
         UserController.sharedInstance.fetchInvitedFriendsNames(for: wager.invitedFriends, completion: { result in
             switch result {
-            case .success(let invitedFriendsNames):
-                self.invitedFriendsTextView.text = invitedFriendsNames.joined(separator: ", ")
-            case .failure(let error):
-                print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
+                case .success(let invitedFriendsNames):
+                    self.invitedFriendsTextView.text = invitedFriendsNames.joined(separator: ", ")
+                case .failure(let error):
+                    print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
             }
         })
     }

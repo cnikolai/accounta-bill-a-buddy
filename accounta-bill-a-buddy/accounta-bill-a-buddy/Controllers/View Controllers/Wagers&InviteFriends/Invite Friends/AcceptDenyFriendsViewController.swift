@@ -79,5 +79,8 @@ class AcceptDenyFriendsViewController: UIViewController {
         Utilities.styleTextView(deadlineTextView)
         Utilities.styleFillButtonRoundedCornersOnly(acceptButton)
         Utilities.styleFillButtonRoundedCornersOnly(declineButton)
+        wagerTextView.isUserInteractionEnabled = false
+        goalTextView.isUserInteractionEnabled = false
+        deadlineTextView.isUserInteractionEnabled = false
     }
 }
