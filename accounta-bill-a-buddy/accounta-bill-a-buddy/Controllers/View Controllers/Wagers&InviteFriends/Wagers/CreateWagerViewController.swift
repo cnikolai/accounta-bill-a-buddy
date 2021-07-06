@@ -142,6 +142,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
         imageImageView.contentMode = .scaleAspectFill
         imageImageView.clipsToBounds = true
         imagePicker.delegate = self
+        //imageImageView.image = UIImage(#imageLiteral(resourceName: "football"))
     }
     
     private func dismissView() {

@@ -18,6 +18,8 @@ class WagerDetailViewController: UIViewController {
         }
     }
     var owner: Bool?
+    //a variable to keep track of when we are editing a view versus just viewing a view (segment #0 versus segment #1)
+    var edit: Bool?
     
     // MARK:-Outlets
     @IBOutlet weak var wagerTextView: UITextView!
@@ -74,6 +76,18 @@ class WagerDetailViewController: UIViewController {
     
     func updateViews() {
         guard let wager = wager else {return}
+        guard let edit = edit else { return }
+        if !edit {
+            //disable text fields from input
+            goalDescriptionTextField.isEnabled = false
+            goalDescriptionTextField.isUserInteractionEnabled = false
+            wagerTextField.isEnabled = false
+            wagerTextField.isUserInteractionEnabled = false
+            progressSlider.isEnabled = false
+            progressSlider.isUserInteractionEnabled = false
+            //hide friends
+            invitedFriendsLabel.isHidden = true
+        }
         wagerPhotoImageView.image = wager.wagerPhoto
         goalTextView.text = wager.goalDescription
         deadlineTextView.text = wager.deadline

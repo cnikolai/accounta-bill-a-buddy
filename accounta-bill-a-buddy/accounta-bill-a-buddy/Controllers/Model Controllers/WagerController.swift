@@ -54,12 +54,13 @@ class WagerController {
                         let owner = wagerData["owner"] as? String ?? ""
                         let goalDescription = wagerData["goalDescription"] as? String ?? ""
                         let wager = wagerData["wager"] as? String ?? ""
+                        let wagerPhotoData = wagerData["wagerPhoto"] as? Data ?? Data()
                         let invitedFriends = wagerData["invitedFriends"] as? [String] ?? []
                         let acceptedFriends = wagerData["acceptedFriends"] as? [String] ?? []
                         let deadline = wagerData["deadline"] as? String ?? ""
                         let progress = wagerData["progress"] as? Float ?? 0.0
                         
-                        let newWager = Wager(wagerID: wagerID, owner: owner, invitedFriends: invitedFriends, acceptedFriends: acceptedFriends, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress, wagerPhoto: UIImage(named: "wagerDefaultPhoto"))
+                        let newWager = Wager(wagerID: wagerID, owner: owner, invitedFriends: invitedFriends, acceptedFriends: acceptedFriends, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress, wagerPhoto: UIImage(data: wagerPhotoData))
                         return(completion(.success(newWager)))
                     }
                 }

@@ -125,6 +125,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             print("goalDescription", wager.goalDescription)
             destinationVC.wager = wager
             destinationVC.owner = true
+            destinationVC.edit = true
             destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)
         case 1:
@@ -135,6 +136,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             print("goalDescription", wager.goalDescription)
             destinationVC.wager = wager
             destinationVC.owner = false
+            destinationVC.edit = false
             destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)
         case 2:
