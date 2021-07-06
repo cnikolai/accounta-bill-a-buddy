@@ -25,11 +25,10 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     //Properties
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        collectionView.register(WagerCollectionViewCell.self, forCellWithReuseIdentifier: "wagerCell")
         collectionView.delegate = self
         collectionView.dataSource = self
         createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
-//            print("Wagers Array created successfully")
+            print("Wagers Array created successfully")
         }
     }
     
@@ -137,10 +136,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
                 switch result {
                 case .success(let wagers):
                     self.myWagers = wagers
-                    //re-fetch data from firebase to sync up UI
-                    self.createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
-//                        print("Wagers Array created successfully")
-                    }
                     self.collectionView.reloadData()
                 case .failure(let error):
                     print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
@@ -156,10 +151,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
                 switch result {
                 case .success(let wagers):
                     self.myFriendsWagers = wagers
-                    //re-fetch data from firebase to sync up UI
-                    self.createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
-//                        print("Wagers Array created successfully")
-                    }
                     self.collectionView.reloadData()
                 case .failure(let error):
                     print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
@@ -239,7 +230,7 @@ extension WagerCollectionViewController: DeleteCellDelegate {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
             if selectedSegmentIndex == 0 {
-                //Delete Wager object from Wagers collection and from current user's myWagers array
+                //Delete Wager object from Wagers collection and from current user's myWagers, from friend's myFriendsWagers, and from friend's wagerRequests
                 WagerController.sharedInstance.deleteWager(wagerID: wager.wagerID)
                 WagerController.sharedInstance.deleteWagerFromMyWagers(wagerToDelete: wager)
                 WagerController.sharedInstance.deleteWagerFromFriendsRequests(wagerToDelete: wager)
