@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 private let reuseIdentifier = "wagerCell"
 
@@ -18,6 +19,9 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var segmentedController: UISegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let db = Firestore.firestore()
+    var dataRef: DocumentReference?
+    
     var myWagers: [Wager] = []
     var myFriendsWagers: [Wager] = []
     var wagerRequests: [Wager] = []
@@ -25,11 +29,25 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     //Properties
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        collectionView.register(WagerCollectionViewCell.self, forCellWithReuseIdentifier: "wagerCell")
         collectionView.delegate = self
         collectionView.dataSource = self
-        createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
-            print("Wagers Array created successfully")
+        loadData {
+        }
+    }
+    
+    func loadData(completed: @escaping () -> ()) {
+        dataRef = db.collection("users").document(UserController.sharedInstance.currentUser!._uid)
+        dataRef?.addSnapshotListener { [self] (querySnapshot, error) in
+            guard error == nil else {
+                print("Error loading data from Firebase listener. --- \(error!)")
+                return completed()
+            }
+            guard let data = querySnapshot else { return }
+            createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
+                print("Wagers Array updated successfully after listener activated.")
+                self.collectionView.reloadData()
+            }
+            completed()
         }
     }
     
@@ -218,6 +236,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     //            }
     //        }
     //  }
+  
 } //End of class
 
 //MARK: - Extensions
@@ -249,6 +268,8 @@ extension WagerCollectionViewController: DeleteCellDelegate {
             let leaveAction = UIAlertAction(title: "Leave", style: .destructive) { (_) in
                 WagerController.sharedInstance.removeUserFromWager(wagerID: wager.wagerID)
                 WagerController.sharedInstance.leaveFriendsWager(wagerToLeave: wager)
+            } else if selectedSegmentIndex == 1 {
+                self.presentLeaveAlert()
                 self.collectionView.reloadData()
             }
             leaveAlertController.addAction(cancelAction)
@@ -256,5 +277,6 @@ extension WagerCollectionViewController: DeleteCellDelegate {
             present(leaveAlertController, animated: true)
         }
     }
+    
 } // End of Extension
 

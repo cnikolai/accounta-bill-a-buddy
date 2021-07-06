@@ -25,10 +25,16 @@
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="iPb-sr-ALi">
-                                <rect key="frame" x="20" y="295" width="374" height="358.5"/>
+                                <rect key="frame" x="20" y="295" width="374" height="400"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(username's) wager!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjL-P0-OLy">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="27.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                        <color key="textColor" red="0.67660411610000004" green="0.85804396869999999" blue="0.84589028389999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="UjY-Ws-6QZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="72.5"/>
+                                        <rect key="frame" x="0.0" y="41.5" width="374" height="72.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wager:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDP-wD-W3c">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -49,7 +55,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="eoq-Cx-MWS">
-                                        <rect key="frame" x="0.0" y="86.5" width="374" height="72.5"/>
+                                        <rect key="frame" x="0.0" y="128" width="374" height="72.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6MD-ZG-UUO">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -67,7 +73,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="3zs-Px-cF6">
-                                        <rect key="frame" x="0.0" y="173" width="374" height="52.5"/>
+                                        <rect key="frame" x="0.0" y="214.5" width="374" height="52.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deadline:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MhL-z4-QlX">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -85,7 +91,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Qla-td-F9R">
-                                        <rect key="frame" x="0.0" y="239.5" width="374" height="52.5"/>
+                                        <rect key="frame" x="0.0" y="281" width="374" height="52.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progress:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyb-LX-Jbe">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -103,7 +109,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="QOh-XC-cZj">
-                                        <rect key="frame" x="0.0" y="306" width="374" height="52.5"/>
+                                        <rect key="frame" x="0.0" y="347.5" width="374" height="52.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invited Friends:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSh-qr-ISU">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -174,6 +180,7 @@
                         <outlet property="invitedFriendsLabel" destination="tSh-qr-ISU" id="qgi-eU-46j"/>
                         <outlet property="invitedFriendsTextView" destination="sc6-fy-6HD" id="1ry-fC-GKx"/>
                         <outlet property="progressSlider" destination="oqP-oc-vtq" id="7XR-VQ-4Fd"/>
+                        <outlet property="wagerOwnerLabel" destination="xjL-P0-OLy" id="IFv-ml-YSL"/>
                         <outlet property="wagerPhotoImageView" destination="3Wl-Ja-vdY" id="ml9-DZ-F5k"/>
                         <outlet property="wagerTextView" destination="v3r-Pt-O8u" id="LjT-TI-gtW"/>
                     </connections>
