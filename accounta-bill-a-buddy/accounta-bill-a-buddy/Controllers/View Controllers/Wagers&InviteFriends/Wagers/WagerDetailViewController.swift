@@ -25,6 +25,7 @@ class WagerDetailViewController: UIViewController {
     @IBOutlet weak var deadlineTextField: UITextField!
     @IBOutlet weak var wagerPhotoImageView: UIImageView!
     @IBOutlet weak var progressSlider: UISlider!
+    @IBOutlet weak var invitedFriendsLabel: UILabel!
     
     // MARK:-Lifecycle
     override func viewDidLoad() {
@@ -78,6 +79,14 @@ class WagerDetailViewController: UIViewController {
         deadlineTextField.text = wager.deadline
         wagerTextField.text = wager.wager
         progressSlider.value = wager.progress
+        UserController.sharedInstance.fetchInvitedFriendsNames(for: wager.invitedFriends, completion: { result in
+            switch result {
+            case .success(let invitedFriendsNames):
+                self.invitedFriendsLabel.text = invitedFriendsNames.joined(separator: ", ")
+            case .failure(let error):
+                print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
+            }
+        })
     }
 
 }
