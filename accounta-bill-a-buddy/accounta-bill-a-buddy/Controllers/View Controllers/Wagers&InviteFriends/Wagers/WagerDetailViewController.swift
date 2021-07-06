@@ -28,6 +28,7 @@ class WagerDetailViewController: UIViewController {
     @IBOutlet weak var invitedFriendsTextView: UITextView!
     @IBOutlet weak var wagerPhotoImageView: UIImageView!
     @IBOutlet weak var progressSlider: UISlider!
+    @IBOutlet weak var invitedFriendsLabel: UILabel!
     
     // MARK:-Lifecycle
     override func viewDidLoad() {
@@ -90,6 +91,7 @@ class WagerDetailViewController: UIViewController {
             deadlineTextView.isUserInteractionEnabled = false
             //hide friends
             invitedFriendsTextView.isHidden = true
+            invitedFriendsLabel.isHidden = true
         }
         wagerPhotoImageView.image = wager.wagerPhoto
         goalTextView.text = wager.goalDescription
