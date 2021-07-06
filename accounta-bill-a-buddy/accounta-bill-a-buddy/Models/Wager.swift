@@ -62,6 +62,15 @@ class Wager {
         
         self.init(wagerID: wagerID, owner: owner, invitedFriends: invitedFriends, acceptedFriends: acceptedFriends, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress, wagerPhoto: wagerPhoto)
     }
+    
+    func savePhoto(wager: Wager, completion: @escaping (Bool) -> ()) {
+        let db = Firestore.firestore()
+        //let storage = Storage.storage()
+        
+        //let wagerPhotoData = wagerPhoto.jpegData(compressionQuality: 0.5)
+
+        
+    }
 }//End of class
 
 //MARK: - Extensions
