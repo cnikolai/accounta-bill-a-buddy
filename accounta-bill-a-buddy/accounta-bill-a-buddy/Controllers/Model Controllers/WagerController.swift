@@ -96,28 +96,42 @@ class WagerController {
     
     ///ACCEPT/DECLINE Wagers
     func removeWagerFromMyPendingWagers(wagerId: String) {
-        guard let indexofWagerToBeRemvoed = UserController.sharedInstance.currentUser?.myWagers.firstIndex(of: wagerId) else { return }
-        UserController.sharedInstance.currentUser?.myWagers.remove(at: indexofWagerToBeRemvoed)
+        //remove wager from my(currentuser) wager requests
+        guard let indexofWagerToBeRemvoed = UserController.sharedInstance.currentUser?._wagerRequests.firstIndex(of: wagerId) else { return }
+        UserController.sharedInstance.currentUser?._wagerRequests.remove(at: indexofWagerToBeRemvoed)
         //save currentuser mywagers to database
-        UserController.sharedInstance.updateMyWagersList()
+        UserController.sharedInstance.updateMyWagerRequestsList()
+        //UserController.sharedInstance.currentUser?._myFriendsWagers.append(wagerId)
+        //UserController.sharedInstance.updateMyFriendsWagersList()
         
     }
     
     func addWagerToMyFriendsWagers(wager: Wager) {
-        UserController.sharedInstance.currentUser?.myFriendsWagers.append(wager.wagerID)
-        guard let indexofWagerToBeChanged = WagerController.sharedInstance.wagers.firstIndex(of: wager) else { return }
-        WagerController.sharedInstance.wagers[indexofWagerToBeChanged].acceptedFriends.append(UserController.sharedInstance.currentUser!._uid)
+        UserController.sharedInstance.currentUser?._myFriendsWagers.append(wager.wagerID)
+//        guard let indexofWagerToBeChanged = UserController.sharedInstance.currentUser?._myFriendsWagers.firstIndex(of: wager.wagerID) else {
+//            print("inside addwagertomyfriendswagers")
+//            return }
+//        UserController.sharedInstance.currentUser?._myFriendsWagers[indexofWagerToBeChanged].
+//
+//        acceptedFriends.append(UserController.sharedInstance.currentUser!._uid)
         //save currentuser myfriendswagers and current wager acceptedFriends to database
         UserController.sharedInstance.updateMyFriendsWagersList()
-        updateWagerAcceptedFriends(wagerId: wager.wagerID, acceptedFriends: WagerController.sharedInstance.wagers[indexofWagerToBeChanged].acceptedFriends)
+        //updateWagerAcceptedFriends(wagerId: wager.wagerID, acceptedFriends: WagerController.sharedInstance.wagers[indexofWagerToBeChanged].acceptedFriends)
     }
     
-    func removeCurrentUserFromWagersFriendsList(wager: Wager) {
-        guard let indexofWagerToBeChanged = WagerController.sharedInstance.wagers.firstIndex(of: wager) else { return }
-        guard let indexofCurrentUserasInvitedFriendofWager = WagerController.sharedInstance.wagers[indexofWagerToBeChanged].invitedFriends.firstIndex(of: UserController.sharedInstance.currentUser!._uid) else { return }
-        WagerController.sharedInstance.wagers[indexofWagerToBeChanged].invitedFriends.remove(at: indexofCurrentUserasInvitedFriendofWager)
-        //save current wager invitedfriends to database
-        updateWagerInvitedFriends(wagerId: wager.wagerID, invitedFriends: WagerController.sharedInstance.wagers[indexofWagerToBeChanged].invitedFriends)
+    func removeCurrentUserFromWagersInvitedFriendsList(wager: Wager) {
+//        guard let indexofWagerToBeChanged = WagerController.sharedInstance.wagers.firstIndex(of: wager) else {
+//            print("inside removecurrentuserfromwagersfriendslist")
+//            return
+//        }
+        guard let indexofCurrentUserasInvitedFriendofWager = wager.invitedFriends.firstIndex(of: UserController.sharedInstance.currentUser!._uid) else {
+            print("inside indexofcurrentuserasinvitedfrinewofwager")
+            return
+        }
+        print("index of currentusertoberemoved from friends list: ",indexofCurrentUserasInvitedFriendofWager)
+        
+        wager.invitedFriends.remove(at: indexofCurrentUserasInvitedFriendofWager)
+        updateWagerInvitedFriends(wagerId: wager.wagerID, invitedFriends: wager.invitedFriends)
     }
     
     func updateWagerAcceptedFriends(wagerId: String, acceptedFriends: [String]) {

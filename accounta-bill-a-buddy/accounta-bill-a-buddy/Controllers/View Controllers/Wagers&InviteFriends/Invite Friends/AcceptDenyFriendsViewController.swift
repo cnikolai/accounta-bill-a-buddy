@@ -1,5 +1,5 @@
 //
-//  AcceptRejectFriendsViewController.swift
+//  AcceptDenyFriendsViewController.swift
 //  accounta-bill-a-buddy
 //
 //  Created by Cynthia Nikolai on 7/1/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AcceptRejectFriendsViewController: UIViewController {
+class AcceptDenyFriendsViewController: UIViewController {
 
     // MARK:-Properties
     var wager: Wager?
@@ -22,8 +22,8 @@ class AcceptRejectFriendsViewController: UIViewController {
     // MARK:-Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let owner = fetchCurrentWagersOwner()
-        invitingYouLabel.text = owner + " is inviting you to a wager!"
+        getCurrentWagersOwner()
+        setupViews()
     }
     
     // MARK:-Actions
@@ -33,14 +33,18 @@ class AcceptRejectFriendsViewController: UIViewController {
     
     @IBAction func declineButtonTapped(_ sender: Any) {
         guard let wager = wager else { return }
+        
+        WagerController.sharedInstance.removeCurrentUserFromWagersInvitedFriendsList(wager: wager)
         WagerController.sharedInstance.removeWagerFromMyPendingWagers(wagerId: wager.wagerID)
-        WagerController.sharedInstance.addWagerToMyFriendsWagers(wager: wager)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func approveButtonTapped(_ sender: Any) {
         guard let wager = wager else { return }
+        WagerController.sharedInstance.addWagerToMyFriendsWagers(wager: wager)
         WagerController.sharedInstance.removeWagerFromMyPendingWagers(wagerId: wager.wagerID)
-        WagerController.sharedInstance.removeCurrentUserFromWagersFriendsList(wager: wager)
+
+        self.dismiss(animated: true, completion: nil)
     }
     
     func dismissView() {
@@ -48,8 +52,23 @@ class AcceptRejectFriendsViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func fetchCurrentWagersOwner() -> String {
-        guard let wager = wager else { return "" }
-        return wager.owner
+    func getCurrentWagersOwner() {
+        guard let wager = wager else { return }
+        return UserController.sharedInstance.fetchWagerOwnerName(with: wager.owner) { result in
+            switch (result) {
+            case (let ownerName):
+                self.invitingYouLabel.text = ownerName + " is inviting you to a wager!"
+            case (let error):
+                print("Error in \(#function): \n---\n \(error)")
+            }
+        }
+    }
+    
+    func setupViews() {
+        guard let wager = wager else { return }
+        wagerImageView.image = wager.wagerPhoto
+        goalDescriptionLabel.text = wager.goalDescription
+        wagerLabel.text = wager.wager
+        deadlineLabel.text = wager.deadline
     }
 }
