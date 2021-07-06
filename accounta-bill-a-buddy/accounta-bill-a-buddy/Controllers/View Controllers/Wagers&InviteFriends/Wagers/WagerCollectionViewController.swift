@@ -25,6 +25,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     //Properties
     override func viewDidLoad() {
         super.viewDidLoad()
+        //        collectionView.register(WagerCollectionViewCell.self, forCellWithReuseIdentifier: "wagerCell")
         collectionView.delegate = self
         collectionView.dataSource = self
         createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
@@ -96,8 +97,8 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         switch segmentedController.selectedSegmentIndex {
         case 0:
             let storyboard = UIStoryboard(name: "WagerDetailView", bundle: nil)
-             guard
-                 let destinationVC = storyboard.instantiateViewController(identifier: "WagerDetailViewController") as? WagerDetailViewController else {return}
+            guard
+                let destinationVC = storyboard.instantiateViewController(identifier: "WagerDetailViewController") as? WagerDetailViewController else {return}
             let wager = myWagers[indexPath.row]
             print("goalDescription", wager.goalDescription)
             destinationVC.wager = wager
@@ -106,8 +107,8 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             present(destinationVC, animated: true, completion: nil)
         case 1:
             let storyboard = UIStoryboard(name: "WagerDetailView", bundle: nil)
-             guard
-                 let destinationVC = storyboard.instantiateViewController(identifier: "WagerDetailViewController") as? WagerDetailViewController else {return}
+            guard
+                let destinationVC = storyboard.instantiateViewController(identifier: "WagerDetailViewController") as? WagerDetailViewController else {return}
             let wager = myFriendsWagers[indexPath.row]
             print("goalDescription", wager.goalDescription)
             destinationVC.wager = wager
@@ -115,7 +116,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             destinationVC.edit = false
             present(destinationVC, animated: true, completion: nil)
         case 2:
-           let storyboard = UIStoryboard(name: "ApproveDenyFriends", bundle: nil)
+            let storyboard = UIStoryboard(name: "ApproveDenyFriends", bundle: nil)
             guard
                 let destinationVC = storyboard.instantiateViewController(identifier: "ApproveDenyFriendsStoryboard") as? AcceptDenyFriendsViewController else {return}
             let wager = wagerRequests[indexPath.row]
@@ -181,42 +182,42 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     }
     
     //override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toWagerDetailVC" {
-//            switch segmentedController.selectedSegmentIndex {
-//            case 0:
-//                guard
-//                    let destinationVC = segue.destination as? WagerDetailViewController,
-//                    let cell = sender as? WagerCollectionViewCell,
-//                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
-//                print("inside prepare for segue segmented controller: case 0")
-//                let wager = myWagers[indexPath.row]
-//                print("goalDescription", wager.goalDescription)
-//                destinationVC.wager = wager
-//                destinationVC.owner = true
-//            case 1:
-//                guard
-//                    let destinationVC = segue.destination as? WagerDetailViewController,
-//                    let cell = sender as? WagerCollectionViewCell,
-//                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
-//                print("inside prepare for segue segmented controller: case 1")
-//                let wager = myFriendsWagers[indexPath.row]
-//                print("goalDescription", wager.goalDescription)
-//                destinationVC.wager = wager
-//                destinationVC.owner = false
-//            case 2:
-//                guard
-//                    let destinationVC = segue.destination as? AcceptRejectFriendsViewController,
-//                    let cell = sender as? WagerCollectionViewCell,
-//                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
-//                print("inside prepare for segue segmented controller: case 2")
-//                let wager = wagerRequests[indexPath.row]
-//                print("goalDescription", wager.goalDescription)
-//                destinationVC.wager = wager
-//            default:
-//                break
-//            }
-//        }
-  //  }
+    //        if segue.identifier == "toWagerDetailVC" {
+    //            switch segmentedController.selectedSegmentIndex {
+    //            case 0:
+    //                guard
+    //                    let destinationVC = segue.destination as? WagerDetailViewController,
+    //                    let cell = sender as? WagerCollectionViewCell,
+    //                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
+    //                print("inside prepare for segue segmented controller: case 0")
+    //                let wager = myWagers[indexPath.row]
+    //                print("goalDescription", wager.goalDescription)
+    //                destinationVC.wager = wager
+    //                destinationVC.owner = true
+    //            case 1:
+    //                guard
+    //                    let destinationVC = segue.destination as? WagerDetailViewController,
+    //                    let cell = sender as? WagerCollectionViewCell,
+    //                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
+    //                print("inside prepare for segue segmented controller: case 1")
+    //                let wager = myFriendsWagers[indexPath.row]
+    //                print("goalDescription", wager.goalDescription)
+    //                destinationVC.wager = wager
+    //                destinationVC.owner = false
+    //            case 2:
+    //                guard
+    //                    let destinationVC = segue.destination as? AcceptRejectFriendsViewController,
+    //                    let cell = sender as? WagerCollectionViewCell,
+    //                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
+    //                print("inside prepare for segue segmented controller: case 2")
+    //                let wager = wagerRequests[indexPath.row]
+    //                print("goalDescription", wager.goalDescription)
+    //                destinationVC.wager = wager
+    //            default:
+    //                break
+    //            }
+    //        }
+    //  }
 } //End of class
 
 //MARK: - Extensions
@@ -226,41 +227,34 @@ extension WagerCollectionViewController: DeleteCellDelegate {
     }
     
     func deleteCellAlert(wager: Wager, selectedSegmentIndex: Int) {
-        let alertController = UIAlertController(title: "Delete Wager", message: "Are you sure you want to delete?", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
-            if selectedSegmentIndex == 0 {
+        if selectedSegmentIndex == 0 {
+            let alertController = UIAlertController(title: "Delete Wager", message: "Are you sure you want to delete this wager?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
                 //Delete Wager object from Wagers collection and from current user's myWagers, from friend's myFriendsWagers, and from friend's wagerRequests
                 WagerController.sharedInstance.deleteWager(wagerID: wager.wagerID)
                 WagerController.sharedInstance.deleteWagerFromMyWagers(wagerToDelete: wager)
                 WagerController.sharedInstance.deleteWagerFromFriendsRequests(wagerToDelete: wager)
                 WagerController.sharedInstance.deleteWagerFromMyFriendsWagers(wagerToDelete: wager)
                 self.collectionView.reloadData()
-            } else if selectedSegmentIndex == 1 {
-                self.presentLeaveAlert()
+            }
+            alertController.addAction(cancelAction)
+            alertController.addAction(deleteAction)
+            present(alertController, animated: true)
+        }
+            
+        if selectedSegmentIndex == 1 {
+            let leaveAlertController = UIAlertController(title: "Leave Wager", message: "Are you sure you want to leave this wager? It will be deleted from your collection.", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let leaveAction = UIAlertAction(title: "Leave", style: .destructive) { (_) in
                 WagerController.sharedInstance.removeUserFromWager(wagerID: wager.wagerID)
                 WagerController.sharedInstance.leaveFriendsWager(wagerToLeave: wager)
                 self.collectionView.reloadData()
-            } else {
-                return
             }
+            leaveAlertController.addAction(cancelAction)
+            leaveAlertController.addAction(leaveAction)
+            present(leaveAlertController, animated: true)
         }
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(deleteAction)
-        
-        present(alertController, animated: true)
-    }
-    
-    func presentLeaveAlert() {
-        let leaveAlertController = UIAlertController(title: "Leave Wager", message: "Are you sure you want to leave this wager?", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        leaveAlertController.addAction(okAction)
-        leaveAlertController.addAction(cancelAction)
-        
-        present(leaveAlertController, animated: true)
     }
 } // End of Extension
 
