@@ -81,7 +81,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     @IBAction func inviteFriendsButtonTapped(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "InviteFriends", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "InviteFriendsVC") as! InviteFriendsListTableViewController
-        newViewController.modalPresentationStyle = .fullScreen
+        //newViewController.modalPresentationStyle = .fullScreen
         self.present(newViewController, animated: true, completion: nil)
     }
     

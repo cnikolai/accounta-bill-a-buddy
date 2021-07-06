@@ -41,9 +41,12 @@ class InviteFriendsTableViewCell: UITableViewCell {
         inviteWagerFriend.toggle()
         
         if inviteWagerFriend {
-            selectFriendButton.setImage(UIImage(systemName: "person.crop.circle.badge.checkmark"), for: .normal)
+            selectFriendButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+            //selectFriendButton.tintColor = .black
+            selectFriendButton.tintColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
         } else {
             selectFriendButton.setImage(UIImage(systemName: "circle"), for: .normal)
+            selectFriendButton.tintColor = .darkGray
         }
     }
 
