@@ -85,10 +85,11 @@ class UserController {
     func findUser(with name: String) {
         let user = User(uid: "", username: "", sentFriendRequests: [], receivedFriendRequests: [], friends: [])
         
+        guard let currentUser = self.currentUser?.username else { return }
         let userBlocked = checkIfUserIsBlocked(username: name)
         let blockedByUser = checkIfBlockedByUser(username: name)
         
-        if !userBlocked && !blockedByUser {
+        if !userBlocked && !blockedByUser && name != currentUser {
             db.collection("users").whereField("username", isEqualTo: name)
                 .getDocuments { (querySnapshot, error) in
                     if let error = error {

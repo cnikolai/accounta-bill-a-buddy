@@ -42,7 +42,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
                 print("Error loading data from Firebase listener. --- \(error!)")
                 return completed()
             }
-            guard let data = querySnapshot else { return }
+//            guard let data = querySnapshot else { return }
             createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
                 print("Wagers Array updated successfully after listener activated.")
                 self.collectionView.reloadData()
@@ -207,44 +207,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             completion?(true)
         }
     }
-    
-    //override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        if segue.identifier == "toWagerDetailVC" {
-    //            switch segmentedController.selectedSegmentIndex {
-    //            case 0:
-    //                guard
-    //                    let destinationVC = segue.destination as? WagerDetailViewController,
-    //                    let cell = sender as? WagerCollectionViewCell,
-    //                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
-    //                print("inside prepare for segue segmented controller: case 0")
-    //                let wager = myWagers[indexPath.row]
-    //                print("goalDescription", wager.goalDescription)
-    //                destinationVC.wager = wager
-    //                destinationVC.owner = true
-    //            case 1:
-    //                guard
-    //                    let destinationVC = segue.destination as? WagerDetailViewController,
-    //                    let cell = sender as? WagerCollectionViewCell,
-    //                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
-    //                print("inside prepare for segue segmented controller: case 1")
-    //                let wager = myFriendsWagers[indexPath.row]
-    //                print("goalDescription", wager.goalDescription)
-    //                destinationVC.wager = wager
-    //                destinationVC.owner = false
-    //            case 2:
-    //                guard
-    //                    let destinationVC = segue.destination as? AcceptRejectFriendsViewController,
-    //                    let cell = sender as? WagerCollectionViewCell,
-    //                    let indexPath = self.collectionView!.indexPath(for: cell) else {return}
-    //                print("inside prepare for segue segmented controller: case 2")
-    //                let wager = wagerRequests[indexPath.row]
-    //                print("goalDescription", wager.goalDescription)
-    //                destinationVC.wager = wager
-    //            default:
-    //                break
-    //            }
-    //        }
-    //  }
     
 } //End of class
 

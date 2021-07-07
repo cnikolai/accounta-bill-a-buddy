@@ -37,6 +37,12 @@ class FriendsTableViewController: UITableViewController {
         setupViewFor(screen: .friends)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        if currentScreen == .findFriends {
+            UserController.sharedInstance.users = []
+        }
+    }
+    
     //MARK: - Actions
     @IBAction func segmentedControlButtonTapped(_ sender: UISegmentedControl) {
         tableView.reloadData()
@@ -134,6 +140,7 @@ extension FriendsTableViewController: UISearchBarDelegate {
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.text = ""
         tableView.reloadData()
     }
     

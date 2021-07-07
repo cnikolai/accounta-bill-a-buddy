@@ -140,11 +140,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="a2M-fG-rrS">
-                                <rect key="frame" x="24" y="338" width="272" height="83"/>
+                                <rect key="frame" x="48" y="338" width="224" height="103"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViU-pp-f2h">
-                                        <rect key="frame" x="0.0" y="0.0" width="272" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="224" height="40"/>
                                         <color key="backgroundColor" red="0.43865627838409044" green="0.71519430890582858" blue="0.86673815497036633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="PDF-Hq-Gzj"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                         <state key="normal" title="Blocked Users">
                                             <color key="titleColor" systemColor="linkColor"/>
@@ -154,10 +157,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RwO-Lu-IKR">
-                                        <rect key="frame" x="0.0" y="53" width="272" height="30"/>
+                                        <rect key="frame" x="0.0" y="63" width="224" height="40"/>
                                         <color key="backgroundColor" systemColor="systemGray2Color"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="WTh-iX-GZn"/>
+                                            <constraint firstAttribute="height" constant="40" id="iXb-L8-IdI"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                         <state key="normal" title="Log Out">
@@ -188,7 +191,7 @@
                             <constraint firstItem="a2M-fG-rrS" firstAttribute="top" secondItem="Haz-ZC-UuQ" secondAttribute="bottom" constant="64" id="XVS-il-Gpa"/>
                             <constraint firstItem="a2M-fG-rrS" firstAttribute="centerX" secondItem="tWe-rs-WTK" secondAttribute="centerX" id="YiF-N2-ALE"/>
                             <constraint firstItem="Haz-ZC-UuQ" firstAttribute="centerX" secondItem="OQJ-s2-Usm" secondAttribute="centerX" id="wD6-q1-YxC"/>
-                            <constraint firstItem="a2M-fG-rrS" firstAttribute="width" secondItem="Imt-tu-5cb" secondAttribute="width" multiplier="0.85" id="wpe-Pg-0o9"/>
+                            <constraint firstItem="a2M-fG-rrS" firstAttribute="width" secondItem="Imt-tu-5cb" secondAttribute="width" multiplier="0.7" id="wpe-Pg-0o9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="0Q0-aa-Iww"/>

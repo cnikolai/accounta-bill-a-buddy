@@ -102,11 +102,11 @@ class LoginViewController: UIViewController {
                                 } else {
                                     UserController.sharedInstance.getCurrentUser(uid: result!.user.uid) { success in
                                         print("getCurrentUser successful")
+                                        self.transitionToHome()
                                     }
                                 }
                             }
                             //transition to home screen
-                            self.transitionToHome()
                         }
                     }
                 }
