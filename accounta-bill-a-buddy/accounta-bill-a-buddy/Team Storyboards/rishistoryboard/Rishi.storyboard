@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Md7-Tn-Rl0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Md7-Tn-Rl0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -107,7 +107,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Wagers" id="lLP-D4-n15">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="ef2-k5-KS1"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OxQ-rq-9XD">
                             <connections>
                                 <segue destination="do0-qN-2uT" kind="show" id="aro-yW-HrR"/>
@@ -116,7 +115,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="P79-8q-LqO" id="Van-hw-BMp"/>
-                        <outlet property="editButton" destination="ef2-k5-KS1" id="r72-tH-EFm"/>
                         <outlet property="segmentedController" destination="hag-Bf-SwP" id="vP1-kE-Yef"/>
                     </connections>
                 </viewController>
