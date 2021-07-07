@@ -34,6 +34,8 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         }
     }
     
+    //TIFFSAKA - This is working but needs to be replaced with a local listener rather than one on Firebase
+    //Keep this until updates are made.
     func loadData(completed: @escaping () -> ()) {
         guard let currentUser = UserController.sharedInstance.currentUser else { return }
         dataRef = db.collection("users").document(currentUser.uid)
@@ -42,9 +44,9 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
                 print("Error loading data from Firebase listener. --- \(error!)")
                 return completed()
             }
-//            guard let data = querySnapshot else { return }
+            //guard let data = querySnapshot else { return }
             createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
-                print("Wagers Array updated successfully after listener activated.")
+                print("\n\n\n**** Wagers Array updated successfully after listener activated. ****\n\n\n")
                 self.collectionView.reloadData()
             }
             completed()
@@ -222,8 +224,14 @@ extension WagerCollectionViewController: DeleteCellDelegate {
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
                 //Delete Wager object from Wagers collection and from current user's myWagers, from friend's myFriendsWagers, and from friend's wagerRequests
-                WagerController.sharedInstance.deleteWager(wagerID: wager.wagerID)
-                WagerController.sharedInstance.deleteWagerFromMyWagers(wagerToDelete: wager)
+                
+                //TIFFSAKA - The following completions were creating in testing, these may not be needed. If needed, we will also need to add to the additional two delete functions.
+                WagerController.sharedInstance.deleteWager(wagerID: wager.wagerID) {_ in
+                    print("Deleted successfully.")
+                }
+                WagerController.sharedInstance.deleteWagerFromMyWagers(wagerToDelete: wager) {_ in
+                    print("deletedWagerFromMyWagers successful")
+                }
                 WagerController.sharedInstance.deleteWagerFromFriendsRequests(wagerToDelete: wager)
                 WagerController.sharedInstance.deleteWagerFromMyFriendsWagers(wagerToDelete: wager)
             }
