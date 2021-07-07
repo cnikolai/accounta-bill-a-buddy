@@ -18,6 +18,8 @@ class UserController {
     var friendRequestFromUser: User?
     var users = [User]()
     
+    var dataRef: DocumentReference?
+    
     //MARK: - Firebase References
     let db = Firestore.firestore()
     
@@ -38,6 +40,48 @@ class UserController {
                     completion(false)
                 }
             }
+    }
+    
+    func fbListener(completed: (() -> ())?) {
+        guard let currentUser = currentUser else { return }
+        dataRef = db.collection("users").document(currentUser.uid)
+        dataRef?.addSnapshotListener { (querySnapshot, error) in
+            guard error == nil else {
+                print("Error loading data from Firebase listener. --- \(error!)")
+                completed?()
+                return
+            }
+            guard let data = querySnapshot else { return }
+            self.updateCurrentUser(userData: data) {_ in
+                print("Calling updateCurrentUser function")
+            }
+            completed?()
+        }
+    }
+    
+    func updateCurrentUser(userData: DocumentSnapshot, completion: ((Bool) -> Void)?) {
+        let user = User(uid: "", username: "", sentFriendRequests: [], receivedFriendRequests: [], friends: [], blockedUsers: [], blockedByUsers: [], myWagers: [], myFriendsWagers: [], wagerRequests: [])
+        
+        let uid = userData["uid"] as? String ?? ""
+        let username = userData["username"] as? String ?? ""
+        let friends = userData["friends"] as? [ [String : String] ] ?? []
+        let blockedUsers = userData["blockedUsers"] as? [ [String : String] ] ?? []
+        let blockedByUsers = userData["blockedByUsers"] as? [ [String : String] ] ?? []
+        let myWagers = userData["myWagers"] as? [String] ?? []
+        let myFriendsWagers = userData["myFriendsWagers"] as? [String] ?? []
+        let wagerRequests = userData["wagerRequests"] as? [String] ?? []
+        
+        user._uid = uid
+        user._username = username
+        user._friends = friends
+        user._blockedUsers = blockedUsers
+        user._blockedByUsers = blockedByUsers
+        user._myWagers = myWagers
+        user._myFriendsWagers = myFriendsWagers
+        user._wagerRequests = wagerRequests
+        
+        self.currentUser = user
+        completion?(true)
     }
     
     //MARK: - Friend Request System
@@ -77,6 +121,9 @@ class UserController {
                         self.currentUser = user
                         completion?(true)
                     }
+                    
+                    //Not good, but keep this to get things working:
+                    self.fbListener(completed: nil)
                 }
             }
     }

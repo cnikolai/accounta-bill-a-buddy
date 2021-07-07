@@ -167,20 +167,22 @@ class WagerController {
     }
   
      ///DELETE WAGER
+    //TIFFSAKA - Added completions on two of the delete functions while testing. May not need these. If needed, will need to add to the additonal two delete functions.
     //Delete Wager from Wagers collection
-    func deleteWager(wagerID: String) {
+    func deleteWager(wagerID: String, completion: ((Bool) -> Void)?) {
         let wagersRef = db.collection(wagersCollection).document(wagerID)
         wagersRef.delete() { error in
             if let error = error {
                 print("Error removing wager document: \(error)")
             } else {
                 print("Successfully deleted wager with id: \(wagerID)")
+                completion?(true)
             }
         }
     }
     
     //Delete wager from myWagers array in Users collection
-    func deleteWagerFromMyWagers(wagerToDelete: Wager) {
+    func deleteWagerFromMyWagers(wagerToDelete: Wager, completion: ((Bool) -> Void)?) {
         guard let currentUser = UserController.sharedInstance.currentUser else { return }
 
         self.db.collection("users").document(currentUser.uid)
@@ -197,6 +199,7 @@ class WagerController {
                         
                         let currentUserData = self.db.collection("users").document(currentUser.uid)
                         currentUserData.setData(["myWagers": myWagers], merge: true)
+                        completion?(true)
                     }
                 }
             }
