@@ -212,7 +212,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pSu-wL-BQr">
                                 <rect key="frame" x="0.0" y="44" width="320" height="475"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.67660411610000004" green="0.85804396869999999" blue="0.84589028389999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blockedUserCell" rowHeight="64" id="4ca-ee-GKW" customClass="BlockedUserTableViewCell" customModule="accounta_bill_a_buddy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="320" height="64"/>
@@ -255,6 +255,7 @@
                                                 <constraint firstItem="4f0-rW-3KK" firstAttribute="centerX" secondItem="Ul2-gi-20Z" secondAttribute="centerX" id="env-2U-6zu"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.67660411610000004" green="0.85804396869999999" blue="0.84589028389999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="unblockButton" destination="h37-I6-FHE" id="5Id-jR-7TE"/>
                                             <outlet property="usernameLabel" destination="Qj0-on-o6I" id="mtR-ad-4t5"/>
@@ -264,7 +265,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sEb-mc-enn"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.67660411610000004" green="0.85804396869999999" blue="0.84589028389999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="sEb-mc-enn" firstAttribute="bottom" secondItem="pSu-wL-BQr" secondAttribute="bottom" id="J6t-b6-xAw"/>
                             <constraint firstItem="pSu-wL-BQr" firstAttribute="leading" secondItem="sEb-mc-enn" secondAttribute="leading" id="Lva-5U-3wb"/>
@@ -325,9 +326,6 @@
         <image name="profilePhotoPlaceholder" width="423" height="422"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

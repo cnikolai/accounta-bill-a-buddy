@@ -43,6 +43,8 @@ class WagerDetailViewController: UIViewController {
         Utilities.styleTextView(goalTextView)
         Utilities.styleTextView(deadlineTextView)
         Utilities.styleTextView(invitedFriendsTextView)
+        invitedFriendsTextView.backgroundColor = UIColor.lightGray
+        invitedFriendsTextView.layer.borderWidth = 0.0
     }
     
     // MARK:-Actions
@@ -118,10 +120,12 @@ class WagerDetailViewController: UIViewController {
             switch result {
                 case .success(let invitedFriendsNames):
                     self.invitedFriendsTextView.text = invitedFriendsNames.joined(separator: ", ")
+                    self.invitedFriendsTextView.backgroundColor = .white
                 case .failure(let error):
                     print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
             }
         })
+        
     }
 
 }

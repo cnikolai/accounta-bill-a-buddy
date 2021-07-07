@@ -54,6 +54,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
         wagerTextView.textColor = UIColor.lightGray
         goalTextView.textColor = UIColor.lightGray
         deadlineTextView.textColor = UIColor.lightGray
+        showError("Once you create a wager, you cannot invite more friends to the wager", forWhichTextField: "inviteFriends")
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -82,6 +83,8 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
         let storyBoard: UIStoryboard = UIStoryboard(name: "InviteFriends", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "InviteFriendsVC") as! InviteFriendsListTableViewController
         //newViewController.modalPresentationStyle = .fullScreen
+        friendsTextView.layer.borderWidth = 0.0
+        friendsTextView.textColor = .black
         self.present(newViewController, animated: true, completion: nil)
     }
     
@@ -208,6 +211,13 @@ extension CreateWagerViewController: UIImagePickerControllerDelegate, UINavigati
             deadlineTextView.textColor = .red
             deadlineTextView.layer.borderColor = UIColor.red.cgColor
             deadlineTextView.layer.borderWidth = 1.0
+        }
+        if forWhichTextField == "inviteFriends" {
+            friendsTextView.text = message
+            friendsTextView.textColor = .red
+            friendsTextView.layer.borderColor = UIColor.red.cgColor
+            friendsTextView.layer.borderWidth = 1.0
+            
         }
         
     }
