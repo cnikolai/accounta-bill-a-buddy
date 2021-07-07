@@ -236,7 +236,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     //            }
     //        }
     //  }
-  
+    
 } //End of class
 
 //MARK: - Extensions
@@ -261,15 +261,13 @@ extension WagerCollectionViewController: DeleteCellDelegate {
             alertController.addAction(deleteAction)
             present(alertController, animated: true)
         }
-            
+        
         if selectedSegmentIndex == 1 {
             let leaveAlertController = UIAlertController(title: "Leave Wager", message: "Are you sure you want to leave this wager? It will be deleted from your collection.", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
             let leaveAction = UIAlertAction(title: "Leave", style: .destructive) { (_) in
-                WagerController.sharedInstance.removeUserFromWager(wagerID: wager.wagerID)
                 WagerController.sharedInstance.leaveFriendsWager(wagerToLeave: wager)
-            } else if selectedSegmentIndex == 1 {
-                self.presentLeaveAlert()
+                WagerController.sharedInstance.removeUserFromWager(wagerID: wager.wagerID)
                 self.collectionView.reloadData()
             }
             leaveAlertController.addAction(cancelAction)
