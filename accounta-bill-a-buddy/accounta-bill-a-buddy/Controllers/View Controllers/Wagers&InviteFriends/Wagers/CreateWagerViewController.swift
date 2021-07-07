@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class CreateWagerViewController: UIViewController, UITextViewDelegate {
 
@@ -16,6 +17,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     var invitedFriendsUIDs: [String] = []
     var invitedFriendsNames: [String] = []
     var photopickerbuttontapped = false
+    var firebasePhotoURL: String = "https://firebasestorage.googleapis.com:443/v0/b/accounta-bill-a-buddy-43cbd.appspot.com/o/B02A43F1-7243-4190-B052-ABF0061EB8E8.jpg?alt=media&token=9a8df5d4-ec79-409f-9d44-d11ac0a2970c"
     
     // MARK:-Outlets
     @IBOutlet weak var imageImageView: UIImageView!
@@ -119,10 +121,11 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
               !(deadline == "Enter deadline..."),!(deadline == "Please enter a wager deadline") else {
             showError("Please enter a wager deadline", forWhichTextField: "deadline")
             return }
-        if !photopickerbuttontapped {
-            imageImageView.image = UIImage(named: "wagerDefaultPhoto")
-        }
-        WagerController.sharedInstance.createAndSaveWager(wagerID: UUID().uuidString, owner: (UserController.sharedInstance.currentUser?.uid)!, invitedFriends: invitedFriendsUIDs, acceptedFriends: [], wagerPhoto: imageImageView.image, goalDescription: goal, wager: wager, deadline: deadline, progress: 0) { result in
+//        if !photopickerbuttontapped {
+//            //imageImageView.image = UIImage(named: "wagerDefaultPhoto")
+//            firebasePhotoURL = "https://firebasestorage.googleapis.com:443/v0/b/accounta-bill-a-buddy-43cbd.appspot.com/o/B02A43F1-7243-4190-B052-ABF0061EB8E8.jpg?alt=media&token=9a8df5d4-ec79-409f-9d44-d11ac0a2970c"
+//        }
+        WagerController.sharedInstance.createAndSaveWager(wagerID: UUID().uuidString, owner: (UserController.sharedInstance.currentUser?.uid)!, invitedFriends: invitedFriendsUIDs, acceptedFriends: [], goalDescription: goal, wager: wager, deadline: deadline, progress: 0,firebasePhotoURL:firebasePhotoURL) { result in
             switch (result) {
             case .success(let wager):
                 //add new wager to owner's wager list
@@ -187,6 +190,31 @@ extension CreateWagerViewController: UIImagePickerControllerDelegate, UINavigati
             if let pickedImage = info[.originalImage] as? UIImage {
                 imageImageView.image = pickedImage
                 photoPickerButton.setImage(nil, for: .normal)
+                //let imgURL = info[UIImagePickerController.InfoKey.imageURL]
+                //let mediaURL = info[UIImagePickerController.InfoKey.mediaURL]
+                
+                //store data in firestore
+                guard let im: UIImage = info[.originalImage] as? UIImage else { return }
+                guard let d: Data = im.jpegData(compressionQuality: 0.5) else { return }
+
+                let md = StorageMetadata()
+                md.contentType = "image/jpg"//png too
+
+                let f = UserController.sharedInstance.currentUser!.uid + "/" + UUID().uuidString + ".jpg"
+                //let f = UUID().uuidString + ".jpg"
+                let ref = Storage.storage().reference().child(f)
+                
+                ref.putData(d, metadata: md) { (metadata, error) in
+                     if error == nil {
+                         ref.downloadURL(completion: { (url, error) in
+                             print("Done, url is \(String(describing: url))")
+                            guard let unwrappedURL = url?.absoluteString else { return }
+                            self.firebasePhotoURL = unwrappedURL
+                         })
+                     }else{
+                         print("error \(String(describing: error))")
+                     }
+                 }
             }
             picker.dismiss(animated: true, completion: nil)
         }

@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wagerDefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="RIn-Iy-2Uc">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RIn-Iy-2Uc">
                                 <rect key="frame" x="119.5" y="114" width="175" height="175"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RIn-Iy-2Uc" secondAttribute="height" multiplier="1:1" id="tk4-vp-Eo8"/>
@@ -178,7 +178,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="wagerDefaultPhoto" width="225" height="225"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
