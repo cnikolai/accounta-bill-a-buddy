@@ -15,7 +15,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     var toDetailView: UIStoryboardSegue!
     
     // Outlets
-    @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var segmentedController: UISegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -36,7 +35,8 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     }
     
     func loadData(completed: @escaping () -> ()) {
-        dataRef = db.collection("users").document(UserController.sharedInstance.currentUser!._uid)
+        guard let currentUser = UserController.sharedInstance.currentUser else { return }
+        dataRef = db.collection("users").document(currentUser.uid)
         dataRef?.addSnapshotListener { [self] (querySnapshot, error) in
             guard error == nil else {
                 print("Error loading data from Firebase listener. --- \(error!)")
@@ -51,18 +51,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         }
     }
     
-    //Actions
-    @IBAction func editButtonTapped(_ sender: Any) {
-        collectionView.isEditing.toggle()
-        collectionView.reloadData()
-        
-        if collectionView.isEditing {
-            editButton.title = "Done"
-        } else {
-            editButton.title = "Edit"
-        }
-    }
-    
+    //MARK: - Actions
     @IBAction func segmentedControllerTapped(_ sender: UISegmentedControl) {
         collectionView.reloadData()
     }
