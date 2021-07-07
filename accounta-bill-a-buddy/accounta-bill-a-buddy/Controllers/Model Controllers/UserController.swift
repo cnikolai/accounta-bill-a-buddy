@@ -605,7 +605,7 @@ extension UserController {
                     }
                 }
         }
-       
+        //completion(.success(invitedFriendsNames))
     }
 }//end of class
 
