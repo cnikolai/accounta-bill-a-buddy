@@ -259,7 +259,7 @@ class WagerController {
                     print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
                 } else {
                     if let data = snapshot?.data() {
-                        var myFriendsWagers = data["myWagers"] as? [String] ?? []
+                        var myFriendsWagers = data["myFriendsWagers"] as? [String] ?? []
                         
                         if let index = myFriendsWagers.firstIndex(of: wagerToLeave.wagerID) {
                             myFriendsWagers.remove(at: index)
@@ -282,19 +282,69 @@ class WagerController {
                     print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
                 } else {
                     if let data = snapshot?.data() {
-                        var acceptedFriends = data["acceptedFriends"] as? [String] ?? []
+                        var invitedFriends = data["invitedFriends"] as? [String] ?? []
                         
-                        if let index = acceptedFriends.firstIndex(of: wagerID) {
-                            acceptedFriends.remove(at: index)
+                        if let index = invitedFriends.firstIndex(of: currentUser.uid) {
+                            invitedFriends.remove(at: index)
                         }
                         
-                        let currentUserData = self.db.collection("users").document(currentUser.uid)
-                        currentUserData.setData(["acceptedFriends": acceptedFriends], merge: true)
+                        let currentUserData = self.db.collection(self.wagersCollection).document(wagerID)
+                        currentUserData.setData(["invitedFriends": invitedFriends], merge: true)
                         
                     }
                 }
             }
     }
     
+    ///DELETE WAGER ASSOCIATED WITH UNFRIENDED USER
+    func deleteWagersAssociatedWithUnfriendedUser(_ uid: String) {
+        //check if user is a part of current user's myWagers, myFriendsWagers, and wagerRequests
+//        guard let currentUser = UserController.sharedInstance.currentUser else { return }
+//
+//        if let index = currentUser.myWagers.firstIndex(of: uid) {
+//            currentUser.myWagers.remove(at: index)
+//        }
+//        if let index = currentUser.myFriendsWagers.firstIndex(of: uid) {
+//            currentUser.myFriendsWagers.remove(at: index)
+//        }
+//        if let index = currentUser.wagerRequests.firstIndex(of: uid) {
+//            currentUser.wagerRequests.remove(at: index)
+//        }
+//
+//        let currentUserData = self.db.collection("users").document(currentUser.uid)
+//        currentUserData.setData(["myWagers": currentUser.myWagers], merge: true)
+//        currentUserData.setData(["myFriendsWagers": currentUser.myFriendsWagers], merge: true)
+//        currentUserData.setData(["wagerRequests": currentUser.wagerRequests], merge: true)
+        
+        //check if current user is part of user's myWagers, myFriendsWagers, and wagerRequests
+//        db.collection("users").whereField("uid", isEqualTo: uid)
+//            .getDocuments { (querySnapshot, error) in
+//                if let error = error {
+//                    (print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)"))
+//                } else {
+//                    for doc in querySnapshot!.documents {
+//                        let userData = doc.data()
+//                        var myWagers = userData["myWagers"] as? [String] ?? []
+//                        var myFriendsWagers = userData["myFriendsWagers"] as? [String] ?? []
+//                        var wagerRequests = userData["wagerRequests"] as? [String] ?? []
+//
+//                        if let index = myWagers.firstIndex(of: uid) {
+//                            myWagers.remove(at: index)
+//                        }
+//                        if let index = myFriendsWagers.firstIndex(of: uid) {
+//                            myFriendsWagers.remove(at: index)
+//                        }
+//                        if let index = wagerRequests.firstIndex(of: uid) {
+//                            wagerRequests.remove(at: index)
+//                        }
+//
+//                        let userRef = self.db.collection("users").document(uid)
+//                        userRef.setData(["myWagers": myWagers], merge: true)
+//                        userRef.setData(["myFriendsWagers": myFriendsWagers], merge: true)
+//                        userRef.setData(["wagerRequests": wagerRequests], merge: true)
+//                    }
+//                }
+//            }
+    }
 }//End of class
 

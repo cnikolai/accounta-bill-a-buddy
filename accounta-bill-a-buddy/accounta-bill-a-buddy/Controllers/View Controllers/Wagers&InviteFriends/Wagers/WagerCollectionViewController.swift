@@ -10,7 +10,7 @@ import Firebase
 
 private let reuseIdentifier = "wagerCell"
 
-class WagerCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class WagerCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var toDetailView: UIStoryboardSegue!
     
@@ -67,9 +67,9 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         collectionView.reloadData()
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+//    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var returnValue = 0
@@ -87,6 +87,26 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         return returnValue
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(
+            width: (view.frame.size.width/3)-25,
+            height: (view.frame.size.width/3)-25
+        )
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top:1, left: 6, bottom: 1, right:6)
+    }
+    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wagerCell", for: indexPath) as? WagerCollectionViewCell else { return UICollectionViewCell() }
         
@@ -236,7 +256,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
     //            }
     //        }
     //  }
-  
+    
 } //End of class
 
 //MARK: - Extensions
@@ -261,14 +281,15 @@ extension WagerCollectionViewController: DeleteCellDelegate {
             alertController.addAction(deleteAction)
             present(alertController, animated: true)
         }
-            
+        
         if selectedSegmentIndex == 1 {
             let leaveAlertController = UIAlertController(title: "Leave Wager", message: "Are you sure you want to leave this wager? It will be deleted from your collection.", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
             let leaveAction = UIAlertAction(title: "Leave", style: .destructive) { (_) in
-                WagerController.sharedInstance.removeUserFromWager(wagerID: wager.wagerID)
                 WagerController.sharedInstance.leaveFriendsWager(wagerToLeave: wager)
-            } 
+                WagerController.sharedInstance.removeUserFromWager(wagerID: wager.wagerID)
+                self.collectionView.reloadData()
+            }
             leaveAlertController.addAction(cancelAction)
             leaveAlertController.addAction(leaveAction)
             present(leaveAlertController, animated: true)
