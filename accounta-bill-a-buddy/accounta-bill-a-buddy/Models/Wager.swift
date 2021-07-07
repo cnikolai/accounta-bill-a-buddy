@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
 
 class Wager {
     var wagerID: String
@@ -21,18 +22,19 @@ class Wager {
     var wager: String
     var deadline: String
     var progress: Float
-    var wagerPhotoData: Data?
-    
-    var wagerPhoto: UIImage? {
-        get {
-            guard let data = wagerPhotoData else {return nil}
-            return UIImage(data: data)
-        } set {
-            wagerPhotoData = newValue?.jpegData(compressionQuality: 0.5)
-        }
-    }
-    
-    init(wagerID: String = UUID().uuidString, owner: String, invitedFriends: [String], acceptedFriends: [String], goalDescription: String, wager: String, deadline: String, progress: Float, wagerPhoto: UIImage? = #imageLiteral(resourceName: "wagerDefaultPhoto")) {
+    var firebasePhotoURL: String
+//    var wagerPhotoData: Data?
+//
+//    var wagerPhoto: UIImage? {
+//        get {
+//            guard let data = wagerPhotoData else {return nil}
+//            return UIImage(data: data)
+//        } set {
+//            wagerPhotoData = newValue?.jpegData(compressionQuality: 0.5)
+//        }
+//    }
+
+    init(wagerID: String = UUID().uuidString, owner: String, invitedFriends: [String], acceptedFriends: [String], goalDescription: String, wager: String, deadline: String, progress: Float, firebasePhotoURL: String){//the default photo in firestore
         self.wagerID = wagerID
         self.owner = owner
         self.invitedFriends = invitedFriends
@@ -41,7 +43,7 @@ class Wager {
         self.wager = wager
         self.deadline = deadline
         self.progress = progress
-        self.wagerPhoto = wagerPhoto
+        self.firebasePhotoURL = firebasePhotoURL
     }
     
     convenience init?(document: DocumentSnapshot) {
@@ -52,15 +54,16 @@ class Wager {
               let invitedFriends = document["invitedFriends"] as? [String],
               let acceptedFriends = document["acceptedFriends"] as? [String],
               let deadline = document["deadline"] as? String,
-              let progress = document["progress"] as? Float else { return nil }
+              let progress = document["progress"] as? Float,
+              let firebasePhotoURL = document["firebasePhotoURL"] as? String else { return nil }
     
-        var wagerPhoto: UIImage?
+//        var wagerPhoto: UIImage?
+//
+//        if let wagerPhotoData = document["wagerPhoto"] as? Data {
+//            wagerPhoto = UIImage(data: wagerPhotoData)
+//        }
         
-        if let wagerPhotoData = document["wagerPhoto"] as? Data {
-            wagerPhoto = UIImage(data: wagerPhotoData)
-        }
-        
-        self.init(wagerID: wagerID, owner: owner, invitedFriends: invitedFriends, acceptedFriends: acceptedFriends, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress, wagerPhoto: wagerPhoto)
+        self.init(wagerID: wagerID, owner: owner, invitedFriends: invitedFriends, acceptedFriends: acceptedFriends, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress, firebasePhotoURL: firebasePhotoURL)
     }
 }//End of class
 
