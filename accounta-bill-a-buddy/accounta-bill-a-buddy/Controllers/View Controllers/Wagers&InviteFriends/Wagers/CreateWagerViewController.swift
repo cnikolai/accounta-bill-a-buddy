@@ -78,7 +78,6 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    
     @IBAction func inviteFriendsButtonTapped(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "InviteFriends", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "InviteFriendsVC") as! InviteFriendsListTableViewController
@@ -107,7 +106,6 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
         
         present(alert, animated: true, completion: nil)
     }
-    
     
     @IBAction func createWagerButtonTapped(_ sender: Any) {
         guard let wager = wagerTextView.text, !wager.isEmpty,!(wager == "Enter wager..."),
