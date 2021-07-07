@@ -298,53 +298,15 @@ class WagerController {
     
     ///DELETE WAGER ASSOCIATED WITH UNFRIENDED USER
     func deleteWagersAssociatedWithUnfriendedUser(_ uid: String) {
-        //check if user is a part of current user's myWagers, myFriendsWagers, and wagerRequests
-//        guard let currentUser = UserController.sharedInstance.currentUser else { return }
-//
-//        if let index = currentUser.myWagers.firstIndex(of: uid) {
-//            currentUser.myWagers.remove(at: index)
-//        }
-//        if let index = currentUser.myFriendsWagers.firstIndex(of: uid) {
-//            currentUser.myFriendsWagers.remove(at: index)
-//        }
-//        if let index = currentUser.wagerRequests.firstIndex(of: uid) {
-//            currentUser.wagerRequests.remove(at: index)
-//        }
-//
-//        let currentUserData = self.db.collection("users").document(currentUser.uid)
-//        currentUserData.setData(["myWagers": currentUser.myWagers], merge: true)
-//        currentUserData.setData(["myFriendsWagers": currentUser.myFriendsWagers], merge: true)
-//        currentUserData.setData(["wagerRequests": currentUser.wagerRequests], merge: true)
+        //remove blocked user from current user's invitedFriends in wager object
+        guard let currentUser = UserController.sharedInstance.currentUser else { return }
+        let wagers = db.collection(wagersCollection).document(currentUser.uid)
         
-        //check if current user is part of user's myWagers, myFriendsWagers, and wagerRequests
-//        db.collection("users").whereField("uid", isEqualTo: uid)
-//            .getDocuments { (querySnapshot, error) in
-//                if let error = error {
-//                    (print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)"))
-//                } else {
-//                    for doc in querySnapshot!.documents {
-//                        let userData = doc.data()
-//                        var myWagers = userData["myWagers"] as? [String] ?? []
-//                        var myFriendsWagers = userData["myFriendsWagers"] as? [String] ?? []
-//                        var wagerRequests = userData["wagerRequests"] as? [String] ?? []
-//
-//                        if let index = myWagers.firstIndex(of: uid) {
-//                            myWagers.remove(at: index)
-//                        }
-//                        if let index = myFriendsWagers.firstIndex(of: uid) {
-//                            myFriendsWagers.remove(at: index)
-//                        }
-//                        if let index = wagerRequests.firstIndex(of: uid) {
-//                            wagerRequests.remove(at: index)
-//                        }
-//
-//                        let userRef = self.db.collection("users").document(uid)
-//                        userRef.setData(["myWagers": myWagers], merge: true)
-//                        userRef.setData(["myFriendsWagers": myFriendsWagers], merge: true)
-//                        userRef.setData(["wagerRequests": wagerRequests], merge: true)
-//                    }
-//                }
-//            }
+        //remove current user from blocked user's invitedFriends in wager object
+
+        //remove blocked user's wager from currentUser's myFriendsWagers
+            
+        //remove current user's wager from blocked user's myFriendsWagers
     }
 }//End of class
 
