@@ -78,7 +78,7 @@ class UserTableViewCell: UITableViewCell {
         let friendRequestAlreadyReceived = UserController.sharedInstance.receivedFriendRequest(from: user.uid, username: user.username)
         let friendsAlready = UserController.sharedInstance.friendsAlready(with: user.uid, username: user.username)
         
-        if !friendAlreadyAdded || !friendRequestAlreadyReceived || !friendsAlready {
+        if !friendAlreadyAdded && !friendRequestAlreadyReceived && !friendsAlready {
             currentUser.sentFriendRequests.append([user.uid : user.username])
             user.receivedFriendRequests.append([currentUser.uid : currentUser.username])
             delegate?.updateTableView()
