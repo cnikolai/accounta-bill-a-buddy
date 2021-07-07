@@ -275,7 +275,6 @@ extension WagerCollectionViewController: DeleteCellDelegate {
                 WagerController.sharedInstance.deleteWagerFromMyWagers(wagerToDelete: wager)
                 WagerController.sharedInstance.deleteWagerFromFriendsRequests(wagerToDelete: wager)
                 WagerController.sharedInstance.deleteWagerFromMyFriendsWagers(wagerToDelete: wager)
-                self.collectionView.reloadData()
             }
             alertController.addAction(cancelAction)
             alertController.addAction(deleteAction)
@@ -288,7 +287,6 @@ extension WagerCollectionViewController: DeleteCellDelegate {
             let leaveAction = UIAlertAction(title: "Leave", style: .destructive) { (_) in
                 WagerController.sharedInstance.leaveFriendsWager(wagerToLeave: wager)
                 WagerController.sharedInstance.removeUserFromWager(wagerID: wager.wagerID)
-                self.collectionView.reloadData()
             }
             leaveAlertController.addAction(cancelAction)
             leaveAlertController.addAction(leaveAction)
