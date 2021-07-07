@@ -17,7 +17,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     var invitedFriendsUIDs: [String] = []
     var invitedFriendsNames: [String] = []
     var photopickerbuttontapped = false
-    var firebasePhotoURL: String = ""
+    var firebasePhotoURL: String = "https://firebasestorage.googleapis.com:443/v0/b/accounta-bill-a-buddy-43cbd.appspot.com/o/B02A43F1-7243-4190-B052-ABF0061EB8E8.jpg?alt=media&token=9a8df5d4-ec79-409f-9d44-d11ac0a2970c"
     
     // MARK:-Outlets
     @IBOutlet weak var imageImageView: UIImageView!
@@ -123,10 +123,10 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
               !(deadline == "Enter deadline..."),!(deadline == "Please enter a wager deadline") else {
             showError("Please enter a wager deadline", forWhichTextField: "deadline")
             return }
-        if !photopickerbuttontapped {
-            //imageImageView.image = UIImage(named: "wagerDefaultPhoto")
-            firebasePhotoURL = "https://firebasestorage.googleapis.com:443/v0/b/accounta-bill-a-buddy-43cbd.appspot.com/o/B02A43F1-7243-4190-B052-ABF0061EB8E8.jpg?alt=media&token=9a8df5d4-ec79-409f-9d44-d11ac0a2970c"
-        }
+//        if !photopickerbuttontapped {
+//            //imageImageView.image = UIImage(named: "wagerDefaultPhoto")
+//            firebasePhotoURL = "https://firebasestorage.googleapis.com:443/v0/b/accounta-bill-a-buddy-43cbd.appspot.com/o/B02A43F1-7243-4190-B052-ABF0061EB8E8.jpg?alt=media&token=9a8df5d4-ec79-409f-9d44-d11ac0a2970c"
+//        }
         WagerController.sharedInstance.createAndSaveWager(wagerID: UUID().uuidString, owner: (UserController.sharedInstance.currentUser?.uid)!, invitedFriends: invitedFriendsUIDs, acceptedFriends: [], goalDescription: goal, wager: wager, deadline: deadline, progress: 0,firebasePhotoURL:firebasePhotoURL) { result in
             switch (result) {
             case .success(let wager):
@@ -197,18 +197,16 @@ extension CreateWagerViewController: UIImagePickerControllerDelegate, UINavigati
                 
                 //store data in firestore
                 guard let im: UIImage = info[.originalImage] as? UIImage else { return }
-                 guard let d: Data = im.jpegData(compressionQuality: 0.5) else { return }
+                guard let d: Data = im.jpegData(compressionQuality: 0.5) else { return }
 
-                 let md = StorageMetadata()
-                 md.contentType = "image/jpg"//png too
+                let md = StorageMetadata()
+                md.contentType = "image/jpg"//png too
 
                 let f = UserController.sharedInstance.currentUser!.uid + "/" + UUID().uuidString + ".jpg"
                 //let f = UUID().uuidString + ".jpg"
                 let ref = Storage.storage().reference().child(f)
                 
-                 //let ref = Storage.storage().reference().child("someFolder/12345678.jpg")
-
-                 ref.putData(d, metadata: md) { (metadata, error) in
+                ref.putData(d, metadata: md) { (metadata, error) in
                      if error == nil {
                          ref.downloadURL(completion: { (url, error) in
                              print("Done, url is \(String(describing: url))")

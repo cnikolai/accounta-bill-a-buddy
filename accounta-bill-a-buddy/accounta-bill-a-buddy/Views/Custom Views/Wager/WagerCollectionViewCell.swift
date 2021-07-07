@@ -90,15 +90,15 @@ class WagerCollectionViewCell: UICollectionViewCell {
         // Get a reference to the storage service using the default Firebase App
         let storage = Storage.storage()
         // Create a storage reference from our storage service
-        let storageRef = storage.reference()
+        //let storageRef = storage.reference()
         // Create a reference from a Google Cloud Storage URI
         print("========================================3",myFriendsWager.firebasePhotoURL)
         let gsReference = storage.reference(forURL: myFriendsWager.firebasePhotoURL)
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
         gsReference.getData(maxSize: 10 * 1024 * 1024) { data, error in
           if let error = error {
-            // Uh-oh, an error occurred!
-          } else {
+            print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
+        } else {
             // Data for "images/island.jpg" is returned
             let image = UIImage(data: data!)
             self.wagerImageView?.image = image
