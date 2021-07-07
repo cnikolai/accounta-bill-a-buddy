@@ -58,6 +58,11 @@ class WagerCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        wagerImageView.image = nil
+    }
+    
     //MARK: - Functions
     func updateMyWagersView() {
         guard let myWager = myWager else {return}
