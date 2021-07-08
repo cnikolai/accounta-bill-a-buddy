@@ -30,37 +30,28 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        loadData {
-        }
+        createArraysForViewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived), name: Notification.Name("userUpdated"), object: nil)
+        
     }
     
-    //TIFFSAKA - This is working but needs to be replaced with a local listener rather than one on Firebase
-    //Keep this until updates are made.
-    func loadData(completed: @escaping () -> ()) {
+    func createArraysForViewDidLoad() {
         guard let currentUser = UserController.sharedInstance.currentUser else { return }
-        dataRef = db.collection("users").document(currentUser.uid)
-        dataRef?.addSnapshotListener { [self] (querySnapshot, error) in
-            guard error == nil else {
-                print("Error loading data from Firebase listener. --- \(error!)")
-                return completed()
-            }
-            //guard let data = querySnapshot else { return }
-            createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
-                print("\n\n\n**** Wagers Array updated successfully after listener activated. ****\n\n\n")
-                self.collectionView.reloadData()
-            }
-            completed()
+        createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
         }
+        self.collectionView.reloadData()
+    }
+    
+    @objc func notificationReceived() {
+        createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
+        }
+        self.collectionView.reloadData()
     }
     
     //MARK: - Actions
     @IBAction func segmentedControllerTapped(_ sender: UISegmentedControl) {
         collectionView.reloadData()
     }
-    
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var returnValue = 0
@@ -74,7 +65,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             returnValue = wagerRequests.count
         default: break
         }
-        
         return returnValue
     }
     
@@ -97,7 +87,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         return UIEdgeInsets(top:1, left: 6, bottom: 1, right:6)
     }
     
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wagerCell", for: indexPath) as? WagerCollectionViewCell else { return UICollectionViewCell() }
         
