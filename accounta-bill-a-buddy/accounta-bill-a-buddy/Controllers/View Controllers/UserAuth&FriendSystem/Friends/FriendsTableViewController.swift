@@ -60,7 +60,16 @@ class FriendsTableViewController: UITableViewController {
     
     //MARK: - Actions
     @IBAction func segmentedControlButtonTapped(_ sender: UISegmentedControl) {
-        tableView.reloadData()
+        
+        guard let currentUser = UserController.sharedInstance.currentUser else { return }
+        UserController.sharedInstance.getCurrentUser(uid: currentUser.uid) { (result) in
+            switch result {
+            case true:
+                self.tableView.reloadData()
+            case false:
+                print("failed to update current user")
+            }
+        }
         
         switch sender.selectedSegmentIndex {
         case 0:
