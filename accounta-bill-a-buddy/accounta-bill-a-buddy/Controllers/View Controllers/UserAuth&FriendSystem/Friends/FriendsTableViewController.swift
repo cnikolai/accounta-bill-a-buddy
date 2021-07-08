@@ -35,6 +35,21 @@ class FriendsTableViewController: UITableViewController {
         
         searchBar.delegate = self
         setupViewFor(screen: .friends)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived), name: Notification.Name("userUpdated"), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        guard let currentUser = UserController.sharedInstance.currentUser else { return }
+        UserController.sharedInstance.getCurrentUser(uid: currentUser.uid) { (result) in
+            switch result {
+            case true:
+                self.tableView.reloadData()
+            case false:
+                print("failed to update current user")
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -69,6 +84,11 @@ class FriendsTableViewController: UITableViewController {
             tableView.tableHeaderView?.bounds.size.height = 88.0
             stackViewHeight.constant = 88.0
         }
+    }
+    
+    @objc func notificationReceived() {
+        print("notification triggered")
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -148,6 +168,7 @@ extension FriendsTableViewController: UISearchBarDelegate {
 
 extension FriendsTableViewController: CustomCellUpdater {
     func updateTableView() {
-        tableView.reloadData()
+        notificationReceived()
+//        tableView.reloadData()
     }
 }//End of extension
