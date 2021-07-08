@@ -111,9 +111,9 @@ class UserTableViewCell: UITableViewCell {
         }
         let blockAction = UIAlertAction(title: "Block Friend", style: .destructive) { (_) in
             DispatchQueue.main.async {
-//                UserController.sharedInstance.blockFriend(uid: friendsData[0], username: friendsData[1])
+                UserController.sharedInstance.blockFriend(uid: friendsData[0], username: friendsData[1])
                 WagerController.sharedInstance.deleteWagersAssociatedWithUnfriendedUser(friendsData[0])
-//                self.delegate?.updateTableView()
+                self.delegate?.updateTableView()
             }
         }
         let reportAction = UIAlertAction(title: "Report Friend", style: .destructive) { (_) in
