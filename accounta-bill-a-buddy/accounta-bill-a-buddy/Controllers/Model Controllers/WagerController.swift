@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseFirestore
 
 class WagerController {
     
@@ -324,13 +324,106 @@ class WagerController {
     func deleteWagersAssociatedWithUnfriendedUser(_ uid: String) {
         //remove blocked user from current user's invitedFriends in wager object
         guard let currentUser = UserController.sharedInstance.currentUser else { return }
-        let wagers = db.collection(wagersCollection).document(currentUser.uid)
+        createWagerArray(wagerStrings: currentUser.myWagers) { (result) in
+            switch result {
+            case .success(let wagers):
+                self.checkIfUserExistsInWagers(uid: uid, wagers: wagers)
+            case .failure(let error):
+                print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+            }
+        }
         
         //remove current user from blocked user's invitedFriends in wager object
-
+        db.collection("users").document("uid")
+            .getDocument { (querySnapshot, error) in
+                if let error = error {
+                    print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                } else {
+                    if let userData = querySnapshot!.data() {
+                        let myWagers = userData["myWagers"] as? [String] ?? []
+                        
+                        self.createWagerArray(wagerStrings: myWagers) { (result) in
+                            switch result {
+                            case .success(let wagers):
+                                self.checkIfUserExistsInWagers(uid: currentUser.uid, wagers: wagers)
+                            case .failure(let error):
+                                print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                            }
+                        }
+                    }
+                }
+            }
+        
         //remove blocked user's wager from currentUser's myFriendsWagers
-            
+        createWagerArray(wagerStrings: currentUser.myFriendsWagers) { (result) in
+            switch result {
+            case .success(let wagers):
+                self.filterCurrentUsersFriendsWagers(uid: uid, wagers: wagers)
+            case .failure(let error):
+                print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+            }
+        }
+        
         //remove current user's wager from blocked user's myFriendsWagers
+        db.collection("users").document("uid")
+            .getDocument { (querySnapshot, error) in
+                if let error = error {
+                    print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                } else {
+                    if let userData = querySnapshot!.data() {
+                        let myFriendsWagers = userData["myFriendsWagers"] as? [String] ?? []
+                        
+                        self.createWagerArray(wagerStrings: myFriendsWagers) { (result) in
+                            switch result {
+                            case .success(let wagers):
+                                self.filterUsersFriendsWagers(uid: uid, wagers: wagers)
+                            case .failure(let error):
+                                print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
+                            }
+                        }
+                    }
+                }
+            }
     }
+    
+    func checkIfUserExistsInWagers(uid: String, wagers: [Wager]) {
+        for wager in wagers {
+            if let index = wager.invitedFriends.firstIndex(of: uid) {
+                wager.invitedFriends.remove(at: index)
+                
+                let wagerData = self.db.collection(self.wagersCollection).document(wager.wagerID)
+                wagerData.setData(["invitedFriends": wager.invitedFriends], merge: true)
+            }
+        }
+    }
+    
+    func filterCurrentUsersFriendsWagers(uid: String, wagers: [Wager]) {
+        guard let currentUser = UserController.sharedInstance.currentUser else { return }
+        var updatedWagers = [String]()
+        
+        for index in 0..<wagers.count {
+            if wagers[index].owner != uid {
+                updatedWagers.append(wagers[index].wagerID)
+            }
+        }
+        
+        let userData = self.db.collection("users").document(currentUser.uid)
+        userData.setData(["myFriendsWagers": updatedWagers], merge: true)
+    }
+    
+    func filterUsersFriendsWagers(uid: String, wagers: [Wager]) {
+        guard let currentUser = UserController.sharedInstance.currentUser else { return }
+        var updatedWagers = [String]()
+        
+        for index in 0..<wagers.count {
+            if wagers[index].owner != currentUser.uid {
+                updatedWagers.append(wagers[index].wagerID)
+            }
+        }
+        
+        let userData = self.db.collection("users").document(uid)
+        userData.setData(["myFriendsWagers": updatedWagers], merge: true)
+    }
+    
 }//End of class
 
