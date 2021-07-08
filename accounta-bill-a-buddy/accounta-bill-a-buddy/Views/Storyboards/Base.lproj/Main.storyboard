@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="O8e-gr-Xnq">
-                                <rect key="frame" x="24" y="80" width="272" height="341"/>
+                                <rect key="frame" x="24" y="193" width="272" height="341"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8kq-oL-1ap">
                                         <rect key="frame" x="0.0" y="0.0" width="272" height="32"/>
@@ -89,13 +89,22 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wagerDangerHorizontalEditted" translatesAutoresizingMaskIntoConstraints="NO" id="ujm-rp-S9l">
+                                <rect key="frame" x="32" y="80" width="256" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ujm-rp-S9l" secondAttribute="height" multiplier="256:77" id="jaQ-Ic-81o"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sBF-52-fVA"/>
                         <color key="backgroundColor" red="0.11372549019607843" green="0.20784313725490194" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="ujm-rp-S9l" firstAttribute="width" secondItem="Zuj-UE-Wpz" secondAttribute="width" multiplier="0.8" id="3Um-KH-euv"/>
+                            <constraint firstItem="ujm-rp-S9l" firstAttribute="top" secondItem="sBF-52-fVA" secondAttribute="top" constant="36" id="4IG-fF-rsZ"/>
+                            <constraint firstItem="ujm-rp-S9l" firstAttribute="centerX" secondItem="sBF-52-fVA" secondAttribute="centerX" id="C95-MR-tfK"/>
+                            <constraint firstItem="O8e-gr-Xnq" firstAttribute="top" secondItem="ujm-rp-S9l" secondAttribute="bottom" constant="36" id="LHm-tc-Xd1"/>
                             <constraint firstItem="O8e-gr-Xnq" firstAttribute="height" secondItem="Zuj-UE-Wpz" secondAttribute="height" multiplier="0.6" id="NBN-aI-Gir"/>
                             <constraint firstItem="O8e-gr-Xnq" firstAttribute="centerX" secondItem="sBF-52-fVA" secondAttribute="centerX" id="kcu-ky-qYb"/>
-                            <constraint firstItem="O8e-gr-Xnq" firstAttribute="top" secondItem="sBF-52-fVA" secondAttribute="top" constant="36" id="lUV-TO-QzP"/>
                             <constraint firstItem="O8e-gr-Xnq" firstAttribute="width" secondItem="Zuj-UE-Wpz" secondAttribute="width" multiplier="0.85" id="lug-Gp-zzS"/>
                         </constraints>
                     </view>
@@ -113,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQY-Gm-3lM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-669" y="431"/>
+            <point key="canvasLocation" x="-669.375" y="430.98591549295776"/>
         </scene>
         <!--FriendsVC-->
         <scene sceneID="iLh-UA-xqH">
@@ -273,6 +282,7 @@
     <resources>
         <image name="person.2" catalog="system" width="128" height="81"/>
         <image name="person.2.circle" catalog="system" width="128" height="121"/>
+        <image name="wagerDangerHorizontalEditted" width="1920" height="468"/>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
