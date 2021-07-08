@@ -386,6 +386,9 @@ class WagerController {
             }
     }
     
+    //remove from wager requests
+    
+    //utility functions
     func checkIfUserExistsInWagers(uid: String, wagers: [Wager]) {
         for wager in wagers {
             if let index = wager.invitedFriends.firstIndex(of: uid) {
@@ -408,7 +411,7 @@ class WagerController {
         }
         
         let userData = self.db.collection("users").document(currentUser.uid)
-        userData.setData(["myFriendsWagers": updatedWagers], merge: true)
+        userData.setData(["myFriendsWagers": updatedWagers])
     }
     
     func filterUsersFriendsWagers(uid: String, wagers: [Wager]) {
@@ -422,7 +425,7 @@ class WagerController {
         }
         
         let userData = self.db.collection("users").document(uid)
-        userData.setData(["myFriendsWagers": updatedWagers], merge: true)
+        userData.setData(["myFriendsWagers": updatedWagers])
     }
     
 }//End of class

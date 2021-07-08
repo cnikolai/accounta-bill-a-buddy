@@ -84,7 +84,11 @@ class UserController {
         user._myFriendsWagers = myFriendsWagers
         user._wagerRequests = wagerRequests
         
-        self.currentUser = user
+        self.fetchPendingRequestsCollection(for: user, with: uid, completion: { _ in
+            self.currentUser = user
+            print("Fetched pending requests collection successfully")
+        })
+        
         completion?(true)
     }
     
@@ -120,12 +124,13 @@ class UserController {
                         user._myFriendsWagers = myFriendsWagers
                         user._wagerRequests = wagerRequests
                         
-                        self.fetchPendingRequestsCollection(for: user, with: uid)
+                        self.fetchPendingRequestsCollection(for: user, with: uid, completion: { _ in
+                            self.currentUser = user
+                            print("Fetched pending requests collection successfully")
+                        })
                         
-                        self.currentUser = user
                         completion?(true)
                     }
-                    
                     //Not good, but keep this to get things working:
                     self.fbListener(completed: nil)
                 }
@@ -157,7 +162,9 @@ class UserController {
                             user._username = username
                             user._friends = friends
                             
-                            self.fetchPendingRequestsCollection(for: user, with: uid)
+                            self.fetchPendingRequestsCollection(for: user, with: uid, completion: { _ in
+                                
+                            })
                             
                             if self.users.count == 0, self.currentUser != user {
                                 self.users.append(user)
@@ -170,7 +177,7 @@ class UserController {
         }
     }
     
-    func fetchPendingRequestsCollection(for user: User, with uid: String) {
+    func fetchPendingRequestsCollection(for user: User, with uid: String, completion: ((Bool) -> Void)?) {
         ///Grabs pending request data for current user and user that was searched for
         db.collection("users").document(uid).collection("pendingRequests").document(uid)
             .getDocument { (querySnapshot, error) in
@@ -185,19 +192,39 @@ class UserController {
                         user._receivedFriendRequests = receivedFriendRequests
                     }
                 }
+                completion?(true)
             }
     }
     
     ///FRIEND REQUESTS
     func pendingFriendRequestBetween(currentUser: User, user: User) {
         ///Current User - Saves sent friend requests db
-        saveSentFriendRequests(user: currentUser)
+        saveSentFriendRequests(user: currentUser, completion: { _ in
+            self.getCurrentUser(uid: currentUser.uid) { (result) in
+                switch result {
+                case true:
+                    print("updated current user")
+                case false:
+                    print("failed to update current user")
+                }
+            }
+        })
         
         ///User - Saves received friend requests to db
-        saveReceivedFriendRequests(user: user)
+        saveReceivedFriendRequests(user: user, completion: { _ in
+            self.getCurrentUser(uid: currentUser.uid) { (result) in
+                switch result {
+                case true:
+                    print("updated current user")
+                case false:
+                    print("failed to update current user")
+                }
+            }
+        })
+        
     }
     
-    func saveSentFriendRequests(user: User) {
+    func saveSentFriendRequests(user: User, completion : ((Bool) -> Void)?) {
         var sentFriendRequests = user.sentFriendRequests
         
         db.collection("users").document(user.uid).collection("pendingRequests").document(user.uid)
@@ -209,6 +236,8 @@ class UserController {
                     guard let userData = snapshot.data() else { return }
                     let _sentFriendRequests = userData["sentFriendRequests"] as? [ [String : String] ] ?? []
                     sentFriendRequests = _sentFriendRequests
+                    
+                    completion?(true)
                 }
             })
         
@@ -217,7 +246,7 @@ class UserController {
         userData.updateData(["sentFriendRequests" : FieldValue.arrayUnion(user.sentFriendRequests)])
     }
     
-    func saveReceivedFriendRequests(user: User) {
+    func saveReceivedFriendRequests(user: User, completion : ((Bool) -> Void)?) {
         var receivedFriendRequests = user.receivedFriendRequests
         
         db.collection("users").document(user.uid).collection("pendingRequests").document(user.uid)
@@ -229,6 +258,8 @@ class UserController {
                     guard let userData = snapshot.data() else { return }
                     let _receivedFriendRequests = userData["receivedFriendRequests"] as? [ [String : String] ] ?? []
                     receivedFriendRequests = _receivedFriendRequests
+                    
+                    completion?(true)
                 }
             })
         
@@ -244,7 +275,7 @@ class UserController {
         if let index = currentUser.receivedFriendRequests.firstIndex(where: { $0 == [uid : username] }) {
             currentUser.receivedFriendRequests.remove(at: index)
         }
-        saveReceivedFriendRequests(user: self.currentUser!)
+        saveReceivedFriendRequests(user: self.currentUser!, completion: { _ in })
         
         ///Remove current user's uid from user's sentFriendRequests array
         var updateUserSentFriendRequests = [ [String : String] ]()
@@ -628,8 +659,8 @@ extension UserController {
                 if let error = error {
                     print("Error in \(#function): on line \(#line) : \(error.localizedDescription) \n---\n \(error)")
                 } else {
-                    let userDoc = querySnapshot!.documents.first!.data()
-                    let username = userDoc["username"] as? String ?? ""
+                    let userDoc = querySnapshot!.documents.first?.data()
+                    let username = userDoc?["username"] as? String ?? ""
                         completion?(username)
                 }
             }
