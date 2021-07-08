@@ -40,6 +40,7 @@ class AcceptDenyFriendsViewController: UIViewController {
         guard let currentUser = UserController.sharedInstance.currentUser else { return }
         UserController.sharedInstance.getCurrentUser(uid: currentUser.uid) {_ in
         }
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "approveDeclineTapped"), object: nil)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -51,6 +52,8 @@ class AcceptDenyFriendsViewController: UIViewController {
         guard let currentUser = UserController.sharedInstance.currentUser else { return }
         UserController.sharedInstance.getCurrentUser(uid: currentUser.uid) {_ in
         }
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "approveDeclineTapped"), object: nil)
+        
         self.dismiss(animated: true, completion: nil)
     }
     
