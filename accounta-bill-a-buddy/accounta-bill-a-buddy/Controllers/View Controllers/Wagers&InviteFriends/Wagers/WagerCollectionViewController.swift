@@ -10,7 +10,7 @@ import Firebase
 
 private let reuseIdentifier = "wagerCell"
 
-class WagerCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class WagerCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var toDetailView: UIStoryboardSegue!
     
@@ -53,6 +53,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         collectionView.reloadData()
     }
     
+    //TIFFSAKA - Make sure this count is happening AFTER array updates
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var returnValue = 0
         
@@ -66,25 +67,6 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         default: break
         }
         return returnValue
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(
-            width: (view.frame.size.width/3)-25,
-            height: (view.frame.size.width/3)-25
-        )
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top:1, left: 6, bottom: 1, right:6)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -244,3 +226,25 @@ extension WagerCollectionViewController: DeleteCellDelegate {
     
 } // End of Extension
 
+extension WagerDetailViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(
+            width: (view.frame.size.width/3)-25,
+            height: (view.frame.size.width/3)-25
+        )
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top:1, left: 6, bottom: 1, right:6)
+    }
+    
+}
