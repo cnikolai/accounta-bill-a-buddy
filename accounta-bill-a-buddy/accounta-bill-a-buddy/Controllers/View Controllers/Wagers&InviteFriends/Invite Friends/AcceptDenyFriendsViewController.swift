@@ -36,6 +36,10 @@ class AcceptDenyFriendsViewController: UIViewController {
         
         WagerController.sharedInstance.removeCurrentUserFromWagersInvitedFriendsList(wager: wager)
         WagerController.sharedInstance.removeWagerFromMyPendingWagers(wagerId: wager.wagerID)
+        
+        guard let currentUser = UserController.sharedInstance.currentUser else { return }
+        UserController.sharedInstance.getCurrentUser(uid: currentUser.uid) {_ in
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
