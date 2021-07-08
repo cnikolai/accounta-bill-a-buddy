@@ -14,7 +14,11 @@ class UserController {
     static let sharedInstance = UserController()
     
     //MARK: - SOT
-    var currentUser: User?
+    var currentUser: User? {
+        didSet {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "userUpdated"), object: nil)
+        }
+    }
     var friendRequestFromUser: User?
     var users = [User]()
     
