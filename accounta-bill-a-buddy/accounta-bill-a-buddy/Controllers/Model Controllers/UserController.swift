@@ -199,29 +199,13 @@ class UserController {
     ///FRIEND REQUESTS
     func pendingFriendRequestBetween(currentUser: User, user: User) {
         ///Current User - Saves sent friend requests db
-        saveSentFriendRequests(user: currentUser, completion: { _ in
-            self.getCurrentUser(uid: currentUser.uid) { (result) in
-                switch result {
-                case true:
-                    print("updated current user")
-                case false:
-                    print("failed to update current user")
-                }
-            }
-        })
+        saveSentFriendRequests(user: currentUser, completion: { _ in })
         
         ///User - Saves received friend requests to db
-        saveReceivedFriendRequests(user: user, completion: { _ in
-            self.getCurrentUser(uid: currentUser.uid) { (result) in
-                switch result {
-                case true:
-                    print("updated current user")
-                case false:
-                    print("failed to update current user")
-                }
-            }
-        })
+        saveReceivedFriendRequests(user: user, completion: { _ in })
         
+        //Update current user
+        getCurrentUser(uid: currentUser.uid, completion: { _ in })
     }
     
     func saveSentFriendRequests(user: User, completion : ((Bool) -> Void)?) {
@@ -237,13 +221,14 @@ class UserController {
                     let _sentFriendRequests = userData["sentFriendRequests"] as? [ [String : String] ] ?? []
                     sentFriendRequests = _sentFriendRequests
                     
-                    completion?(true)
                 }
             })
         
         let userData = db.collection("users").document(user.uid).collection("pendingRequests").document(user.uid)
         userData.setData(["sentFriendRequests" : sentFriendRequests], merge: true)
         userData.updateData(["sentFriendRequests" : FieldValue.arrayUnion(user.sentFriendRequests)])
+        
+        completion?(true)
     }
     
     func saveReceivedFriendRequests(user: User, completion : ((Bool) -> Void)?) {
@@ -259,13 +244,14 @@ class UserController {
                     let _receivedFriendRequests = userData["receivedFriendRequests"] as? [ [String : String] ] ?? []
                     receivedFriendRequests = _receivedFriendRequests
                     
-                    completion?(true)
                 }
             })
         
         let userData = db.collection("users").document(user.uid).collection("pendingRequests").document(user.uid)
         userData.setData(["receivedFriendRequests" : receivedFriendRequests], merge: true)
         userData.updateData(["receivedFriendRequests" : FieldValue.arrayUnion(user.receivedFriendRequests)])
+        
+        completion?(true)
     }
     
     ///FRIENDS LIST
