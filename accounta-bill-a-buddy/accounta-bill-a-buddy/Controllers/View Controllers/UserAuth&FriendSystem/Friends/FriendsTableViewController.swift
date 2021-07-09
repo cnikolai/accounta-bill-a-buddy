@@ -158,7 +158,6 @@ extension FriendsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty {
             UserController.sharedInstance.findUser(with: searchText.lowercased())
-            tableView.reloadData()
         } else if searchText.isEmpty {
             UserController.sharedInstance.users = []
         }
@@ -170,7 +169,6 @@ extension FriendsTableViewController: UISearchBarDelegate {
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.text = ""
         tableView.reloadData()
     }
     
