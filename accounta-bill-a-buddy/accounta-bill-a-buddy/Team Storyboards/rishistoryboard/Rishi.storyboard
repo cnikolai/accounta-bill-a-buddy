@@ -109,7 +109,7 @@
                     <navigationItem key="navigationItem" title="Wagers" id="lLP-D4-n15">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OxQ-rq-9XD">
                             <connections>
-                                <segue destination="do0-qN-2uT" kind="show" id="aro-yW-HrR"/>
+                                <segue destination="do0-qN-2uT" kind="presentation" modalPresentationStyle="automatic" id="aro-yW-HrR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

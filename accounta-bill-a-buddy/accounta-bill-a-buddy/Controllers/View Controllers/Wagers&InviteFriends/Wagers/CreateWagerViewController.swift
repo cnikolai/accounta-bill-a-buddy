@@ -80,7 +80,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     @IBAction func inviteFriendsButtonTapped(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "InviteFriends", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "InviteFriendsVC") as! InviteFriendsListTableViewController
-        newViewController.modalPresentationStyle = .fullScreen
+        //newViewController.modalPresentationStyle = .fullScreen
         friendsTextView.layer.borderWidth = 0.0
         friendsTextView.textColor = .black
         self.present(newViewController, animated: true, completion: nil)
@@ -90,7 +90,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
         photopickerbuttontapped = true
         let storyBoard: UIStoryboard = UIStoryboard(name: "EmojiPicker", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "EmojiPickerVC") as! EmojiViewController
-        newViewController.modalPresentationStyle = .fullScreen
+        //newViewController.modalPresentationStyle = .fullScreen
         self.present(newViewController, animated: true, completion: nil)
     }
     
