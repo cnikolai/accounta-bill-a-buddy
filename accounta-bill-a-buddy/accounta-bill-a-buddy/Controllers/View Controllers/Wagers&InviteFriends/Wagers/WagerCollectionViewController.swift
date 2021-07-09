@@ -33,6 +33,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         createArraysForViewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived), name: Notification.Name("userUpdated"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(notificationAcceptDeclineReceived), name: Notification.Name("approveDeclineTapped"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationCreateReceived), name: Notification.Name("createTapped"), object: nil)
 
     }
     
@@ -53,6 +54,13 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
         }
         print("Accept/Decline Notification Received")
+        self.collectionView.reloadData()
+    }
+    
+    @objc func notificationCreateReceived() {
+        createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
+        }
+        print("Create Notification Received")
         self.collectionView.reloadData()
     }
     
