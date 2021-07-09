@@ -15,22 +15,21 @@ class WagerController {
     let wagersCollection = "wagers"
     var wagers: [Wager] = []
     
-    func createAndSaveWager(wagerID: String, owner: String, invitedFriends: [String], acceptedFriends: [String], goalDescription: String, wager: String, deadline: String, progress: Float, firebasePhotoURL: String, completion: @escaping (Result<Wager, DatabaseError>) -> Void) {
+    func createAndSaveWager(wagerID: String, owner: String, invitedFriends: [String], acceptedFriends: [String], goalDescription: String, wager: String, deadline: String, progress: Float, wagerPhoto: UIImage?, completion: @escaping (Result<Wager, DatabaseError>) -> Void) {
         
-        let newWager = Wager(wagerID: wagerID, owner: owner, invitedFriends: invitedFriends, acceptedFriends: acceptedFriends, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress,firebasePhotoURL: firebasePhotoURL)
+        let newWager = Wager(wagerID: wagerID, owner: owner, invitedFriends: invitedFriends, acceptedFriends: acceptedFriends, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress,wagerPhoto: wagerPhoto)
         
         let wagersRef = db.collection(wagersCollection)
         wagersRef.document("\(newWager.wagerID)").setData([
             "wagerID": newWager.wagerID,
             "owner": newWager.owner,
-//"wagerPhoto": newWager.wagerPhoto?.jpegData(compressionQuality: 1),
+            "wagerPhoto": newWager.wagerPhoto?.jpegData(compressionQuality: 1),
             "goalDescription": newWager.goalDescription,
             "acceptedFriends": newWager.acceptedFriends,
             "invitedFriends": newWager.invitedFriends,
             "wager": newWager.wager,
             "deadline": newWager.deadline,
-            "progress": newWager.progress,
-            "firebasePhotoURL": newWager.firebasePhotoURL
+            "progress": newWager.progress
         ]) { error in
             if let error = error {
                 print("Error adding document: \(error)")
@@ -43,12 +42,6 @@ class WagerController {
     }
     
     func fetchWager(wagerID: String, completion: @escaping (Result<Wager, DatabaseError>) -> Void) {
-        // Get a reference to the storage service using the default Firebase App
-        //let storage = Storage.storage()
-
-        // Create a storage reference from our storage service
-        //let storageRef = storage.reference()
-
         db.collection("wagers").whereField("wagerID", isEqualTo: wagerID)
             .getDocuments { (querySnapshot, error) in
                 if let error = error {
@@ -61,28 +54,15 @@ class WagerController {
                         let owner = wagerData["owner"] as? String ?? ""
                         let goalDescription = wagerData["goalDescription"] as? String ?? ""
                         let wager = wagerData["wager"] as? String ?? ""
-                        //let wagerPhotoData = wagerData["wagerPhoto"] as? Data ?? Data()
+                        let wagerPhotoData = wagerData["wagerPhoto"] as? Data ?? Data()
                         let invitedFriends = wagerData["invitedFriends"] as? [String] ?? []
                         let acceptedFriends = wagerData["acceptedFriends"] as? [String] ?? []
                         let deadline = wagerData["deadline"] as? String ?? ""
                         let progress = wagerData["progress"] as? Float ?? 0.0
-                        let firebasePhotoURL = wagerData["firebasePhotoURL"] as? String ?? ""
                         
-//                        // Create a reference from a Google Cloud Storage URI
-//                        let gsReference = storage.reference(forURL: firebasePhotoURL)
-//                        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-//                        gsReference.getData(maxSize: 10 * 1024 * 1024) { data, error in
-//                          if let error = error {
-//                            // Uh-oh, an error occurred!
-//                          } else {
-//                            // Data for "images/island.jpg" is returned
-//                            let image = UIImage(data: data!)
-                            let newWager = Wager(wagerID: wagerID, owner: owner, invitedFriends: invitedFriends, acceptedFriends: acceptedFriends, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress, firebasePhotoURL: firebasePhotoURL)
-                            return(completion(.success(newWager)))
-                          //}
-                       // }
-
-                        
+                        let image = UIImage(data: wagerPhotoData)
+                        let newWager = Wager(wagerID: wagerID, owner: owner, invitedFriends: invitedFriends, acceptedFriends: acceptedFriends, goalDescription: goalDescription, wager: wager, deadline: deadline, progress: progress, wagerPhoto: image)
+                        return(completion(.success(newWager)))
                     }
                 }
             }
