@@ -37,13 +37,6 @@ class WagerCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    
-//  //  var isEditing = false {
-//      //  didSet {
-//       //     deleteButton.isHidden = !isEditing
-//        }
-//    }
-    
     //MARK: - Actions
     @IBAction func deleteButtonTapped(_ sender: Any) {
         if selectedSegmentIndex == 0  {

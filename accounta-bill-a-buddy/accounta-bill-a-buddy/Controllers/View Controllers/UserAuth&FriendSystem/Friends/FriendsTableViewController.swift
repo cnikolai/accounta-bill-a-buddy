@@ -37,6 +37,7 @@ class FriendsTableViewController: UITableViewController {
         setupViewFor(screen: .friends)
         
         NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived), name: Notification.Name("userUpdated"), object: nil)
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -181,3 +182,15 @@ extension FriendsTableViewController: CustomCellUpdater {
 //        tableView.reloadData()
     }
 }//End of extension
+
+extension FriendsTableViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(FriendsTableViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}

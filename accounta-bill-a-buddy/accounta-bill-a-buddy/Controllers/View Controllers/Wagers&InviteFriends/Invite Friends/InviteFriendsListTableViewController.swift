@@ -17,7 +17,6 @@ class InviteFriendsListTableViewController: UIViewController {
     // MARK:- Properties
     var friend: [String:String]?
     var wagerFriends: [[String:String]] = []
-    var invitedFriend: [String:String] = [:]
 
     // MARK:-Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -39,8 +38,6 @@ class InviteFriendsListTableViewController: UIViewController {
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
 }
 
 extension InviteFriendsListTableViewController: UITableViewDelegate, UITableViewDataSource {
@@ -64,8 +61,6 @@ extension InviteFriendsListTableViewController: UITableViewDelegate, UITableView
 extension InviteFriendsListTableViewController: InviteFriendsTableViewCellDelegate {
     func saveFriends(_ sender: InviteFriendsTableViewCell) {
         sender.toggleButton()
-        
-        //guard let invitedFriend = sender.friend!.values.first! as String? else { return }
         guard let invitedFriend = sender.friend else { return }
         
         if sender.inviteWagerFriend {

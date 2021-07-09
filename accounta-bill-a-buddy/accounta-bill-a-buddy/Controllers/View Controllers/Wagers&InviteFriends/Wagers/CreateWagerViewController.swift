@@ -36,12 +36,9 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
         wagerTextView.delegate = self
         goalTextView.delegate = self
         deadlineTextView.delegate = self
-        
-//        self.navigationItem.leftBarButtonItem = nil;
-//        self.navigationItem.hidesBackButton = true;
-//        self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = false;
         InviteFriendsListTableViewController.delegate = self
         setupElements()
+        self.hideKeyboardWhenTappedAround()
     }
     
     func setupElements() {
@@ -155,6 +152,12 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     
     private func dismissView() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+        textField.textColor = .black
+        textField.layer.borderWidth = 0.0
     }
 }
 
@@ -270,3 +273,14 @@ extension CreateWagerViewController: InviteFriendsListTableViewControllerDelegat
     }
 }
 
+extension CreateWagerViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CreateWagerViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
