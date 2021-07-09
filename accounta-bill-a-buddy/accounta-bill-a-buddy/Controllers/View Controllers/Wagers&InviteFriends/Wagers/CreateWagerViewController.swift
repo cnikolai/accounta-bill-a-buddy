@@ -37,7 +37,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
         InviteFriendsListTableViewController.delegate = self
         EmojiViewController.delegate = self
         setupElements()
-        self.hideKeyboardWhenTappedAround()
+        //self.hideKeyboardWhenTappedAround()
     }
     
     func setupElements() {
@@ -77,7 +77,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
 //        }
     }
     
-        func inviteFriendsButtonTapped(_ sender: Any) {
+    @IBAction func inviteFriendsButtonTapped(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "InviteFriends", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "InviteFriendsVC") as! InviteFriendsListTableViewController
         newViewController.modalPresentationStyle = .fullScreen
@@ -194,17 +194,17 @@ extension CreateWagerViewController: InviteFriendsListTableViewControllerDelegat
     }
 }
 
-extension CreateWagerViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(CreateWagerViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
+//extension CreateWagerViewController {
+//    func hideKeyboardWhenTappedAround() {
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(CreateWagerViewController.dismissKeyboard))
+//        tap.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tap)
+//    }
+//    
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
+//}
 
 extension CreateWagerViewController: EmojiViewControllerDelegate {
     func saveEmoji(_ emoji: UIImage) {

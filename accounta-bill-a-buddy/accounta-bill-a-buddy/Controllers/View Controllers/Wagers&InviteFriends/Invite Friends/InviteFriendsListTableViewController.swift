@@ -17,6 +17,7 @@ class InviteFriendsListTableViewController: UIViewController {
     // MARK:- Properties
     var friend: [String:String]?
     var wagerFriends: [[String:String]] = []
+    var invitedFriend: [String:String]?
 
     // MARK:-Outlets
     @IBOutlet weak var tableView: UITableView!
