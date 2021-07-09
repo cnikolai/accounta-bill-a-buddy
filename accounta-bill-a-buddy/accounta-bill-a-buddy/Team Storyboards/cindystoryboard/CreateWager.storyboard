@@ -11,7 +11,7 @@
         <!--Create Wager View Controller-->
         <scene sceneID="cv7-0o-SyW">
             <objects>
-                <viewController id="xry-kJ-Z4K" customClass="CreateWagerViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="xry-kJ-Z4K" customClass="CreateWagerViewController" customModule="accounta_bill_a_buddy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f3o-cm-0jc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -179,7 +179,7 @@
         <!--Navigation Controller-->
         <scene sceneID="wHh-dU-U0v">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lp7-iy-oeb" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="lp7-iy-oeb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dEy-23-mnZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
