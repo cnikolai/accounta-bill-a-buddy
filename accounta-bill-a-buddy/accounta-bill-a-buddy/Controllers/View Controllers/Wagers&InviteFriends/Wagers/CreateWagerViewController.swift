@@ -56,9 +56,11 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
+        if (textView.text == "Please enter a wager") || (textView.text == "Please enter a goal") || (textView.text == "Please enter a wager deadline") {
             textView.text = ""
             textView.textColor = UIColor.black
-        textView.layer.borderWidth = 0.0
+            textView.layer.borderWidth = 0.0
+        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
