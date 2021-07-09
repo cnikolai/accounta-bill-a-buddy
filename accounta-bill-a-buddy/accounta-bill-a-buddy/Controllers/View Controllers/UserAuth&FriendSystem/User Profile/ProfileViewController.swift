@@ -31,13 +31,21 @@ class ProfileViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction func logOutButtonTapped(_ sender: UIButton) {
-        try! Auth.auth().signOut()
-    
-        if Auth.auth().currentUser == nil {
-            let rootController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginVC")
-            rootController.modalPresentationStyle = .fullScreen
-            present(rootController, animated: true, completion: nil)
+        
+        let alertController = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { (_) in
+            try! Auth.auth().signOut()
+
+            if Auth.auth().currentUser == nil {
+                let rootController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginVC")
+                rootController.modalPresentationStyle = .fullScreen
+                self.present(rootController, animated: true, completion: nil)
+            }
         }
+        alertController.addAction(cancelAction)
+        alertController.addAction(logoutAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     //MARK: - Functions
