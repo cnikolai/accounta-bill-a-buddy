@@ -32,7 +32,6 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     // MARK:-Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.modalPresentationStyle = .fullScreen
         setupViews()
         wagerTextView.delegate = self
         goalTextView.delegate = self
@@ -58,10 +57,9 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.text = nil
+            textView.text = ""
             textView.textColor = UIColor.black
-        }
+        textView.layer.borderWidth = 0.0
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -81,7 +79,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     @IBAction func inviteFriendsButtonTapped(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "InviteFriends", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "InviteFriendsVC") as! InviteFriendsListTableViewController
-        //newViewController.modalPresentationStyle = .fullScreen
+        newViewController.modalPresentationStyle = .fullScreen
         friendsTextView.layer.borderWidth = 0.0
         friendsTextView.textColor = .black
         self.present(newViewController, animated: true, completion: nil)
