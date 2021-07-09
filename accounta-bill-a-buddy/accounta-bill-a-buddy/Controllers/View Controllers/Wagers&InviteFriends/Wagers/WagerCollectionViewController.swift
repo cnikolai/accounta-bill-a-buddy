@@ -112,6 +112,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             destinationVC.wager = wager
             destinationVC.owner = true
             destinationVC.edit = true
+            destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)
         case 1:
             let storyboard = UIStoryboard(name: "WagerDetailView", bundle: nil)
@@ -122,6 +123,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             destinationVC.wager = wager
             destinationVC.owner = false
             destinationVC.edit = false
+            destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)
         case 2:
             let storyboard = UIStoryboard(name: "ApproveDenyFriends", bundle: nil)
@@ -130,6 +132,7 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
             let wager = wagerRequests[indexPath.row]
             print("goalDescription", wager.goalDescription)
             destinationVC.wager = wager
+            destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)
         default:
             break

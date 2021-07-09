@@ -7,7 +7,6 @@
 
 import Foundation
 import Firebase
-import FirebaseStorage
 
 class Wager {
     var wagerID: String

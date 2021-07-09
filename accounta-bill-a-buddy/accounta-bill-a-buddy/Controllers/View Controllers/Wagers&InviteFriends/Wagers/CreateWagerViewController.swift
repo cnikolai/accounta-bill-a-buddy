@@ -32,16 +32,14 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     // MARK:-Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.modalPresentationStyle = .fullScreen
         setupViews()
         wagerTextView.delegate = self
         goalTextView.delegate = self
         deadlineTextView.delegate = self
-        
-//        self.navigationItem.leftBarButtonItem = nil;
-//        self.navigationItem.hidesBackButton = true;
-//        self.navigationController?.navigationItem.backBarButtonItem?.isEnabled = false;
         InviteFriendsListTableViewController.delegate = self
         setupElements()
+        self.hideKeyboardWhenTappedAround()
     }
     
     func setupElements() {
@@ -121,10 +119,6 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
               !(deadline == "Enter deadline..."),!(deadline == "Please enter a wager deadline") else {
             showError("Please enter a wager deadline", forWhichTextField: "deadline")
             return }
-//        if !photopickerbuttontapped {
-//            //imageImageView.image = UIImage(named: "wagerDefaultPhoto")
-//            firebasePhotoURL = "https://firebasestorage.googleapis.com:443/v0/b/accounta-bill-a-buddy-43cbd.appspot.com/o/B02A43F1-7243-4190-B052-ABF0061EB8E8.jpg?alt=media&token=9a8df5d4-ec79-409f-9d44-d11ac0a2970c"
-//        }
         WagerController.sharedInstance.createAndSaveWager(wagerID: UUID().uuidString, owner: (UserController.sharedInstance.currentUser?.uid)!, invitedFriends: invitedFriendsUIDs, acceptedFriends: [], goalDescription: goal, wager: wager, deadline: deadline, progress: 0,firebasePhotoURL:firebasePhotoURL) { result in
             switch (result) {
             case .success(let wager):
@@ -155,6 +149,12 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     
     private func dismissView() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+        textField.textColor = .black
+        textField.layer.borderWidth = 0.0
     }
 }
 
@@ -270,3 +270,14 @@ extension CreateWagerViewController: InviteFriendsListTableViewControllerDelegat
     }
 }
 
+extension CreateWagerViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CreateWagerViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}

@@ -37,6 +37,7 @@ class WagerDetailViewController: UIViewController {
         super.viewDidLoad()
         updateViews()
         setupViews()
+        self.hideKeyboardWhenTappedAround()
     }
     
     func setupViews() {
@@ -145,4 +146,16 @@ class WagerDetailViewController: UIViewController {
         
     }
 
+}
+
+extension WagerDetailViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(WagerDetailViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }

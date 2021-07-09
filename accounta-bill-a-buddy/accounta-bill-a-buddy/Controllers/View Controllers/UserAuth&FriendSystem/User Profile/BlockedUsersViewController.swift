@@ -44,3 +44,14 @@ extension BlockedUsersViewController: UITableViewDelegate, UITableViewDataSource
     }
 }//End of extension
 
+extension BlockedUsersViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(BlockedUsersViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}

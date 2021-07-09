@@ -20,6 +20,7 @@ class ForgotPasswordViewController: UIViewController {
         errorLabel.alpha = 0
         emailTextField.delegate = self
         setupViews()
+        self.hideKeyboardWhenTappedAround()
     }
     
     func setupViews() {
@@ -60,3 +61,14 @@ extension ForgotPasswordViewController: UITextFieldDelegate {
     }
 }
 
+extension ForgotPasswordViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ForgotPasswordViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}

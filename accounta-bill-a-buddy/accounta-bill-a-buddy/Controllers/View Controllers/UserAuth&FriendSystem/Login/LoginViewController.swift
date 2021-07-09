@@ -42,6 +42,7 @@ class LoginViewController: UIViewController {
         passwordTextField.delegate = self
         setupViewFor(screen: .login)
         setupViews()
+        self.hideKeyboardWhenTappedAround()
     }
     
     func setupViews() {
@@ -207,5 +208,17 @@ extension LoginViewController: UITextFieldDelegate {
             signUpButtonTapped(UIButton())
         }
         return true
+    }
+}
+
+extension LoginViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
