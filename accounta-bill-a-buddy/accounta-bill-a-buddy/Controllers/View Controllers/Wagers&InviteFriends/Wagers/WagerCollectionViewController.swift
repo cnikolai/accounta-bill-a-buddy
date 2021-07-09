@@ -34,33 +34,38 @@ class WagerCollectionViewController: UIViewController, UICollectionViewDelegate,
         NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived), name: Notification.Name("userUpdated"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(notificationAcceptDeclineReceived), name: Notification.Name("approveDeclineTapped"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(notificationCreateReceived), name: Notification.Name("createTapped"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationDeleteLeaveReceived), name: Notification.Name("deleteLeaveTapped"), object: nil)
 
     }
     
     func createArraysForViewDidLoad() {
         guard let currentUser = UserController.sharedInstance.currentUser else { return }
-        createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
-        }
-        self.collectionView.reloadData()
+        reloadArraysAndReload()
     }
     
     @objc func notificationReceived() {
-        createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
-        }
-        self.collectionView.reloadData()
+        reloadArraysAndReload()
+        print("Notification Received")
     }
     
     @objc func notificationAcceptDeclineReceived() {
-        createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
-        }
+        reloadArraysAndReload()
         print("Accept/Decline Notification Received")
-        self.collectionView.reloadData()
     }
     
     @objc func notificationCreateReceived() {
+        reloadArraysAndReload()
+        print("Create Notification Received")
+    }
+    
+    @objc func notificationDeleteLeaveReceived() {
+        reloadArraysAndReload()
+        print("Create Delete/Leave Received")
+    }
+    
+    func reloadArraysAndReload() {
         createWagerArrays(myWagers: UserController.sharedInstance.currentUser?.myWagers ?? [], myFriendsWagers: UserController.sharedInstance.currentUser?.myFriendsWagers ?? [], wagersRequests: UserController.sharedInstance.currentUser?.wagerRequests ?? []) { success in
         }
-        print("Create Notification Received")
         self.collectionView.reloadData()
     }
     
@@ -218,6 +223,7 @@ extension WagerCollectionViewController: DeleteCellDelegate {
                 //TIFFSAKA - The following completions were creating in testing, these may not be needed. If needed, we will also need to add to the additional two delete functions.
                 WagerController.sharedInstance.deleteWager(wagerID: wager.wagerID) {_ in
                     print("Deleted successfully.")
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "deleteLeaveTapped"), object: nil)
                 }
                 WagerController.sharedInstance.deleteWagerFromMyWagers(wagerToDelete: wager) {_ in
                     print("deletedWagerFromMyWagers successful")
@@ -236,6 +242,7 @@ extension WagerCollectionViewController: DeleteCellDelegate {
             let leaveAction = UIAlertAction(title: "Leave", style: .destructive) { (_) in
                 WagerController.sharedInstance.leaveFriendsWager(wagerToLeave: wager)
                 WagerController.sharedInstance.removeUserFromWager(wagerID: wager.wagerID)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "deleteLeaveTapped"), object: nil)
             }
             leaveAlertController.addAction(cancelAction)
             leaveAlertController.addAction(leaveAction)
