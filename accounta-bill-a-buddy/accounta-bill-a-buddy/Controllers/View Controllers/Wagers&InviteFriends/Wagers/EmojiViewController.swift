@@ -27,14 +27,14 @@ extension EmojiViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return
+        return 5
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = emojiCollectionView.dequeueReusableCell(withReuseIdentifier: "emojiCell", for: indexPath) as! EmojiCollectionViewCell
         
-        cell.emojiImageView.image = UIImage(named: <#T##String#>)
+        //cell.emojiImageView.image = UIImage(named: <#T##String#>)
         
         
         return cell
