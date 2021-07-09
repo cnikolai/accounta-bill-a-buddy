@@ -104,7 +104,7 @@
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" weight="semibold"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="inviteFriendsButtonTapped:" destination="xry-kJ-Z4K" eventType="touchUpInside" id="zQy-1w-sj5"/>
+                                                            <action selector="inviteFriendsButtonTapped:" destination="xry-kJ-Z4K" eventType="touchUpInside" id="7Hi-WL-AkY"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
