@@ -204,7 +204,7 @@ extension CreateWagerViewController {
 }
 
 extension CreateWagerViewController: EmojiViewControllerDelegate {
-    func saveEmoji(_ sender: EmojiViewController) {
-        imageImageView.image = sender.emojiSelected
+    func saveEmoji(_ emoji: UIImage) {
+        imageImageView.image = emoji
     }
 }
