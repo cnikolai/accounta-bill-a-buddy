@@ -104,7 +104,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
               !(deadline == "Enter deadline..."),!(deadline == "Please enter a wager deadline") else {
             showError("Please enter a wager deadline", forWhichTextField: "deadline")
             return }
-        guard let wagerPhoto = wagerPhoto as? UIImage else { return }
+        guard let wagerPhoto = imageImageView.image as? UIImage else { return }
         WagerController.sharedInstance.createAndSaveWager(wagerID: UUID().uuidString, owner: (UserController.sharedInstance.currentUser?.uid)!, invitedFriends: invitedFriendsUIDs, acceptedFriends: [], goalDescription: goal, wager: wager, deadline: deadline, progress: 0,wagerPhoto: wagerPhoto) { result in
             switch (result) {
             case .success(let wager):
