@@ -114,6 +114,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
                 for userfriend in wager.invitedFriends {
                     UserController.sharedInstance.appendWagerToFriendsWagerList(userfriend: userfriend, wagerId: wager.wagerID)
                 }
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "createTapped"), object: nil)
                 self.dismissView()
             case .failure(let error):
                 print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
