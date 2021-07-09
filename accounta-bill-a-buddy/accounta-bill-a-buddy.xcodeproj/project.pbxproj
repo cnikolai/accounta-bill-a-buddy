@@ -26,6 +26,9 @@
 		37DFDDED267A58CC0055AF6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37DFDDEB267A58CC0055AF6C /* LaunchScreen.storyboard */; };
 		490B11C326827BD00009BE1C /* WagerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B11C226827BD00009BE1C /* WagerCollectionViewCell.swift */; };
 		490B11C726827FD10009BE1C /* WagerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B11C626827FD10009BE1C /* WagerCollectionViewController.swift */; };
+		498A9034269825E3003BF91A /* EmojiPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 498A9033269825E3003BF91A /* EmojiPicker.storyboard */; };
+		498A9036269827A2003BF91A /* EmojiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498A9035269827A2003BF91A /* EmojiViewController.swift */; };
+		498A903826982E51003BF91A /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498A903726982E51003BF91A /* EmojiCollectionViewCell.swift */; };
 		8EBBE318268E727400D8F743 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBBE317268E727400D8F743 /* ForgotPasswordViewController.swift */; };
 		9B188EF7267A71E40020DA62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B188EF6267A71E40020DA62 /* GoogleService-Info.plist */; };
 		9B3247FB267DBB0A00C16040 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3247FA267DBB0A00C16040 /* Constants.swift */; };
@@ -67,6 +70,9 @@
 		37DFDDEE267A58CC0055AF6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		490B11C226827BD00009BE1C /* WagerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerCollectionViewCell.swift; sourceTree = "<group>"; };
 		490B11C626827FD10009BE1C /* WagerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerCollectionViewController.swift; sourceTree = "<group>"; };
+		498A9033269825E3003BF91A /* EmojiPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EmojiPicker.storyboard; sourceTree = "<group>"; };
+		498A9035269827A2003BF91A /* EmojiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiViewController.swift; sourceTree = "<group>"; };
+		498A903726982E51003BF91A /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
 		8EBBE317268E727400D8F743 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		9B188EF6267A71E40020DA62 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9B3247FA267DBB0A00C16040 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -248,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				9B4E959A267AB25100DA223F /* Rishi.storyboard */,
+				498A9033269825E3003BF91A /* EmojiPicker.storyboard */,
 			);
 			path = rishistoryboard;
 			sourceTree = "<group>";
@@ -302,6 +309,7 @@
 				490B11C626827FD10009BE1C /* WagerCollectionViewController.swift */,
 				37AFFC312683E9900088E2C6 /* CreateWagerViewController.swift */,
 				37AFFC2F2683E9650088E2C6 /* WagerDetailViewController.swift */,
+				498A9035269827A2003BF91A /* EmojiViewController.swift */,
 			);
 			path = Wagers;
 			sourceTree = "<group>";
@@ -320,6 +328,7 @@
 			children = (
 				490B11C226827BD00009BE1C /* WagerCollectionViewCell.swift */,
 				37B87E64268E1EDD00EAD4FE /* InviteFriendsTableViewCell.swift */,
+				498A903726982E51003BF91A /* EmojiCollectionViewCell.swift */,
 			);
 			path = Wager;
 			sourceTree = "<group>";
@@ -420,6 +429,7 @@
 				37DFDDE8267A58CA0055AF6C /* Main.storyboard in Resources */,
 				37B87E69268E352300EAD4FE /* ApproveDenyFriends.storyboard in Resources */,
 				37A1BE12267AAE260044FA88 /* CreateWager.storyboard in Resources */,
+				498A9034269825E3003BF91A /* EmojiPicker.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +495,7 @@
 				9B52ABDA268D0A7D002D7B42 /* ProfileViewController.swift in Sources */,
 				9B52ABE0268D0B1C002D7B42 /* BlockedUserTableViewCell.swift in Sources */,
 				37DFDDE1267A58CA0055AF6C /* AppDelegate.swift in Sources */,
+				498A903826982E51003BF91A /* EmojiCollectionViewCell.swift in Sources */,
 				9B4E959F267AFB1500DA223F /* User.swift in Sources */,
 				9B4E95A8267BDD8300DA223F /* LoginViewController.swift in Sources */,
 				37AFFC302683E9650088E2C6 /* WagerDetailViewController.swift in Sources */,
@@ -493,6 +504,7 @@
 				379162B0268523450059184F /* WagerController.swift in Sources */,
 				9B52ABDD268D0ACD002D7B42 /* BlockedUsersViewController.swift in Sources */,
 				379162AE268523380059184F /* Wager.swift in Sources */,
+				498A9036269827A2003BF91A /* EmojiViewController.swift in Sources */,
 				9B4E95C5267C531600DA223F /* Utilities.swift in Sources */,
 				9B3247FB267DBB0A00C16040 /* Constants.swift in Sources */,
 				490B11C726827FD10009BE1C /* WagerCollectionViewController.swift in Sources */,
