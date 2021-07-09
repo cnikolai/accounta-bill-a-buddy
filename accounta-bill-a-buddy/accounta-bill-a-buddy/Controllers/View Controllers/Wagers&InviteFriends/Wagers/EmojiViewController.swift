@@ -40,6 +40,7 @@ extension EmojiViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = emojiCollectionView.dequeueReusableCell(withReuseIdentifier: "emojiCell", for: indexPath) as! EmojiCollectionViewCell
         
+
         cell.emojiImageView.image = String(UnicodeScalar(emojis[indexPath.row])!).image(fontSize:100)
         emojiSelected = cell.emojiImageView.image
         
