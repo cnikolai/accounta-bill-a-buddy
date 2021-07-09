@@ -206,5 +206,6 @@ extension CreateWagerViewController {
 extension CreateWagerViewController: EmojiViewControllerDelegate {
     func saveEmoji(_ emoji: UIImage) {
         imageImageView.image = emoji
+        photoPickerButton.setImage(nil, for: .normal)
     }
 }
