@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fWl-rD-yUM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -53,17 +53,39 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfl-cS-7Fu">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem id="U1T-Ma-0uU">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="7CY-dW-qIq">
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="PS9-BV-sZO" id="BAA-aF-FKE"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7YO-vZ-1BV"/>
                         <color key="backgroundColor" red="0.94509803920000002" green="0.98039215690000003" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Src-Kz-mvg" firstAttribute="leading" secondItem="7YO-vZ-1BV" secondAttribute="leading" id="7ve-YT-st6"/>
-                            <constraint firstItem="7YO-vZ-1BV" firstAttribute="trailing" secondItem="Src-Kz-mvg" secondAttribute="trailing" id="fW0-Ki-TvC"/>
-                            <constraint firstItem="7YO-vZ-1BV" firstAttribute="bottom" secondItem="Src-Kz-mvg" secondAttribute="bottom" id="fvb-wq-IOU"/>
-                            <constraint firstItem="Src-Kz-mvg" firstAttribute="top" secondItem="7YO-vZ-1BV" secondAttribute="top" id="moL-Rp-FJF"/>
+                            <constraint firstItem="Jfl-cS-7Fu" firstAttribute="leading" secondItem="7YO-vZ-1BV" secondAttribute="leading" id="B0O-kw-Nhl"/>
+                            <constraint firstItem="Jfl-cS-7Fu" firstAttribute="top" secondItem="7YO-vZ-1BV" secondAttribute="top" id="IxM-Wh-CiD"/>
+                            <constraint firstItem="Src-Kz-mvg" firstAttribute="top" secondItem="Jfl-cS-7Fu" secondAttribute="bottom" id="MQf-Zg-gIL"/>
+                            <constraint firstItem="Src-Kz-mvg" firstAttribute="bottom" secondItem="7YO-vZ-1BV" secondAttribute="bottom" id="Rzf-S4-PET"/>
+                            <constraint firstItem="Src-Kz-mvg" firstAttribute="leading" secondItem="7YO-vZ-1BV" secondAttribute="leading" id="ZKz-Th-BOG"/>
+                            <constraint firstItem="Jfl-cS-7Fu" firstAttribute="trailing" secondItem="7YO-vZ-1BV" secondAttribute="trailing" id="mxg-gt-js0"/>
+                            <constraint firstItem="Src-Kz-mvg" firstAttribute="top" secondItem="Jfl-cS-7Fu" secondAttribute="bottom" id="nRY-sn-lGv"/>
+                            <constraint firstItem="Src-Kz-mvg" firstAttribute="trailing" secondItem="7YO-vZ-1BV" secondAttribute="trailing" id="neC-OO-lXT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8ly-AL-Jqh"/>
+                    <navigationItem key="navigationItem" id="8ly-AL-Jqh">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Y2b-1c-xoG">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="PS9-BV-sZO" id="FPd-OI-c2z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="emojiCollectionView" destination="Src-Kz-mvg" id="rtN-iM-KA9"/>
                     </connections>
@@ -71,24 +93,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yme-hb-NR6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="971.01449275362324" y="44.866071428571423"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="UMf-Qt-hHG">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fWl-rD-yUM" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WLZ-Jd-ayG">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="PS9-BV-sZO" kind="relationship" relationship="rootViewController" id="QUk-0U-0Dn"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Cts-iu-9DI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="60.869565217391312" y="44.866071428571423"/>
         </scene>
     </scenes>
     <resources>

@@ -9,6 +9,8 @@ import UIKit
 
 class EmojiCollectionViewCell: UICollectionViewCell {
     
-    
+    //MARK: - Outlets
     @IBOutlet weak var emojiImageView: UIImageView!
+    
+    
 }

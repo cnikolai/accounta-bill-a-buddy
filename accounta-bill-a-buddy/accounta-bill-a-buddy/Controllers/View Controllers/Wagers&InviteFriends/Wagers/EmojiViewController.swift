@@ -12,7 +12,7 @@ protocol EmojiViewControllerDelegate: AnyObject {
 }
 
 class EmojiViewController: UIViewController {
-    
+
     // MARK:-Properties
     var emojis = [0x1F601,0x1F64F,
                   0x2702,0x27B0,
@@ -29,6 +29,12 @@ class EmojiViewController: UIViewController {
         emojiCollectionView.delegate = self
         emojiCollectionView.dataSource = self
     }
+    
+    //MARK: - Actions
+    @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 extension EmojiViewController: UICollectionViewDelegate, UICollectionViewDataSource {
