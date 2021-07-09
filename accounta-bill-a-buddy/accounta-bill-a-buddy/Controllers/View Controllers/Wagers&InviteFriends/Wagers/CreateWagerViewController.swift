@@ -56,28 +56,28 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if (textView.text == "Please enter a wager") || (textView.text == "Please enter a goal") || (textView.text == "Please enter a wager deadline") {
+        if (textView.text == "Please enter a wager") || (textView.text == "Please enter a goal") || (textView.text == "Please enter a wager deadline") || (textView.text == "Enter wager...")  || (textView.text == "Enter goal...")  || (textView.text == "Enter deadline..."){
             textView.text = ""
             textView.textColor = UIColor.black
             textView.layer.borderWidth = 0.0
-        }
+    }
+        
+//
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//        if textView.text.isEmpty {
+//            textView.textColor = UIColor.lightGray
+//
+//            if textView == wagerTextView {
+//                textView.text = "Enter wager..."
+//            } else if textView == goalTextView {
+//                textView.text = "Enter goal..."
+//            } else if textView == deadlineTextView {
+//                textView.text = "Enter deadline..."
+//            }
+//        }
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.textColor = UIColor.lightGray
-            
-            if textView == wagerTextView {
-                textView.text = "Enter wager..."
-            } else if textView == goalTextView {
-                textView.text = "Enter goal..."
-            } else if textView == deadlineTextView {
-                textView.text = "Enter deadline..."
-            }
-        }
-    }
-    
-    @IBAction func inviteFriendsButtonTapped(_ sender: Any) {
+        func inviteFriendsButtonTapped(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "InviteFriends", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "InviteFriendsVC") as! InviteFriendsListTableViewController
         newViewController.modalPresentationStyle = .fullScreen
