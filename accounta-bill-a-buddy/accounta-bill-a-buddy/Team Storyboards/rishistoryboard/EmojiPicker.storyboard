@@ -55,7 +55,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7YO-vZ-1BV"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.94509803920000002" green="0.98039215690000003" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Src-Kz-mvg" firstAttribute="leading" secondItem="7YO-vZ-1BV" secondAttribute="leading" id="7ve-YT-st6"/>
                             <constraint firstItem="7YO-vZ-1BV" firstAttribute="trailing" secondItem="Src-Kz-mvg" secondAttribute="trailing" id="fW0-Ki-TvC"/>

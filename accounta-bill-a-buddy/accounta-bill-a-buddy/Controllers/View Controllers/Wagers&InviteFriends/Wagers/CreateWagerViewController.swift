@@ -7,17 +7,15 @@
 
 import UIKit
 import Firebase
-import FirebaseStorage
 
 class CreateWagerViewController: UIViewController, UITextViewDelegate {
 
     // MARK:-Properties
-    let imagePicker = UIImagePickerController()
     var wagerFriends: [[String:String]] = []
     var invitedFriendsUIDs: [String] = []
     var invitedFriendsNames: [String] = []
     var photopickerbuttontapped = false
-    var firebasePhotoURL: String = "https://firebasestorage.googleapis.com:443/v0/b/accounta-bill-a-buddy-43cbd.appspot.com/o/B02A43F1-7243-4190-B052-ABF0061EB8E8.jpg?alt=media&token=9a8df5d4-ec79-409f-9d44-d11ac0a2970c"
+    var wagerPhoto: UIImage = UIImage(named: "wagerDefaultPhoto")!
     
     // MARK:-Outlets
     @IBOutlet weak var imageImageView: UIImageView!
@@ -37,6 +35,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
         goalTextView.delegate = self
         deadlineTextView.delegate = self
         InviteFriendsListTableViewController.delegate = self
+        EmojiViewController.delegate = self
         setupElements()
         self.hideKeyboardWhenTappedAround()
     }
@@ -87,22 +86,10 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func photoPickerButtonTapped(_ sender: Any) {
         photopickerbuttontapped = true
-        let alert = UIAlertController(title: "Add a photo", message: nil, preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
-            self.imagePicker.dismiss(animated: true, completion: nil)
-        }
-        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
-            self.openCamera()
-        }
-        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { (_) in
-            self.openGallery()
-        }
-        alert.addAction(cancelAction)
-        alert.addAction(cameraAction)
-        alert.addAction(photoLibraryAction)
-        
-        present(alert, animated: true, completion: nil)
+        let storyBoard: UIStoryboard = UIStoryboard(name: "EmojiPicker", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "EmojiPickerVC") as! EmojiViewController
+        newViewController.modalPresentationStyle = .fullScreen
+        self.present(newViewController, animated: true, completion: nil)
     }
     
     @IBAction func createWagerButtonTapped(_ sender: Any) {
@@ -117,7 +104,8 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
               !(deadline == "Enter deadline..."),!(deadline == "Please enter a wager deadline") else {
             showError("Please enter a wager deadline", forWhichTextField: "deadline")
             return }
-        WagerController.sharedInstance.createAndSaveWager(wagerID: UUID().uuidString, owner: (UserController.sharedInstance.currentUser?.uid)!, invitedFriends: invitedFriendsUIDs, acceptedFriends: [], goalDescription: goal, wager: wager, deadline: deadline, progress: 0,firebasePhotoURL:firebasePhotoURL) { result in
+        guard let wagerPhoto = wagerPhoto as? UIImage else { return }
+        WagerController.sharedInstance.createAndSaveWager(wagerID: UUID().uuidString, owner: (UserController.sharedInstance.currentUser?.uid)!, invitedFriends: invitedFriendsUIDs, acceptedFriends: [], goalDescription: goal, wager: wager, deadline: deadline, progress: 0,wagerPhoto: wagerPhoto) { result in
             switch (result) {
             case .success(let wager):
                 //add new wager to owner's wager list
@@ -142,7 +130,6 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
     func setupViews() {
         imageImageView.contentMode = .scaleAspectFill
         imageImageView.clipsToBounds = true
-        imagePicker.delegate = self
     }
     
     private func dismissView() {
@@ -154,69 +141,7 @@ class CreateWagerViewController: UIViewController, UITextViewDelegate {
         textField.textColor = .black
         textField.layer.borderWidth = 0.0
     }
-}
-
-extension CreateWagerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        
-        func openCamera() {
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                imagePicker.sourceType = UIImagePickerController.SourceType.camera
-                imagePicker.allowsEditing = false
-                self.present(imagePicker, animated: true, completion: nil)
-            } else {
-                let alert = UIAlertController(title: "No Camera Access", message: "Please allow access to the camera to use this feature.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Back", style: .default, handler: nil)
-                alert.addAction(okAction)
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
-        
-        func openGallery() {
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-                imagePicker.allowsEditing = true
-                imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
-                self.present(imagePicker, animated: true, completion: nil)
-            } else {
-                let alert = UIAlertController(title: "No Photos Access", message: "Please allow access to Photos to use this feature.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Back", style: .default, handler: nil)
-                alert.addAction(okAction)
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
-        
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let pickedImage = info[.originalImage] as? UIImage {
-                imageImageView.image = pickedImage
-                photoPickerButton.setImage(nil, for: .normal)
-                //let imgURL = info[UIImagePickerController.InfoKey.imageURL]
-                //let mediaURL = info[UIImagePickerController.InfoKey.mediaURL]
-                
-                //store data in firestore
-                guard let im: UIImage = info[.originalImage] as? UIImage else { return }
-                guard let d: Data = im.jpegData(compressionQuality: 0.5) else { return }
-
-                let md = StorageMetadata()
-                md.contentType = "image/jpg"//png too
-
-                let f = UserController.sharedInstance.currentUser!.uid + "/" + UUID().uuidString + ".jpg"
-                //let f = UUID().uuidString + ".jpg"
-                let ref = Storage.storage().reference().child(f)
-                
-                ref.putData(d, metadata: md) { (metadata, error) in
-                     if error == nil {
-                         ref.downloadURL(completion: { (url, error) in
-                             print("Done, url is \(String(describing: url))")
-                            guard let unwrappedURL = url?.absoluteString else { return }
-                            self.firebasePhotoURL = unwrappedURL
-                         })
-                     }else{
-                         print("error \(String(describing: error))")
-                     }
-                 }
-            }
-            picker.dismiss(animated: true, completion: nil)
-        }
-
+    
     func showError(_ message: String, forWhichTextField: String) {
         if forWhichTextField == "wager" {
             wagerTextView.text = message
@@ -241,9 +166,7 @@ extension CreateWagerViewController: UIImagePickerControllerDelegate, UINavigati
             friendsTextView.textColor = .red
             friendsTextView.layer.borderColor = UIColor.red.cgColor
             friendsTextView.layer.borderWidth = 1.0
-            
         }
-        
     }
 }//end of class
 
@@ -277,5 +200,11 @@ extension CreateWagerViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+extension CreateWagerViewController: EmojiViewControllerDelegate {
+    func saveEmoji(_ sender: EmojiViewController) {
+        imageImageView.image = sender.emojiSelected
     }
 }

@@ -113,23 +113,10 @@ class WagerDetailViewController: UIViewController {
         else {
             wagerOwnerLabel.isHidden = true
         }
-        let storage = Storage.storage()
-        // Create a storage reference from our storage service
-        //let storageRef = storage.reference()
-        print("========================================1",wager.firebasePhotoURL)
-        let gsReference = storage.reference(forURL: wager.firebasePhotoURL)
-        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-        gsReference.getData(maxSize: 10 * 1024 * 1024) { data, error in
-          if let error = error {
-            print("Error in \(#function): \(error.localizedDescription) \n---\n \(error)")
-            } else {
-            // Data for "images/island.jpg" is returned
-            let image = UIImage(data: data!)
-            self.wagerPhotoImageView.image = image
-            //self.wagerPhotoImageView.layer.cornerRadius = self.wagerImageView.frame.height / 2
-          }
-        }
-        //wagerPhotoImageView.image = wager.wagerPhoto
+        
+            
+        wagerPhotoImageView.image = wager.wagerPhoto
+        self.wagerPhotoImageView.layer.cornerRadius = self.wagerPhotoImageView.frame.height / 2
         goalTextView.text = wager.goalDescription
         deadlineTextView.text = wager.deadline
         wagerTextView.text = wager.wager
